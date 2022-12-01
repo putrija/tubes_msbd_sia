@@ -334,14 +334,17 @@ class GuruController extends Controller
     {
         $guru = Guru::all();
         return view('guru.profil.profil', compact('guru'));
+        // $id = Crypt::decrypt($id);
+        // $guru = Guru::findorfail($id);
     }
 
-    public function edit_profil($id)
+    // public function edit_profil($id)
+    public function edit_profil()
     {
-        $id = Crypt::decrypt($id);
-        $guru = Guru::findorfail($id);
-        $mapel = Mapel::all();
-        return view('admin.guru.edit', compact('guru', 'mapel'));
+        $guru = Guru::all();
+        // $id = Crypt::decrypt($id);
+        // $guru = Guru::findorfail($id);
+        return view('guru.profil.edit', compact('guru'));
     }
 
     public function kehadiran($id)

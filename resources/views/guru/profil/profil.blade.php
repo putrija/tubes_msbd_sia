@@ -90,7 +90,7 @@
       </div>
       <div class="column" >
         <img src="/img/male.jpg" width="300px" class="img img-responsive" alt="" style="display: block;margin-left: auto;margin-right: auto;"> <br>
-        <a href=""><button class="btn btn-primary" style="display: block;margin-left: auto;margin-right: auto; font-size: x-large">Edit Profil</button></a>
+        <a href="{{ route('guru.edit_profil') }}"><button class="btn btn-primary" style="display: block;margin-left: auto;margin-right: auto; font-size: x-large">Edit Profil</button></a>
       </div>
     </div>
   </div>

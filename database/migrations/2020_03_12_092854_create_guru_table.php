@@ -14,7 +14,7 @@ class CreateGuruTable extends Migration
     public function up()
     {
         Schema::create('guru', function (Blueprint $table) {
-            $table->bigIncrements('id]');
+            $table->bigIncrements('id');
             $table->string('id_card', 10);
             $table->string('nip', 30)->nullable();
             $table->string('nama_guru', 50);
@@ -24,6 +24,20 @@ class CreateGuruTable extends Migration
             $table->string('telp', 15)->nullable();
             $table->string('tmp_lahir', 50)->nullable();
             $table->date('tgl_lahir')->nullable();
+            $table->string('status_kepegawaian');
+            $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
+            $table->string('alamat');
+            $table->string('rt');
+            $table->string('rw');
+            $table->string('nama_dusun');
+            $table->string('desa_kelurahan');
+            $table->string('kecamatan');
+            $table->string('kode_pos');
+            $table->string('telepon');
+            $table->string('hp');
+            $table->string('email');
+            $table->string('nik');
+            $table->string('no_kk');
             $table->string('foto');
             $table->timestamps();
             $table->softDeletes();
