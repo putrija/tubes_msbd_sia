@@ -14,7 +14,7 @@ class CreateGuruTable extends Migration
     public function up()
     {
         Schema::create('guru', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id]');
             $table->string('id_card', 10);
             $table->string('nip', 30)->nullable();
             $table->string('nama_guru', 50);
