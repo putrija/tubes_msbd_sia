@@ -330,10 +330,10 @@ class GuruController extends Controller
         }
     }
 
-    public function absensi()
+    public function profil()
     {
         $guru = Guru::all();
-        return view('admin.guru.absen', compact('guru'));
+        return view('admin.guru.profil', compact('guru'));
     }
 
     public function kehadiran($id)

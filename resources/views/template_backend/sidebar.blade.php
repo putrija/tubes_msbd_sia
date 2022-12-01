@@ -35,6 +35,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('guru.profil') }}" class="nav-link" id="ProfilGuru">
+                            <i class="fas fa-user nav-icon"></i>
+                            <p>Profil Guru</p>
+                        </a>
+                    </li>
                     <li class="nav-item has-treeview" id="liMasterData">
                         <a href="#" class="nav-link" id="MasterData">
                             <i class="nav-icon fas fa-edit"></i>
@@ -132,12 +138,6 @@
                         </li>
                     @else
                     @endif
-                    <li class="nav-item">
-                        <a href="{{ route('guru.absensi') }}" class="nav-link" id="AbsensiGuru">
-                            <i class="fas fa-calendar-check nav-icon"></i>
-                            <p>Absensi Guru</p>
-                        </a>
-                    </li>
                     <li class="nav-item has-treeview" id="liNilai">
                         <a href="#" class="nav-link" id="Nilai">
                             <i class="nav-icon fas fa-file-signature"></i>
