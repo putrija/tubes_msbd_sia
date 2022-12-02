@@ -20,7 +20,7 @@
                     <th>No.</th>
                     <th>Nama Mapel</th>
                     <th>Paket</th>
-                    <th>Kelompok</th>
+                    <th>Jurusan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mapel }}</td>
-                    @if ( $data->paket_id == 9 )
+                    @if ( $data->paket_id == 3 )
                       <td>{{ 'Semua' }}</td>
                     @else
                       <td>{{ $data->paket->ket }}</td>

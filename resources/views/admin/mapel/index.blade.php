@@ -20,7 +20,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama Mapel</th>
-                    <th>Paket</th>
+                    <th>Jurusan</th>
                     <th>Kelompok</th>
                     <th>Aksi</th>
                 </tr>
@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mapel }}</td>
-                    @if ( $data->paket_id == 9 )
+                    @if ( $data->paket_id == 3 )
                       <td>{{ 'Semua' }}</td>
                     @else
                       <td>{{ $data->paket->ket }}</td>
@@ -75,10 +75,9 @@
                   <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>
                 <div class="form-group">
-                  <label for="paket_id">Paket</label>
+                  <label for="paket_id">Jurusan</label>
                   <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Paket Mapel --</option>
-                    <option value="9">Semua</option>
                     @foreach ($paket as $data)
                       <option value="{{ $data->id }}">{{ $data->ket }}</option>
                     @endforeach
@@ -89,8 +88,7 @@
                     <select id="kelompok" name="kelompok" class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
                       <option value="">-- Pilih Kelompok Mapel --</option>
                       <option value="A">Pelajaran Umum</option>
-                      <option value="B">Pelajaran Khusus</option>
-                      <option value="C">Pelajaran Keahlian</option>
+                      <option value="B">Ekstrakulikuler</option>
                     </select>
                 </div>
               </div>
