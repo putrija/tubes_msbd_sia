@@ -81,6 +81,19 @@ class GuruController extends Controller
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'status_kepegawaian' => $request->status_kepegawaian,
+            'hp' => $request->hp,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'nama_dusun' => $request->nama_dusun,
+            'desa_kelurahan' => $request->desa_kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'no_kk' => $request->no_kk,
             'foto' => $nameFoto
         ]);
 

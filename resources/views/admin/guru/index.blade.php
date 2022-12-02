@@ -134,11 +134,78 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="telp">Nomor Telpon/HP</label>
+                        <label for="status_kepegawaian">Status Kepegawaian</label>
+                        <select id="status_kepegawaian" name="status_kepegawaian" class="select2bs4 form-control @error('status_kepegawaian') is-invalid @enderror">
+                            <option value="">-- Pilih Status Kepegawaian --</option>
+                            <option value="PNS">PNS</option>
+                            <option value="PPPK">PPPK</option>
+                            <option value="GTYPTY">GTY/PTY</option>
+                            <option value="Honor">Guru Honor Sekolah</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="telp">Nomor Telpon</label>
                         <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="hp">Nomor hp</label>
+                        <input type="text" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="agama">Agama</label>
+                        <select id="agama" name="agama" class="select2bs4 form-control @error('agama') is-invalid @enderror">
+                            <option value="">-- Pilih Agama --</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Konghucu">Konghucu</option>
+                            <option value="AK">Aliran Kepercayaan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" id="alamat" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="rt">RT</label>
+                        <input type="text" id="rt" name="rt" class="form-control @error('rt') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="rw">RW</label>
+                        <input type="text" id="rw" name="rw" class="form-control @error('rw') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_dusun">Nama Dusun</label>
+                        <input type="text" id="nama_dusun" name="nama_dusun" class="form-control @error('nama_dusun') is-invalid @enderror">
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="desa_kelurahan">Desa/Kelurahan</label>
+                        <input type="text" id="desa_kelurahan" name="desa_kelurahan" class="form-control @error('desa_kelurahan') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="kecamatan">Kecamatan</label>
+                        <input type="text" id="kecamatan" name="kecamatan" class="form-control @error('kecamatan') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="kode_pos">Kode Pos</label>
+                        <input type="text" id="kode_pos" name="kode_pos" class="form-control @error('kode_pos') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" id="nik" name="nik" class="form-control @error('nik') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="no_kk">No KK</label>
+                        <input type="text" id="no_kk" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror">
+                    </div>
                     <div class="form-group">
                         <label for="nip">NIP</label>
                         <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
