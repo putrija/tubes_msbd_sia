@@ -1,0 +1,89 @@
+.utama{
+    padding-top: 7rem;
+}
+
+.utama .img-fluid{
+    height: 372px;
+    border-radius: 30px;
+}
+
+.utama .heading1{
+    color: black;
+    font-weight: 800;
+    padding-top: 2rem;
+}
+
+.utama .heading2{
+    color: #61B0B7;
+    font-weight: 800;
+}
+
+.utama .subheading{
+    font-size: 24px;
+    color: #7E7878;
+    font-weight: 400;
+}
+
+.section-margin{
+    margin-top: 30px;
+}
+.gambar1 .dokumentasiText{
+    color: black;
+    font-weight: 800;
+    padding-top: 2rem;
+    font-size:xx-large;
+}
+.gambar1 .img-fluid{
+    border-radius: 10px;
+    height: 295px;
+}
+
+
+.berita .shade1{
+    width: 100%;
+    height: 100%;
+    background: rgba(89, 159, 156, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.berita .beritaText{
+    color: black;
+    font-weight: 800;
+    padding-top: 2rem;
+    font-size:xx-large;
+}
+
+.berita .judulBerita{
+    color: white;
+    font-size: 25px;
+    margin: 0;
+    transform: translate(-50%,-50%);
+    text-align: left;
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    font-weight: 700;
+}
+.berita .buttonBerita{
+    position: absolute;
+  top: 70%;
+  left: 10%;
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.berita .shade2{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 99, 141, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+}

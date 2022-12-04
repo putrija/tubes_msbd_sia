@@ -19,6 +19,10 @@ Route::get('/welcome', function () {
   return view('welcome');
 });
 
+Route::get('/landingpage', function () {
+  return view('landing/index');
+});
+
 Route::get('/clear-cache', function () {
   Artisan::call('config:clear');
   Artisan::call('cache:clear');
