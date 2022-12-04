@@ -63,8 +63,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/sikap', 'SikapController');
     Route::get('/rapot/predikat', 'RapotController@predikat');
     Route::resource('/rapot', 'RapotController');
-    Route::get('/guru/profil', 'GuruController@profil')->name('guru.profil');
-    Route::get('/guru/edit_profil', 'GuruController@edit_profil')->name('guru.edit_profil');
   });
 
   Route::middleware(['admin'])->group(function () {
@@ -91,6 +89,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
     Route::get('/admin/pengumuman', 'PengumumanController@index')->name('admin.pengumuman');
     Route::post('/admin/pengumuman/simpan', 'PengumumanController@simpan')->name('admin.pengumuman.simpan');
+    // Route::get('/guru/absensi', 'GuruController@absensi')->name('guru.absensi');
+    Route::get('/guru/profil', 'GuruController@profil')->name('guru.profil');
+    Route::get('/guru/edit_profil', 'GuruController@edit_profil')->name('guru.edit_profil');
     Route::get('/guru/kehadiran/{id}', 'GuruController@kehadiran')->name('guru.kehadiran');
     Route::get('/absen/json', 'GuruController@json');
     Route::get('/guru/mapel/{id}', 'GuruController@mapel')->name('guru.mapel');
