@@ -24,16 +24,7 @@ class UsersSeeder extends Seeder
                 'role' => 'Admin',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'id' => 2,
-                'name' => 'Putrija',
-                'email' => 'putrija@gmail.com',
-                'password' => Hash::make('12345678'),
-                'role' => 'Guru',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
+            ]
         );
     }
 }
