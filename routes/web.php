@@ -30,6 +30,10 @@ Route::get('/clear-cache', function () {
   return 'DONE';
 });
 
+Route::get('/berita', function () {
+  return view('landing/berita');
+});
+
 Auth::routes();
 Route::get('/login/cek_email/json', 'UserController@cek_email');
 Route::get('/login/cek_password/json', 'UserController@cek_password');
