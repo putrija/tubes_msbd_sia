@@ -22,7 +22,7 @@
                         </a>
                         <ul class="nav nav-treeview ml-4">
                             <li class="nav-item">
-                                <a href="{{ url('/') }}" class="nav-link" id="Home">
+                                <a href="{{ url('/home') }}" class="nav-link" id="Home">
                                     <i class="fas fa-home nav-icon"></i>
                                     <p>Dashboard</p>
                                 </a>
