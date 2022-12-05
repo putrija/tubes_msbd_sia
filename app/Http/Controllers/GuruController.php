@@ -7,7 +7,6 @@ use App\User;
 use App\Guru;
 use App\Mapel;
 use App\Jadwal;
-use App\Absen;
 use App\Kehadiran;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
@@ -263,13 +262,6 @@ class GuruController extends Controller
         $mapel = Mapel::findorfail($id);
         $guru = Guru::where('mapel_id', $id)->orderBy('kode', 'asc')->get();
         return view('admin.guru.show', compact('mapel', 'guru'));
-    }
-
-    public function absen()
-    {
-        $absen = Absen::where('tanggal', date('Y-m-d'))->get();
-        $kehadiran = Kehadiran::limit(4)->get();
-        return view('guru.absen', compact('absen', 'kehadiran'));
     }
 
     public function export_excel()
