@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card card-warning" style="min-height: 385px;">
         <div class="card-header">
           <h3 class="card-title" style="color: white;">
@@ -101,32 +101,7 @@
         </div>
         <div class="card-body">
           <div class="tab-content p-0">
-            {!! $pengumuman->isi !!}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card card-info">
-        <div class="card-header">
-          <h3 class="card-title">
-            Keterangan :
-          </h3>
-        </div>
-        <div class="card-body">
-          <div class="tab-content p-0">
-            <table class="table" style="margin-top: -21px; margin-bottom: -10px;">
-              @foreach ($kehadiran as $data)
-                <tr>
-                  <td>
-                    <div style="width:30px;height:30px;background:#{{ $data->color }}"></div>
-                  </td>
-                  <td>:</td>
-                  <td>{{ $data->ket }}</td>
-                </tr>
-              @endforeach
-            </table>
+            {{-- {!! $pengumuman->isi !!} --}}
           </div>
         </div>
       </div>

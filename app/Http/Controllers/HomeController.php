@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Jadwal;
 use App\Guru;
-use App\Kehadiran;
 use App\Kelas;
 use App\Siswa;
 use App\Mapel;
@@ -37,8 +36,7 @@ class HomeController extends Controller
         $jam = date('H:i');
         $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari_id', $hari)->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
         $pengumuman = Pengumuman::first();
-        $kehadiran = Kehadiran::all();
-        return view('home', compact('jadwal', 'pengumuman', 'kehadiran'));
+        return view('home', compact('jadwal', 'pengumuman'));
     }
 
     public function admin()

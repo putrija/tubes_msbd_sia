@@ -35,12 +35,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('guru.profil') }}" class="nav-link" id="ProfilGuru">
-                            <i class="fas fa-user nav-icon"></i>
-                            <p>Profil Guru</p>
-                        </a>
-                    </li>
                     <li class="nav-item has-treeview" id="liMasterData">
                         <a href="#" class="nav-link" id="MasterData">
                             <i class="nav-icon fas fa-edit"></i>

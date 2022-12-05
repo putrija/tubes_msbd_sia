@@ -19,8 +19,13 @@ Route::get('/welcome', function () {
   return view('welcome');
 });
 
-Route::get('/landingpage', function () {
+Route::get('/', function () {
   return view('landing/index');
+});
+
+
+Route::get('/berita', function () {
+  return view('landing/berita');
 });
 
 Route::get('/clear-cache', function () {
@@ -42,7 +47,7 @@ Route::get('/reset/password/{id}', 'UserController@password')->name('reset.passw
 Route::patch('/reset/password/update/{id}', 'UserController@update_password')->name('reset.password.update')->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
-  Route::get('/', 'HomeController@index')->name('home');
+  // Route::get('/', 'HomeController@index')->name('home');
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/jadwal/sekarang', 'JadwalController@jadwalSekarang');
   Route::get('/profile', 'UserController@profile')->name('profile');
@@ -97,9 +102,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
     Route::get('/admin/pengumuman', 'PengumumanController@index')->name('admin.pengumuman');
     Route::post('/admin/pengumuman/simpan', 'PengumumanController@simpan')->name('admin.pengumuman.simpan');
-    // Route::get('/guru/absensi', 'GuruController@absensi')->name('guru.absensi');
-    Route::get('/guru/profil', 'GuruController@profil')->name('guru.profil');
-    Route::get('/guru/edit_profil', 'GuruController@edit_profil')->name('guru.edit_profil');
     Route::get('/guru/kehadiran/{id}', 'GuruController@kehadiran')->name('guru.kehadiran');
     Route::get('/absen/json', 'GuruController@json');
     Route::get('/guru/mapel/{id}', 'GuruController@mapel')->name('guru.mapel');

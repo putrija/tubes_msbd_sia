@@ -22,7 +22,7 @@
               <a class="nav-link" aria-current="page" href="halamanutama">Utama</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Berita</a>
+              <a class="nav-link" aria-current="page" href="/berita">Berita</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="artikel">Dokumentasi</a>
@@ -40,7 +40,7 @@
              echo $_SESSION["name"];
            }
            @endphp
-  <button class="btn btn-danger me-2" type="button">Keluar</button>
+  {{-- <button class="btn btn-danger me-2" type="button">Keluar</button> --}}
 </div>
           </ul>
         </div>
