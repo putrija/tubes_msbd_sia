@@ -26,10 +26,10 @@
                     @else
                         <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
                     @endif
-                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $siswa->tempat_lahir }}</h5>
-                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($siswa->tanggal_lahir)) }}</h5>
+                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $siswa->tmp_lahir }}</h5>
+                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</h5>
                     <h5 class="card-title card-text mb-2">Alamat : {{ $siswa->alamat }}</h5>
-                    <h5 class="card-title card-text mb-2">No. Telepon : {{ $siswa->no_tlp }}</h5>
+                    <h5 class="card-title card-text mb-2">No. Telepon : {{ $siswa->telp }}</h5>
                     <h5 class="card-title card-text mb-2">Email : {{ $siswa->email }}</h5>
                     <h5 class="card-title card-text mb-2">Agama : {{ $siswa->agama }}</h5>
                 </div>
