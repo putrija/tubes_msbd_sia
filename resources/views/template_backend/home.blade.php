@@ -80,7 +80,7 @@
         
         .textarea-rapot{
             font-size:11px !important;
-            background: #fff !important;
+            background: white!important;
             border:none !important;
             font-size: 11px !important;
             cursor: default !important;

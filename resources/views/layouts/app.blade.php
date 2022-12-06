@@ -14,6 +14,7 @@
 <body class="hold-transition login-page" style="background-image: url('{{ asset("img/wallup.jpg") }}'); background-size: cover; background-attachment: fixed;">
   <div class="login-box">
     <div class="login-logo">
+      <a><img src="/img/logo.png"></a>
       <h1 style="color: white">SMAN 14 MEDAN</h1>
     </div>
 
