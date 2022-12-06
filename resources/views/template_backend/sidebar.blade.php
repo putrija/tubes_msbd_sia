@@ -13,7 +13,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Operator')
                     <li class="nav-item has-treeview" id="liDashboard">
-                        <a href="#" class="nav-link" id="Dashboard">
+                        <a href="#t" class="nav-link" id="Dashboard">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Dashboard
@@ -175,7 +175,7 @@
                     </li>
                 @elseif (Auth::user()->role == 'Guru' && Auth::user()->guru(Auth::user()->id_card))
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
