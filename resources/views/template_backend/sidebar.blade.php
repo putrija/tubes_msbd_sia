@@ -181,12 +181,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('absen.harian') }}" class="nav-link" id="AbsenGuru">
-                            <i class="fas fa-calendar-check nav-icon"></i>
-                            <p>Absen</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('jadwal.guru') }}" class="nav-link" id="JadwalGuru">
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>Jadwal</p>
