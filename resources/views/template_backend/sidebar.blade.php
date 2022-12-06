@@ -21,7 +21,7 @@
                         </a>
                         <ul class="nav nav-treeview ml-4">
                             <li class="nav-item">
-                                <a href="{{ url('/') }}" class="nav-link" id="Home">
+                                <a href="{{ url('/home') }}" class="nav-link" id="Home">
                                     <i class="fas fa-home nav-icon"></i>
                                     <p>Dashboard</p>
                                 </a>
@@ -131,12 +131,6 @@
                         </li>
                     @else
                     @endif
-                    <li class="nav-item">
-                        <a href="{{ route('guru.absensi') }}" class="nav-link" id="AbsensiGuru">
-                            <i class="fas fa-calendar-check nav-icon"></i>
-                            <p>Absensi Guru</p>
-                        </a>
-                    </li>
                     <li class="nav-item has-treeview" id="liNilai">
                         <a href="#" class="nav-link" id="Nilai">
                             <i class="nav-icon fas fa-file-signature"></i>
@@ -183,12 +177,6 @@
                         <a href="{{ url('/') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('absen.harian') }}" class="nav-link" id="AbsenGuru">
-                            <i class="fas fa-calendar-check nav-icon"></i>
-                            <p>Absen</p>
                         </a>
                     </li>
                     <li class="nav-item">
