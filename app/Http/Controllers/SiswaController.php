@@ -73,7 +73,10 @@ class SiswaController extends Controller
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
-            'foto' => $nameFoto
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'foto' => $nameFoto,
+            'kelas_id' => $request->kelas_id,
         ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
