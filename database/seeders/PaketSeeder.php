@@ -13,25 +13,28 @@ class PaketSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
         DB::table('paket')->insert([
             'id' => 1,
-            'ket' => 'IPA',
+            'ket' => 'MERDEKA BELAJAR',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('paket')->insert([
             'id' => 2,
-            'ket' => 'IPS',
-<<<<<<< HEAD
+            'ket' => 'IPA',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('paket')->insert([
             'id' => 3,
+            'ket' => 'IPS',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('paket')->insert([
+            'id' => 4,
             'ket' => 'EKSTRAKULIKULER',
-=======
->>>>>>> 3e0a6237e6b6b00bf8695d2369f979c9b8bd8bb3
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
