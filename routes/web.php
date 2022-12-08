@@ -123,6 +123,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/siswa', 'SiswaController');
     Route::get('/mapel/getMapelJson', 'MapelController@getMapelJson');
     Route::resource('/mapel', 'MapelController');
+
+    // ################### ROUTE PELANGGARAN #######################
+    Route::resource('/pelanggaran', 'ViolationController');
+    Route::get('/guru/pelanggaran', 'ViolationController@index')->name('pelanggaran.index');
+    // ################### END ROUTE PELANGGARAN #######################
+
     Route::get('/jadwal/view/json', 'JadwalController@view');
     Route::get('/jadwalkelaspdf/{id}', 'JadwalController@cetak_pdf');
     Route::get('/jadwal/export_excel', 'JadwalController@export_excel')->name('jadwal.export_excel');

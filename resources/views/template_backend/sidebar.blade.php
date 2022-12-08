@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link" style="">
-        <img src="{{ asset('img/favicon.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+        <img src="{{ asset('img/sman14Medan.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">SIAKAD</span>
     </a>
     <!-- Sidebar -->
@@ -71,6 +71,12 @@
                                 <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Mapel</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Pelanggaran</p>
                                 </a>
                             </li>
                             <li class="nav-item">
