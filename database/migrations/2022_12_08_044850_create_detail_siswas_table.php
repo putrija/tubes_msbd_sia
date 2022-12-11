@@ -20,7 +20,6 @@ return new class extends Migration
             $table->char('nis', 5);
             $table->integer('anak_ke');
             $table->integer('dari_berapa_bersaudara');
-            $table->string('diterima_dikelas');
             $table->string('foto_profil_siswa');
             $table->enum('diterima_di_kelas', ['10', '11', '12']);
             $table->date('diterima_pada_tanggal');
@@ -42,7 +41,7 @@ return new class extends Migration
             $table->string('nama_wali')->nullable();
             $table->string('pekerjaan_wali')->nullable();
             $table->string('alamat_wali')->nullable();
-            $table->string('tlp_wali')->nullable();
+            $table->string('tlp_wali', 20)->nullable();
             $table->timestamps();
         });
     }
