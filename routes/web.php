@@ -101,6 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/pengumuman', 'PengumumanController@index')->name('admin.pengumuman');
     Route::post('/admin/pengumuman/simpan', 'PengumumanController@simpan')->name('admin.pengumuman.simpan');
     Route::get('/guru/kehadiran/{id}', 'GuruController@kehadiran')->name('guru.kehadiran');
+    Route::get('/guru/kehadiran/{id}', 'GuruController@kehadiran')->name('guru.kehadiran');
+    Route::get('/guru/show/{id}', 'GuruController@show')->name('guru.show');
     Route::get('/absen/json', 'GuruController@json');
     Route::get('/guru/mapel/{id}', 'GuruController@mapel')->name('guru.mapel');
     Route::get('/guru/ubah-foto/{id}', 'GuruController@ubah_foto')->name('guru.ubah-foto');
