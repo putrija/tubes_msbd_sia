@@ -126,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
 
     // ################### ROUTE PELANGGARAN #######################
     Route::resource('/pelanggaran', 'ViolationController');
-    Route::get('/guru/pelanggaran', 'ViolationController@index')->name('pelanggaran.index');
+    Route::get('/guru/pelanggaran', 'ViolationController@index');
     // ################### END ROUTE PELANGGARAN #######################
 
     Route::get('/jadwal/view/json', 'JadwalController@view');
