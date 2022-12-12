@@ -66,7 +66,7 @@ class SiswaController extends Controller
 
         Siswa::create([
             'no_induk' => $request->no_induk,
-            'nis' => $request->nis,
+            'nisn' => $request->nis,
             'nama_siswa' => $request->nama_siswa,
             'jk' => $request->jk,
             'kelas_id' => $request->kelas_id,

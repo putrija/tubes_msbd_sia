@@ -75,7 +75,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
-                                    <i class="fas fa-book nav-icon"></i>
+                                    <i class="fas fa-exclamation-triangle nav-icon"></i>
                                     <p>Pelanggaran</p>
                                 </a>
                             </li>

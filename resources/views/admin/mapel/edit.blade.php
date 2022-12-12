@@ -58,7 +58,7 @@
                         {{-- <option value="C"
                             @if ($mapel->kelompok == 'C')
                                 selected --}}
-                            @endif
+                            {{-- @endif --}}
                         {{-- >Pelajaran Keahlian</option> --}}
                     </select>
                 </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Violation;
+use App\Mapel;
+use App\Paket;
 
 class ViolationController extends Controller
 {
@@ -14,7 +16,9 @@ class ViolationController extends Controller
      */
     public function index()
     {
-        return view('admin.pelanggaran.index');
+        $mapel = Mapel::OrderBy('kelompok', 'asc')->OrderBy('nama_mapel', 'asc')->get();
+        $paket = Paket::all();
+        return view('admin.pelanggaran.index', compact('mapel', 'paket'));
     }
 
     /**

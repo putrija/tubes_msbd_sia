@@ -11,7 +11,7 @@ class Siswa extends Model
     use SoftDeletes;
 
     // protected $fillable = ['no_induk', 'nis', 'nama_siswa', 'alamat', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto'];
-    protected $fillable = ['no_induk', 'nis', 'nama_siswa', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto', 'name', 'email', 'password', 'role', 'id_card', 'alamat', 'agama', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['no_induk', 'nisn', 'nama_siswa', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto', 'name', 'email', 'password', 'role', 'id_card', 'alamat', 'agama', 'created_at', 'updated_at', 'deleted_at'];
     public function kelas()
     {
         return $this->belongsTo('App\Kelas')->withDefault();
