@@ -1,11 +1,10 @@
 @extends('template_backend.home')
 @section('heading')
-Data Siswa
-  {{-- Data Siswa {{ $kelas->nama_kelas }} --}}
+  Data Siswa {{ $kelas->nama_kelas }}
 @endsection
 @section('page')
   <li class="breadcrumb-item active"><a href="{{ route('siswa.index') }}">Siswa</a></li>
-  {{-- <li class="breadcrumb-item active">{{ $kelas->nama_kelas }}</li> --}}
+  <li class="breadcrumb-item active">{{ $kelas->nama_kelas }}</li>
 @endsection
 @section('content')
 <div class="col-md-12">
