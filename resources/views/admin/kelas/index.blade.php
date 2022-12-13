@@ -121,14 +121,14 @@
                 </thead>
                 <tbody id="data-siswa">
                 </tbody>
-                <tfoot>
+                {{-- <tfoot>
                   <tr>
                     <th>No Induk Siswa</th>
                     <th>Nama Siswa</th>
                     <th>L/P</th>
                     <th>Foto Siswa</th>
                   </tr>
-                </tfoot>
+                </tfoot> --}}
               </table>
             </div>
             <!-- /.col -->
@@ -168,14 +168,14 @@
               </thead>
               <tbody id="data-jadwal">
               </tbody>
-              <tfoot>
+              {{-- <tfoot>
                 <tr>
                   <th>Hari</th>
                   <th>Jadwal</th>
                   <th>Jam Pelajaran</th>
                   <th>Ruang Kelas</th>
                 </tr>
-              </tfoot>
+              </tfoot> --}}
             </table>
           </div>
           <!-- /.col -->
