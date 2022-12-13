@@ -174,7 +174,7 @@ class JadwalController extends Controller
         }
         return response()->json($newForm);
     }
-
+    // jadwal sekarang
     public function jadwalSekarang(Request $request)
     {
         $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari_id', $request->hari)->where('jam_mulai', '<=', $request->jam)->where('jam_selesai', '>=', $request->jam)->get();
