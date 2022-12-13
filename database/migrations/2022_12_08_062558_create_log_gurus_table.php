@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('tmp_lahir_new', 50)->nullable();
             $table->string('hp_old', 15)->nullable();
             $table->string('hp_new', 15)->nullable();
+            $table->string('telp_old', 15)->nullable();
+            $table->string('telp_new', 15)->nullable();
             $table->enum('jk_old', ['L', 'P'])->nullable();
             $table->enum('jk_new', ['L', 'P'])->nullable();
             $table->date('tgl_lahir_old')->nullable();

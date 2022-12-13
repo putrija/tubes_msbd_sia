@@ -160,6 +160,7 @@ class GuruController extends Controller
             'mapel_id' => $request->mapel_id,
             'jk' => $request->jk,
             'telp' => $request->telp,
+            'hp' => $request->hp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir
         ];

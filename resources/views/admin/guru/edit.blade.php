@@ -45,11 +45,15 @@
                     <input type="text" id="id_card" name="id_card" class="form-control" value="{{ $guru->id_card }}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="telp">Nomor Telpon/HP</label>
+                    <label for="telp">Nomor Telpon</label>
                     <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" value="{{ $guru->telp }}" class="form-control @error('telp') is-invalid @enderror">
                 </div>
             </div>
             <div class="col-md-6">
+                <div class="form-group">
+                    <label for="hp">Nomor HP</label>
+                    <input type="text" id="hp" name="hp" onkeypress="return inputAngka(event)" value="{{ $guru->hp }}" class="form-control @error('hp') is-invalid @enderror">
+                </div>
                 <div class="form-group">
                     <label for="nip">NIP</label>
                     <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" value="{{ $guru->nip }}" class="form-control @error('nip') is-invalid @enderror" disabled>
