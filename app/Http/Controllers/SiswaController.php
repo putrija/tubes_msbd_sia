@@ -22,8 +22,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        return view('admin.siswa.index', compact('kelas'));
+        // $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
+        // return view('admin.siswa.index', compact('kelas'));
+        $siswa = Siswa::all();
+        return view('admin.siswa.show', compact('siswa'));
+
     }
 
     /**
