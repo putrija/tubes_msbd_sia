@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
         //         'id_card' => '00001',
         //         'nip' => '12345678',
         //         'nama_guru' => 'guruku',
-        //         'mapel_id' => '1',
+        //         'mapel_id' => '12',
         //         'kode' => '111',
         //         'jk' => 'L',
         //         'telp' => '0920170',
@@ -45,6 +45,17 @@ class UsersSeeder extends Seeder
         //         'updated_at' => date('Y-m-d H:i:s')
         //     ]
         // );
+        // DB::table('mapel')->insert(
+        //     [
+        //         'id' => 1,
+        //         'nama_mapel' => 'biologi',
+        //         'paket_id' => '12',
+        //         'kelompok' => 'A',
+        //         'created_at' => date('Y-m-d H:i:s'),
+        //         'updated_at' => date('Y-m-d H:i:s'),
+        //         'deleted_at' => date('Y-m-d H:i:s')
+        //     ]
+        // );
         DB::table('users')->insert(
             [
                 'id' => 1,
@@ -57,8 +68,8 @@ class UsersSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'Putrija',
-                'email' => 'putrija@gmail.com',
+                'name' => 'guruku',
+                'email' => 'guru1@gmail.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'Guru',
                 'created_at' => date('Y-m-d H:i:s'),
