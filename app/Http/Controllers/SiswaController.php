@@ -26,8 +26,7 @@ class SiswaController extends Controller
         // return view('admin.siswa.index', compact('kelas'));
         $siswa = Siswa::all();
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        return view('admin.siswa.index', compact('siswa','kelas'));
-
+        return view('admin.siswa.index', compact('siswa', 'kelas'));
     }
 
     /**
@@ -70,7 +69,7 @@ class SiswaController extends Controller
 
         Siswa::create([
             'no_induk' => $request->no_induk,
-            'nisn' => $request->nis,
+            'nisn' => $request->nisn,
             'nama_siswa' => $request->nama_siswa,
             'jk' => $request->jk,
             'kelas_id' => $request->kelas_id,
@@ -139,7 +138,7 @@ class SiswaController extends Controller
         } else {
         }
         $siswa_data = [
-            'nis' => $request->nis,
+            'nisn' => $request->nisn,
             'nama_siswa' => $request->nama_siswa,
             'jk' => $request->jk,
             'kelas_id' => $request->kelas_id,

@@ -58,8 +58,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nis">NIS</label>
-                    <input type="text" id="nis" name="nis" onkeypress="return inputAngka(event)" value="{{ $siswa->nis }}" class="form-control @error('nis') is-invalid @enderror">
+                    <label for="nisn">NISN</label>
+                    <input type="text" id="nisn" name="nisn" onkeypress="return inputAngka(event)" value="{{ $siswa->nisn }}" class="form-control @error('nisn') is-invalid @enderror">
                 </div>
                 <div class="form-group">
                     <label for="kelas_id">Kelas</label>
@@ -75,16 +75,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="telp">Nomor Telpon/HP</label>
+                    <label for="telp">Nomor Telpon</label>
                     <input type="text" id="telp" name="telp" value="{{ $siswa->telp }}" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="emailr">Email</label>
-                    <input type="text" id="email" name="email" value="{{ $siswa->email }}" class="form-control @error('email') is-invalid @enderror">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="{{ $siswa->email }}" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label for="agama">Agama</label>
-                    <input type="Text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control @error('agama') is-invalid @enderror">
+                    <input type="text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control" readonly>
                 </div>
                 
             </div>
