@@ -27,8 +27,8 @@ return new class extends Migration
             $table->string('alamat_new')->nullable();
             $table->string('nisn_old', 30)->nullable();
             $table->string('nisn_new', 30)->nullable();
-            $table->integer('kelas_id_new')->nullable();
             $table->integer('kelas_id_old')->nullable();
+            $table->integer('kelas_id_new')->nullable();
             $table->string('telp_old', 15)->nullable();
             $table->string('telp_new', 15)->nullable();
 
