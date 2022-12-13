@@ -58,9 +58,9 @@ class SiswaController extends Controller
             $nameFoto = 'uploads/siswa/' . $new_foto;
         } else {
             if ($request->jk == 'L') {
-                $nameFoto = 'uploads/siswa/52471919042020_male.jpg';
+                $nameFoto = 'uploads/siswa/27231912072020_male.jpg';
             } else {
-                $nameFoto = 'uploads/siswa/50271431012020_female.jpg';
+                $nameFoto = 'uploads/siswa/23171022042020_female.jpg';
             }
         }
 
@@ -77,6 +77,7 @@ class SiswaController extends Controller
             'email' => $request->email,
             'foto' => $nameFoto,
             'kelas_id' => $request->kelas_id,
+            'agama' => $request->agama
         ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');

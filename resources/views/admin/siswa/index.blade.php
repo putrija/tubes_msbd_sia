@@ -187,10 +187,6 @@
                     {{-- <div class="form-group">
                         <label for="emailr">Email</label>
                         <input type="text" id="email" name="email" value="{{ $siswa->email }}" class="form-control @error('email') is-invalid @enderror">
-                    </div>
-                    <div class="form-group">
-                        <label for="agama">Agama</label>
-                        <input type="Text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control @error('agama') is-invalid @enderror">
                     </div> --}}
                     <div class="form-group">
                         <label for="emailr">Email</label>
@@ -198,8 +194,25 @@
                     </div>
                     <div class="form-group">
                         <label for="agama">Agama</label>
-                        <input type="Text" id="agama" name="agama" class="form-control @error('agama') is-invalid @enderror">
+                        <select id="agama" name="agama" class="select2bs4 form-control @error('agama') is-invalid @enderror">
+                            <option value="">-- Pilih Agama --</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Konghucu">Konghucu</option>
+                            <option value="AK">Aliran Kepercayaan</option>
+                        </select>
                     </div>
+                    {{-- <div class="form-group">
+                        <label for="agama">Agama</label>
+                        <input type="Text" id="agama" name="agama" value="{{ $data->agama }}" class="form-control @error('agama') is-invalid @enderror">
+                    </div> --}}
+                    {{-- <div class="form-group">
+                        <label for="agama">Agama</label>
+                        <input type="Text" id="agama" name="agama" class="form-control @error('agama') is-invalid @enderror">
+                    </div> --}}
                 </div>
             </div>
           </div>
