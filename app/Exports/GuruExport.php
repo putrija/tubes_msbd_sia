@@ -12,7 +12,7 @@ class GuruExport implements FromCollection
      */
     public function collection()
     {
-        $guru = Guru::join('mapel', 'mapel.id', '=', 'guru.mapel_id')->select('guru.nama_guru', 'guru.nip', 'guru.jk', 'mapel.nama_mapel')->get();
+        $guru = Guru::join('mapel', 'mapel.id', '=', 'guru.mapel_id')->select('guru.nama_guru', 'guru.nip', 'guru.jk','guru.tgl_lahir', 'mapel.nama_mapel')->get();
         return $guru;
     }
 }
