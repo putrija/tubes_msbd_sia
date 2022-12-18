@@ -16,7 +16,7 @@ class PaketSeeder extends Seeder
     {   
         DB::table('paket')->insert([
             'id' => 1,
-            'ket' => 'MERDEKA BELAJAR',
+            'ket' => 'Merdeka Belajar',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -34,7 +34,7 @@ class PaketSeeder extends Seeder
         ]);
         DB::table('paket')->insert([
             'id' => 4,
-            'ket' => 'EKSTRAKULIKULER',
+            'ket' => 'IPA dan IPS',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

@@ -1,16 +1,19 @@
 <?php
 
 namespace App\Imports;
-use Auth;
 use App\Guru;
 use App\Mapel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
-use function PHPSTORM_META\map;
+HeadingRowFormatter::default('none');
 
-class GuruImport implements ToModel
+class GuruImport implements ToModel, WithHeadingRow
 {
-    /**
+/**
      * @param array $row
      *
      * @return \Illuminate\Database\Eloquent\Model|null
@@ -30,35 +33,40 @@ class GuruImport implements ToModel
         } else {
             $id_card = $kode;
         }
-        $mapel = mapel::where('nama_mapel',$row[3])->first();
-        if ($row[2] == 'L') {
+        $mapel = Mapel::where('nama_mapel',$row['Mapel'])->first();
+
+        if ($row['Jenis_Kelamin'] == 'L') {
             $foto = 'uploads/guru/35251431012020_male.jpg';
         } else {
             $foto = 'uploads/guru/23171022042020_female.jpg';
         }
+
         return new Guru([
-            'id_card' => $id_card,
-            'nama_guru' => $row[0],
-            'nip' => $row[1],
-            'jk' => $row[2],
-            'foto' => $foto,
+            'id_card'  => $id_card,
+            'nama_guru' => $row['Nama_Guru'],
+            'nip' => $row['NIP'],
+            'jk' => $row['Jenis_Kelamin'],
+            //'mapel_id' => $mapel,
+            //'foto' => $foto,
             'mapel_id' => $mapel->id,
-            'tmp_lahir' => $row[4],
-            'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['5']),
-            'status_kepegawaian' => $row[6],
-            'hp' => $row[7],
-            'telp' => $row[8],
-            'agama' => $row[9],
-            'alamat' => $row[10],
-            'rt' => $row[11],
-            'rw' => $row[12],
-            'nama_dusun' => $row[13],
-            'desa_kelurahan' => $row[14],
-            'kecamatan' => $row[15],
-            'kode_pos' => $row[16],
-            'email' => $row[17],
-            'nik' => $row[18],
-            'no_kk' => $row[19],
+            'tmp_lahir' => $row['Tempat_Lahir'],
+            'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject ($row['Tanggal_Lahir']),
+            'status_kepegawaian' => $row['Status_Kepegawaian'],
+            'hp'  => $row['No_Hp'],
+            'telp' => $row['No_Tlp'],
+            'agama' => $row['Agama'],
+            'alamat' => $row['Alamat'],
+            'rt' => $row['RT'],
+            'rw'=> $row['RW'],
+            'nama_dusun' => $row['Nama_Dusun'],
+            'desa_kelurahan' => $row['Desa_Kelurahan'],
+            'kecamatan' => $row['Kecamatan'],
+            'kode_pos' => $row['Kode_Pos'],
+            'email' => $row['Email'],
+            'nik' => $row['NIK'],
+            'no_kk' => $row['No_KK'],
+            'foto' => $foto
+            
         ]);
     }
 }

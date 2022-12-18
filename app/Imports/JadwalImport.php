@@ -30,8 +30,8 @@ class JadwalImport implements ToModel
             'kelas_id' => $kelas->id,
             'mapel_id' => $mapel->id,
             'guru_id' => $guru->id,
-            'jam_mulai' => $row[4],
-            'jam_selesai' => $row[5],
+            'jam_mulai' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4]),
+            'jam_selesai' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[5]),
             'ruang_id' => $ruang->id,
         ]);
     }

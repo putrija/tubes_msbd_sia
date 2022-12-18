@@ -22,26 +22,25 @@ return new class extends Migration
             $table->unsignedInteger('mapel_id')->index('mapel_id');
             $table->string('kode', 5)->nullable();
             $table->enum('jk', ['L', 'P']);
-            $table->string('telp', 15);
-            $table->string('hp', 15);
-            $table->string('tmp_lahir', 50)->nullable();
-            $table->date('tgl_lahir')->nullable();
+            $table->string('telp', 15) ->nullable();
+            $table->string('hp', 15) ->nullable();
+            $table->string('tmp_lahir', 50);
+            $table->date('tgl_lahir');
             $table->enum('status_kepegawaian', ['PNS', 'PPPK', 'GTY/PTY', 'Guru Honor Sekolah']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
             $table->string('alamat');
             $table->string('rt')->nullable();
             $table->string('rw')->nullable();
             $table->string('nama_dusun')->nullable();
-            $table->string('desa_kelurahan');
-            $table->string('kecamatan');
-            $table->string('kode_pos');
-            $table->string('email');
+            $table->string('desa_kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kode_pos')->nullable();
+            $table->string('email')->unique();
             $table->string('nik');
             $table->string('no_kk')->nullable();
             $table->string('foto');
-            $table->timestamps();
             $table->softDeletes();
-
+            $table->timestamps();
             $table->index(['mapel_id'], 'mapel_id_2');
         });
     }
