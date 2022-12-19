@@ -17,10 +17,10 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id');
             $table->string('id_card', 10);
-            $table->string('nip', 30)->nullable();
+            $table->string('nip', 30)->nullable()->unique();
             $table->string('nama_guru', 50);
             $table->unsignedInteger('mapel_id')->index('mapel_id');
-            $table->string('kode', 5)->nullable();
+            $table->string('kode', 5)->nullable()->unique();
             $table->enum('jk', ['L', 'P']);
             $table->string('telp', 15) ->nullable();
             $table->string('hp', 15) ->nullable();
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('kecamatan')->nullable();
             $table->string('kode_pos')->nullable();
             $table->string('email')->unique();
-            $table->string('nik');
+            $table->string('nik')->unique();
             $table->string('no_kk')->nullable();
             $table->string('foto');
             $table->softDeletes();

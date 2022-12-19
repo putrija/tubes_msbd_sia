@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id');
-            $table->char('no_induk', 5);
-            $table->string('nisn', 30)->nullable();
+            $table->char('no_induk', 5)->unique();
+            $table->string('nisn', 30)->nullable()->unique();
             $table->string('nama_siswa', 50);
             $table->enum('jk', ['L', 'P']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('tmp_lahir', 50)->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->string('alamat');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('foto');
             $table->integer('kelas_id');
             $table->timestamps();

@@ -157,7 +157,7 @@
                             <option value="PNS">PNS</option>
                             <option value="PPPK">PPPK</option>
                             <option value="GTY/PTY">GTY/PTY</option>
-                            <option value="Honor">Guru Honor Sekolah</option>
+                            <option value="Guru Honor Sekolah">Guru Honor Sekolah</option>
                         </select>
                     </div>
                     <div class="form-group">
