@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         //menampilkan jumlah data dari setiap kelas
-        DB::unprepared('CREATE FUNCTION tampil_siswa_kelas (p_kelas varchar) RETURNS INT
-        DETERMINISTIC
+        // DB::unprepared('CREATE FUNCTION tampil_siswa_kelas (p_kelas varchar) RETURNS INT
+        // DETERMINISTIC
 
-        BEGIN
-        DECLARE jml INT;
-        SELECT COUNT(*) AS jml_kelas INTO jml FROM siswa INNER JOIN kelas ON siswa.kelas_id=kelas.id WHERE nama_kelas = p_kelas;
-        -- SELECT COUNT(*) AS jml_kelas INTO jml FROM tb_siswa WHERE kelas = p_kelas;
-        RETURN jml;
-        END');
+        // BEGIN
+        // DECLARE jml INT;
+        // SELECT COUNT(*) AS jml_kelas INTO jml FROM siswa INNER JOIN kelas ON siswa.kelas_id=kelas.id WHERE nama_kelas = p_kelas;
+        // -- SELECT COUNT(*) AS jml_kelas INTO jml FROM tb_siswa WHERE kelas = p_kelas;
+        // RETURN jml;
+        // END');
     }
 
     /**
