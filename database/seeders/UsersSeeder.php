@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
         // DB::table('guru')->insert(
         //     [
         //         'id' => 1,
@@ -56,36 +56,29 @@ class UsersSeeder extends Seeder
         //         'deleted_at' => date('Y-m-d H:i:s')
         //     ]
         // );
-        DB::table('users')->insert([
-            'id' => 1,
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'Admin',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        DB::table('users')->insert(
+            [
+                'id' => 1,
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('12345678'),
+                'role' => 'Admin',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 2,
+                'name' => 'guruku',
+                'email' => 'guru1@gmail.com',
+                'password' => Hash::make('12345678'),
+                'role' => 'Guru',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
 
-        DB::table('users')->insert([
-            'id' => 2,
-            'name' => 'guruku',
-            'email' => 'guru1@gmail.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'Guru',
-            'id_card' => '00001',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        DB::table('users')->insert([
-            'id' => 3,
-            'name' => 'Putrija Malau',
-            'email' => 'siswa1@gmail.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'Siswa',
-            'no_induk' => '00001',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+            
+        );
+        
+        
     }
 };
