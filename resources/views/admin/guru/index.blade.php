@@ -156,17 +156,17 @@
                             <option value="">-- Pilih Status Kepegawaian --</option>
                             <option value="PNS">PNS</option>
                             <option value="PPPK">PPPK</option>
-                            <option value="GTYPTY">GTY/PTY</option>
+                            <option value="GTY/PTY">GTY/PTY</option>
                             <option value="Honor">Guru Honor Sekolah</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="telp">Nomor Telpon</label>
-                        <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
+                        <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="hp">Nomor hp</label>
-                        <input type="text" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
+                        <input type="number" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="agama">Agama</label>
@@ -209,23 +209,23 @@
                     </div>
                     <div class="form-group">
                         <label for="kode_pos">Kode Pos</label>
-                        <input type="text" id="kode_pos" name="kode_pos" class="form-control @error('kode_pos') is-invalid @enderror">
+                        <input type="number" id="kode_pos" name="kode_pos" class="form-control @error('kode_pos') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nik">NIK</label>
-                        <input type="text" id="nik" name="nik" class="form-control @error('nik') is-invalid @enderror">
+                        <input type="number" id="nik" name="nik" class="form-control @error('nik') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="no_kk">No KK</label>
-                        <input type="text" id="no_kk" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror">
+                        <input type="number" id="no_kk" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nip">NIP</label>
-                        <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
+                        <input type="number" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="mapel_id">Mapel</label>

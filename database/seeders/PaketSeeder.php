@@ -34,7 +34,7 @@ class PaketSeeder extends Seeder
         ]);
         DB::table('paket')->insert([
             'id' => 4,
-            'ket' => 'IPA dan IPS',
+            'ket' => 'Semua',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
