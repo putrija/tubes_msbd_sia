@@ -21,15 +21,15 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="hari_id">Hari</label>
-                <select id="hari_id" name="hari_id" class="form-control @error('hari_id') is-invalid @enderror select2bs4">
+                <select id="hari_id" name="hari" class="form-control">
                   <option value="">-- Pilih Hari --</option>
-                  @foreach ($hari as $data)
-                    <option value="{{ $data->id }}"
-                      @if ($jadwal->hari_id == $data->id)
-                        selected
-                      @endif
-                    >{{ $data->nama_hari }}</option>
-                  @endforeach
+                  <option value="">-- Pilih Hari --</option>
+                  <option value="Senin">Senin</option>
+                  <option value="Selasa">Selasa</option>
+                  <option value="Rabu">Rabu</option>
+                  <option value="Kamis">Kamis</option>
+                  <option value="Jumat">Jumat</option>
+                  <option value="Sabtu">Sabtu</option>
                 </select>
               </div>
               <div class="form-group">

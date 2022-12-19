@@ -120,13 +120,16 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="hari_id">Hari</label>
-                  <select id="hari_id" name="hari_id" class="form-control @error('hari_id') is-invalid @enderror select2bs4">
-                      <option value="">-- Pilih Hari --</option>
-                      @foreach ($hari as $data)
-                          <option value="{{ $data->id }}">{{ $data->nama_hari }}</option>
-                      @endforeach
-                  </select>
+                  <label for="hari">Hari</label>
+                  <select id="hari" name="hari" class="form-control">
+                    <option value="">-- Pilih Hari --</option>
+                    <option value="Senin">Senin</option>
+                    <option value="Selasa">Selasa</option>
+                    <option value="Rabu">Rabu</option>
+                    <option value="Kamis">Kamis</option>
+                    <option value="Jumat">Jumat</option>
+                    <option value="Sabtu">Sabtu</option>
+                </select>
                 </div>
                 <div class="form-group">
                   <label for="kelas_id">Kelas</label>

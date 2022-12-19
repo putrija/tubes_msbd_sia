@@ -27,11 +27,10 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $hari = Hari::all();
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
         $ruang = Ruang::all();
         $guru = Guru::OrderBy('kode', 'asc')->get();
-        return view('admin.jadwal.index', compact('hari', 'kelas', 'guru', 'ruang'));
+        return view('admin.jadwal.index', compact('kelas', 'guru', 'ruang'));
     }
 
     /**
@@ -53,7 +52,7 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'hari_id' => 'required',
+            'hari' => 'required',
             'kelas_id' => 'required',
             'guru_id' => 'required',
             'jam_mulai' => 'required',
@@ -67,7 +66,7 @@ class JadwalController extends Controller
                 'id' => $request->jadwal_id
             ],
             [
-                'hari_id' => $request->hari_id,
+                'hari' => $request->hari,
                 'kelas_id' => $request->kelas_id,
                 'mapel_id' => $guru->mapel_id,
                 'guru_id' => $request->guru_id,
@@ -90,7 +89,7 @@ class JadwalController extends Controller
     {
         $id = Crypt::decrypt($id);
         $kelas = Kelas::findorfail($id);
-        $jadwal = Jadwal::OrderBy('hari_id', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $id)->get();
+        $jadwal = Jadwal::OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $id)->get();
         return view('admin.jadwal.show', compact('jadwal', 'kelas'));
     }
 
@@ -104,11 +103,10 @@ class JadwalController extends Controller
     {
         $id = Crypt::decrypt($id);
         $jadwal = Jadwal::findorfail($id);
-        $hari = Hari::all();
         $kelas = Kelas::all();
         $ruang = Ruang::all();
         $guru = Guru::OrderBy('kode', 'asc')->get();
-        return view('admin.jadwal.edit', compact('jadwal', 'hari', 'kelas', 'guru', 'ruang'));
+        return view('admin.jadwal.edit', compact('jadwal', 'kelas', 'guru', 'ruang'));
     }
 
     /**
@@ -160,10 +158,10 @@ class JadwalController extends Controller
 
     public function view(Request $request)
     {
-        $jadwal = Jadwal::OrderBy('hari_id', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $request->id)->get();
+        $jadwal = Jadwal::OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $request->id)->get();
         foreach ($jadwal as $val) {
             $newForm[] = array(
-                'hari' => $val->hari->nama_hari,
+                'hari' => $val->nama_hari,
                 'mapel' => $val->mapel->nama_mapel,
                 'kelas' => $val->kelas->nama_kelas,
                 'guru' => $val->guru->nama_guru,
@@ -194,7 +192,7 @@ class JadwalController extends Controller
 
     public function cetak_pdf(Request $request)
     {
-        $jadwal = Jadwal::OrderBy('hari_id', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $request->id)->get();
+        $jadwal = Jadwal::OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $request->id)->get();
         $kelas = Kelas::findorfail($request->id);
         $pdf = PDF::loadView('jadwal-pdf', ['jadwal' => $jadwal, 'kelas' => $kelas]);
         return $pdf->stream();
@@ -204,7 +202,7 @@ class JadwalController extends Controller
     public function guru()
     {
         $guru = Guru::where('id_card', Auth::user()->id_card)->first();
-        $jadwal = Jadwal::orderBy('hari_id')->OrderBy('jam_mulai')->where('guru_id', $guru->id)->get();
+        $jadwal = Jadwal::orderBy('hari')->OrderBy('jam_mulai')->where('guru_id', $guru->id)->get();
         return view('guru.jadwal', compact('jadwal', 'guru'));
     }
 
@@ -212,7 +210,7 @@ class JadwalController extends Controller
     {
         $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
         $kelas = Kelas::findorfail($siswa->kelas_id);
-        $jadwal = Jadwal::orderBy('hari_id')->OrderBy('jam_mulai')->where('kelas_id', $kelas->id)->get();
+        $jadwal = Jadwal::orderBy('hari')->OrderBy('jam_mulai')->where('kelas_id', $kelas->id)->get();
         return view('siswa.jadwal', compact('jadwal', 'kelas', 'siswa'));
     }
 

@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id');
-            $table->unsignedInteger('hari_id')->index('hari_id');
+            $table->enum('hari', ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']);
+            //$table->unsignedInteger('hari_id')->index('hari_id');
             $table->unsignedInteger('kelas_id');
             $table->unsignedInteger('mapel_id')->index('mapel_id');
             $table->unsignedInteger('guru_id')->index('guru_id');
