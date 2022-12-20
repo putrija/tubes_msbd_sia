@@ -16,153 +16,53 @@ class MapelSeeder extends Seeder
      */
     public function run()
     {
-        Mapel::insert(
-            [
-                'id' => 1,
-                'nama_mapel' => 'Pendidikan Agama Islam',
-                'paket_id' => 1,
-                'kelompok' => 'A',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        );
-        Mapel::insert([
-            'id' => 2,
-            'nama_mapel' => 'Pendidikan Agama Kristen',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 3,
-            'nama_mapel' => 'Pendidikan Kewarganegaraan',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 4,
-            'nama_mapel' => 'Bahasa Indonesia',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 5,
-            'nama_mapel' => 'Bahasa Inggris',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 6,
-            'nama_mapel' => 'Sejarah Indonesia',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 7,
-            'nama_mapel' => 'Seni Budaya',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 8,
-            'nama_mapel' => 'Prakarya',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 9,
-            'nama_mapel' => 'Penjas',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 10,
-            'nama_mapel' => 'Matematika Wajib',
-            'paket_id' => 1,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 11,
-            'nama_mapel' => 'Matematika Peminatan',
-            'paket_id' => 2,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 12,
-            'nama_mapel' => 'Biologi',
-            'paket_id' => 2,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert([
-            'id' => 13,
+        DB::table('mapel')->insert([
+            'id' => 1,
             'nama_mapel' => 'Fisika',
-            'paket_id' => 2,
+            'paket_id' => '2',
             'kelompok' => 'A',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        Mapel::insert([
-            'id' => 14,
+        DB::table('mapel')->insert([
+            'id' => 2,
             'nama_mapel' => 'Kimia',
-            'paket_id' => 2,
+            'paket_id' => '2',
             'kelompok' => 'A',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        Mapel::insert([
-            'id' => 15,
-            'nama_mapel' => 'Geografi',
-            'paket_id' => 3,
+        DB::table('mapel')->insert([
+            'id' => 3,
+            'nama_mapel' => 'Biologi',
+            'paket_id' => '2',
             'kelompok' => 'A',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        Mapel::insert([
-            'id' => 16,
+        DB::table('mapel')->insert([
+            'id' => 4,
+            'nama_mapel' => 'Matematika Wajib',
+            'paket_id' => '4',
+            'kelompok' => 'A',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('mapel')->insert([
+            'id' => 5,
+            'nama_mapel' => 'Matematika Peminatan',
+            'paket_id' => '2',
+            'kelompok' => 'A',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('mapel')->insert([
+            'id' => 6,
             'nama_mapel' => 'Sosiologi',
-            'paket_id' => 3,
+            'paket_id' => '3',
             'kelompok' => 'A',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        Mapel::insert([
-            'id' => 17,
-            'nama_mapel' => 'Ekonomi',
-            'paket_id' => 3,
-            'kelompok' => 'A',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        Mapel::insert(
-            [
-                'id' => 18,
-                'nama_mapel' => 'Sejarah',
-                'paket_id' => 3,
-                'kelompok' => 'A',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-        );
     }
 }
