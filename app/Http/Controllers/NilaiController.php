@@ -6,6 +6,7 @@ use App\Guru;
 use App\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Filesystem\FilesystemManager as Storage;
 
 class NilaiController extends Controller
 {

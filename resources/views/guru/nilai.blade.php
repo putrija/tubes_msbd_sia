@@ -20,7 +20,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_guru">Nama Guru</label>
+<<<<<<< Updated upstream
                             <input type="text" id="nama_guru" name="nama_guru" value="{{ $guru->nama_guru ?? "" }}" class="form-control" readonly>
+=======
+                            <input type="text" id="nama_guru" name="nama_guru" value="{{ $guru->nama_guru }}" class="form-control" readonly>
+>>>>>>> Stashed changes
                         </div>
                         <div class="form-group">
                             <label for="guru_id">Kode Mapel</label>
