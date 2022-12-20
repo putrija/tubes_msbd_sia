@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW `view_guru` AS select `siakad_baru`.`guru`.`nama_guru` AS `nama_guru`,`siakad_baru`.`guru`.`mapel_id` AS `mapel_id`,`siakad_baru`.`guru`.`jk` AS `jk`,`siakad_baru`.`guru`.`kode` AS `kode`,`siakad_baru`.`guru`.`hp` AS `hp`,`siakad_baru`.`guru`.`status_kepegawaian` AS `status_kepegawaian`,`siakad_baru`.`guru`.`id_card` AS `id_card`,`siakad_baru`.`guru`.`nip` AS `nip`,`siakad_baru`.`detail_gurus`.`nuptk` AS `nuptk` from (`siakad_baru`.`detail_gurus` join `siakad_baru`.`guru` on(`siakad_baru`.`detail_gurus`.`id_guru` = `siakad_baru`.`guru`.`id`)) join `siakad_baru`.`siswa`");
+        DB::statement("CREATE VIEW view_guru AS select `guru`.`nama_guru` AS `Nama`,`mapel`.`nama_mapel` AS `Mapel`,`guru`.`id_card` AS `Card` from (`guru` join `mapel` on(`guru`.`mapel_id` = `mapel`.`id`))");
     }
 
     /**
