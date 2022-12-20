@@ -45,6 +45,7 @@ class NilaiController extends Controller
         Nilai::updateOrCreate(
             [
                 'id' => $request->id
+                // $id = optional(Auth::user())->id
             ],
             [
                 'guru_id' => $guru->id,
