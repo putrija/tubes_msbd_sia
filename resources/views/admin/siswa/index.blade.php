@@ -133,7 +133,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="no_induk">Nomor Induk</label>
-                        <input type="text" id="no_induk" name="no_induk" onkeypress="return inputAngka(event)" class="form-control @error('no_induk') is-invalid @enderror">
+                        <input type="number" id="no_induk" name="no_induk" onkeypress="return inputAngka(event)" class="form-control @error('no_induk') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nama_siswa">Nama Siswa</label>
@@ -184,7 +184,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nisn">NISN</label>
-                        <input type="text" id="nisn" name="nisn" onkeypress="return inputAngka(event)" class="form-control @error('nisn') is-invalid @enderror">
+                        <input type="number" id="nisn" name="nisn" onkeypress="return inputAngka(event)" class="form-control @error('nisn') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="kelas_id">Kelas</label>
@@ -197,7 +197,7 @@
                     </div>
                     <div class="form-group">
                         <label for="telp">Nomor Telpon/HP</label>
-                        <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
+                        <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                     </div>
                     {{-- <div class="form-group">
                         <label for="emailr">Email</label>
@@ -217,7 +217,7 @@
                             <option value="Buddha">Buddha</option>
                             <option value="Hindu">Hindu</option>
                             <option value="Konghucu">Konghucu</option>
-                            <option value="AK">Aliran Kepercayaan</option>
+                            <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
                         </select>
                     </div>
                     {{-- <div class="form-group">

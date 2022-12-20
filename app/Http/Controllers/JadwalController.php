@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+//use Auth;
 use App\Jadwal;
 use App\Hari;
 use App\Kelas;
@@ -12,6 +12,8 @@ use App\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\PDF;
 use PDF;
 use App\Exports\JadwalExport;
 use App\Imports\JadwalImport;

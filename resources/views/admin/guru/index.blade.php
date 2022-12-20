@@ -178,7 +178,7 @@
                             <option value="Buddha">Buddha</option>
                             <option value="Hindu">Hindu</option>
                             <option value="Konghucu">Konghucu</option>
-                            <option value="AK">Aliran Kepercayaan</option>
+                            <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
                         </select>
                     </div>
                     <div class="form-group">
