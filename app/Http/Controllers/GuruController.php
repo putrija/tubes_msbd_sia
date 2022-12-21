@@ -16,7 +16,6 @@ use App\Exports\GuruExport;
 use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
-use App\Models\detail_guru;
 use App\Nilai;
 use Illuminate\Support\Facades\DB;
 
@@ -38,7 +37,7 @@ class GuruController extends Controller
         $max = Guru::max('id_card');
         // $detail_guru = detail_guru::all();
         $guru = Guru::all();
-        $detailGuru = detail_guru::all();
+        // $detailGuru = detail_guru::all();
         return view('admin.guru.index', compact('mapel', 'max', 'guru'));
     }
 
