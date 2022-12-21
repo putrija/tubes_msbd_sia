@@ -7,6 +7,7 @@ use App\User;
 use App\Guru;
 use App\Mapel;
 use App\Jadwal;
+use App\Models\detail_guru;
 use App\Kehadiran;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
@@ -37,6 +38,7 @@ class GuruController extends Controller
         $max = Guru::max('id_card');
         // $detail_guru = detail_guru::all();
         $guru = Guru::all();
+        $detailGuru = detail_guru::all();
         return view('admin.guru.index', compact('mapel', 'max', 'guru'));
     }
 
@@ -104,6 +106,11 @@ class GuruController extends Controller
             'no_kk' => $request->no_kk,
             'foto' => $nameFoto
         ]);
+
+        
+        // detail_guru::create([
+        //     'id_guru' => $request->id_card,
+        // ]);
 
         Nilai::create([
             'guru_id' => $guru->id
