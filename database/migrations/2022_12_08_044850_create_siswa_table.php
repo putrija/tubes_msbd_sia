@@ -17,7 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id');
             $table->char('no_induk', 5)->unique();
-            $table->string('nisn', 30)->nullable()->unique();
+            $table->char('nisn', 10)->unique();
             $table->string('nama_siswa', 50);
             $table->enum('jk', ['L', 'P']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
