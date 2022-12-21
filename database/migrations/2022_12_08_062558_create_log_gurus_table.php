@@ -27,6 +27,7 @@ return new class extends Migration
             $table->enum('jk_new', ['L', 'P'])->nullable();
             $table->date('tgl_lahir_old')->nullable();
             $table->date('tgl_lahir_new')->nullable();
+            $table->string('status', 50)->nullable();
             $table->timestamps();
         });
     }

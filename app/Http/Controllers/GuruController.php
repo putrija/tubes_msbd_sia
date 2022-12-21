@@ -15,7 +15,10 @@ use App\Exports\GuruExport;
 use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\detail_guru;
 use App\Nilai;
+use Illuminate\Support\Facades\DB;
+
 
 class GuruController extends Controller
 {
@@ -26,8 +29,13 @@ class GuruController extends Controller
      */
     public function index()
     {
+        // $data_guru = DB::table('guru')
+        //     ->join('detail_guru', 'detail_guru.id_guru', '=', 'guru.id')
+        // ->select('guru.nama_guru as nama_guru')
+        //     ->get();
         $mapel = Mapel::orderBy('nama_mapel')->get();
         $max = Guru::max('id_card');
+        // $detail_guru = detail_guru::all();
         $guru = Guru::all();
         return view('admin.guru.index', compact('mapel', 'max', 'guru'));
     }

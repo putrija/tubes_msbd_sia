@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($jadwal as $data)
                 <tr>
-                    <td>{{ $data->hari->nama_hari }}</td>
+                    <td>{{ $data->hari}}</td>
                     <td>{{ $data->kelas->nama_kelas }}</td>
                     <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                     <td>{{ $data->ruang->nama_ruang }}</td>
