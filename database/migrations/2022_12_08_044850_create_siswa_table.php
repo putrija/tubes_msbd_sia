@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
+            $table->increments('id_siswa');
             $table->char('no_induk', 5)->unique();
             $table->char('nisn', 10)->unique();
-            $table->string('nama_siswa', 50);
+            $table->string('nama_siswa');
             $table->enum('jk', ['L', 'P']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
             $table->string('telp', 15)->nullable();
@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('email')->unique();
             $table->string('foto');
-            $table->integer('kelas_id');
+            $table->unsignedInteger('tahun_ajaran_id')->index('tahun_ajaran_id');
+            $table->unsignedInteger('status_id')->index('status_id');
             $table->timestamps();
             $table->softDeletes();
         });

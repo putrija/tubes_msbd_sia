@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal', function (Blueprint $table) {
+        Schema::create('jadwal_belajar_mengajar', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
-            $table->enum('hari', ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']);
-            //$table->unsignedInteger('hari_id')->index('hari_id');
-            $table->unsignedInteger('kelas_id');
-            $table->unsignedInteger('mapel_id')->index('mapel_id');
+            $table->increments('id_jadwal_pbm');
             $table->unsignedInteger('guru_id')->index('guru_id');
+            $table->unsignedInteger('kelas_id')->index('kelas_id');
+            $table->unsignedInteger('mapel_id')->index('mapel_id');
+            $table->unsignedInteger('ruang_id')->index('ruang_id');
+            $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']);
             $table->time('jam_mulai');
             $table->time('jam_selesai');
-            $table->unsignedInteger('ruang_id')->index('ruang_id');
             $table->timestamps();
             $table->softDeletes();
 
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwal');
+        Schema::dropIfExists('jadwal_belajar_mengajar');
     }
 };

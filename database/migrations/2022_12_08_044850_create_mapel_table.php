@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('mapel', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
+            $table->increments('id_mapel');
             $table->string('nama_mapel', 50);
-            $table->unsignedInteger('paket_id')->index('paket_id');
-            $table->enum('kelompok', ['A', 'B']);
+            $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
             $table->timestamps();
             $table->softDeletes();
         });

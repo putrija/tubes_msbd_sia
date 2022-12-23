@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ruang', function (Blueprint $table) {
+        Schema::create('tahun_ajaran', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id_ruang');
-            $table->string('nama_ruang', 20);
-            $table->enum('jenis_ruang',  ['101', '102', '103', '104', '105', '106']);
+            $table->increments('id_tahun_ajaran');
+            $table->char('tahun_ajaran', 9);
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_berakhir');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruang');
+        Schema::dropIfExists('tahun_ajaran');
     }
 };

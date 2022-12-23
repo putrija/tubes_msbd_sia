@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ruang', function (Blueprint $table) {
+        Schema::create('kelas', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id_ruang');
-            $table->string('nama_ruang', 20);
-            $table->enum('jenis_ruang',  ['101', '102', '103', '104', '105', '106']);
+            $table->increments('id_kelas');
+            $table->string('nama_kelas');
+            $table->unsignedInteger('ket_kelas', 2);
+            $table->unsignedInteger('kurikulum_id', 10)->index('kurikulum_id');
+            $table->unsignedInteger('jurusan_id')->index('jurusan_id');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruang');
+        Schema::dropIfExists('kelas');
     }
 };
