@@ -199,15 +199,15 @@
         <input type='text' id="nama_kelas" onkeyup="this.value = this.value.toUpperCase()" name='nama_kelas' class="form-control @error('nama_kelas') is-invalid @enderror" placeholder="{{ __('Nama Kelas') }}">
       `);
       $('#nama_kelas').val('');
-      $('#form_paket').html('');
-      $('#form_paket').html(`
-        <label for="paket_id">Paket Keahlian</label>
-        <select id="paket_id" name="paket_id" class="select2bs4 form-control @error('paket_id') is-invalid @enderror">
-          <option value="">-- Pilih Paket Keahlian --</option>
-          @foreach ($paket as $data)
-            <option value="{{ $data->id }}">{{ $data->ket }}</option>
-          @endforeach
-        </select>
+      // $('#form_paket').html('');
+      // $('#form_paket').html(`
+      //   <label for="paket_id">Paket Keahlian</label>
+      //   <select id="paket_id" name="paket_id" class="select2bs4 form-control @error('paket_id') is-invalid @enderror">
+      //     <option value="">-- Pilih Paket Keahlian --</option>
+      //     @foreach ($paket as $data)
+      //       <option value="{{ $data->id }}">{{ $data->ket }}</option>
+      //     @endforeach
+      //   </select>
       `);
       $('#guru_id').val('');
     }
@@ -233,7 +233,7 @@
               $('#form_paket').html('');
               $("#form_paket").append(form_paket);
               $('#nama_kelas').val(val.nama);
-              $("#paket_id").val(val.paket_id);
+              //$("#paket_id").val(val.paket_id);
               $('#guru_id').val(val.guru_id);
             });
           }

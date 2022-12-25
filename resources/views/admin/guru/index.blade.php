@@ -227,13 +227,13 @@
                         <label for="nip">NIP</label>
                         <input type="number" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="mapel_id">Mapel</label>
                         <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
                             <option value="">-- Pilih Mapel --</option>
                             @foreach ($mapel as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     @php

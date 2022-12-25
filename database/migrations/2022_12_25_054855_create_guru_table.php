@@ -42,6 +42,9 @@ return new class extends Migration
             $table->char('kode_pos', 5)->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            
+
 
             $table->unique(['kode_guru'], 'kode_guru_2');
         });

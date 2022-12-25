@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_mapel');
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
             $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
