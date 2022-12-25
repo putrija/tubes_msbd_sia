@@ -24,6 +24,7 @@ return new class extends Migration
             $table->char('predikat_pengetahuan', 2);
             $table->unsignedInteger('nilai_keterampilan');
             $table->char('predikat_keterampilan', 2);
+            $table->timestamps();
 
             $table->index(['kelas_siswa_id'], 'kelas_siswa_id');
         });

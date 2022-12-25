@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('isi');
             $table->date('published_at');
             $table->enum('Status', ['Published', 'Not Published']);
+            $table->timestamps();
         });
     }
 

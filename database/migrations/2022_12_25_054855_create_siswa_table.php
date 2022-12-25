@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->year('angkatan');
             $table->string('foto');
+            $table->timestamps();
             $table->unsignedInteger('status_id')->index('status');
         });
     }

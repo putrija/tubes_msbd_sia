@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_semester');
             $table->char('semester', 2);
+            $table->timestamps();
         });
     }
 

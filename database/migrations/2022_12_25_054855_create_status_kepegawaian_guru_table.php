@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_status_kepegawaian');
             $table->string('ket_status_kepeg');
+            $table->timestamps();
         });
     }
 

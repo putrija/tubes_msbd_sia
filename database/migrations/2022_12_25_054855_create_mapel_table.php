@@ -18,6 +18,7 @@ return new class extends Migration
             $table->increments('id_mapel');
             $table->string('nama_mapel');
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
+            $table->timestamps();
         });
     }
 

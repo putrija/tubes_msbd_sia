@@ -18,6 +18,7 @@ return new class extends Migration
             $table->increments('id_ruang');
             $table->string('nama_ruang', 20);
             $table->enum('jenis_ruang', ['Kelas', 'Laboratorium', 'Kantor', 'Gudang']);
+            $table->timestamps();
         });
     }
 

@@ -44,6 +44,8 @@ return new class extends Migration
             $table->string('karis_karsu')->nullable();
             $table->string('lintang')->nullable();
             $table->string('bujur')->nullable();
+            $table->timestamps();
+            
         });
     }
 

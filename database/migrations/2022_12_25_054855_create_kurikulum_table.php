@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_kurikulum');
             $table->string('nama_kurikulum');
+            $table->timestamps();
         });
     }
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('ket_pelanggaran');
             $table->date('tanggal_pelanggaran');
             $table->text('sanksi');
+            $table->timestamps();
         });
     }
 

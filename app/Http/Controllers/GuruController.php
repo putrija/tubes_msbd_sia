@@ -33,12 +33,13 @@ class GuruController extends Controller
         //     ->join('detail_guru', 'detail_guru.id_guru', '=', 'guru.id')
         // ->select('guru.nama_guru as nama_guru')
         //     ->get();
-        $mapel = Mapel::orderBy('nama_mapel')->get();
-        $max = Guru::max('id_card');
+        //$mapel = Mapel::orderBy('nama_mapel')->get();
+
+        $max = Guru::max('id_card_guru');
         // $detail_guru = detail_guru::all();
         $guru = Guru::all();
         // $detailGuru = detail_guru::all();
-        return view('admin.guru.index', compact('mapel', 'max', 'guru'));
+        return view('admin.guru.index', compact('max', 'guru'));
     }
 
     /**

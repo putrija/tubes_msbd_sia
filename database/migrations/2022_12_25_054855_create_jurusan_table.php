@@ -18,6 +18,7 @@ return new class extends Migration
             $table->increments('id_jurusan');
             $table->string('ket_jurusan', 50);
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
+            $table->timestamps();
         });
     }
 

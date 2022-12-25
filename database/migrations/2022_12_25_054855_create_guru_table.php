@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('kecamatan')->nullable();
             $table->char('kode_pos', 5)->nullable();
             $table->string('foto')->nullable();
+            $table->timestamps();
 
             $table->unique(['kode_guru'], 'kode_guru_2');
         });

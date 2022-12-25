@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_tugas_tambahan');
             $table->string('ket_tugas_tambahan');
+            $table->timestamps();
         });
     }
 
