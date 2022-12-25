@@ -20,6 +20,7 @@
                 <tr>
                     <th>Level User</th>
                     <th>Jumlah User</th>
+                    <th>Tambahkan User</th>
                     <th>Lihat User</th>
                 </tr>
             </thead>
@@ -28,6 +29,11 @@
                   <tr>
                     <td>{{ $role }}</td>
                     <td>{{ $data->count() }}</td>
+                    <td>
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-user">
+                        <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data User
+                    </button>
+                    </td>
                     <td>
                       <a href="{{ route('user.show', Crypt::encrypt($role)) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-search-plus"></i> &nbsp; Ditails</a>
                     </td>
