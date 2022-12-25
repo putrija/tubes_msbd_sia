@@ -17,7 +17,7 @@ class StatusSiswaSeeder extends Seeder
     {
         DB::table('status_siswa')->insert(
             [
-                'id_status_siswa' => 1,
+                'id' => 1,
                 'ket_status' => 'Aktif',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -25,7 +25,7 @@ class StatusSiswaSeeder extends Seeder
         );
         DB::table('status_siswa')->insert(
             [
-                'id_status_siswa' => 2,
+                'id' => 2,
                 'ket_status' => 'Lulus',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -33,7 +33,7 @@ class StatusSiswaSeeder extends Seeder
         );
         DB::table('status_siswa')->insert(
             [
-                'id_status_siswa' => 3,
+                'id' => 3,
                 'ket_status' => 'Drop Out',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -41,7 +41,7 @@ class StatusSiswaSeeder extends Seeder
         );
         DB::table('status_siswa')->insert(
             [
-                'id_status_siswa' => 4,
+                'id' => 4,
                 'ket_status' => 'Pindah',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

@@ -20,13 +20,13 @@ class KurikulumSeeder extends Seeder
     public function run()
     {
         DB::table('kurikulum')->insert([
-            'id_kurikulum' => 1,
+            'id' => 1,
             'nama_kurikulum' => 'Kurikulum K-13',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('kurikulum')->insert([
-            'id_kurikulum' => 2,
+            'id' => 2,
             'nama_kurikulum' => 'Kurikulum Merdeka',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')

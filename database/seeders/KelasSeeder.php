@@ -19,7 +19,7 @@ class KelasSeeder extends Seeder
         //KELAS 10
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 1,
+                'id' => 1,
                 'nama_kelas' => '10 IPA 1',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -30,7 +30,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 2,
+                'id' => 2,
                 'nama_kelas' => '10 IPA 2',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -41,7 +41,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 3,
+                'id' => 3,
                 'nama_kelas' => '10 IPA 3',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -52,7 +52,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 4,
+                'id' => 4,
                 'nama_kelas' => '10 IPS 1',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -63,7 +63,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 5,
+                'id' => 5,
                 'nama_kelas' => '10 IPS 2',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -74,7 +74,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 6,
+                'id' => 6,
                 'nama_kelas' => '10 IPS 3',
                 'ket_kelas' => '10',
                 'kurikulum_id' => '1',
@@ -87,7 +87,7 @@ class KelasSeeder extends Seeder
         // KELAS 11
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 7,
+                'id' => 7,
                 'nama_kelas' => '11 IPA 1',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -98,7 +98,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 8,
+                'id' => 8,
                 'nama_kelas' => '11 IPA 2',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -109,7 +109,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 9,
+                'id' => 9,
                 'nama_kelas' => '11 IPA 3',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -120,7 +120,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 10,
+                'id' => 10,
                 'nama_kelas' => '11 IPS 1',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -131,7 +131,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 11,
+                'id' => 11,
                 'nama_kelas' => '11 IPS 2',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -142,7 +142,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 12,
+                'id' => 12,
                 'nama_kelas' => '11 IPS 3',
                 'ket_kelas' => '11',
                 'kurikulum_id' => '1',
@@ -155,7 +155,7 @@ class KelasSeeder extends Seeder
         //KELAS 12
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 13,
+                'id' => 13,
                 'nama_kelas' => '12 IPA 1',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',
@@ -166,7 +166,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 14,
+                'id' => 14,
                 'nama_kelas' => '12 IPA 2',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',
@@ -177,7 +177,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 15,
+                'id' => 15,
                 'nama_kelas' => '12 IPA 3',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',
@@ -188,7 +188,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 16,
+                'id' => 16,
                 'nama_kelas' => '12 IPS 1',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',
@@ -199,7 +199,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 17,
+                'id' => 17,
                 'nama_kelas' => '12 IPS 2',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',
@@ -210,7 +210,7 @@ class KelasSeeder extends Seeder
         );
         DB::table('kelas')->insert(
             [
-                'id_kelas' => 18,
+                'id' => 18,
                 'nama_kelas' => '12 IPS 3',
                 'ket_kelas' => '12',
                 'kurikulum_id' => '1',

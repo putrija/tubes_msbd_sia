@@ -17,42 +17,42 @@ class MapelSeeder extends Seeder
     public function run()
     {
         DB::table('mapel')->insert([
-            'id_mapel' => 1,
+            'id' => 1,
             'nama_mapel' => 'Fisika',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id_mapel' => 2,
+            'id' => 2,
             'nama_mapel' => 'Kimia',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id_mapel' => 3,
+            'id' => 3,
             'nama_mapel' => 'Biologi',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id_mapel' => 5,
+            'id' => 5,
             'nama_mapel' => 'Matematika Wajib',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id_mapel' => 6,
+            'id' => 6,
             'nama_mapel' => 'Matematika Peminatan',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id_mapel' => 7,
+            'id' => 7,
             'nama_mapel' => 'Sosiologi',
             'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),

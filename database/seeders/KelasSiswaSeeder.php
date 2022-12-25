@@ -18,7 +18,7 @@ class KelasSiswaSeeder extends Seeder
     {
         DB::table('kelas_siswa')->insert(
             [
-                'id_kelas_siswa' => 1,
+                'id' => 1,
                 'siswa_id' => '1',
                 'kelas_id' => '1',
                 'tahun_ajaran_id' => '2',
@@ -28,7 +28,7 @@ class KelasSiswaSeeder extends Seeder
         );
         DB::table('kelas_siswa')->insert(
             [
-                'id_kelas_siswa' => 2,
+                'id' => 2,
                 'siswa_id' => '2',
                 'kelas_id' => '1',
                 'tahun_ajaran_id' => '2',

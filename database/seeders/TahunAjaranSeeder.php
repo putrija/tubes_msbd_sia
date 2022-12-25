@@ -18,7 +18,7 @@ class TahunAjaranSeeder extends Seeder
     {
         DB::table('tahun_ajaran')->insert(
             [
-                'id_tahun_ajaran' => 1,
+                'id' => 1,
                 'tahun_ajaran' => '2021/2022',
                 'tanggal_mulai' => '2021-07-01',
                 'tanggal_berakhir' => '2022-06-01',
@@ -28,7 +28,7 @@ class TahunAjaranSeeder extends Seeder
         );
         DB::table('tahun_ajaran')->insert(
             [
-                'id_tahun_ajaran' => 2,
+                'id' => 2,
                 'tahun_ajaran' => '2022/2023',
                 'tanggal_mulai' => '2022-07-01',
                 'tanggal_berakhir' => '2023-06-01',

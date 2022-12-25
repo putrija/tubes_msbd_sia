@@ -17,7 +17,7 @@ class GuruSeeder extends Seeder
     {
         DB::table('guru')->insert(
             [
-                'id_guru' => 1,
+                'id' => 1,
                 'id_card_guru' => '00001',
                 'nama_guru' => 'Pak Budiman',
                 'kode_guru' => 'AAA',

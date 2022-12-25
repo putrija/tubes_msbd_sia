@@ -21,7 +21,7 @@ class RuangSeeder extends Seeder
                 $r = $i;
             }
             DB::table('ruang')->insert([
-                'id_ruang' => $i,
+                'id' => $i,
                 'nama_ruang' => 'Ruang ' . $r,
                 'jenis_ruang' => 'Kelas',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -29,7 +29,7 @@ class RuangSeeder extends Seeder
             ]);
 
             // DB::table('ruang')->insert([
-            //     'id_ruang' => ,
+            //     'id' => ,
             //     'nama_ruang' => 'Ruang ',
             //     'jenis_ruang' => 'Kelas',
             //     'created_at' => date('Y-m-d H:i:s'),

@@ -18,7 +18,7 @@ class SiswaSeeder extends Seeder
     {
         DB::table('siswa')->insert(
             [
-                'id_siswa' => 1,
+                'id' => 1,
                 'no_induk' => '11111',
                 'nisn' => '12345001',
                 'nama_siswa' => 'Putrija Malau',
@@ -38,7 +38,7 @@ class SiswaSeeder extends Seeder
         );
         DB::table('siswa')->insert(
             [
-                'id_siswa' => 2,
+                'id' => 2,
                 'no_induk' => '11112',
                 'nisn' => '12345002',
                 'nama_siswa' => 'Gideon Manurung',

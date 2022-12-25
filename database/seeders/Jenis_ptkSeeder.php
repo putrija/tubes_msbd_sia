@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,19 +18,19 @@ class Jenis_ptkSeeder extends Seeder
     public function run()
     {
         DB::table('jenis_ptk')->insert([
-            'id_jenis_ptk' => 1,
+            'id' => 1,
             'ket_jenis_ptk' => 'Guru TIK'
         ]);
         DB::table('jenis_ptk')->insert([
-            'id_jenis_ptk' => 2,
+            'id' => 2,
             'ket_jenis_ptk' => 'Guru Mapel'
         ]);
         DB::table('jenis_ptk')->insert([
-            'id_jenis_ptk' => 3,
+            'id' => 3,
             'ket_jenis_ptk' => 'Guru BK'
         ]);
         DB::table('jenis_ptk')->insert([
-            'id_jenis_ptk' => 4,
+            'id' => 4,
             'ket_jenis_ptk' => 'Guru Kelas'
         ]);
     }

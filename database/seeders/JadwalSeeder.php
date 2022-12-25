@@ -18,7 +18,7 @@ class JadwalSeeder extends Seeder
     {
         DB::table('jadwal_belajar_mengajar')->insert(
             [
-                'id_jadwal_pbm' => 1,
+                'id' => 1,
                 'guru_mengajar_id' => '1',
                 'kelas_id' => '1',
                 'ruang_id' => '1',
