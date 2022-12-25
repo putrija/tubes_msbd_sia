@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('detail_siswa', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id_detail_siswa');
-            $table->unsignedInteger('id_siswa')->index('id_siswa');
+            $table->unsignedInteger('siswa_id')->index('siswa_id');
             $table->integer('anak_ke')->nullable();
             $table->integer('dari_berapa_bersaudara')->nullable();
             $table->enum('diterima_di_kelas', ['10', '11', '12'])->nullable();

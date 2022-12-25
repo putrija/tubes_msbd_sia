@@ -95,7 +95,7 @@ class SiswaController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $siswa = Siswa::findorfail($id);
+        $siswa = Siswa::findOrFail($id);
         return view('admin.siswa.details', compact('siswa'));
     }
 

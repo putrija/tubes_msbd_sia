@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id_siswa');
-            $table->char('no_induk', 5)->unique('siswa_no_induk_unique');
+            $table->increments('id');
+            $table->char('no_induk', 5)->unique();
             $table->char('nisn', 10)->unique();
             $table->string('nama_siswa');
             $table->enum('jk', ['L', 'P']);

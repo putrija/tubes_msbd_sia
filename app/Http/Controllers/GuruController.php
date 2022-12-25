@@ -39,7 +39,7 @@ class GuruController extends Controller
         // $guru = Guru::all();
         // // $detailGuru = detail_guru::all();
         // return view('admin.guru.index', compact('max', 'guru'));
-        $guru = Guru::all()->paginate(10);
+        $guru = Guru::all();
         return view('admin.guru.index', compact('guru'));
     }
 
@@ -129,7 +129,7 @@ class GuruController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $guru = Guru::findorfail($id);
+        $guru = Guru::where('id_guru', $id)->get();
         return view('admin.guru.details', compact('guru'));
     }
 
