@@ -8,6 +8,7 @@ use App\Guru;
 use App\Kelas;
 use App\Siswa;
 use App\Mapel;
+use App\Models\jadwal_belajar_mengajar;
 use App\User;
 use App\Paket;
 use App\Pengumuman;
@@ -35,10 +36,10 @@ class HomeController extends Controller
     {
         //$hari = date('w');
         $jam = date('H:i');
-        $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
-        $pengumuman = Pengumuman::first();
+        $jadwal = jadwal_belajar_mengajar::OrderBy('jam_mulai')->OrderBy('jam_berakhir')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_berakhir', '>=', $jam)->get();
+        // $pengumuman = Pengumuman::first();
         // $kehadiran = Kehadiran::all();
-        return view('home', compact('jadwal', 'pengumuman'));
+        return view('home', compact('jadwal'));
     }
 
     public function admin()

@@ -54,13 +54,8 @@
                             @elseif (date('H:i:s') >= '09:00:00')
                               <div style="margin-left:20px;width:30px;height:30px;background:#F00"></div>
                             @else
-<<<<<<< Updated upstream
                             @endif
                           </td> --}}
-=======
-                            @endif --}}
-                          </td>
->>>>>>> Stashed changes
                         </tr>
                       @endforeach
                   @endif
@@ -80,7 +75,7 @@
                   </tr>
                 @elseif ($hari == '0' || $hari == '6')
                   <tr>
-                    <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekalah Libur!</td>
+                    <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
                   </tr>
                 @elseif($hari == '1' && $jam >= '07:00' && $jam <= '07:30')
                   <tr>
