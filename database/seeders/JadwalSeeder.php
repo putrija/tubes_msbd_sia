@@ -16,16 +16,15 @@ class JadwalSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('jadwal')->insert(
+        DB::table('jadwal_belajar_mengajar')->insert(
             [
-                'id' => 1,
-                'hari' => 'Senin',
+                'id_jadwal_pbm' => 1,
+                'guru_mengajar_id' => '1',
                 'kelas_id' => '1',
-                'mapel_id' => '1',
-                'guru_id' => '1',
+                'ruang_id' => '1',
+                'hari' => 'Senin',
                 'jam_mulai' => '07:00',
                 'jam_selesai' => '09:00',
-                'ruang_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]

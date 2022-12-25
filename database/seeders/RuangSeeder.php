@@ -21,11 +21,20 @@ class RuangSeeder extends Seeder
                 $r = $i;
             }
             DB::table('ruang')->insert([
-                'id' => $i,
+                'id_ruang' => $i,
                 'nama_ruang' => 'Ruang ' . $r,
+                'jenis_ruang' => 'Kelas',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
+
+            // DB::table('ruang')->insert([
+            //     'id_ruang' => ,
+            //     'nama_ruang' => 'Ruang ',
+            //     'jenis_ruang' => 'Kelas',
+            //     'created_at' => date('Y-m-d H:i:s'),
+            //     'updated_at' => date('Y-m-d H:i:s')
+            // ]);
         }
     }
 }
