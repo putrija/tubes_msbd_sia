@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pelanggaran', function (Blueprint $table) {
-            $table->comment('');
-            $table->increments('id_pelanggaran');
-            $table->unsignedInteger('siswa_id')->index('siswa_id');
-            $table->text('ket_pelanggaran');
-            $table->date('tanggal_pelanggaran');
-            $table->text('sanksi');
+        Schema::table('jurusan', function (Blueprint $table) {
+            $table->foreign(['kurikulum_id'], 'jurusan_ibfk_1')->references(['id_kurikulum'])->on('kurikulum');
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelanggaran');
+        Schema::table('jurusan', function (Blueprint $table) {
+            $table->dropForeign('jurusan_ibfk_1');
+        });
     }
 };
