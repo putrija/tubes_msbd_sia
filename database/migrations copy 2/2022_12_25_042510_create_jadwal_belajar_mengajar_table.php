@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_jadwal_pbm');
             $table->unsignedInteger('guru_mengajar_id')->index('guru_mengajar_id');
+            $table->unsignedInteger('kelas_id')->index('kelas_id');
             $table->unsignedInteger('ruang_id')->index('ruang_id');
             $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
             $table->time('jam_mulai');
