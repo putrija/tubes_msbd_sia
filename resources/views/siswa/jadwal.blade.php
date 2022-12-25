@@ -21,7 +21,7 @@
             <tbody>
                 @foreach ($jadwal as $data)
                 <tr>
-                    <td>{{ $data->hari->nama_hari }}</td>
+                    <td>{{ $data->hari }}</td>
                     <td>
                         <h5 class="card-title">{{ $data->mapel->nama_mapel }}</h5>
                         <p class="card-text"><small class="text-muted">{{ $data->guru->nama_guru }}</small></p>

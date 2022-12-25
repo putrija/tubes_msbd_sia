@@ -54,8 +54,13 @@
                             @elseif (date('H:i:s') >= '09:00:00')
                               <div style="margin-left:20px;width:30px;height:30px;background:#F00"></div>
                             @else
+<<<<<<< Updated upstream
                             @endif
                           </td> --}}
+=======
+                            @endif --}}
+                          </td>
+>>>>>>> Stashed changes
                         </tr>
                       @endforeach
                   @endif
