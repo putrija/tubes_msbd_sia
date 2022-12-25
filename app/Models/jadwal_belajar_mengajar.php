@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class jadwal_belajar_mengajar extends Model
 {
-    protected $fillable = ['hari', 'jam_mulai', 'jam_berakhir'];
+    protected $fillable = ['hari', 'jam_mulai', 'jam_selesai'];
 
     use HasFactory;
 

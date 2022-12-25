@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         //$hari = date('w');
         $jam = date('H:i');
-        $jadwal = jadwal_belajar_mengajar::OrderBy('jam_mulai')->OrderBy('jam_berakhir')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_berakhir', '>=', $jam)->get();
+        $jadwal = jadwal_belajar_mengajar::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
         // $pengumuman = Pengumuman::first();
         // $kehadiran = Kehadiran::all();
         return view('home', compact('jadwal'));
