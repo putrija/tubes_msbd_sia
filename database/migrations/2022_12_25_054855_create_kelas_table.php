@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('jurusan_id')->index('jurusan_id');
 
             $table->index(['kurikulum_id', 'jurusan_id'], 'kurikulum_id_2');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

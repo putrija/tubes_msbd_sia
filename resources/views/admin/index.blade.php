@@ -44,7 +44,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>{{ $kelas }}</h3>
+                {{-- <h3>{{ $kelas }}</h3> --}}
                 <p>Kelas</p>
             </div>
             <div class="icon">
@@ -148,7 +148,7 @@
                     </p>
                     <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> {{ $kelas }}
+                            {{-- <i class="fas fa-arrow-up"></i> {{ $kelas }} --}}
                         </span>
                     </p>
                 </div>
@@ -179,7 +179,7 @@
     </div>
 @endsection
 @section('script')
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function () {
             'use strict'
 
@@ -266,5 +266,5 @@
         $("#Dashboard").addClass("active");
         $("#liDashboard").addClass("menu-open");
         $("#AdminHome").addClass("active");
-    </script>
+    </script> --}}
 @endsection
