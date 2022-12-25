@@ -46,11 +46,11 @@ class HomeController extends Controller
     {
         $jadwal = jadwal_belajar_mengajar::count();
         $guru = Guru::count();
-        $gurulk = Guru::where('jenis_kelamin', 'L')->count();
-        $gurupr = Guru::where('jenis_kelamin', 'P')->count();
+        $gurulk = Guru::where('jk', 'L')->count();
+        $gurupr = Guru::where('jk', 'P')->count();
         $siswa = Siswa::count();
-        $siswalk = Siswa::where('jenis_kelamin', 'L')->count();
-        $siswapr = Siswa::where('jenis_kelamin', 'P')->count();
+        $siswalk = Siswa::where('jk', 'L')->count();
+        $siswapr = Siswa::where('jk', 'P')->count();
         $mapel = Mapel::count();
         $user = User::count();
         return view('admin.index', compact(
