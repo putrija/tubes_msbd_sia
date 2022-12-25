@@ -129,7 +129,7 @@ class GuruController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $guru = Guru::where('id_guru', $id)->get();
+        $guru = Guru::findOrFail($id);
         return view('admin.guru.details', compact('guru'));
     }
 
