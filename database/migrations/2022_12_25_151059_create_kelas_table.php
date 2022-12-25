@@ -20,10 +20,10 @@ return new class extends Migration
             $table->enum('ket_kelas', ['10', '11', '12']);
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
             $table->unsignedInteger('jurusan_id')->index('jurusan_id');
-
-            $table->index(['kurikulum_id', 'jurusan_id'], 'kurikulum_id_2');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['kurikulum_id', 'jurusan_id'], 'kurikulum_id_2');
         });
     }
 
