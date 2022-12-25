@@ -74,27 +74,44 @@
 		</div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="example1" class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama Mapel</th>
-                    <th>Lihat Guru</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($guru as $data)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data->nama_guru }}</td>
-                        <td>
-                            <a href="{{ route('guru.show', Crypt::encrypt($data->id)) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-search-plus"></i> &nbsp; Ditails</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-          </table>
-        </div>
+            <table id="example1" class="table table-bordered table-striped table-hover">
+              <thead>
+                  <tr>
+                      <th>No.</th>
+                      <th>Nama</th>
+                      <th>Id Card</th>
+                      <th>NIP</th>
+                      <th>Foto</th>
+                      <th>Aksi</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($guru as $data)
+                  <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $data->nama_guru }}</td>
+                      <td>{{ $data->id_card_guru }}</td>
+                      <td>{{ $data->nip }}</td>
+                      <td>
+                          <a href="{{ asset($data->foto) }}" data-toggle="lightbox" data-title="Foto {{ $data->nama_guru }}" data-gallery="gallery" data-footer='<a href="{{ route('guru.ubah-foto', Crypt::encrypt($data->id)) }}" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
+                              <img src="{{ asset($data->foto) }}" width="130px" class="img-fluid mb-2">
+                          </a>
+                          {{-- https://siakad.didev.id/guru/ubah-foto/{{$data->id}} --}}
+                      </td>
+                      <td>
+                          <form action="{{ route('guru.destroy', $data->id) }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <a href="{{ route('guru.show', Crypt::encrypt($data->id)) }}" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i> &nbsp; Detail</a>
+                              <a href="{{ route('guru.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
+                              <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                          </form>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+            </table>
+          </div>
     </div>
 </div>
 
@@ -105,8 +122,8 @@
       <div class="modal-header">
           <h4 class="modal-title">Tambah Data Guru</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
+            <span aria-hidden="true">&times;</span>
+            </button>
       </div>
       <div class="modal-body">
           <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
@@ -139,17 +156,17 @@
                             <option value="">-- Pilih Status Kepegawaian --</option>
                             <option value="PNS">PNS</option>
                             <option value="PPPK">PPPK</option>
-                            <option value="GTYPTY">GTY/PTY</option>
-                            <option value="Honor">Guru Honor Sekolah</option>
+                            <option value="GTY/PTY">GTY/PTY</option>
+                            <option value="Guru Honor Sekolah">Guru Honor Sekolah</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="telp">Nomor Telpon</label>
-                        <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
+                        <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="hp">Nomor hp</label>
-                        <input type="text" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
+                        <input type="number" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="agama">Agama</label>
@@ -161,7 +178,7 @@
                             <option value="Buddha">Buddha</option>
                             <option value="Hindu">Hindu</option>
                             <option value="Konghucu">Konghucu</option>
-                            <option value="AK">Aliran Kepercayaan</option>
+                            <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -192,50 +209,36 @@
                     </div>
                     <div class="form-group">
                         <label for="kode_pos">Kode Pos</label>
-                        <input type="text" id="kode_pos" name="kode_pos" class="form-control @error('kode_pos') is-invalid @enderror">
+                        <input type="number" id="kode_pos" name="kode_pos" class="form-control @error('kode_pos') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nik">NIK</label>
-                        <input type="text" id="nik" name="nik" class="form-control @error('nik') is-invalid @enderror">
+                        <input type="number" id="nik" name="nik" class="form-control @error('nik') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="no_kk">No KK</label>
-                        <input type="text" id="no_kk" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror">
+                        <input type="number" id="no_kk" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nip">NIP</label>
-                        <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
+                        <input type="number" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="mapel_id">Mapel</label>
                         <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
                             <option value="">-- Pilih Mapel --</option>
                             @foreach ($mapel as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
-                    @php
-                        $kode = $max+1;
-                        if (strlen($kode) == 1) {
-                            $id_card = "0000".$kode;
-                        } else if(strlen($kode) == 2) {
-                            $id_card = "000".$kode;
-                        } else if(strlen($kode) == 3) {
-                            $id_card = "00".$kode;
-                        } else if(strlen($kode) == 4) {
-                            $id_card = "0".$kode;
-                        } else {
-                            $id_card = $kode;
-                        }
-                    @endphp
                     <div class="form-group">
-                        <label for="id_card">Nomor ID Card</label>
-                        <input type="text" id="id_card" name="id_card" maxlength="5" onkeypress="return inputAngka(event)" value="{{ $id_card }}" class="form-control @error('id_card') is-invalid @enderror" readonly>
+                        <label for="id_card_guru">Nomor ID Card</label>
+                        <input type="text" id="id_card_guru" name="id_card_guru" maxlength="5" onkeypress="return inputAngka(event)"  class="form-control @error('id_card_guru') is-invalid @enderror" readonly>
                     </div>
                     <div class="form-group">
                         <label for="kode">Kode Jadwal</label>

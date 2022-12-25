@@ -49,9 +49,10 @@ class SiswaController extends Controller
     {
         $this->validate($request, [
             'no_induk' => 'required|string|unique:siswa',
+            'nisn'=> 'required|max:10|min:10',
             'nama_siswa' => 'required',
             'jk' => 'required',
-            'kelas_id' => 'required'
+            
         ]);
 
         if ($request->foto) {
@@ -72,15 +73,14 @@ class SiswaController extends Controller
             'nisn' => $request->nisn,
             'nama_siswa' => $request->nama_siswa,
             'jk' => $request->jk,
-            'kelas_id' => $request->kelas_id,
+            'agama' => $request->agama,
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'alamat' => $request->alamat,
             'email' => $request->email,
+            'angkatan' => $request->angkatan,
             'foto' => $nameFoto,
-            'kelas_id' => $request->kelas_id,
-            'agama' => $request->agama
         ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
