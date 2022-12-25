@@ -17,7 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_kelas');
             $table->string('nama_kelas');
-            $table->unsignedInteger('ket_kelas');
+            $table->enum('ket_kelas', ['10', '11', '12']);
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
             $table->unsignedInteger('jurusan_id')->index('jurusan_id');
 

@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id_siswa');
-            $table->char('nis', 5)->unique('siswa_no_induk_unique');
+            $table->char('no_induk', 5)->unique('siswa_no_induk_unique');
             $table->char('nisn', 10)->unique();
             $table->string('nama_siswa');
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->enum('jk', ['L', 'P']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
-            $table->string('no_hp', 15)->nullable();
-            $table->string('tempat_lahir')->nullable();
-            $table->date('tanggal_lahir')->nullable();
+            $table->string('telp', 15)->nullable();
+            $table->string('tmp_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
             $table->string('alamat');
             $table->string('email')->unique();
             $table->year('angkatan');
