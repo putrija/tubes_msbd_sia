@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->softDeletes();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+
             
 
 

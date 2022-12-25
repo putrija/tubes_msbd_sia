@@ -34,12 +34,13 @@ class GuruController extends Controller
         // ->select('guru.nama_guru as nama_guru')
         //     ->get();
         //$mapel = Mapel::orderBy('nama_mapel')->get();
-
-        $max = Guru::max('id_card_guru');
-        // $detail_guru = detail_guru::all();
-        $guru = Guru::all();
-        // $detailGuru = detail_guru::all();
-        return view('admin.guru.index', compact('max', 'guru'));
+        // $max = Guru::max('id_card_guru');
+        // // $detail_guru = detail_guru::all();
+        // $guru = Guru::all();
+        // // $detailGuru = detail_guru::all();
+        // return view('admin.guru.index', compact('max', 'guru'));
+        $guru = Guru::all()->paginate(10);
+        return view('admin.guru.index', compact('guru'));
     }
 
     /**
@@ -112,9 +113,9 @@ class GuruController extends Controller
         //     'id_guru' => $request->id_card_guru,
         // ]);
 
-        Nilai::create([
-            'guru_id' => $guru->id
-        ]);
+        // Nilai::create([
+        //     'guru_id' => $guru->id
+        // ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }

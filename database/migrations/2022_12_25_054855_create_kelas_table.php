@@ -24,7 +24,6 @@ return new class extends Migration
             $table->index(['kurikulum_id', 'jurusan_id'], 'kurikulum_id_2');
             $table->softDeletes();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 

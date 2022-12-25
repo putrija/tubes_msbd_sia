@@ -17,7 +17,6 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id_jenis_ptk');
             $table->string('ket_jenis_ptk');
-            $table->timestamps();
         });
     }
 

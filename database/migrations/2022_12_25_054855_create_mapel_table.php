@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedInteger('kurikulum_id')->index('kurikulum_id');
             $table->softDeletes();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
