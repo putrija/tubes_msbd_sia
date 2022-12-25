@@ -13,13 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PaketSeeder::class);
-        $this->call(RuangSeeder::class);
-        $this->call(MapelSeeder::class);
-        $this->call(GuruSeeder::class);
-        $this->call(KelasSeeder::class);
-        $this->call(JadwalSeeder::class);
-        $this->call(SiswaSeeder::class);
         $this->call(UsersSeeder::class);
     }
 }
