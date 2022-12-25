@@ -17,50 +17,44 @@ class MapelSeeder extends Seeder
     public function run()
     {
         DB::table('mapel')->insert([
-            'id' => 1,
+            'id_mapel' => 1,
             'nama_mapel' => 'Fisika',
-            'paket_id' => '2',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id' => 2,
+            'id_mapel' => 2,
             'nama_mapel' => 'Kimia',
-            'paket_id' => '2',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id' => 3,
+            'id_mapel' => 3,
             'nama_mapel' => 'Biologi',
-            'paket_id' => '2',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id' => 4,
+            'id_mapel' => 5,
             'nama_mapel' => 'Matematika Wajib',
-            'paket_id' => '4',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id' => 5,
+            'id_mapel' => 6,
             'nama_mapel' => 'Matematika Peminatan',
-            'paket_id' => '2',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('mapel')->insert([
-            'id' => 6,
+            'id_mapel' => 7,
             'nama_mapel' => 'Sosiologi',
-            'paket_id' => '3',
-            'kelompok' => 'A',
+            'kurikulum_id' => '2',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

@@ -17,12 +17,14 @@ class DatabaseSeeder extends Seeder
         $this->call(TugasTambahanSeeder::class);
         $this->call(StatusKepegawaianSeeder::class);
         $this->call(KurikulumSeeder::class);
+        $this->call(MapelSeeder::class);
         $this->call(JurusanSeeder::class);
         $this->call(KelasSeeder::class);
         $this->call(StatusSiswaSeeder::class);
         $this->call(SiswaSeeder::class);
         $this->call(TahunAjaranSeeder::class);
         $this->call(GuruSeeder::class);
+        $this->call(GuruMengajarSeeder::class);
         $this->call(KelasSiswaSeeder::class);
         $this->call(UsersSeeder::class);
     }
