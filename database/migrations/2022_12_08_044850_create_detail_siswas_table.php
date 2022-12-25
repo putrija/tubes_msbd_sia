@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('detail_siswas', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id_detail_siswa');
+            $table->increments('id');
             $table->unsignedInteger('id_siswa')->index('id_siswa');
             $table->integer('anak_ke')->nullable();
             $table->integer('dari_berapa_bersaudara')->nullable();

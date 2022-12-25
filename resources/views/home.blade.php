@@ -48,14 +48,14 @@
                           </td>
                           <td>{{ $data->kelas->nama_kelas }}</td>
                           <td>{{ $data->ruang->nama_ruang }}</td>
-                          {{-- <td>
+                          <td>
                             @if ($data->absen($data->guru_id))
                               <div style="margin-left:20px;width:30px;height:30px;background:#{{ $data->absen($data->guru_id) }}"></div>
                             @elseif (date('H:i:s') >= '09:00:00')
                               <div style="margin-left:20px;width:30px;height:30px;background:#F00"></div>
                             @else
                             @endif
-                          </td> --}}
+                          </td>
                         </tr>
                       @endforeach
                   @endif
