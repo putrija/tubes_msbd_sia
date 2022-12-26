@@ -147,6 +147,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
     Route::get('/predikat', 'NilaiController@create')->name('predikat');
+    Route::get('/tambahkankepsek', 'UserController@editkepsek')->name('editkepsek');
+    Route::post('/tambahkankepsek', 'UserController@editkepsek2')->name('editkepsek2');
+    Route::post('/users/{id}', 'UserController@edit_guru')->name('edit_guru');
     Route::resource('/user', 'UserController');
   });
 });

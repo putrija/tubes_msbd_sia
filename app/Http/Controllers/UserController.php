@@ -27,6 +27,30 @@ class UserController extends Controller
         return view('admin.user.index', compact('user'));
     }
 
+    public function editkepsek()
+    {
+        $guru = Guru::all();
+        $user = User::all();
+        // $user = $user->groupBy('role');
+        // $users = DB::table('users')
+        //     ->leftJoin('guru', 'users.id_card', '=', 'guru.id_card_guru')f
+        //     ->get();
+        return view('admin.user.editkepsek', compact('user', 'guru'));
+    }
+
+    public function editkepsek2(Request $request)
+    {
+
+        // $this->validate($request, [
+        //     'id_card_guru' => 'required|string|max:5|unique:users'
+        // ]);
+
+        $user = User::where('id_card', $request->id_card_guru)->first();
+        $user->role = "Kepala Sekolah";
+        $user->save();
+        return redirect()->route('user.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -98,6 +122,14 @@ class UserController extends Controller
         }
     }
 
+    public function store_kepsek(Request $request)
+    {
+        $guru = Guru::all();
+        $user = User::all();
+        $user = $user->groupBy('role');
+        return view('admin.user.index', compact('user', 'guru'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -107,12 +139,13 @@ class UserController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        if ($id == "Admin" && Auth::user()->role == "Operator") {
+        if ($id == "Admin" && Auth::user()->role == "Kepala Sekolah") {
             return redirect()->back()->with('warning', 'Maaf halaman ini hanya bisa di akses oleh Admin!');
         } else {
             $user = User::where('role', $id)->get();
             $role = $user->groupBy('role');
-            return view('admin.user.show', compact('user', 'role'));
+            $guru = Guru::all();
+            return view('admin.user.show', compact('user', 'role', 'guru'));
         }
     }
 
@@ -124,7 +157,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // 
+        //
+    }
+
+
+    public function edit_guru($id)
+    {
+        $user = User::findorfail($id);
+        $user->role = "Guru";
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -155,7 +197,7 @@ class UserController extends Controller
             } else {
                 return redirect()->back()->with('error', 'Maaf user ini bukan milik anda!');
             }
-        } elseif ($user->role == 'Operator') {
+        } elseif ($user->role == 'Kepala Sekolah') {
             if ($user->id == Auth::user()->id || Auth::user()->role == 'Admin') {
                 $user->delete();
                 return redirect()->back()->with('warning', 'Data user berhasil dihapus! (Silahkan cek trash data user)');

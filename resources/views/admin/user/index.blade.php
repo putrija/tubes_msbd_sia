@@ -11,6 +11,7 @@
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-user">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data User
                 </button>
+                <a href="{{ route('editkepsek') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kepala Sekolah</a>
             </h3>
         </div>
         <!-- /.card-header -->
@@ -20,7 +21,6 @@
                 <tr>
                     <th>Level User</th>
                     <th>Jumlah User</th>
-                    <th>Tambahkan User</th>
                     <th>Lihat User</th>
                 </tr>
             </thead>
@@ -29,11 +29,6 @@
                   <tr>
                     <td>{{ $role }}</td>
                     <td>{{ $data->count() }}</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-user">
-                        <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data User
-                    </button>
-                    </td>
                     <td>
                       <a href="{{ route('user.show', Crypt::encrypt($role)) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-search-plus"></i> &nbsp; Ditails</a>
                     </td>
@@ -74,7 +69,6 @@
                   <select id="role" type="text" class="form-control @error('role') is-invalid @enderror select2bs4" name="role" value="{{ old('role') }}" autocomplete="role">
                     <option value="">-- Select {{ __('Level User') }} --</option>
                     <option value="Admin">Admin</option>
-                    <option value="Operator">Operator</option>
                     <option value="Guru">Guru</option>
                     <option value="Siswa">Siswa</option>
                   </select>

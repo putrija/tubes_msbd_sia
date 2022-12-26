@@ -14,6 +14,9 @@
     <div class="card-header">
         <h3 class="card-title">
             <a href="{{ route('user.index') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-arrow-left"></i> &nbsp; Kembali</a>
+            @if ($d == 'Kepala Sekolah')
+            <a href="{{ route('editkepsek') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kepala Sekolah</a>
+            @endif
         </h3>
     </div>
     <div class="card-body">
@@ -56,6 +59,13 @@
                     @method('delete')
                     <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                   </form>
+                  @if ($data->role == 'Kepala Sekolah')
+                  <br>
+                  <form action="{{ route('edit_guru', $data->id) }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-primary btn-sm"> &nbsp; Ubah jadi Guru</button>
+                  </form>
+                  @endif
                 </td>
               </tr>
             @endforeach
@@ -69,6 +79,9 @@
     </div>
   </div>
 </div>
+
+
+
 @endsection
 @section('script')
     <script>
