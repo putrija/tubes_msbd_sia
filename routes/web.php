@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PembagianKelasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -147,6 +148,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
     Route::get('/predikat', 'NilaiController@create')->name('predikat');
+    Route::get('pembagiankelas',[PembagianKelasController::class,'index']);
     Route::resource('/user', 'UserController');
   });
 });
