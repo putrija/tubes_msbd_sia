@@ -38,5 +38,15 @@ class Siswa extends Model
         return $nilai;
     }
 
+    //erli bikin relasi siswa punya pelanggaran
+    // public function pelanggaran(){
+    //     return $this->hasMany('app\Pelanggaran');
+    // }
+    //karena siswa ga langsung berellasi kepelanggara tapi lewat tabel kelas_siswa dulu dulu
+    //erli-- relasi kelas_siswa dengan siswa
+    public function pelanggaran(){
+        return $this->hasMany('app\Models\Pelanggaran');
+    }
+
     protected $table = 'siswa';
 }

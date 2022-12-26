@@ -128,7 +128,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/mapel', 'MapelController');
 
     // ################### ROUTE PELANGGARAN #######################
-    Route::resource('/pelanggaran', 'ViolationController');
+    // Route::resource('/pelanggaran', 'ViolationController');
+    Route::resource('/pelanggaran', 'PelanggaranController');
     Route::get('/guru/pelanggaran', 'ViolationController@index');
     // ################### END ROUTE PELANGGARAN #######################
 
