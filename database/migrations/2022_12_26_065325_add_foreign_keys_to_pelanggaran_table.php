@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pelanggaran', function (Blueprint $table) {
-            $table->foreign(['kelas_siswa_id'], 'pelanggaran_ibfk_1')->references(['id'])->on('kelas_siswa');
+            $table->foreign(['siswa_id'], 'pelanggaran_ibfk_1')->references(['id'])->on('siswa');
+            $table->foreign(['tahun_ajaran_id'], 'pelanggaran_ibfk_3')->references(['id'])->on('tahun_ajaran');
+            $table->foreign(['kelas_id'], 'pelanggaran_ibfk_2')->references(['id'])->on('kelas');
         });
     }
 
@@ -27,6 +29,8 @@ return new class extends Migration
     {
         Schema::table('pelanggaran', function (Blueprint $table) {
             $table->dropForeign('pelanggaran_ibfk_1');
+            $table->dropForeign('pelanggaran_ibfk_3');
+            $table->dropForeign('pelanggaran_ibfk_2');
         });
     }
 };

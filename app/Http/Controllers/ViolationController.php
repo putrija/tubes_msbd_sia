@@ -16,8 +16,8 @@ class ViolationController extends Controller
      */
     public function index()
     {
-        $mapel = Mapel::OrderBy('kelompok', 'asc')->OrderBy('nama_mapel', 'asc')->get();
-        $paket = Paket::all();
+        $mapel = Mapel::OrderBy('kelompok', 'asc')->OrderBy('nama_mapel', 'asc')->get();//iini manggil model  Mapel
+        $paket = Paket::all();//ini manggil model Model paket buar ga selecct *from paket
         return view('admin.pelanggaran.index', compact('mapel', 'paket'));
     }
 
