@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PembagianKelasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -127,7 +128,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/mapel', 'MapelController');
 
     // ################### ROUTE PELANGGARAN #######################
-    Route::resource('/pelanggaran', 'ViolationController');
+    // Route::resource('/pelanggaran', 'ViolationController');
+    Route::resource('/pelanggaran', 'PelanggaranController');
     Route::get('/guru/pelanggaran', 'ViolationController@index');
     // ################### END ROUTE PELANGGARAN #######################
 
@@ -150,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambahkankepsek', 'UserController@editkepsek')->name('editkepsek');
     Route::post('/tambahkankepsek', 'UserController@editkepsek2')->name('editkepsek2');
     Route::post('/users/{id}', 'UserController@edit_guru')->name('edit_guru');
+    Route::get('pembagiankelas', [PembagianKelasController::class, 'index']);
     Route::resource('/user', 'UserController');
   });
 });

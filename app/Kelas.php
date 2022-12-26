@@ -21,5 +21,13 @@ class Kelas extends Model
         return $this->belongsTo('App\Paket')->withDefault();
     }
 
+    // public function pelanggaran(){
+    //     return $this->hasMany('app\Models\Pelanggaran');
+    // }
+
+    //erli tambah relasi kepelanggaran
+    public function pelanggaran(){
+        return $this->hasMany('app\Models\Pelanggaran');
+    }
     protected $table = 'kelas';
 }

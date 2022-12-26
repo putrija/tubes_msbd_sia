@@ -19,18 +19,28 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Mapel</th>
-                    <th>Jurusan</th>
-                    <th>Kelompok</th>
-                    <th>Aksi</th>
+                    {{-- <th>Id kelas siswa</th> --}}
+                    {{-- <th>NIS</th> --}}
+                    <th>Nama Siswa</th>
+                    <th>Kelas Siswa</th>
+                    <th>Keterangan</th>
+                    <th>Tanggal Pelanggaran</th>
+                    <th>Sanksi</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mapel as $result => $data)
+                @foreach ($pelanggaran as $result => $data)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->nama_mapel }}</td>
-                    @if ( $data->paket_id == 3 )
+                    {{-- id_pelanggaran	kelas_siswa_id	ket_pelanggaran	tanggal_pelanggaran	sanksi	created_at	updated_at	 --}}
+
+                    <td>{{ $loop->iteration }}</td> 
+                    <td>{{ $data->siswa->nama_siswa }}</td>
+                    <td>{{ $data->kelas->nama_kelas}}</td>
+                    <td>{{$data->ket_pelanggaran}}</td>
+                    <td>{{$data->tanggal_pelanggaran}}</td>
+                    <td>{{$data->sanksi}}</td>
+                    {{-- @if ( $data->paket_id == 3 )
                       <td>{{ 'Semua' }}</td>
                     @else
                       <td>{{ $data->paket->ket }}</td>
@@ -43,7 +53,7 @@
                             <a href="{{ route('mapel.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>
@@ -56,18 +66,18 @@
 <!-- /.col -->
 
 <!-- Extra large modal -->
-<div class="modal fade bd-example-modal-md tambah-mapel" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+ <div class="modal fade bd-example-modal-md tambah-mapel" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Tambah Data Mapel</h4>
+        <h4 class="modal-title">Tambah Data Pelanggaran</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          {{-- disini modal dipannggil dari tombo tambah pelanggaran, ditag kata "data-dismiss ="modal""" --}}
-        <span aria-hidden="true">&times;</span>
+           {{-- disini modal dipannggil dari tombo tambah pelanggaran, ditag kata "data-dismiss ="modal"""  --}}
+      <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('mapel.store') }}" method="post">
+        <form action="{{ route('pelanggaran.store') }}" method="post">
           @csrf
             <div class="row">
               <div class="col-md-12">
