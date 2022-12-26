@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rapot/siswa', 'RapotController@siswa')->name('rapot.siswa');
   });
 
-  Route::middleware(['guru'])->group(function () {
+  Route::middleware(['guru' || 'kepsek'])->group(function () {
     Route::get('/jadwal/guru', 'JadwalController@guru')->name('jadwal.guru');
     Route::resource('/nilai', 'NilaiController');
     Route::resource('/ulangan', 'UlanganController');
