@@ -62,7 +62,6 @@
     <div class="modal-header">
         <h4 class="modal-title">Tambah Data Mapel</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          {{-- disini modal dipannggil dari tombo tambah pelanggaran, ditag kata "data-dismiss ="modal""" --}}
         <span aria-hidden="true">&times;</span>
         </button>
     </div>

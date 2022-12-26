@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rapor', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id');
-            $table->unsignedInteger('kelas_siswa_id')->index('kelas_siswa_id');
+            $table->unsignedInteger('kelas_siswa_id')->index('kelas_siswa');
             $table->unsignedInteger('mapel_id')->index('mapel_id');
             $table->unsignedInteger('wali_kelas_id')->index('wali_kelas_id');
             $table->unsignedInteger('semester_id')->index('semester_id');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->char('predikat_keterampilan', 2);
             $table->timestamps();
 
-            $table->index(['kelas_siswa_id'], 'kelas_siswa');
+            $table->index(['kelas_siswa_id'], 'kelas_siswa_id');
         });
     }
 

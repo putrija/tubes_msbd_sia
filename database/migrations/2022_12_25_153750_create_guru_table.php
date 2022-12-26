@@ -18,7 +18,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('id_card_guru', 10)->unique('id_card_guru');
             $table->string('nama_guru');
-            $table->string('kode_guru', 5)->unique('kode_guru_2');
+            $table->string('kode_guru', 5)->unique('kode_guru');
             $table->string('nip', 30)->nullable();
             $table->char('nuptk', 16)->nullable();
             $table->unsignedInteger('status_kepegawaian_id')->index('status_kepegawaian_id');
@@ -44,7 +44,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['kode_guru'], 'kode_guru');
+            $table->unique(['kode_guru'], 'kode_guru_2');
         });
     }
 
