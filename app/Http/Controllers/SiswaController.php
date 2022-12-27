@@ -301,5 +301,6 @@ class SiswaController extends Controller
         } else {
             return redirect()->back()->with('warning', 'Data table siswa kosong!');
         }
+
     }
 }
