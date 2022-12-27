@@ -25,8 +25,8 @@
                     <input type="text" id="nama_guru" name="nama_guru" value="{{ $guru->nama_guru }}" class="form-control @error('nama_guru') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="mapel_id">Mapel</label>
-                    <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
+                    <label for="status_id">Status</label>
+                    <select id="status_id" name="status_id" class="select2bs4 form-control @error('status_id') is-invalid @enderror">
                         <option value="">-- Pilih Mapel --</option>
                         @foreach ($mapel as $data)
                             <option value="{{ $data->id }}"

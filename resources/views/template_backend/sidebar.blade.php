@@ -63,6 +63,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                {{-- <a href="{{ route('admin.pembagiankelas.index') }}" class="nav-link" id="DataKelas">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Pembagian Kelas</p>
+                                </a> --}}
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('siswa.index') }}" class="nav-link" id="DataSiswa">
                                     <i class="fas fa-users nav-icon"></i>
                                     <p>Data Siswa</p>

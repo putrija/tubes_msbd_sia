@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('siswa', function (Blueprint $table) {
-            $table->foreign(['status_id'], 'siswa_ibfk_2')->references(['id'])->on('status_siswa');
+        Schema::create('detail_gurus', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('siswa', function (Blueprint $table) {
-            $table->dropForeign('siswa_ibfk_2');
-        });
+        Schema::dropIfExists('detail_gurus');
     }
 };

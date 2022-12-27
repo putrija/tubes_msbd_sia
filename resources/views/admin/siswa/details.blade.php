@@ -92,7 +92,7 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Status</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $siswa->status_id }}" disabled>
+            <input class="form-control" placeholder="{{ $status->ket_status }}" disabled>
         </div>
       </div>
       <div class="form-group row">

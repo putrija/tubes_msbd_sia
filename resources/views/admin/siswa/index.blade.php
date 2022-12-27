@@ -35,10 +35,7 @@
                                 </div>
                                 <div class="card-body">
                                     <ul>
-                                        <li>rows 1 = nama siswa</li>
-                                        <li>rows 2 = no induk siswa</li>
-                                        <li>rows 3 = jenis kelamin</li>
-                                        <li>rows 4 = nama kelas</li>
+                                        <h3>Pastikan Data yang Diimport Sudah Sesuai dengan Fieldnya!</h3>
                                     </ul>
                                 </div>
                             </div>
@@ -141,6 +138,10 @@
                         <input type="text" id="nama_siswa" name="nama_siswa" class="form-control @error('nama_siswa') is-invalid @enderror">
                     </div>
                     <div class="form-group">
+                        <label for="angkatan">Angkatan</label>
+                        <input type="year" id="angkatan" name="angkatan" class="form-control @error('angkatan') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
                         <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
                             <option value="">-- Pilih Jenis Kelamin --</option>
@@ -148,18 +149,6 @@
                             <option value="P">Perempuan</option>
                         </select>
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="tmp_lahir">Tempat Lahir</label>
-                        <input type="text" id="tmp_lahir" name="tmp_lahir" value="{{ $siswa->tmp_lahir }}" class="form-control @error('tmp_lahir') is-invalid @enderror">
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ $siswa->tgl_lahir }}" class="form-control @error('tgl_lahir') is-invalid @enderror">
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_lahir">Alamat</label>
-                        <input type="text" id="alamat" name="alamat" value="{{ $siswa->alamat }}" class="form-control @error('alamat') is-invalid @enderror">
-                    </div> --}}
                     <div class="form-group">
                         <label for="tmp_lahir">Tempat Lahir</label>
                         <input type="text" id="tmp_lahir" name="tmp_lahir" class="form-control @error('tmp_lahir') is-invalid @enderror">
@@ -200,13 +189,9 @@
                         <label for="telp">Nomor Telpon/HP</label>
                         <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="emailr">Email</label>
-                        <input type="text" id="email" name="email" value="{{ $siswa->email }}" class="form-control @error('email') is-invalid @enderror">
-                    </div> --}}
                     <div class="form-group">
                         <label for="emailr">Email</label>
-                        <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="agama">Agama</label>
@@ -221,14 +206,10 @@
                             <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
                         </select>
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="agama">Agama</label>
-                        <input type="Text" id="agama" name="agama" value="{{ $data->agama }}" class="form-control @error('agama') is-invalid @enderror">
-                    </div> --}}
-                    {{-- <div class="form-group">
-                        <label for="agama">Agama</label>
-                        <input type="Text" id="agama" name="agama" class="form-control @error('agama') is-invalid @enderror">
-                    </div> --}}
+                    <div class="form-group">
+                        <label for="status_id">Status</label>
+                        <input type="text" id="status_id" name="status_id" onkeypress="return inputAngka(event)" class="form-control @error('status_id') is-invalid @enderror">
+                    </div>
                 </div>
             </div>
           </div>

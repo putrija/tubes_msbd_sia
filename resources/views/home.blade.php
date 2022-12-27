@@ -43,11 +43,11 @@
                         <tr>
                           <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
                           <td>
-                              <h5 class="card-title">{{ $data->mapel->nama_mapel }}</h5>
-                              <p class="card-text"><small class="text-muted">{{ $data->guru->nama_guru }}</small></p>
+                              {{-- <h5 class="card-title">{{ $data->mapel->nama_mapel }}</h5> --}}
+                              {{-- <p class="card-text"><small class="text-muted">{{ $data->guru->nama_guru }}</small></p> --}}
                           </td>
-                          <td>{{ $data->kelas->nama_kelas }}</td>
-                          <td>{{ $data->ruang->nama_ruang }}</td>
+                          {{-- <td>{{ $data->kelas->nama_kelas }}</td>
+                          <td>{{ $data->ruang->nama_ruang }}</td> --}}
                           <td>
                             {{-- @if ($data->absen($data->guru_id))
                               <div style="margin-left:20px;width:30px;height:30px;background:#{{ $data->absen($data->guru_id) }}"></div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('no_induk', 5)->unique();
             $table->char('nisn', 10)->unique();
             $table->string('nama_siswa');
+            $table->unsignedInteger('kelas_id')->index('kelas_siswa_id');
             $table->enum('jk', ['L', 'P']);
             $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Buddha', 'Hindu', 'Konghucu', 'Aliran Kepercayaan']);
             $table->string('telp', 15)->nullable();

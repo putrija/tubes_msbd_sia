@@ -16,6 +16,9 @@ use App\Exports\GuruExport;
 use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\JenisPtk;
+use App\Models\StatusKepegawaian;
+use App\Models\TugasTambahanGuru;
 use App\Nilai;
 use Illuminate\Support\Facades\DB;
 
@@ -28,19 +31,12 @@ class GuruController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // $data_guru = DB::table('guru')
-        //     ->join('detail_guru', 'detail_guru.id_guru', '=', 'guru.id')
-        // ->select('guru.nama_guru as nama_guru')
-        //     ->get();
-        //$mapel = Mapel::orderBy('nama_mapel')->get();
-        // $max = Guru::max('id_card_guru');
-        // // $detail_guru = detail_guru::all();
-        // $guru = Guru::all();
-        // // $detailGuru = detail_guru::all();
-        // return view('admin.guru.index', compact('max', 'guru'));
+    {   
+        $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
+        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
+        $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
         $guru = Guru::all();
-        return view('admin.guru.index', compact('guru'));
+        return view('admin.guru.index', compact('guru','jenis_ptk','status_kepegawaian','tugas_tambahan'));
     }
 
     /**
@@ -62,9 +58,9 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_card_guru' => 'required',
+            'id_card_guru' => 'required|unique:guru|min:5|max:5',
             'nama_guru' => 'required',
-            'kode' => 'required|string|unique:guru|min:2|max:3',
+            'kode_guru' => 'required|string|unique:guru|min:3|max:5',
             'jk' => 'required'
         ]);
 
@@ -84,14 +80,15 @@ class GuruController extends Controller
         $guru = Guru::create([
             'id_card_guru' => $request->id_card_guru,
             'nip' => $request->nip,
+            'status_kepegawaian_id' =>$request->status_kepegawaian_id,
+            'jenis_ptk_id' => $request->jenis_ptk_id,
+            'tugas_tambahan_id' => $request->tugas_tambahan_id,
             'nama_guru' => $request->nama_guru,
-            'mapel_id' => $request->mapel_id,
-            'kode' => $request->kode,
+            'kode_guru' => $request->kode_guru,
             'jk' => $request->jk,
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
-            'status_kepegawaian' => $request->status_kepegawaian,
             'hp' => $request->hp,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
@@ -104,18 +101,9 @@ class GuruController extends Controller
             'email' => $request->email,
             'nik' => $request->nik,
             'no_kk' => $request->no_kk,
+            'nuptk' =>$request->nuptk,
             'foto' => $nameFoto
         ]);
-
-        
-        // detail_guru::create([
-        //     'id_guru' => $request->id_card_guru,
-        // ]);
-
-        // Nilai::create([
-        //     'guru_id' => $guru->id
-        // ]);
-
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }
 
