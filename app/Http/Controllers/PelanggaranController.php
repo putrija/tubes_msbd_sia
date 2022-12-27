@@ -11,6 +11,8 @@ use App\Models\Pelanggaran;
 use Database\Seeders\TahunAjaranSeeder;
 use Illuminate\Http\Request;
 
+use function GuzzleHttp\Promise\all;
+
 class PelanggaranController extends Controller
 {
     /**
@@ -20,8 +22,9 @@ class PelanggaranController extends Controller
      */
     public function index()
     {
-        $pelanggaran = Pelanggaran::OrderBy('id', 'asc')->get();
-        $siswa = Siswa::with(relations:'kelas')->get();
+        //$pelanggaran = Pelanggaran::OrderBy('id', 'asc')->get();
+        //$siswa = Siswa::with(relations:'kelas')->get();
+
         //$kelas_siswa = Kelas_siswa::all();
         //$kelas = Kelas::join('kelas','kelas.id','=','siswa.kelas_id');
         //$kelas = Kelas::orderBy('nama_kelas')->get();
@@ -29,7 +32,11 @@ class PelanggaranController extends Controller
         //$tahun_ajaran = Tahun_ajaran::all();
         //by gideonsaran
         //$Pelanggaran = DB::table('pelanggaran')->join('siswa','siswa.id','=','kelas_siswa.id')->join('kelas','kelas.id','=','kelas_siswa.id')->join('tahun_ajaran','tahun_ajaran.id','=','kelas_siswa.id')->get() ;
+        $pelanggaran = Pelanggaran::all();
+        $siswa = Siswa::all();
+        //$kelas = siswa::all();
         return view('admin.pelanggaran.pelanggaran', compact('pelanggaran','siswa'));
+        //return view('admin.pelanggaran.pelanggaran', compact('pelanggaran','siswa'));
     }
 
     /**
@@ -70,10 +77,7 @@ class PelanggaranController extends Controller
 
             //ini yang dipake
             Pelanggaran::create([//panggil model pelanggaran dan panggil fungsi create
-            //'nama_siswa' => $request->nama_siswa,
             'siswa_id' => $request->siswa_id,
-            // 'kelas_id' => $request->nama_kelas,
-            //'tahun_ajaran_id'=>$request->tahun_ajaran_id,
             'ket_pelanggaran'=>$request->ket_pelanggaran,
             'tanggal_pelanggaran'=>$request->tanggal_pelanggaran,
             'sanksi'=>$request->sanksi

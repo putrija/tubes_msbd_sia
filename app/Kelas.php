@@ -21,22 +21,32 @@ class Kelas extends Model
     {
         return $this->belongsTo('App\Paket')->withDefault();
     }
-    public function siswa()
-    {
-        return $this->hasMany(related:Siswa::class);
+
+    public function siswa(){
+        return $this->hasMany(Siswa::class);
     }
-    public function pelanggaran()
-    {
-        return $this->hasManyThrough(related:Pelanggaran::class, through:Siswa::class);
+    
+    public function pelanggaran(){
+        return $this->hasManyThrough(Pelanggaran::class, Siswa::class);
     }
-    public function SiswaPelanggaran(){
-        return $this->hasManyThrough(Pelanggaran::class,Siswa::class,
-        'kelas_id',
-        'siswa_id',
-        'id',
-        'id',
-    );
-    }
+    // public function siswa()
+    // {
+    //     return $this->hasMany(related:Siswa::class);
+    // }
+    // public function pelanggaran()
+    // {
+    //     return $this->hasManyThrough(related:Pelanggaran::class, through:Siswa::class);
+    // }
+
+
+    // public function SiswaPelanggaran(){
+    //     return $this->hasManyThrough(Pelanggaran::class,Siswa::class,
+    //     'kelas_id',
+    //     'siswa_id',
+    //     'id',
+    //     'id',
+    // );
+    //}
 
     // public function pelanggaran(){
     //     return $this->hasMany('app\Models\Pelanggaran');

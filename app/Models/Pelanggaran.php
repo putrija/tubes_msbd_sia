@@ -10,9 +10,13 @@ class Pelanggaran extends Model
     //use HasFactory;
     //protected $fillable = ['siswa_id','kelas_id','tahun_ajaran_id','ket_pelanggaran', 'tanggal_pelanggaran', 'sanksi'];
     protected $fillable = ['siswa_id','ket_pelanggaran', 'tanggal_pelanggaran', 'sanksi'];
-    
+    //cara lama membuat relasi
+    // public function siswa(){
+    //     return $this->belongsTo('app\Models\Siswa');
+    // }
+    //membuat relasi ketabel siswa
     public function siswa(){
-        return $this->belongsTo('app\Models\Siswa');
+        return $this->belongsTo(Siswa::class);
     }
 
     // public function kelas(){

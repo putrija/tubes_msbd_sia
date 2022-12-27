@@ -19,8 +19,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    {{-- <th>Id kelas siswa</th> --}}
-                    {{-- <th>NIS</th> --}}
+                    <th>nomor induk siswa</th>
                     <th>Nama Siswa</th>
                     <th>Kelas Siswa</th>
                     <th>Keterangan</th>
@@ -34,9 +33,10 @@
                 <tr>
                     {{-- id_pelanggaran	kelas_siswa_id	ket_pelanggaran	tanggal_pelanggaran	sanksi	created_at	updated_at	 --}}
 
-                    <td>{{ $loop->iteration }}</td> 
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{$data->siswa->no_induk}}</td> 
                     <td>{{ $data->siswa->nama_siswa }}</td>
-                    <td>{{ $kelas->nama_kelas}}</td>
+                    <td>{{ $data->siswa->kelas->nama_kelas}}</td>
                     <td>{{$data->ket_pelanggaran}}</td>
                     <td>{{$data->tanggal_pelanggaran}}</td>
                     <td>{{$data->sanksi}}</td>
@@ -82,37 +82,20 @@
             <div class="row">
               <div class="col-md-12">
                 {{-- <div class="form-group">
-                  <label for="siswa_id">Nama Siswa</label>
+                  <label for="siswa_id">nomor induk siswa</label>
                   <input type="text" id="siswa_id" name="siswa_id" class="form-control @error('nama_siswa') is-invalid @enderror" placeholder="{{ __('Nama siswa') }}">
                 </div> --}}
                 <div class="form-group">
-                  {{-- class="theSelect"  --}}
-                      <label for="nama_siswa">nama siswa</label>
-                      <select id="siswa_id" name="siswa_id" class="form-control @error('siswa_id') is-invalid @enderror">
+                    {{-- theSelect --}}
+                      <label for="nama_siswa">nama siswa</label><br>
+                      <select id="siswa_id" name="siswa_id" class="form-control">
                           <option value="">-- Pilih siswa yang melakukan pelanggaran --</option>
                           @foreach ($siswa as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_siswa }}</option>
                           @endforeach
-                        {{-- <option value="Codeigniter">Codeigniter</option> --}}
-                        {{-- <option value="FuelPHP">FuelPHP</option>
-                        <option value="PhalconPHP">PhalconPHP</option>
-                        <option value="Slim">Slim</option>
-                        <option value="Silex">Silex</option>
-                        <option value="CakePHP">CakePHP</option>
-                        <option value="Symfony">Symfony</option>
-                        <option value="Yii">Yii</option>
-                        <option value="Laravel">Laravel</option>
-                        <option value="Lumen">Lumen</option>
-                        <option value="Zend">Zend</option> --}}
                       </select>
-                    
-
-                    </div>
-                    <div class="form-group">
-                      <label for="">Kelas siswa</label>
-                    </div>     
-                {{-- </div>
-                <div class="form-group">
+                </div>
+                {{--<div class="form-group">
                   <label for="nama_kelas">Kelas siswa</label>
                   <select id="kelas_id" name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror">
                     <option value="">-- Pilih kelas siswa --</option>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Kelas;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,10 +13,19 @@ class Siswa extends Model
 
     // protected $fillable = ['no_induk', 'nis', 'nama_siswa', 'alamat', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto'];
     protected $fillable = ['no_induk', 'nisn', 'nama_siswa', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto', 'name', 'email', 'password', 'role', 'id_card', 'alamat', 'agama', 'created_at', 'updated_at', 'deleted_at'];
-    public function kelas()
-    {
-        return $this->belongsTo('App\Kelas')->withDefault();
+    //relasi lama
+    // public function kelas()
+    // {
+    //     return $this->belongsTo('App\Kelas')->withDefault();
+    // }
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
     }
+
+    public function pelanggaran(){
+        return $this->hasMany(Pelanggaran::class);
+    }
+
 
     public function ulangan($id)
     {
@@ -44,9 +54,10 @@ class Siswa extends Model
     // }
     //karena siswa ga langsung berellasi kepelanggara tapi lewat tabel kelas_siswa dulu dulu
     //erli-- relasi kelas_siswa dengan siswa
-    public function pelanggaran(){
-        return $this->hasMany('app\Models\Pelanggaran');
-    }
+    //cara lama merelasikan pelanggaran dengan siswa
+    // public function pelanggaran(){
+    //     return $this->hasMany('app\Models\Pelanggaran');
+    // }
 
     protected $table = 'siswa';
 }
