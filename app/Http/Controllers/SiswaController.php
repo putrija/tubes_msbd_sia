@@ -24,12 +24,11 @@ class SiswaController extends Controller
     public function index()
     {
         // $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        // return view('admin.siswa.index', compact('kelas'));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        // return view('admin.siswa.index', compact('kelas'));                                                                   
         $siswa = Siswa::all();
         $status = StatusSiswa::OrderBy('ket_status')->get();
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        return view('admin.siswa.index', compact('siswa', 'kelas','status'));
-  
+        return view('admin.siswa.index', compact('siswa', 'kelas', 'status'));
     }
 
     /**
@@ -52,10 +51,10 @@ class SiswaController extends Controller
     {
         $this->validate($request, [
             'no_induk' => 'required|string|unique:siswa',
-            'nisn'=> 'required|max:10|min:10',
+            'nisn' => 'required|max:10|min:10',
             'nama_siswa' => 'required',
             'jk' => 'required',
-            
+
         ]);
 
         if ($request->foto) {
@@ -83,7 +82,7 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'email' => $request->email,
             'angkatan' => $request->angkatan,
-            'kelas_id' => $request ->kelas_id,
+            'kelas_id' => $request->kelas_id,
             'foto' => $nameFoto,
         ]);
 
@@ -101,7 +100,7 @@ class SiswaController extends Controller
         $id = Crypt::decrypt($id);
         $siswa = Siswa::findOrFail($id);
         $status = StatusSiswa::OrderBy('ket_status')->first();
-        return view('admin.siswa.details', compact('siswa','status'));
+        return view('admin.siswa.details', compact('siswa', 'status'));
     }
 
     /**

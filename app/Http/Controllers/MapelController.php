@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Jadwal;
 use App\Mapel;
-use App\Paket;
+// use App\Paket;
 use App\Guru;
+use App\Models\jadwal_belajar_mengajar;
+use App\Models\Kurikulum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class MapelController extends Controller
@@ -19,9 +22,14 @@ class MapelController extends Controller
      */
     public function index()
     {
-        $mapel = Mapel::OrderBy('kelompok', 'asc')->OrderBy('nama_mapel', 'asc')->get();
-        $paket = Paket::all();
-        return view('admin.mapel.index', compact('mapel', 'paket'));
+        // $mapel = Mapel::OrderBy('kelompok', 'asc')->OrderBy('nama_mapel', 'asc')->get();
+        // $mapel = Mapel::all();
+        $mapel = DB::table('mapel')
+            ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
+            ->join('kurikulum', 'mapel.kurikulum_id', '=', 'kurikulum.id')
+            ->get();
+        // $paket = Paket::all();
+        return view('admin.mapel.index', compact('mapel'));
     }
 
     /**
@@ -44,8 +52,9 @@ class MapelController extends Controller
     {
         $this->validate($request, [
             'nama_mapel' => 'required',
-            'paket_id' => 'required',
-            'kelompok' => 'required'
+            'kurikulum_id' => 'required',
+            // 'paket_id' => 'required',
+            // 'kelompok' => 'required'
         ]);
 
         Mapel::updateOrCreate(
@@ -54,8 +63,10 @@ class MapelController extends Controller
             ],
             [
                 'nama_mapel' => $request->nama_mapel,
-                'paket_id' => $request->paket_id,
-                'kelompok' => $request->kelompok,
+                'kurikulum_id' => $request->kurikulum_id,
+
+                // 'paket_id' => $request->paket_id,
+                // 'kelompok' => $request->kelompok,
             ]
         );
 
@@ -82,9 +93,13 @@ class MapelController extends Controller
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
-        $mapel = Mapel::findorfail($id);
-        $paket = Paket::all();
-        return view('admin.mapel.edit', compact('mapel', 'paket'));
+        $mapel = DB::table('mapel')
+            ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
+            ->join('kurikulum', 'mapel.kurikulum_id', '=', 'kurikulum.id')
+            ->where('mapel.id', $id)->first();
+        // $mapel = Mapel::findorfail($id);
+        // $kurikulum = Kurikulum::all();
+        return view('admin.mapel.edit', compact('mapel'));
     }
 
     /**
@@ -107,17 +122,25 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        $mapel = Mapel::findorfail($id);
-        $countJadwal = Jadwal::where('mapel_id', $mapel->id)->count();
-        if ($countJadwal >= 1) {
-            $jadwal = Jadwal::where('mapel_id', $mapel->id)->delete();
-        } else {
-        }
-        $countGuru = Guru::where('mapel_id', $mapel->id)->count();
-        if ($countGuru >= 1) {
-            $guru = Guru::where('mapel_id', $mapel->id)->delete();
-        } else {
-        }
+        // $mapel = Mapel::findorfail($id);
+        // $countJadwal = jadwal_belajar_mengajar::where('mapel_id', $mapel->id)->count();
+        // if ($countJadwal >= 1) {
+        //     $jadwal = Jadwal::where('mapel_id', $mapel->id)->delete();
+        // } else {
+        // }
+        // $countGuru = Guru::where('mapel_id', $mapel->id)->count();
+        // if ($countGuru >= 1) {
+        //     $guru = Guru::where('mapel_id', $mapel->id)->delete();
+        // } else {
+        // }
+        // $mapel->delete();
+
+        $mapel = DB::table('mapel')
+            // ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
+            ->join('guru_mengajar', 'mapel.id', '=', 'guru_mengajar.mapel_id')
+            ->join('jadwal_belajar_mengajar', 'guru_mengajar.id', '=', 'jadwal_belajar_mengajar.guru_mengajar_id')
+            ->where('mapel.id', $id);
+
         $mapel->delete();
         return redirect()->back()->with('warning', 'Data mapel berhasil dihapus! (Silahkan cek trash data mapel)');
     }

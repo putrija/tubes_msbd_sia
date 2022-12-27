@@ -20,8 +20,8 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama Mapel</th>
-                    <th>Jurusan</th>
-                    <th>Kelompok</th>
+                    <th>Kurikulum</th>
+                    {{-- <th>Kelompok</th> --}}
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -30,12 +30,12 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mapel }}</td>
-                    @if ( $data->paket_id == 4 )
+                    {{-- @if ( $data->paket_id == 4 )
                       <td>{{ 'Semua' }}</td>
                     @else
                       <td>{{ $data->paket->ket }}</td>
-                    @endif
-                    <td>{{ $data->kelompok }}</td>
+                    @endif --}}
+                    <td>{{ $data->nama_kurikulum }}</td>
                     <td>
                         <form action="{{ route('mapel.destroy', $data->id) }}" method="post">
                             @csrf
@@ -74,7 +74,7 @@
                   <label for="nama_mapel">Nama Mapel</label>
                   <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="paket_id">Jurusan</label>
                   <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Jurusan --</option>
@@ -82,13 +82,14 @@
                       <option value="{{ $data->id }}">{{ $data->ket }}</option>
                     @endforeach
                   </select>
-                </div>
+                </div> --}}
                 <div class="form-group">
-                    <label for="kelompok">Kelompok</label>
-                    <select id="kelompok" name="kelompok" class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
-                      <option value="">-- Pilih Kelompok Mapel --</option>
-                      <option value="A">Pelajaran Umum</option>
-                      <option value="B">Ekstrakulikuler</option>
+                    <label for="kurikulum_id">Kurikulum</label>
+                    <br>
+                    <select id="kurikulum_id" name="kurikulum_id" class="select2bs4 form-control @error('kurikulum_id') is-invalid @enderror">
+                      <option value="">-- Pilih Kurikulum --</option>
+                      <option value="1">Kurikulum K-13</option>
+                      <option value="2">Kurikulum Merdeka</option>
                     </select>
                 </div>
               </div>

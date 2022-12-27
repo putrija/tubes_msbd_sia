@@ -32,13 +32,13 @@ class GuruController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         //$detail_guru = DetailGuru::orderBy('guru_id')->get();
         $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
         $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
         $guru = Guru::all();
-        return view('admin.guru.index', compact('guru','jenis_ptk','status_kepegawaian','tugas_tambahan'));
+        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan'));
     }
 
     /**
@@ -82,7 +82,7 @@ class GuruController extends Controller
         $guru = Guru::create([
             'id_card_guru' => $request->id_card_guru,
             'nip' => $request->nip,
-            'status_kepegawaian_id' =>$request->status_kepegawaian_id,
+            'status_kepegawaian_id' => $request->status_kepegawaian_id,
             'jenis_ptk_id' => $request->jenis_ptk_id,
             'tugas_tambahan_id' => $request->tugas_tambahan_id,
             'nama_guru' => $request->nama_guru,
@@ -103,7 +103,7 @@ class GuruController extends Controller
             'email' => $request->email,
             'nik' => $request->nik,
             'no_kk' => $request->no_kk,
-            'nuptk' =>$request->nuptk,
+            'nuptk' => $request->nuptk,
             'foto' => $nameFoto,
         ]);
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
