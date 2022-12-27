@@ -23,7 +23,6 @@
                     {{-- <th>NIS</th> --}}
                     <th>Nama Siswa</th>
                     <th>Kelas Siswa</th>
-                    <th>tahun ajaran</th>
                     <th>Keterangan</th>
                     <th>Tanggal Pelanggaran</th>
                     <th>Sanksi</th>
@@ -37,8 +36,7 @@
 
                     <td>{{ $loop->iteration }}</td> 
                     <td>{{ $data->siswa->nama_siswa }}</td>
-                    <td>{{ $data->kelas->nama_kelas}}</td>
-                    <td>{{$data->tahun_ajaran->tahun_ajaran}}</td>
+                    <td>{{ $kelas->nama_kelas}}</td>
                     <td>{{$data->ket_pelanggaran}}</td>
                     <td>{{$data->tanggal_pelanggaran}}</td>
                     <td>{{$data->sanksi}}</td>

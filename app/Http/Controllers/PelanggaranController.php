@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-//use App\Kelas;
+use App\Kelas;
 use App\Models\Siswa;
 //use App\Models\Kelas_siswa;
 use App\Models\Pelanggaran;
@@ -21,8 +21,10 @@ class PelanggaranController extends Controller
     public function index()
     {
         $pelanggaran = Pelanggaran::OrderBy('id', 'asc')->get();
+        $siswa = Siswa::with(relations:'kelas')->get();
         //$kelas_siswa = Kelas_siswa::all();
-        $siswa = Siswa::all();
+        //$kelas = Kelas::join('kelas','kelas.id','=','siswa.kelas_id');
+        //$kelas = Kelas::orderBy('nama_kelas')->get();
         //$kelas = Kelas::all();
         //$tahun_ajaran = Tahun_ajaran::all();
         //by gideonsaran
@@ -70,7 +72,7 @@ class PelanggaranController extends Controller
             Pelanggaran::create([//panggil model pelanggaran dan panggil fungsi create
             //'nama_siswa' => $request->nama_siswa,
             'siswa_id' => $request->siswa_id,
-            'kelas_id' => $request->kelas_id,
+            // 'kelas_id' => $request->nama_kelas,
             //'tahun_ajaran_id'=>$request->tahun_ajaran_id,
             'ket_pelanggaran'=>$request->ket_pelanggaran,
             'tanggal_pelanggaran'=>$request->tanggal_pelanggaran,
