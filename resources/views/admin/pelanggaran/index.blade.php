@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                   <label for="paket_id">Jurusan</label>
-                  <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
+                  <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select">
                     <option value="">-- Pilih Paket Mapel --</option>
                     @foreach ($paket as $data)
                       <option value="{{ $data->id }}">{{ $data->ket }}</option>

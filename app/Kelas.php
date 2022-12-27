@@ -26,8 +26,8 @@ class Kelas extends Model
     // }
 
     //erli tambah relasi kepelanggaran
-    public function pelanggaran(){
-        return $this->hasMany('app\Models\Pelanggaran');
-    }
+    // public function pelanggaran(){
+    //     return $this->hasMany('app\Models\Pelanggaran');
+    // }
     protected $table = 'kelas';
 }

@@ -130,6 +130,8 @@ Route::middleware(['auth'])->group(function () {
     // ################### ROUTE PELANGGARAN #######################
     // Route::resource('/pelanggaran', 'ViolationController');
     Route::resource('/pelanggaran', 'PelanggaranController');
+    //Route::get('/pelanggaran', 'PelanggaranController@create');
+    Route::post('/pelanggaran/store', 'PelanggaranController@store');
     Route::get('/guru/pelanggaran', 'ViolationController@index');
     // ################### END ROUTE PELANGGARAN #######################
 
