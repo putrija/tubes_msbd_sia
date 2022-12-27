@@ -16,6 +16,7 @@ use App\Exports\GuruExport;
 use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\DetailGuru;
 use App\Models\JenisPtk;
 use App\Models\StatusKepegawaian;
 use App\Models\TugasTambahanGuru;
@@ -32,6 +33,7 @@ class GuruController extends Controller
      */
     public function index()
     {   
+        //$detail_guru = DetailGuru::orderBy('guru_id')->get();
         $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
         $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
@@ -102,7 +104,7 @@ class GuruController extends Controller
             'nik' => $request->nik,
             'no_kk' => $request->no_kk,
             'nuptk' =>$request->nuptk,
-            'foto' => $nameFoto
+            'foto' => $nameFoto,
         ]);
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pelanggaran', function (Blueprint $table) {
-            $table->foreign(['kelas_siswa_id'], 'pelanggaran_ibfk_1')->references(['id'])->on('kelas_siswa');
+            $table->foreign(['siswa_id'], 'pelanggaran_ibfk_1')->references(['id'])->on('siswa');
         });
     }
 

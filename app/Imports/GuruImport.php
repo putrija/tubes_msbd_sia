@@ -3,6 +3,9 @@
 namespace App\Imports;
 use App\Guru;
 use App\Mapel;
+use App\Models\JenisPtk;
+use App\Models\StatusKepegawaian;
+use App\Models\TugasTambahanGuru;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -20,20 +23,9 @@ class GuruImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-        $max = Guru::max('id_card');
-        $kode = $max + 1;
-        if (strlen($kode) == 1) {
-            $id_card = "0000" . $kode;
-        } else if (strlen($kode) == 2) {
-            $id_card = "000" . $kode;
-        } else if (strlen($kode) == 3) {
-            $id_card = "00" . $kode;
-        } else if (strlen($kode) == 4) {
-            $id_card = "0" . $kode;
-        } else {
-            $id_card = $kode;
-        }
-        $mapel = Mapel::where('nama_mapel',$row['Mapel'])->first();
+        $status_kepegawaian = StatusKepegawaian::where('ket_status_kepeg',$row['Status Kepegawaian'])->first();
+        $tugas_tambahan = TugasTambahanGuru::where('ket_tugas_tambahan',$row['Tugas Tambahan'])->first();
+        $jenis_ptk = JenisPtk::where('ket_jenis_ptk',$row['Jenis PTK'])->first();
 
         if ($row['Jenis_Kelamin'] == 'L') {
             $foto = 'uploads/guru/35251431012020_male.jpg';
@@ -42,16 +34,15 @@ class GuruImport implements ToModel, WithHeadingRow
         }
 
         return new Guru([
-            'id_card'  => $id_card,
+            'id_card_guru'  => ['id_card_guru'],
             'nama_guru' => $row['Nama_Guru'],
             'nip' => $row['NIP'],
             'jk' => $row['Jenis_Kelamin'],
-            //'mapel_id' => $mapel,
-            //'foto' => $foto,
-            'mapel_id' => $mapel->id,
             'tmp_lahir' => $row['Tempat_Lahir'],
             'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject ($row['Tanggal_Lahir']),
-            'status_kepegawaian' => $row['Status_Kepegawaian'],
+            'status_kepegawaian' => $status_kepegawaian->id,
+            'tugas_tambahan' => $tugas_tambahan->id,
+            'jenis_ptk' => $jenis_ptk->id,
             'hp'  => $row['No_Hp'],
             'telp' => $row['No_Tlp'],
             'agama' => $row['Agama'],
@@ -65,6 +56,8 @@ class GuruImport implements ToModel, WithHeadingRow
             'email' => $row['Email'],
             'nik' => $row['NIK'],
             'no_kk' => $row['No_KK'],
+            'nuptk' => $row['NUPTK'],
+            'kode_guru' => $row ['Kode Guru'],
             'foto' => $foto
             
         ]);

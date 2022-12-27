@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pelanggaran', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id');
-            $table->unsignedInteger('kelas_siswa_id')->index('siswa_id');
+            $table->unsignedInteger('siswa_id')->index('siswa_id');
             $table->text('ket_pelanggaran');
             $table->date('tanggal_pelanggaran');
             $table->text('sanksi');
