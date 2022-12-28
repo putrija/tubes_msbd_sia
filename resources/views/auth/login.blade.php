@@ -32,7 +32,7 @@
         </span>
       @enderror
     </div>
-    <div class="row mb-1">
+    {{-- <div class="row mb-1">
       <div class="col-7">
         <div class="icheck-primary">
           <input type="checkbox" id="remember" class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} disabled>
@@ -40,7 +40,7 @@
             {{ __('Remember Me') }}
           </label>
         </div>
-      </div>
+      </div> --}}
       <!-- /.col -->
       <div class="col-5">
         <button type="submit" id="btn-login"class="btn btn-primary btn-block" disabled>{{ __('Login') }} &nbsp; <i class="nav-icon fas fa-sign-in-alt"></i></button>
@@ -48,7 +48,7 @@
       <!-- /.col -->
     </div>
   </form>
-
+{{-- 
   <p class="mb-1">
     @if (Route::has('password.request'))
       <a class="text-center" href="{{ route('password.request') }}">
@@ -58,7 +58,7 @@
   </p>
   <p class="mb-0">
     <a class="text-center" href="{{ route('register') }}">Buat Akun Baru</a>
-  </p>
+  </p> --}}
 </div>
 @endsection
 @section('script')

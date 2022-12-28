@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('guru_mengajar', function (Blueprint $table) {
-            $table->foreign(['mapel_id'], 'guru_mengajar_ibfk_1')->references(['id'])->on('mapel');
+            $table->foreign(['mapel_id'], 'guru_mengajar_ibfk_1')->references(['id'])->on('mapel')->onDelete('cascade');;
             $table->foreign(['kelas_id'], 'guru_mengajar_ibfk_3')->references(['id'])->on('kelas');
             $table->foreign(['guru_id'], 'guru_mengajar_ibfk_2')->references(['id'])->on('guru');
             $table->foreign(['tahun_ajaran_id'], 'guru_mengajar_ibfk_4')->references(['id'])->on('tahun_ajaran');

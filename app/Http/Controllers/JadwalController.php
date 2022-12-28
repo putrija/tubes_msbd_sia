@@ -86,7 +86,7 @@ class JadwalController extends Controller
         $data = array(
             'hari' => $request->hari,
             'kelas_id' => $request->kelas_id,
-            'mapel_id' => $guru->mapel_id,
+            // 'mapel_id' => $guru->mapel_id,
             'guru_id' => $request->guru_id,
             'jam_mulai' => $request->jam_mulai,
             'jam_selesai' => $request->jam_selesai,
@@ -97,7 +97,7 @@ class JadwalController extends Controller
             ->select(
                 'jadwal_belajar_mengajar.id',
                 'jadwal_belajar_mengajar.hari',
-                'jadwal_belajar_mengajar.kelas_id',
+                'guru_mengajar.kelas_id',
                 'guru_mengajar.guru_id',
                 'guru_mengajar.mapel_id',
                 'jadwal_belajar_mengajar.jam_mulai',
@@ -108,7 +108,6 @@ class JadwalController extends Controller
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
             ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
-            ->join('kelas', 'jadwal_belajar_mengajar.kelas_id', '=', 'kelas.id')
             ->updateOrInsert(['jadwal_belajar_mengajar.id' => $id], $data);
 
         return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
@@ -132,7 +131,7 @@ class JadwalController extends Controller
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
             ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
             // ->where('jadwal_belajar_mengajar.id', $id)
-            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('jadwal_belajar_mengajar.kelas_id', $id)->get();
+            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('guru_mengajar.kelas_id', $id)->get();
         // ->first();
         return view('admin.jadwal.show', compact('jadwal', 'kelas'));
     }
@@ -148,7 +147,7 @@ class JadwalController extends Controller
         $id = Crypt::decrypt($id);
         // $jadwal = Jadwal::findorfail($id);
         $jadwal = DB::table('jadwal_belajar_mengajar')
-            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'jadwal_belajar_mengajar.kelas_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang')
+            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'guru_mengajar.kelas_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang')
             ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')

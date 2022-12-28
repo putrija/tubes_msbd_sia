@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('jadwal_belajar_mengajar', function (Blueprint $table) {
             $table->foreign(['ruang_id'], 'jadwal_belajar_mengajar_ibfk_4')->references(['id'])->on('ruang');
-            $table->foreign(['guru_mengajar_id'], 'jadwal_belajar_mengajar_ibfk_5')->references(['id'])->on('guru_mengajar');
+            $table->foreign(['guru_mengajar_id'], 'jadwal_belajar_mengajar_ibfk_5')->references(['id'])->on('guru_mengajar')->onDelete('cascade');;
         });
     }
 
