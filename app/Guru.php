@@ -14,13 +14,17 @@ class Guru extends Model
     {
         return $this->belongsTo('App\Models\JenisPtk')->withDefault();
     }
-    public function tugas_tambahan_gur()
+    public function tugas_tambahan_guru()
     {
         return $this->belongsTo('App\Models\TugasTambahanGuru')->withDefault();
     }
     public function status_kepegawaian()
     {
         return $this->belongsTo('App\Models\StatusKepegawaian')->withDefault();
+    }
+    public function detail_guru()
+    {
+        return $this->hasOne('App\Models\DetailGuru')->withDefault();
     }
 
     protected $table = 'guru';

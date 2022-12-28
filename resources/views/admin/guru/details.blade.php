@@ -170,67 +170,67 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Tanggal CPNS</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->tanggal_cpns }}" disabled>
+          <input class="form-control" placeholder="{{$guru->tanggal_cpns }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">SK CPNS</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->sk_cpns }}" disabled>
+          <input class="form-control" placeholder="{{$guru->sk_cpns }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">SK Pengangkatan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->sk_pengangkatan }}" disabled>
+          <input class="form-control" placeholder="{{$guru->sk_pengangkatan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">TMT Penagangkatan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->tmt_pengangkatan }}" disabled>
+          <input class="form-control" placeholder="{{$guru->tmt_pengangkatan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Lembaga Pendidikan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->lembaga_pendidikan }}" disabled>
+          <input class="form-control" placeholder="{{$guru->lembaga_pendidikan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Pangkat Golongan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->pangkat_golongan }}" disabled>
+          <input class="form-control" placeholder="{{$guru->pangkat_golongan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Nama Ibu Kandung</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->nama_ibu_kandung }}" disabled>
+          <input class="form-control" placeholder="{{$guru->nama_ibu_kandung }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Sumber Gaji</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->sumber_gaji }}" disabled>
+          <input class="form-control" placeholder="{{$guru->sumber_gaji }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Status Perkawinan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->status_perkawinan }}" disabled>
+          <input class="form-control" placeholder="{{$guru->status_perkawinan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Nama Suami/Istri</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->nama_suami_istri }}" disabled>
+          <input class="form-control" placeholder="{{$guru->nama_suami_istri }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">NIP Suami/Istri</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $guru->nip_suami_istri }}" disabled>
+          <input class="form-control" placeholder="{{$guru->nip_suami_istri }}" disabled>
         </div>
       </div>
       <div class="form-group row">

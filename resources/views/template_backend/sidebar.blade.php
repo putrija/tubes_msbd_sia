@@ -179,6 +179,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview" id="liViewTrash">
+                        <a href="#" class="nav-link" id="ViewTrash">
+                            <i class="nav-icon fas fa-archive"></i>
+                            <p>
+                                Tabel Log
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ml-4">
+                            <li class="nav-item">
+                                <a href="{{ route('log_guru.index') }}" class="nav-link" id="LogGuru">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('log_siswa.index') }}" class="nav-link" id="LogSiswa">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Siswa</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>    
                     {{-- <li class="nav-item">
                         <a href="{{ route('admin.pengumuman') }}" class="nav-link" id="Pengumuman">
                             <i class="nav-icon fas fa-clipboard"></i>

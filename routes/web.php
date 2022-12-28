@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogGuruController;
 use App\Http\Controllers\PembagianKelasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -126,7 +127,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/siswa', 'SiswaController');
     Route::get('/mapel/getMapelJson', 'MapelController@getMapelJson');
     Route::resource('/mapel', 'MapelController');
-    
+
+    Route::resource('/log_guru', 'LogGuruController');
+    Route::resource('/log_siswa', 'LogSiswaController');
+
     // ################### ROUTE PELANGGARAN #######################
     // Route::resource('/pelanggaran', 'ViolationController');
     Route::resource('/pelanggaran', 'PelanggaranController');

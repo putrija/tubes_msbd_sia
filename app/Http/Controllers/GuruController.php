@@ -33,12 +33,13 @@ class GuruController extends Controller
      */
     public function index()
     {
-        //$detail_guru = DetailGuru::orderBy('guru_id')->get();
+        // $detail_guru = DetailGuru::orderBy('guru_id')->get();
         $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
         $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
         $guru = Guru::all();
-        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan'));
+        $detail_guru = DetailGuru::all();
+        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan','detail_guru'));
     }
 
     /**
@@ -119,6 +120,7 @@ class GuruController extends Controller
     {
         $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
+        $detail_guru = DetailGuru::all();
         return view('admin.guru.details', compact('guru'));
     }
 
