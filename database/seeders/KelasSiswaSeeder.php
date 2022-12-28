@@ -30,7 +30,7 @@ class KelasSiswaSeeder extends Seeder
             [
                 'id' => 2,
                 'siswa_id' => '2',
-                'kelas_id' => '1',
+                'kelas_id' => '2',
                 'tahun_ajaran_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
