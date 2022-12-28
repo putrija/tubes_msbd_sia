@@ -18,7 +18,8 @@
   <body>
     <div class="container">
         <div class="row">
-        <table class="table table-bordered">
+          <div class="container_table" style="max-width:100%; overflow-x:scroll;">
+        <table style="min-width: 1500px;" class="table table-bordered">
             <thead style="background-color: rgb(200, 219, 190)">
               <tr>
                 <th scope="col">Id</th>
@@ -56,6 +57,7 @@
               </tr>
             </tbody>
           </table>
+        </div>
         </div>
     </div>
 
