@@ -26,16 +26,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($jadwal as $data)
+                @foreach ($jadwal as $result => $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->hari }}</td>
+                    <td>{{ $data->hari }}</td>   
                     <td>
-                        <h5 class="card-title">{{ $data->mapel->nama_mapel }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ $data->guru->nama_guru }}</small></p>
+                        <h5 class="card-title">{{ $data->nama_mapel }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ $data->nama_guru }}</small></p>
                     </td>
                     <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
-                    <td>{{ $data->ruang->nama_ruang }}</td>
+                    <td>{{ $data->nama_ruang }}</td>
                     <td>
                       <form action="{{ route('jadwal.destroy', $data->id) }}" method="post">
                         @csrf

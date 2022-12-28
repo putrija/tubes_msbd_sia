@@ -83,17 +83,29 @@ class UsersSeeder extends Seeder
             'email' => 'guru1@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'Guru',
-            'id_card' => '00001',
+            'id_card_guru' => '00001',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         DB::table('users')->insert([
             'id' => 4,
-            'name' => 'Kepala Sekolah',
-            'email' => 'kepalasekolah@gmail.com',
+            'name' => 'Bu Mawar',
+            'email' => 'guru2@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'Guru',
+            'id_card_guru' => '00002',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        DB::table('users')->insert([
+            'id' => 5,
+            'name' => 'Cikgu Besar',
+            'email' => 'guru3@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'Kepala Sekolah',
+            'id_card_guru' => '00003',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

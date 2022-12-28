@@ -168,7 +168,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('rapot-kelas') }}" class="nav-link" id="Rapot">
                                     <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Nilai Rapot</p>
+                                    <p>Nilai Rapor</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -290,7 +290,7 @@
                     <li class="nav-item">
                         <a href="{{ route('rapot.siswa') }}" class="nav-link" id="RapotSiswa">
                             <i class="fas fa-file-alt nav-icon"></i>
-                            <p>Rapot</p>
+                            <p>Rapor</p>
                         </a>
                     </li>
                 @else

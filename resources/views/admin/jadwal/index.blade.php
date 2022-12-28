@@ -132,7 +132,7 @@
                 </select>
                 </div>
                 <div class="form-group">
-                  <label for="kelas_id">Kelas</label>
+                  <label for="kelas_id">Kelas</label><br>
                   <select id="kelas_id" name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kelas --</option>
                       @foreach ($kelas as $data)
@@ -141,11 +141,11 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="guru_id">Kode Guru</label>
+                  <label for="guru_id">Kode Guru</label><br>
                   <select id="guru_id" name="guru_id" class="form-control @error('guru_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kode Guru --</option>
                       @foreach ($guru as $data)
-                          <option value="{{ $data->id }}">{{ $data->kode }}</option>
+                          <option value="{{ $data->id }}">{{ $data->kode_guru }}</option>
                       @endforeach
                   </select>
                 </div>
@@ -160,7 +160,7 @@
                   <input type='time' id="jam_selesai" name='jam_selesai' class="form-control @error('jam_selesai') is-invalid @enderror" placeholder="{{ Date('H:i') }}">
                 </div>
                 <div class="form-group">
-                  <label for="ruang_id">Ruang Kelas</label>
+                  <label for="ruang_id">Ruang Kelas</label><br>
                   <select id="ruang_id" name="ruang_id" class="form-control @error('ruang_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Ruang Kelas --</option>
                       @foreach ($ruang as $data)

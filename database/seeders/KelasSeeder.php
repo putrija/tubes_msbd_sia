@@ -22,7 +22,6 @@ class KelasSeeder extends Seeder
                 'id' => 1,
                 'nama_kelas' => '10 IPA 1',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -33,7 +32,6 @@ class KelasSeeder extends Seeder
                 'id' => 2,
                 'nama_kelas' => '10 IPA 2',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -44,7 +42,6 @@ class KelasSeeder extends Seeder
                 'id' => 3,
                 'nama_kelas' => '10 IPA 3',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -55,7 +52,6 @@ class KelasSeeder extends Seeder
                 'id' => 4,
                 'nama_kelas' => '10 IPS 1',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -66,7 +62,6 @@ class KelasSeeder extends Seeder
                 'id' => 5,
                 'nama_kelas' => '10 IPS 2',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -77,7 +72,6 @@ class KelasSeeder extends Seeder
                 'id' => 6,
                 'nama_kelas' => '10 IPS 3',
                 'ket_kelas' => '10',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -90,7 +84,6 @@ class KelasSeeder extends Seeder
                 'id' => 7,
                 'nama_kelas' => '11 IPA 1',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -101,7 +94,6 @@ class KelasSeeder extends Seeder
                 'id' => 8,
                 'nama_kelas' => '11 IPA 2',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -112,7 +104,6 @@ class KelasSeeder extends Seeder
                 'id' => 9,
                 'nama_kelas' => '11 IPA 3',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -123,7 +114,6 @@ class KelasSeeder extends Seeder
                 'id' => 10,
                 'nama_kelas' => '11 IPS 1',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -134,7 +124,6 @@ class KelasSeeder extends Seeder
                 'id' => 11,
                 'nama_kelas' => '11 IPS 2',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -145,7 +134,6 @@ class KelasSeeder extends Seeder
                 'id' => 12,
                 'nama_kelas' => '11 IPS 3',
                 'ket_kelas' => '11',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -158,7 +146,6 @@ class KelasSeeder extends Seeder
                 'id' => 13,
                 'nama_kelas' => '12 IPA 1',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -169,7 +156,6 @@ class KelasSeeder extends Seeder
                 'id' => 14,
                 'nama_kelas' => '12 IPA 2',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -180,7 +166,6 @@ class KelasSeeder extends Seeder
                 'id' => 15,
                 'nama_kelas' => '12 IPA 3',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -191,7 +176,6 @@ class KelasSeeder extends Seeder
                 'id' => 16,
                 'nama_kelas' => '12 IPS 1',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -202,7 +186,6 @@ class KelasSeeder extends Seeder
                 'id' => 17,
                 'nama_kelas' => '12 IPS 2',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -213,7 +196,6 @@ class KelasSeeder extends Seeder
                 'id' => 18,
                 'nama_kelas' => '12 IPS 3',
                 'ket_kelas' => '12',
-                'kurikulum_id' => '1',
                 'jurusan_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

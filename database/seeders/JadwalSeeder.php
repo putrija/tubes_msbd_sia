@@ -20,7 +20,6 @@ class JadwalSeeder extends Seeder
             [
                 'id' => 1,
                 'guru_mengajar_id' => '1',
-                'kelas_id' => '1',
                 'ruang_id' => '1',
                 'hari' => 'Senin',
                 'jam_mulai' => '07:00',
