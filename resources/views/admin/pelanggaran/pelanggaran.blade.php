@@ -78,6 +78,7 @@
     </div>
     <div class="modal-body">
         <form action="{{ route('pelanggaran.store') }}" method="post">
+          {{-- maksud kode routenya aku mau ambil variabel pelanggaran dari kontroller pelanggaran yang ada difungsi store --}}
             @csrf
             <div class="row">
               <div class="col-md-12">

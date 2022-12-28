@@ -10,9 +10,9 @@ class Tahun_ajaran extends Model
     //use HasFactory;
     protected $fillable = ['tahun_ajaran','tanggal_mulai','tanggal_berakhir'];
 
-    public function pelanggaran(){
-        return $this->hasMany('app\Models\Pelanggaran');
-    }
+    // public function pelanggaran(){
+    //     return $this->hasMany('app\Models\Pelanggaran');
+    // }
 
     protected $table = 'tahun_ajaran';
 }

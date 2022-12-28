@@ -92,6 +92,78 @@
                                     <p>Data User</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Guru Mapel</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Kelas Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Jenis PTK</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Jurusan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Kurikulum</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Data Ruangan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Semester</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Status Kepegawaian Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Status Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Tahun Ajaran</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-book nav-icon"></i>
+                                    <p>Data Tugas Tambahan Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Wali Kelas</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     @if (Auth::user()->role == "Admin")
