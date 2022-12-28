@@ -18,22 +18,27 @@
   <body>
     <div class="container">
         <div class="row">
-        <table class="table table-bordered">
+            <div class="container_table" style="max-width:100%; overflow-x:scroll;">
+        <table style="min-width: 1500px;" class="table table-bordered">
             <thead style="background-color: rgb(200, 219, 190)">
               <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nama Guru Old</th>
-                <th scope="col">Nama Guru New</th>
-                <th scope="col">Tempat Lahir Old</th>
-                <th scope="col">Tempat Lahir New</th>
-                <th scope="col">Nomor HP Old</th>
-                <th scope="col">Nomor HP New</th>
-                <th scope="col">Nomor Telepon Old</th>
-                <th scope="col">Nomor Telepon New</th>
+                <th scope="col">Nama Siswa Old</th>
+                <th scope="col">Nama Siswa New</th>
                 <th scope="col">Jenis Kelamin Old</th>
                 <th scope="col">Jenis Kelamin New</th>
+                <th scope="col">Tempat Lahir Old</th>
+                <th scope="col">Tempat Lahir New</th>
                 <th scope="col">Tanggal Lahir Old</th>
                 <th scope="col">Tanggal Lahir New</th>
+                <th scope="col">Alamat Old</th>
+                <th scope="col">Alamat New</th>
+                <th scope="col">NISN Old</th>
+                <th scope="col">NISN New</th>
+                <th scope="col">Kelas Id Old</th>
+                <th scope="col">Kelas Id New</th>
+                <th scope="col">Nomor Telepon Old</th>
+                <th scope="col">Nomor Telepon New</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -56,6 +61,7 @@
               </tr>
             </tbody>
           </table>
+            </div>
         </div>
     </div>
 

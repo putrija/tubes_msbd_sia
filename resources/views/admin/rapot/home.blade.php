@@ -11,36 +11,32 @@
         <h3 class="card-title">Nilai Rapor</h3>
       </div>
       <!-- /.card-header -->
-      <br><br>
+      <br>
      <!-- Drop Down Siswa -->
-     <div class="row">
-      <div class = "container">
-      <div class="col-6">
-        <div class = "mb-3">
-        <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Nama Siswa">
-      </div>
-      </div>
-      <div class="col-6">
-        <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran">
-      </div>
-      </div>
-    </div>    
-    </div>
-    <div class="row">
-      <div class = "container">
-      <div class="col-6">
-        <div class = "mb-3">
-        <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Nama Siswa">
-      </div>
-      </div>
-      <div class="col-6">
-        <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran">
-      </div>
-      </div>
-    </div>    
-    </div>
+     <div class="container ml-2 mb-5">
+        <div class="row justify-content-around">
+            <label>Nama Siswa:</label>
+          <div class="col-4">
+             <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Nama Siswa">
+          </div>
+             <label>Tahun Ajaran:</label>
+          <div class="col-4">
+              <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran">
+          </div>
+        </div>
+        <br>
+    {{-- <d
+        {{-- <div class="row justify-content-around">
+          <label>Kelas: </label>
+          <div class="col-4">
+             <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Nama Siswa">
+          </div>
+          <label>Mapel: </label>
+          <div class="col-4">
+              <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran">
+          </div>
+        </div> --}}
+     </div>
     <!-- /.card -->
 </div>
 @endsection
