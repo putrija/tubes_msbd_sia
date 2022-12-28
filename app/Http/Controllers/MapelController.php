@@ -142,6 +142,11 @@ class MapelController extends Controller
             ->where('mapel.id', $id);
 
         $mapel->delete();
+
+        $mapel2 = DB::table('mapel')
+            ->where('mapel.id', $id);
+        $mapel2->delete();
+
         return redirect()->back()->with('warning', 'Data mapel berhasil dihapus! (Silahkan cek trash data mapel)');
     }
 
