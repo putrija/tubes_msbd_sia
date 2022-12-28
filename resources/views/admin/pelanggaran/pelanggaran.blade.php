@@ -85,15 +85,25 @@
                   <label for="siswa_id">nomor induk siswa</label>
                   <input type="text" id="siswa_id" name="siswa_id" class="form-control @error('nama_siswa') is-invalid @enderror" placeholder="{{ __('Nama siswa') }}">
                 </div> --}}
-                <div class="form-group">
+
+                {{-- <div class="form-group">
                     {{-- theSelect --}}
-                      <label for="nama_siswa">nama siswa</label><br>
+                      {{--<label for="nama_siswa">nama siswa</label><br>
                       <select id="siswa_id" name="siswa_id" class="form-control">
                           <option value="">-- Pilih siswa yang melakukan pelanggaran --</option>
                           @foreach ($siswa as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_siswa }}</option>
                           @endforeach
                       </select>
+                </div> --}}
+                <div class="form-group">
+                  <label for="nama_siswa">nama siswa</label><br>
+                  <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
+                    <option value="">--- pilih nama siswa ---</option>
+                    @foreach ($siswa as $data)
+                      <option value="{{ $data->id }}">{{ $data->nama_siswa }}</option>
+                    @endforeach
+                  </select>
                 </div>
                 {{--<div class="form-group">
                   <label for="nama_kelas">Kelas siswa</label>
@@ -146,10 +156,16 @@
 </div>
 @endsection
 @section('script')
+  {{-- script js untuk live search --}}
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2();
+    });
+
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
     $("#DataPelanggaran").addClass("active");
-		$(".theSelect").select2();//untuk select option 
+		//$(".theSelect").select2();//untuk select option 
   </script>
 @endsection
