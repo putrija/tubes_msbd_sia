@@ -238,7 +238,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('rapot-kelas') }}" class="nav-link" id="Rapot">
+                                <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Rapor</p>
                                 </a>

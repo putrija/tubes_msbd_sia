@@ -151,7 +151,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sikap-kelas', 'SikapController@create')->name('sikap-kelas');
     Route::get('/sikap-siswa/{id}', 'SikapController@edit')->name('sikap-siswa');
     Route::get('/sikap-show/{id}', 'SikapController@sikap')->name('sikap-show');
-    Route::get('/rapot-kelas', 'RapotController@create')->name('rapot-kelas');
+    Route::get('/rapor', 'RapotController@create')->name('rapor');
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
     Route::get('/predikat', 'NilaiController@create')->name('predikat');
