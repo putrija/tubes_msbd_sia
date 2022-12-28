@@ -23,7 +23,7 @@ class GuruExport implements FromCollection, WithHeadings, WithStyles
     public function headings(): array
     {
         return [
-            'Nama', 'NIP','Kode Guru', 'Jenis Kelamin', 'Tanggal Lahir','Tempat Lahir','Status Kepegawaian', 'Jenis PTK', 'Tugas_Tambahan','No Handphone', 'No Telepon','Agama','Alamat','RT','RW', 'Dusu', 'Desa Kelurahan','Kecamatan','Kode Pos', 'Email', 'NIK','NO KK', 'Foto', 'SK CPNS',
+            'Nama', 'NIP','Kode Guru', 'Jenis Kelamin', 'Tanggal Lahir','Tempat Lahir','Status Kepegawaian', 'Jenis PTK', 'Tugas_Tambahan','No Handphone', 'No Telepon','Agama','Alamat','RT','RW', 'Dusun', 'Desa Kelurahan','Kecamatan','Kode Pos', 'Email', 'NIK','NO KK', 'Foto', 'SK CPNS',
             'Tanggal CPNS','SK Pengangkatan','TMT Pengangkatan','Lembaga Pengangkatan','Pangkat Golongan','Sumber Gaji','Nama Ibu Kandung','Status Perkawinan','Nama Suami/Istri','Nip Suami/Istri','Pekerjaan Suami/Istri','TMT PNS','Sudah Lisensi Kepsek','Pernah Diklat Pengawasan',
             'Keahlian Braille','Keahlian Bahasa Isyarat','NPWP','Nama Wajib Pajak','Kewarganegaraan','Bank','Nomor Rekening Bank', 'Rekening Atas Nama','Karpeg','Karis Karsu','Lintang','Bujur' 
 
@@ -36,7 +36,7 @@ class GuruExport implements FromCollection, WithHeadings, WithStyles
                      ->leftjoin('jenis_ptk','jenis_ptk.id','=','guru.jenis_ptk_id')
                      ->leftjoin('tugas_tambahan_guru','tugas_tambahan_guru.id','=','guru.tugas_tambahan_id')
                      ->join('detail_guru','guru.id','=','detail_guru.guru_id')
-                     ->select('guru.nama_guru', 'guru.nip', 'guru.kode_guru', 'guru.jk','guru.tgl_lahir','guru.tmp_lahir', 'status_kepegawaian_guru.ket_status_kepeg','jenis_ptk.ket_jenis_ptk','tugas_tambahan_guru.ket_tugas_tambahan', 'guru.hp','guru.telp', 'guru.agama', 'guru.alamat', 'guru.rt','guru.rw','guru.nama_dusun','guru.desa_kelurahan','guru.kecamatan','guru.kode_pos','guru.email','guru.nik','guru.no_kk','guru.foto','detail_guru.sk_cpns',                   
+                     ->select('guru.nama_guru','guru.id_card_guru', 'guru.nip', 'guru.kode_guru', 'guru.jk','guru.tgl_lahir','guru.tmp_lahir', 'status_kepegawaian_guru.ket_status_kepeg','jenis_ptk.ket_jenis_ptk','tugas_tambahan_guru.ket_tugas_tambahan', 'guru.hp','guru.telp', 'guru.agama', 'guru.alamat', 'guru.rt','guru.rw','guru.nama_dusun','guru.desa_kelurahan','guru.kecamatan','guru.kode_pos','guru.email','guru.nik','guru.no_kk','guru.foto','detail_guru.sk_cpns',                   
                      'detail_guru.tanggal_cpns',              
                      'detail_guru.sk_pengangkatan',           
                      'detail_guru.tmt_pengangkatan',          
