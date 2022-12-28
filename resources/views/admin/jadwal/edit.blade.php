@@ -19,11 +19,9 @@
           <div class="row">
             <input type="hidden" name="jadwal_id" value="{{ $jadwal->id }}">
             <div class="col-md-6">
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="hari_id">Hari</label>
                 <select id="hari_id" name="hari" class="form-control">
-                  <option value="">-- Pilih Hari --</option>
-                  <option value="">-- Pilih Hari --</option>
                   <option value="Senin">Senin</option>
                   <option value="Selasa">Selasa</option>
                   <option value="Rabu">Rabu</option>
@@ -31,6 +29,47 @@
                   <option value="Jumat">Jumat</option>
                   <option value="Sabtu">Sabtu</option>
                 </select>
+              </div> --}}
+              <div class="form-group">
+                <label for="hari">Hari</label>
+                <select id="hari" name="hari" class="select2bs4 form-control @error('hari') is-invalid @enderror">
+                  <option value="">-- Pilih Kelas --</option>
+                  <option value="Senin"
+                      @if ($jadwal->hari == 'Senin')
+                          selected
+                      @endif
+                  >Senin</option>
+                  <option value="Selasa"
+                      @if ($jadwal->hari == 'Selasa')
+                          selected
+                      @endif
+                  >Selasa</option>
+                  <option value="Rabu"
+                      @if ($jadwal->hari == 'Rabu')
+                          selected
+                      @endif
+                  >Rabu</option>
+                  <option value="Kamis"
+                      @if ($jadwal->hari == 'Kamis')
+                          selected
+                      @endif
+                  >Kamis</option>
+                  <option value="Jumat"
+                      @if ($jadwal->hari == 'Jumat')
+                          selected
+                      @endif
+                  >Jumat</option>
+                  <option value="Sabtu"
+                      @if ($jadwal->hari == 'Sabtu')
+                          selected
+                      @endif
+                  >Sabtu</option>
+                  <option value="Minggu"
+                      @if ($jadwal->hari == 'Minggu')
+                          selected
+                      @endif
+                  >Minggu</option>
+              </select>
               </div>
               <div class="form-group">
                 <label for="kelas_id">Kelas</label>
@@ -56,7 +95,7 @@
                       @if ($jadwal->guru_id == $data->id)
                         selected
                       @endif
-                    >{{ $data->kode }}</option>
+                    >{{ $data->kode_guru }}</option>
                   @endforeach
                 </select>
               </div>

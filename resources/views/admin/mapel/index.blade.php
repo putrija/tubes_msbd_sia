@@ -21,7 +21,6 @@
                     <th>No.</th>
                     <th>Nama Mapel</th>
                     <th>Kurikulum</th>
-                    {{-- <th>Kelompok</th> --}}
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -30,11 +29,6 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mapel }}</td>
-                    {{-- @if ( $data->paket_id == 4 )
-                      <td>{{ 'Semua' }}</td>
-                    @else
-                      <td>{{ $data->paket->ket }}</td>
-                    @endif --}}
                     <td>{{ $data->nama_kurikulum }}</td>
                     <td>
                         <form action="{{ route('mapel.destroy', $data->id) }}" method="post">
