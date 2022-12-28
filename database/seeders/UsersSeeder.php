@@ -83,7 +83,7 @@ class UsersSeeder extends Seeder
             'email' => 'guru1@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'Guru',
-            'id_card' => '00001',
+            'id_card_guru' => '00001',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
