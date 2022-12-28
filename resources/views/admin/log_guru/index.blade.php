@@ -1,5 +1,5 @@
 @extends('template_backend.home')
-@section('heading', 'Details Guru')
+@section('heading', 'Log Guru')
 @section('page')
 <li class="breadcrumb-item active"><a href="{{ route('guru.index') }}">Guru</a></li>
   <li class="breadcrumb-item active">Log Guru</li>
