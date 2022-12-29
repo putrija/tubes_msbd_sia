@@ -21,7 +21,7 @@
                     <th>No.</th>
                     <th>Nama Guru</th>
                     <th>Mata Pelajaran</th>
-                    <th>Nama Kelas</th>
+                   
                     <th>Tahun Ajaran</th>
                     <th>Aksi</th>
                 </tr>
@@ -78,33 +78,23 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama_siswa">Nama Guru</label><br>
+                    <label for="nama_siswa">Mata Pelajaran</label><br>
                     <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
-                      <option value="">--- Pilih Nama Guru ---</option>
-                      @foreach ($guru as $data)
-                        <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
+                      <option value="">--- Pilih Mata Pelajaran ---</option>
+                      @foreach ($mapel as $data)
+                        <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
                       @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="nama_siswa">Nama Guru</label><br>
                     <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
-                      <option value="">--- Pilih Nama Guru ---</option>
-                      @foreach ($guru as $data)
+                      <option value="">--- Pilih Tahun Ajaran ---</option>
+                      @foreach ($tahun_ajaran as $data)
                         <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
                       @endforeach
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label for="nama_siswa">Nama Guru</label><br>
-                    <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
-                      <option value="">--- Pilih Nama Guru ---</option>
-                      @foreach ($guru as $data)
-                        <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-
 
             </div>
         </div>
