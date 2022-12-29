@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GuruMengajar;
 use App\Models\Guru;
 use App\Mapel;
+use App\Models\Tahun_ajaran;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
@@ -21,7 +22,8 @@ class GuruMengajarController extends Controller
         $guru_mapel = GuruMengajar::all();
         $guru = Guru::all();
         $mapel = Mapel::all();
-        return view('admin.guru_mapel.index', compact('guru_mapel','guru'));//masukkan alamat dari filenya lengkap, biar ketemu hiks
+        $tahun_ajaran = Tahun_ajaran::all();
+        return view('admin.guru_mapel.index', compact('guru_mapel','guru','mapel','tahun_ajaran'));//masukkan alamat dari filenya lengkap, biar ketemu hiks
     }
 
     /**
@@ -43,6 +45,14 @@ class GuruMengajarController extends Controller
     public function store(Request $request)
     {
         //
+        GuruMengajar::create([//panggil model pelanggaran dan panggil fungsi create
+            'guru_id' => $request->guru_id,
+            'mapel_id'=>$request->mapel_id,
+            'tahun_ajaran_id'=>$request->tahun_ajaran_id
+            ]);
+            // dd($request->all());
+
+        return redirect()->back()->with('success', 'Data pelanggaran berhasil disimpan!');
     }
 
     /**

@@ -143,6 +143,7 @@ Route::middleware(['auth'])->group(function () {
 
     //################## ROUTE GURU MENGAJAR MAPEL#######################
     Route::resource('/guru_mapel', 'GuruMengajarController');
+    Route::post('/guru_mapel/store', 'GuruMengajarController@store');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
 
     Route::get('/jadwal/view/json', 'JadwalController@view');
