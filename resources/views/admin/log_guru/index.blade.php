@@ -39,8 +39,9 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($log_guru as $data)
               <tr>
-                <th scope="row"></th>
+                <th scope="row">{{ $data->id }}</th>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -55,6 +56,7 @@
                 <td></td>
                 <td></td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

@@ -32,6 +32,7 @@ return new class extends Migration
             $table->integer('kelas_id_new')->nullable();
             $table->string('telp_old', 15)->nullable();
             $table->string('telp_new', 15)->nullable();
+            $table->string('status', 50)->nullable();
             $table->timestamps();
         });
     }
