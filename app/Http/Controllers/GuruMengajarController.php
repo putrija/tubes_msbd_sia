@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GuruMengajar;
 use App\Models\Guru;
+use App\Mapel;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
