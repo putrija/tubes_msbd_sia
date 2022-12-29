@@ -18,12 +18,11 @@ return new class extends Migration
         DB::unprepared('CREATE TRIGGER `insert_log_guru` AFTER INSERT ON `guru`
         FOR EACH ROW BEGIN
 
-            INSERT INTO `log_guru` (`nama_guru_old`,`nama_guru_new`, `tmp_lahir_old`, `tmp_lahir_new`,`hp_old`, `hp_new`, `telp_old`, 
-        `telp_new`, `jk_old`, `jk_new`,`tgl_lahir_old`,`tgl_lahir_new`)
+            INSERT INTO `log_guru` (`nama_guru_new`,  `tmp_lahir_new`, `hp_new`,  
+        `telp_new`, `jk_new`,`tgl_lahir_new`, `status`)
 	        VALUES ( NEW.nama_guru, NEW.tmp_lahir,
         NEW.hp, NEW.telp, NEW.jk, NEW.tgl_lahir, "Insert");
             END');
-
     }
 
     /**

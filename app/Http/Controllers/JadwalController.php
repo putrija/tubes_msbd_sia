@@ -93,6 +93,23 @@ class JadwalController extends Controller
             'ruang_id' => $request->ruang_id,
         );
 
+        // $result = DB::table('jadwal_belajar_mengajar')
+        //     ->select(
+        //         'jadwal_belajar_mengajar.id',
+        //         'jadwal_belajar_mengajar.hari',
+        //         'guru_mengajar.kelas_id',
+        //         'guru_mengajar.guru_id',
+        //         'guru_mengajar.mapel_id',
+        //         'jadwal_belajar_mengajar.jam_mulai',
+        //         'jadwal_belajar_mengajar.jam_selesai',
+        //         'jadwal_belajar_mengajar.ruang_id'
+        //     )
+        //     ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
+        //     ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+        //     ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+        //     ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
+        //     ->updateOrInsert(['jadwal_belajar_mengajar.id' => $id], $data);
+
         $result = DB::table('jadwal_belajar_mengajar')
             ->select(
                 'jadwal_belajar_mengajar.id',
@@ -108,7 +125,7 @@ class JadwalController extends Controller
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
             ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
-            ->updateOrInsert(['jadwal_belajar_mengajar.id' => $id], $data);
+            ->upsert(['jadwal_belajar_mengajar.id' => $id], $data);
 
         return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
     }
