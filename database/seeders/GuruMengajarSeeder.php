@@ -26,5 +26,16 @@ class GuruMengajarSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ]
         );
+
+        DB::table('guru_mengajar')->insert(
+            [
+                'id' => 2,
+                'guru_id' => '2',
+                'mapel_id' => '2',
+                'tahun_ajaran_id' => '2',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]
+        );
     }
 }

@@ -21,6 +21,7 @@ use App\Exports\JadwalExport;
 use App\Imports\JadwalImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\GuruMengajar;
 use App\Models\jadwal_belajar_mengajar;
 
 class JadwalController extends Controller
@@ -34,8 +35,18 @@ class JadwalController extends Controller
     {
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
         $ruang = Ruang::all();
-        $guru = Guru::OrderBy('kode_guru', 'asc')->get();
-        return view('admin.jadwal.index', compact('kelas', 'guru', 'ruang'));
+        $guru = GuruMengajar::all();
+        $guru_mengajar = DB::table('guru_mengajar')
+            ->select(
+                'guru_mengajar.id',
+                'guru.nama_guru',
+                'mapel.nama_mapel',
+            )
+            ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+            ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+            ->get();
+
+        return view('admin.jadwal.index', compact('kelas', 'guru', 'ruang', 'guru_mengajar'));
     }
 
     /**
@@ -55,82 +66,112 @@ class JadwalController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function store2(Request $request) //untuk tambahkan data jadwal
-    // {
-    //     $data = array();
-    //     $data['hari'] = $request->hari;
-    //     // $data['kelas_id'] = $request->kelas_id;
-    //     $data['guru_id'] = $request->guru_id;
-    //     $data['jam_mulai'] = $request->jam_mulai;
-    //     $data['jam_selesai'] = $request->jam_selesai;
-    //     $data['ruang_id'] = $request->ruang_id;
-
-
-    //     DB::table('jadwal_belajar_mengajar')
-    //         ->select(
-    //             'jadwal_belajar_mengajar.id',
-    //             'jadwal_belajar_mengajar.hari',
-    //             'guru_mengajar.kelas_id',
-    //             'guru_mengajar.guru_id',
-    //             'guru_mengajar.mapel_id',
-    //             'jadwal_belajar_mengajar.jam_mulai',
-    //             'jadwal_belajar_mengajar.jam_selesai',
-    //             'jadwal_belajar_mengajar.ruang_id'
-    //         )
-    //         ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
-    //         ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
-    //         ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
-    //         ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
-    //         ->insert($data);
-
-    //     return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
-    // }
-
-    public function store(Request $request)
+    public function store2(Request $request) //untuk tambahkan data jadwal
     {
-        $this->validate($request, [
-            'hari' => 'required',
-            // 'kelas_id' => 'required',
-            'guru_id' => 'required',
-            'jam_mulai' => 'required',
-            'jam_selesai' => 'required',
-            'ruang_id' => 'required',
-        ]);
+        $data = array();
+        $data['hari'] = $request->hari;
+        $data['kelas_id'] = $request->kelas_id;
+        $data['guru_mengajar_id'] = $request->guru_mengajar_id;
+        $data['jam_mulai'] = $request->jam_mulai;
+        $data['jam_selesai'] = $request->jam_selesai;
+        $data['ruang_id'] = $request->ruang_id;
 
-        $guru = Guru::findorfail($request->guru_id);
-        // jadwal_belajar_mengajar::updateOrCreate(
-        //     [
-        //         'id' => $request->jadwal_id
-        //     ],
-        //     [
-        //         'hari_id' => $request->hari,
-        //         'kelas_id' => $request->kelas_id,
-        //         'mapel_id' => $guru->mapel_id,
-        //         'guru_id' => $request->guru_id,
-        //         'jam_mulai' => $request->jam_mulai,
-        //         'jam_selesai' => $request->jam_selesai,
-        //         'ruang_id' => $request->ruang_id,
-        //     ]
-        // );
 
-        $id = $request->jadwal_id;
-
-        $data = array(
-            'hari' => $request->hari,
-            // 'kelas_id' => $request->kelas_id,
-            // 'mapel_id' => $guru->mapel_id,
-            'guru_id' => $request->guru_id,
-            'jam_mulai' => $request->jam_mulai,
-            'jam_selesai' => $request->jam_selesai,
-            'ruang_id' => $request->ruang_id,
-        );
-
-        $result = DB::table('jadwal_belajar_mengajar')
+        DB::table('jadwal_belajar_mengajar')
             ->select(
                 'jadwal_belajar_mengajar.id',
                 'jadwal_belajar_mengajar.hari',
+                'jadwal_belajar_mengajar.guru_mengajar_id',
                 'guru_mengajar.kelas_id',
-                'guru_mengajar.guru_id',
+                // 'guru_mengajar.guru_id',
+                'guru_mengajar.mapel_id',
+                'jadwal_belajar_mengajar.jam_mulai',
+                'jadwal_belajar_mengajar.jam_selesai',
+                'jadwal_belajar_mengajar.ruang_id'
+            )
+            ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
+            ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+            ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+            ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
+            ->insert($data);
+
+        return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
+    }
+
+    public function store(Request $request)
+    {
+        // $this->validate($request, [
+        //     'hari' => 'required',
+        //     'kelas_id' => 'required',
+        //     'guru_mengajar_id' => 'required',
+        //     'jam_mulai' => 'required',
+        //     'jam_selesai' => 'required',
+        //     'ruang_id' => 'required',
+        // ]);
+
+        // $guru = Guru::findorfail($request->guru_id);
+        // // jadwal_belajar_mengajar::updateOrCreate(
+        // //     [
+        // //         'id' => $request->jadwal_id
+        // //     ],
+        // //     [
+        // //         'hari_id' => $request->hari,
+        // //         'kelas_id' => $request->kelas_id,
+        // //         'mapel_id' => $guru->mapel_id,
+        // //         'guru_id' => $request->guru_id,
+        // //         'jam_mulai' => $request->jam_mulai,
+        // //         'jam_selesai' => $request->jam_selesai,
+        // //         'ruang_id' => $request->ruang_id,
+        // //     ]
+        // // );
+
+        // $id = $request->jadwal_id;
+
+        // $data = array(
+        //     'hari' => $request->hari,
+        //     'kelas_id' => $request->kelas_id,
+        //     // 'mapel_id' => $guru->mapel_id,
+        //     'guru_mengajar_id' => $request->guru_mengajar_id,
+        //     'jam_mulai' => $request->jam_mulai,
+        //     'jam_selesai' => $request->jam_selesai,
+        //     'ruang_id' => $request->ruang_id,
+        // );
+
+        // $result = DB::table('jadwal_belajar_mengajar')
+        //     ->select(
+        //         'jadwal_belajar_mengajar.id',
+        //         'jadwal_belajar_mengajar.hari',
+        //         'jadwal_belajar_mengajar.kelas_id',
+        //         'jadwal_belajar_mengajar.guru_mengajar_id',
+        //         'guru_mengajar.mapel_id',
+        //         'jadwal_belajar_mengajar.jam_mulai',
+        //         'jadwal_belajar_mengajar.jam_selesai',
+        //         'jadwal_belajar_mengajar.ruang_id'
+        //     )
+        //     ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
+        //     ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+        //     ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+        //     ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
+        //     ->updateOrInsert(['jadwal_belajar_mengajar.id' => $id], $data);
+
+        // return redirect()->back()->with('success', 'Data jadwal berhasil diperbarui!');
+
+        $data = array();
+        $data['hari'] = $request->hari;
+        $data['kelas_id'] = $request->kelas_id;
+        $data['guru_mengajar_id'] = $request->guru_mengajar_id;
+        $data['jam_mulai'] = $request->jam_mulai;
+        $data['jam_selesai'] = $request->jam_selesai;
+        $data['ruang_id'] = $request->ruang_id;
+
+        $id = $request->jadwal_id;
+
+
+        DB::table('jadwal_belajar_mengajar')
+            ->select(
+                'jadwal_belajar_mengajar.id',
+                'jadwal_belajar_mengajar.hari',
+                'jadwal_belajar_mengajar.guru_mengajar_id',
                 'guru_mengajar.mapel_id',
                 'jadwal_belajar_mengajar.jam_mulai',
                 'jadwal_belajar_mengajar.jam_selesai',
@@ -157,13 +198,13 @@ class JadwalController extends Controller
         $kelas = Kelas::findorfail($id);
         // $jadwal = jadwal_belajar_mengajar::OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $id)->get();
         $jadwal = DB::table('jadwal_belajar_mengajar')
-            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'guru_mengajar.kelas_id', 'mapel.nama_mapel', 'guru.nama_guru', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'ruang.nama_ruang')
+            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'jadwal_belajar_mengajar.kelas_id', 'mapel.nama_mapel', 'guru.nama_guru', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'ruang.nama_ruang')
             ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
             ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
             // ->where('jadwal_belajar_mengajar.id', $id)
-            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('guru_mengajar.kelas_id', $id)->get();
+            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('jadwal_belajar_mengajar.kelas_id', $id)->get();
         // ->first();
         return view('admin.jadwal.show', compact('jadwal', 'kelas'));
     }
@@ -179,7 +220,7 @@ class JadwalController extends Controller
         $id = Crypt::decrypt($id);
         // $jadwal = Jadwal::findorfail($id);
         $jadwal = DB::table('jadwal_belajar_mengajar')
-            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'guru_mengajar.kelas_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang')
+            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'jadwal_belajar_mengajar.kelas_id', 'jadwal_belajar_mengajar.guru_mengajar_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang')
             ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
@@ -188,7 +229,16 @@ class JadwalController extends Controller
             ->first();
         $kelas = Kelas::all();
         $ruang = Ruang::all();
-        $guru = Guru::OrderBy('kode_guru', 'asc')->get();
+        // $guru = Guru::OrderBy('kode_guru', 'asc')->get();
+        $guru = DB::table('guru_mengajar')
+            ->select(
+                'guru_mengajar.id',
+                'guru.nama_guru',
+                'mapel.nama_mapel',
+            )
+            ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+            ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+            ->get();
         return view('admin.jadwal.edit', compact('jadwal', 'kelas', 'guru', 'ruang'));
     }
 
@@ -212,7 +262,7 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::findorfail($id);
+        $jadwal = jadwal_belajar_mengajar::findorfail($id);
         $jadwal->delete();
 
         return redirect()->back()->with('warning', 'Data jadwal berhasil dihapus! (Silahkan cek trash data jadwal)');
