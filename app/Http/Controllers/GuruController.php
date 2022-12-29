@@ -21,6 +21,7 @@ use App\Models\JenisPtk;
 use App\Models\StatusKepegawaian;
 use App\Models\TugasTambahanGuru;
 use App\Nilai;
+use Egulias\EmailValidator\Result\Reason\DetailedReason;
 use Illuminate\Support\Facades\DB;
 
 
@@ -135,17 +136,16 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
-        $status_kepegawaian_get = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
-        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
-        $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
-        $tugas_tambahan_get = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
-        $jenis_ptk_get = JenisPtk::orderBy('ket_jenis_ptk')->get();
-        $detail_guru = DetailGuru::orderBy('guru_id')->first();
-        $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
+
+        $status_kepegawaian = StatusKepegawaian::all();
+        $tugas_tambahan = TugasTambahanGuru::all();
+        $jenis_ptk = JenisPtk::all();
+        $detail_guru = DetailGuru::orderBy('guru_id')->get();
+        // $detail_guru = DetailGuru::orderBy('guru_id')->first();
+        // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
-        return view('admin.guru.edit', compact('guru','status_kepegawaian','status_kepegawaian_get','tugas_tambahan_get','jenis_ptk_get','tugas_tambahan','jenis_ptk'));
+        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan','jenis_ptk','detail_guru'));
     }
 
     /**
@@ -157,6 +157,14 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
+        // $status_kepegawaian_get = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
+        // $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
+        // $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
+        // $tugas_tambahan_get = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
+        // $jenis_ptk_get = JenisPtk::orderBy('ket_jenis_ptk')->get();
+        // $detail_guru = DetailGuru::orderBy('guru_id')->first();
+        // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $this->validate($request, [
             'nama_guru' => 'required',
             'jk' => 'required',
@@ -172,12 +180,28 @@ class GuruController extends Controller
         } else {
         }
         $guru_data = [
+            'nip' => $request->nip,
+            'status_kepegawaian_id' => $request->status_kepegawaian_id,
+            'jenis_ptk_id' => $request->jenis_ptk_id,
+            'tugas_tambahan_id' => $request->tugas_tambahan_id,
             'nama_guru' => $request->nama_guru,
             'jk' => $request->jk,
             'telp' => $request->telp,
-            'hp' => $request->hp,
             'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir
+            'tgl_lahir' => $request->tgl_lahir,
+            'hp' => $request->hp,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'nama_dusun' => $request->nama_dusun,
+            'desa_kelurahan' => $request->desa_kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'no_kk' => $request->no_kk,
+            'nuptk' => $request->nuptk,
         ];
         $guru->update($guru_data);
 

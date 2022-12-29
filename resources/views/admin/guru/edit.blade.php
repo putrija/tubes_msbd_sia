@@ -39,27 +39,39 @@
                 <div class="form-group">
                     <label for="status_kepegawaian_id">Status Kepegawaian</label>
                     <select id="status_kepegawaian_id" name="status_kepegawaian_id" class="select2bs4 form-control @error('status_kepegawaian_id') is-invalid @enderror">
-                        <option value="">{{$status_kepegawaian->ket_status_kepeg}}</option>
-                        @foreach ($status_kepegawaian_get as $data)
-                        <option value="{{ $data->id }}">{{ $data->ket_status_kepeg }}</option>
+                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                        @foreach ($status_kepegawaian as $data)
+                        <option value="{{ $data->id }}" 
+                        @if ($guru->status_kepegawaian_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->ket_status_kepeg }}</option>
                     @endforeach
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="tugas_tambahan_guru_id">Tugas Tambahan Guru</label>
-                    <select id="tugas_tambahan_guru_id" name="tugas_tambahan_guru_id" class="select2bs4 form-control @error('tugas_tambahan_guru_id') is-invalid @enderror">
-                        <option value="">{{$tugas_tambahan->ket_tugas_tambahan}}</option>
-                        @foreach ($tugas_tambahan_get as $data)
-                        <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
+                    <label for="tugas_tambahan_id">Tugas Tambahan Guru</label>
+                    <select id="tugas_tambahan_id" name="tugas_tambahan_id" class="select2bs4 form-control @error('tugas_tambahan_id') is-invalid @enderror">
+                        <option value="">-- Pilih Tugas Tambahan --</option>
+                        @foreach ($tugas_tambahan as $data)
+                        <option value="{{ $data->id }}"
+                            @if ($guru->tugas_tambahan_id == $data->id)
+                                selected 
+                                @endif
+                            >{{ $data->ket_tugas_tambahan }}</option>
                     @endforeach
                     </select>
               </div>
               <div class="form-group">
-                <label for="tugas_tambahan_guru_id">Jenis PTK</label>
-                <select id="tugas_tambahan_guru_id" name="tugas_tambahan_guru_id" class="select2bs4 form-control @error('tugas_tambahan_guru_id') is-invalid @enderror">
-                    <option value="">{{$jenis_ptk->ket_jenis_ptk}}</option>
-                    @foreach ($jenis_ptk_get as $data)
-                    <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
+                <label for="jenis_ptk_id">Jenis PTK</label>
+                <select id="jenis_ptk_id" name="jenis_ptk_id" class="select2bs4 form-control @error('jenis_ptk_id') is-invalid @enderror">
+                    <option value="">-- Pilih Jenis PTK</option>
+                    @foreach ($jenis_ptk as $data)
+                    <option value="{{ $data->id }}"
+                        @if ($guru->jenis_ptk_id == $data->id)
+                            selected
+                            @endif
+                        >{{ $data->ket_jenis_ptk}}</option>
                 @endforeach
                 </select>
           </div>
@@ -82,6 +94,18 @@
                 <div class="form-group">
                     <label for="nama_dusun">Nama Dusun</label>
                     <input type="text" id="nama_dusun" name="nama_dusun" onkeypress="return inputAngka(event)" value="{{ $guru->nama_dusun }}" class="form-control @error('nama_dusun') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="desa_kelurahan">Desa/Kelurahan</label>
+                    <input type="text" id="desa_kelurahan" name="desa_kelurahan" value="{{ $guru->desa_kelurahan }}" class="form-control @error('desa_kelurahan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input type="text" id="kecamatan" name="kecamatan" value="{{ $guru->kecamatan }}" class="form-control @error('kecamatan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="kode_pos">Kode Pos</label>
+                    <input type="text" id="kode_pos" name="kode_pos" value="{{ $guru->kode_pos }}" class="form-control @error('kode_pos') is-invalid @enderror">
                 </div>
             </div>
             <div class="col-md-3">
@@ -123,18 +147,6 @@
                     <input type="text" id="kode" name="kode" class="form-control" value="{{ $guru->kode_guru }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="desa_kelurahan">Desa/Kelurahan</label>
-                    <input type="text" id="desa_kelurahan" name="desa_kelurahan" value="{{ $guru->desa_kelurahan }}" class="form-control @error('desa_kelurahan') is-invalid @enderror">
-                </div>
-                <div class="form-group">
-                    <label for="kecamatan">Kecamatan</label>
-                    <input type="text" id="kecamatan" name="kecamatan" value="{{ $guru->kecamatan }}" class="form-control @error('kecamatan') is-invalid @enderror">
-                </div>
-                <div class="form-group">
-                    <label for="kode_pos">Kode Pos</label>
-                    <input type="text" id="kode_pos" name="kode_pos" value="{{ $guru->kode_pos }}" class="form-control @error('kode_pos') is-invalid @enderror">
-                </div>
-                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" value="{{ $guru->email }}" class="form-control @error('email') is-invalid @enderror">
                 </div>
@@ -146,11 +158,119 @@
                     <label for="no_kk">No KK</label>
                     <input type="text" id="no_kk" name="no_kk" value="{{ $guru->no_kk }}" class="form-control @error('no_kk') is-invalid @enderror">
                 </div>
+                <div class="form-group">
+                    <label for="tabel_cpns">Tanggal CPNS</label>
+                    <input type="date" id="tanggal_cpns" name="tanggal_cpns" onkeypress="return inputAngka(event)" value="{{ $guru->detail_guru->tanggal_cpns }}" class="form-control @error('hp') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="sk_cpns">SK CPNS</label>
+                    <input type="text" id="sk_cpns" name="sk_cpns" value="{{ $guru->detail_guru->sk_cpns }}" class="form-control @error('sk_cpns') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="sk_pengangkatan">SK Pengangkatan</label>
+                    <input type="text" id="sk_pengangkatan" name="sk_pengangkatan" value="{{ $guru->detail_guru->sk_pengangkatan }}" class="form-control @error('sk_pengangkatan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="tmt_pengangkatan">TMT Pengangkatan</label>
+                    <input type="date" id="tmt_pengangkatan" name="tmt_pengangkatan" value="{{ $guru->detail_guru->tmt_pengangkatan_pengangkatan }}" class="form-control @error('tmt_pengangkatanpengangkatan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="lembaga_pendidikan">Lembaga Pendidikan</label>
+                    <input type="text" id="tanggal_cpns" name="sk_pengangkatan" value="{{ $guru->detail_guru->lembaga_pendidikan }}" class="form-control @error('lembaga_pendidikan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="pangkat_golongan">Pangkat Golongan</label>
+                    <input type="text" id="pangkat_golongan" name="pangkat_golongann" value="{{ $guru->detail_guru->pangkat_golongan }}" class="form-control @error('pangkat_golongan') is-invalid @enderror">
+                </div>
             </div>
-          </div>
           <div class="col-md-3">
-
+            <h4 style="color: white">.</h4>
             
+            <div class="form-group">
+                <label for="nama_ibu_kandung">Nama Ibu Kandung</label>
+                <input type="text" id="nama_ibu_kandung" name="nama_ibu_kandung" value="{{ $guru->detail_guru->nama_ibu_kandung }}" class="form-control @error('nama_ibu_kandung') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="sumber_gaji">Sumber Gaji</label>
+                <input type="text" id="sumber_gaji" name="sumber_gaji" value="{{ $guru->detail_guru->sumber_gaji }}" class="form-control @error('sumber_gaji') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="status_perkawanin">Status Perkawinan</label>
+                <input type="text" id="status_perkawanin" name="status_perkawanin" value="{{ $guru->detail_guru->status_perkawanin }}" class="form-control @error('status_perkawanin') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="nama_suami_istri">Nama Suami/Istri</label>
+                <input type="text" id="nama_suami_istri" name="nama_suami_istri" value="{{ $guru->detail_guru->nama_suami_istri }}" class="form-control @error('nama_suami_istri') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="nip_suami_istri">NIP Suami/Istri</label>
+                <input type="number" id="nip_suami_istri" name="nip_suami_istri" value="{{ $guru->detail_guru->nip_suami_istri }}" class="form-control @error('nip_suami_istri') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="pekerjaan_suami_istri">Pekerjaan Suami/Istri</label>
+                <input type="text" id="pekerjaan_suami_istri" name="pekerjaan_suami_istri" value="{{ $guru->detail_guru->pekerjaan_suami_istri }}" class="form-control @error('pekerjaan_suami_istri') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="tmt_pns">TMT PNS</label>
+                <input type="date" id="tmt_pns" name="tmt_pns" value="{{ $guru->detail_guru->tmt_pns }}" class="form-control @error('tmt_pns') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="lisensi_kepala_sekolah">Lisensi Kepala Sekolah</label>
+                <input type="text" id="lisensi_kepala_sekolah" name="lisensi_kepala_sekolah" value="{{ $guru->detail_guru->lisensi_kepala_sekolah }}" class="form-control @error('lisensi_kepala_sekolah') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="diklat_kepegawaian">Diklat Kepegawaian</label>
+                <input type="text" id="diklat_kepegawaian" name="diklat_kepegawaian" value="{{ $guru->detail_guru->diklat_kepegawaian }}" class="form-control @error('diklat_kepegawaian') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="keahlian_braille">Keahlian Braille</label>keahlian_braille
+                <input type="text" id="keahlian_braille" name="keahlian_braille" value="{{ $guru->detail_guru->keahlian_braille }}" class="form-control @error('keahlian_braille') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="keahlian_bahasa_isyarat">Keahlian Bahasa Isyarat</label>
+                <input type="text" id="keahlian_bahasa_isyarat" name="keahlian_bahasa_isyarat" value="{{ $guru->detail_guru->keahlian_bahasa_isyarat }}" class="form-control @error('keahlian_bahasa_isyarat') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="npwp">NPWP</label>
+                <input type="text" id="npwp" name="npwp" value="{{ $guru->detail_guru->npwp }}" class="form-control @error('npwp') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="nama_wajib_pajak">Nama Wajib Pajak</label>
+                <input type="text" id="nama_wajib_pajak" name="nama_wajib_pajak" value="{{ $guru->detail_guru->nama_wajib_pajak }}" class="form-control @error('nama_wajib_pajak') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="kewarganegaraan">Kewarganegaraan</label>
+                <input type="text" id="kewarganegaraan" name="kewarganegaraan" value="{{ $guru->detail_guru->kewarganegaraan }}" class="form-control @error('kewarganegaraan') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="bank">Bank</label>
+                <input type="text" id="bank" name="bank" value="{{ $guru->detail_guru->bank }}" class="form-control @error('bank') is-invalid @enderror">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <h4 style="color: white">.</h4>
+            <div class="form-group">
+                <label for="nomor_rekening_bank">Nomor Rekening Bank</label>
+                <input type="text" id="hp" name="nomor_rekening_bank" value="{{ $guru->detail_guru->nomor_rekening_bank }}" class="form-control @error('nomor_rekening_bank') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="karpeg">Karpeg</label>
+                <input type="text" id="karpeg" name="karpeg" value="{{ $guru->detail_guru->karpeg }}" class="form-control @error('karpeg') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="karis_karsu">Karis/Karsu</label>
+                <input type="text" id="karis_karsu" name="karis_karsu" value="{{ $guru->detail_guru->karis_karsu }}" class="form-control @error('karis_karsu') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="lintang">Lintang</label>
+                <input type="text" id="hp" name="hp" value="{{ $guru->detail_guru->hp }}" class="form-control @error('hp') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="hp">Bujur</label>
+                <input type="text" id="hp" name="hp" value="{{ $guru->detail_guru->hp }}" class="form-control @error('hp') is-invalid @enderror">
+            </div>
+
 
           </div>
           {{-- <div class="row">
