@@ -39,22 +39,22 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($log_guru as $data)
+              @foreach ($data as $item)
               <tr>
-                <th scope="row">{{ $data->id }}</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th scope="row">{{ $item['id'] }}</th>
+                <td>{{ $item['nama_guru_old'] }}</td>
+                <td>{{ $item['nama_guru_new'] }}</td>
+                <td>{{ $item['tmp_lahir_old'] }}</td>
+                <td>{{ $item['tmp_lahir_new'] }}</td>
+                <td>{{ $item['hp_old'] }}</td>
+                <td>{{ $item['hp_new'] }}</td>
+                <td>{{ $item['telp_old'] }}</td>
+                <td>{{ $item['telp_new'] }}</td>
+                <td>{{ $item['jk_old'] }}</td>
+                <td>{{ $item['jk_new'] }}</td>
+                <td>{{ $item['tgl_lahir_old'] }}</td>
+                <td>{{ $item['tgl_lahir_new'] }}</td>
+                <td>{{ $item['status'] }}</td>
               </tr>
               @endforeach
             </tbody>
