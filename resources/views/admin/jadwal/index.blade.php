@@ -115,7 +115,7 @@
           </button>
       </div>
       <div class="modal-body">
-          <form action="{{ route('jadwal.store') }}" method="post">
+          <form action="{{ route('jadwal.store2') }}" method="post">
             @csrf
             <div class="row">
               <div class="col-md-6">
@@ -131,7 +131,7 @@
                     <option value="Sabtu">Sabtu</option>
                 </select>
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label for="kelas_id">Kelas</label><br>
                   <select id="kelas_id" name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kelas --</option>
@@ -139,25 +139,25 @@
                           <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
                       @endforeach
                   </select>
-                </div> --}}
+                </div>
                 <div class="form-group">
-                  <label for="ruang_id">Ruang Kelas</label><br>
-                  <select id="ruang_id" name="ruang_id" class="form-control @error('ruang_id') is-invalid @enderror select2bs4">
-                      <option value="">-- Pilih Ruang Kelas --</option>
-                      @foreach ($ruang as $data)
-                          <option value="{{ $data->id }}">{{ $data->nama_ruang }}</option>
+                  <label for="guru_mengajar_id">Guru</label><br>
+                  <select id="guru_mengajar_id" name="guru_mengajar_id" class="form-control @error('guru_mengajar_id') is-invalid @enderror select2bs4">
+                      <option value="">-- Pilih Guru --</option>
+                      @foreach ($guru_mengajar as $data)
+                          <option value="{{ $data->id }}">{{ $data->nama_guru }} - {{ $data->nama_mapel }}</option>
                       @endforeach
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="guru_id">Kode Guru</label><br>
-                  <select id="guru_id" name="guru_id" class="form-control @error('guru_id') is-invalid @enderror select2bs4">
-                      <option value="">-- Pilih Kode Guru --</option>
+                {{-- <div class="form-group">
+                  <label for="mapel_id">Mapel</label><br>
+                  <select id="mapel_id" name="mapel_id" class="form-control @error('mapel_id') is-invalid @enderror select2bs4">
+                      <option value="">-- Pilih Mapel --</option>
                       @foreach ($guru as $data)
                           <option value="{{ $data->id }}">{{ $data->kode_guru }}</option>
                       @endforeach
                   </select>
-                </div>
+                </div> --}}
               </div>
               <div class="col-md-6">
                 <div class="form-group">
@@ -168,7 +168,7 @@
                   <label for="jam_selesai">Jam Selesai</label>
                   <input type='time' id="jam_selesai" name='jam_selesai' class="form-control @error('jam_selesai') is-invalid @enderror" placeholder="{{ Date('H:i') }}">
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label for="ruang_id">Ruang Kelas</label><br>
                   <select id="ruang_id" name="ruang_id" class="form-control @error('ruang_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Ruang Kelas --</option>
@@ -176,7 +176,7 @@
                           <option value="{{ $data->id }}">{{ $data->nama_ruang }}</option>
                       @endforeach
                   </select>
-                </div> --}}
+                </div>
               </div>
             </div>
           </div>
