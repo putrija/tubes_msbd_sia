@@ -131,12 +131,21 @@
                     <option value="Sabtu">Sabtu</option>
                 </select>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="kelas_id">Kelas</label><br>
                   <select id="kelas_id" name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kelas --</option>
                       @foreach ($kelas as $data)
                           <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
+                      @endforeach
+                  </select>
+                </div> --}}
+                <div class="form-group">
+                  <label for="ruang_id">Ruang Kelas</label><br>
+                  <select id="ruang_id" name="ruang_id" class="form-control @error('ruang_id') is-invalid @enderror select2bs4">
+                      <option value="">-- Pilih Ruang Kelas --</option>
+                      @foreach ($ruang as $data)
+                          <option value="{{ $data->id }}">{{ $data->nama_ruang }}</option>
                       @endforeach
                   </select>
                 </div>
@@ -159,7 +168,7 @@
                   <label for="jam_selesai">Jam Selesai</label>
                   <input type='time' id="jam_selesai" name='jam_selesai' class="form-control @error('jam_selesai') is-invalid @enderror" placeholder="{{ Date('H:i') }}">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="ruang_id">Ruang Kelas</label><br>
                   <select id="ruang_id" name="ruang_id" class="form-control @error('ruang_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Ruang Kelas --</option>
@@ -167,7 +176,7 @@
                           <option value="{{ $data->id }}">{{ $data->nama_ruang }}</option>
                       @endforeach
                   </select>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>

@@ -21,7 +21,6 @@ class GuruMengajarSeeder extends Seeder
                 'id' => 1,
                 'guru_id' => '1',
                 'mapel_id' => '1',
-                'kelas_id' => '1',
                 'tahun_ajaran_id' => '2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
