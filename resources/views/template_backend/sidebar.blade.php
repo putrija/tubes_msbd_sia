@@ -137,7 +137,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
                                     <i class="fas fa-book nav-icon"></i>
-                                    <p>Status Kepegawaian Guru</p>
+                                    <p>Status Kepeg Guru</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -155,7 +155,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
                                     <i class="fas fa-book nav-icon"></i>
-                                    <p>Data Tugas Tambahan Guru</p>
+                                    <p>Tugas Tambahan Guru</p>
                                 </a>
                             </li>
                             <li class="nav-item">
