@@ -90,5 +90,5 @@ class Jadwal extends Model
     return $rapot;
   }
 
-  protected $table = 'jadwal';
+  protected $table = 'jadwal_belajar_mengajar';
 }

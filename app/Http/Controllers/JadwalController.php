@@ -204,7 +204,7 @@ class JadwalController extends Controller
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
             ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
             // ->where('jadwal_belajar_mengajar.id', $id)
-            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('jadwal_belajar_mengajar.kelas_id', $id)->get();
+            ->OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('jadwal_belajar_mengajar.kelas_id', $id)->whereNull('jadwal_belajar_mengajar.deleted_at')->get();
         // ->first();
         return view('admin.jadwal.show', compact('jadwal', 'kelas'));
     }
@@ -220,7 +220,7 @@ class JadwalController extends Controller
         $id = Crypt::decrypt($id);
         // $jadwal = Jadwal::findorfail($id);
         $jadwal = DB::table('jadwal_belajar_mengajar')
-            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'jadwal_belajar_mengajar.kelas_id', 'jadwal_belajar_mengajar.guru_mengajar_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang')
+            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.hari', 'jadwal_belajar_mengajar.kelas_id', 'jadwal_belajar_mengajar.guru_mengajar_id', 'mapel.nama_mapel', 'guru.nama_guru', 'guru_mengajar.guru_id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.ruang_id', 'ruang.nama_ruang', 'jadwal_belajar_mengajar.deleted_at')
             ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
             ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
             ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
@@ -270,14 +270,14 @@ class JadwalController extends Controller
 
     public function trash()
     {
-        $jadwal = Jadwal::onlyTrashed()->get();
+        $jadwal = jadwal_belajar_mengajar::onlyTrashed()->get();
         return view('admin.jadwal.trash', compact('jadwal'));
     }
 
     public function restore($id)
     {
         $id = Crypt::decrypt($id);
-        $jadwal = Jadwal::withTrashed()->findorfail($id);
+        $jadwal = jadwal_belajar_mengajar::withTrashed()->findorfail($id);
         $jadwal->restore();
         return redirect()->back()->with('info', 'Data jadwal berhasil direstore! (Silahkan cek data jadwal)');
     }

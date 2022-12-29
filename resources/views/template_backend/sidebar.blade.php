@@ -225,7 +225,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview ml-4">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('ulangan-kelas') }}" class="nav-link" id="Ulangan">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Ulangan</p>
@@ -236,19 +236,19 @@
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Sikap</p>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Rapor</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('predikat') }}" class="nav-link" id="Deskripsi">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Deskripsi Predikat</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <li class="nav-item has-treeview" id="liViewLog">
@@ -292,7 +292,7 @@
                             <p>Pengumuman</p>
                         </a>
                     </li> --}}
-                @elseif (Auth::user()->role == 'Guru' && Auth::user()->guru(Auth::user()->id_card))
+                @elseif (Auth::user()->role == 'Guru' && Auth::user()->guru(Auth::user()->id_card_guru))
                     <li class="nav-item has-treeview">
                         <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
@@ -314,22 +314,22 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview ml-4">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('ulangan.index') }}" class="nav-link" id="UlanganGuru">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Entry Nilai Ulangan</p>
                                 </a>
-                            </li>
+                            </li> --}}
                             @if (
-                                Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
-                                Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
+                                Auth::user()->guru(Auth::user()->id_card_guru)->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
+                                Auth::user()->guru(Auth::user()->id_card_guru)->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
                             )
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('sikap.index') }}" class="nav-link" id="SikapGuru">
                                         <i class="fas fa-file-alt nav-icon"></i>
                                         <p>Entry Nilai Sikap</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             @else
                             @endif
                             <li class="nav-item">
@@ -338,13 +338,19 @@
                                     <p>Entry Nilai Rapot</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('nilai.index') }}" class="nav-link" id="DesGuru">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Deskripsi Predikat</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
+                            <i class="fas fa-exclamation-triangle nav-icon"></i>
+                            <p>Pelanggaran</p>
+                        </a>
                     </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
