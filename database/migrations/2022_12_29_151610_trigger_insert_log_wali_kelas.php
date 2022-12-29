@@ -17,7 +17,7 @@ return new class extends Migration
         DB::unprepared('CREATE TRIGGER `insert_log_wali_kelas` AFTER UPDATE ON `wali_kelas`
         FOR EACH ROW BEGIN
        
-        INSERT INTO `log_wali_kelas` (`id_wali_kelas_old`, `id_wali_kelas_new`, `guru_id_old`, `guru_id_new`, `kelas_id_old`, `kelas_id_new`, `tahun_ajaran_id_old`, `tahun_ajaran_id_new`, `status`)
+        INSERT INTO `log_wali_kelas` (`id_wali_kelas_new`, `guru_id_new`, `kelas_id_new`, `tahun_ajaran_id_new`, `status`)
         VALUES ( NEW.id_wali_kelas, NEW.guru_id, NEW.kelas_id,  NEW.tahun_ajaran_id, "INSERT");
              END');
     }
