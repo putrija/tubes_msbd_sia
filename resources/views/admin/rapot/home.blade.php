@@ -60,12 +60,12 @@
               <td>Fisika</td>
               <td>  
                 <div class="col-auto">
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                <input type="text" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -74,12 +74,12 @@
               <td>Kimia</td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -88,12 +88,12 @@
               <td>Biologi</td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -102,12 +102,12 @@
               <td>Matematika Peminatan</td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -116,12 +116,12 @@
               <td>Matematika Wajib</td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -130,12 +130,12 @@
               <td>Bahasa Inggris</td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Input Nilai">
+                  <input type="text" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
