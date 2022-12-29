@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GuruMengajar;
+use App\Models\Guru;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class GuruMengajarController extends Controller
 {
@@ -13,7 +17,10 @@ class GuruMengajarController extends Controller
      */
     public function index()
     {
-        //
+        $guru_mapel = GuruMengajar::all();
+        $guru = Guru::all();
+        $mapel = Mapel::all();
+        return view('admin.guru_mapel.index', compact('guru_mapel','guru'));//masukkan alamat dari filenya lengkap, biar ketemu hiks
     }
 
     /**

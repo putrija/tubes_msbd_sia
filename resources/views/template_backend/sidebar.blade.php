@@ -93,7 +93,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('guru_mapel.index') }}" class="nav-link" id="DataGuruMapel">{{--untuk route ini kasih tau matu ditujukan kehalaam blde.php mana. ini mengarahkan kita alamat folder file blade.php yang ingin dituju--}}
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Guru Mapel</p>
                                 </a>

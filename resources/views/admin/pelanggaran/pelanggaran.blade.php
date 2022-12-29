@@ -163,7 +163,7 @@
     $(document).ready(function() {
       $('.js-example-basic-single').select2();
     });
-
+    // end live search select option
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
     $("#DataPelanggaran").addClass("active");

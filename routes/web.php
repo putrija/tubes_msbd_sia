@@ -139,6 +139,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/guru/pelanggaran', 'ViolationController@index');
     // ################### END ROUTE PELANGGARAN #######################
 
+    //################## ROUTE GURU MENGAJAR MAPEL#######################
+    Route::resource('/guru_mapel', 'GuruMengajarController');
+    //################## END ROUTE GURU MENGAJAR MAPEL#######################
+
     Route::get('/jadwal/view/json', 'JadwalController@view');
     Route::get('/jadwalkelaspdf/{id}', 'JadwalController@cetak_pdf');
     Route::post('/tambahkanjadwal', 'JadwalController@store2')->name('jadwal.store2');
