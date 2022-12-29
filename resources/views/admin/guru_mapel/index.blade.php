@@ -32,7 +32,6 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->guru->nama_guru }}</td>
                     <td>{{$data->mapel->nama_mapel}}</td>
-                    <td>{{ $data->kelas->nama_kelas }}</td>
                     <td>{{$data->tahun_ajaran->tahun_ajaran}}</td>
                     <td>
                         <form action="{{ route('mapel.destroy', $data->id) }}" method="post">
@@ -64,13 +63,13 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('mapel.store') }}" method="post">
+        <form action="{{ route('guru_mapel.store') }}" method="post">
           @csrf
             <div class="row">
               <div class="col-md-12">
                <div class="form-group">
-                    <label for="nama_siswa">Nama Guru</label><br>
-                    <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
+                    <label for="nama_guru">Nama Guru</label><br>
+                    <select   class="js-example-basic-single" id="guru_id" name="guru_id" data-width="100%">
                       <option value="">--- Pilih Nama Guru ---</option>
                       @foreach ($guru as $data)
                         <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
@@ -78,8 +77,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama_siswa">Mata Pelajaran</label><br>
-                    <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
+                    <label for="nama_mapel">Mata Pelajaran</label><br>
+                    <select   class="js-example-basic-single" id="mapel_id" name="mapel_id" data-width="100%">
                       <option value="">--- Pilih Mata Pelajaran ---</option>
                       @foreach ($mapel as $data)
                         <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
@@ -87,11 +86,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama_siswa">Nama Guru</label><br>
-                    <select   class="js-example-basic-single" id="siswa_id" name="siswa_id" data-width="100%">
+                    <label for="tahun_ajaran">Tahun Ajaran</label><br>
+                    <select   class="js-example-basic-single" id="tahun_ajaran_id" name="tahun_ajaran_id" data-width="100%">
                       <option value="">--- Pilih Tahun Ajaran ---</option>
                       @foreach ($tahun_ajaran as $data)
-                        <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
+                        <option value="{{ $data->id }}">{{ $data->tahun_ajaran }}</option>
                       @endforeach
                     </select>
                   </div>

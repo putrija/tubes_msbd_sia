@@ -27,6 +27,10 @@ class GuruMengajar extends Model
     //     return $this-> belongsTo(Kelas::class);
     // }
 
+    // public function tahun_ajaran(){
+    //     return $this->belongsTo('App\Models\Tahun_ajaran');
+    // }
+
     public function tahun_ajaran(){
         return $this->belongsTo(Tahun_ajaran::class);
     }
