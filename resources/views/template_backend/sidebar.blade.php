@@ -251,8 +251,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview" id="liViewTrash">
-                        <a href="#" class="nav-link" id="ViewTrash">
+                    <li class="nav-item has-treeview" id="liViewLog">
+                        <a href="#" class="nav-link" id="ViewLog">
                             <i class="nav-icon fas fa-archive"></i>
                             <p>
                                 Tabel Log

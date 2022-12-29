@@ -105,8 +105,8 @@
 @endsection
 @section('script')
     <script>
-        $("#MasterData").addClass("active");
-        $("#liMasterData").addClass("menu-open");
-        $("#DataGuru").addClass("active");
+        $("#ViewLog").addClass("active");
+        $("#liViewLog").addClass("menu-open");
+        $("#LogGuru").addClass("active");
     </script>
 @endsection
