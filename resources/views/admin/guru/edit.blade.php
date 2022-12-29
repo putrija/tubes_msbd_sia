@@ -18,24 +18,11 @@
         @method('patch')
         <div class="card-body">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <b><h4>Data Guru (Wajib Diisi)</h4></b>
                 <div class="form-group">
                     <label for="nama_guru">Nama Guru</label>
                     <input type="text" id="nama_guru" name="nama_guru" value="{{ $guru->nama_guru }}" class="form-control @error('nama_guru') is-invalid @enderror">
-                </div>
-                <div class="form-group">
-                    <label for="status_id">Status</label>
-                    <select id="status_id" name="status_id" class="select2bs4 form-control @error('status_id') is-invalid @enderror">
-                        <option value="">-- Pilih Mapel --</option>
-                        @foreach ($mapel as $data)
-                            <option value="{{ $data->id }}"
-                                @if ($guru->mapel_id == $data->id)
-                                    selected
-                                @endif
-                            >{{ $data->nama_mapel }}</option>
-                        @endforeach
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="tmp_lahir">Tempat Lahir</label>
@@ -43,16 +30,39 @@
                 </div>
                 <div class="form-group">
                     <label for="id_card">Nomor ID Card</label>
-                    <input type="text" id="id_card" name="id_card" class="form-control" value="{{ $guru->id_card }}" readonly>
+                    <input type="text" id="id_card" name="id_card" class="form-control" value="{{ $guru->id_card_guru }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="telp">Nomor Telpon</label>
                     <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" value="{{ $guru->telp }}" class="form-control @error('telp') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="status_kepegawaian">Status Kepegawaian</label>
-                    <input type="text" id="status_kepegawaian" name="status_kepegawaian" onkeypress="return inputAngka(event)" value="{{ $guru->status_kepegawaian }}" class="form-control @error('status_kepegawaian') is-invalid @enderror">
+                    <label for="status_kepegawaian_id">Status Kepegawaian</label>
+                    <select id="status_kepegawaian_id" name="status_kepegawaian_id" class="select2bs4 form-control @error('status_kepegawaian_id') is-invalid @enderror">
+                        <option value="">{{$status_kepegawaian->ket_status_kepeg}}</option>
+                        @foreach ($status_kepegawaian_get as $data)
+                        <option value="{{ $data->id }}">{{ $data->ket_status_kepeg }}</option>
+                    @endforeach
+                    </select>
                 </div>
+                <div class="form-group">
+                    <label for="tugas_tambahan_guru_id">Tugas Tambahan Guru</label>
+                    <select id="tugas_tambahan_guru_id" name="tugas_tambahan_guru_id" class="select2bs4 form-control @error('tugas_tambahan_guru_id') is-invalid @enderror">
+                        <option value="">{{$tugas_tambahan->ket_tugas_tambahan}}</option>
+                        @foreach ($tugas_tambahan_get as $data)
+                        <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
+                    @endforeach
+                    </select>
+              </div>
+              <div class="form-group">
+                <label for="tugas_tambahan_guru_id">Jenis PTK</label>
+                <select id="tugas_tambahan_guru_id" name="tugas_tambahan_guru_id" class="select2bs4 form-control @error('tugas_tambahan_guru_id') is-invalid @enderror">
+                    <option value="">{{$jenis_ptk->ket_jenis_ptk}}</option>
+                    @foreach ($jenis_ptk_get as $data)
+                    <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
+                @endforeach
+                </select>
+          </div>
                 <div class="form-group">
                     <label for="agama">Agama</label>
                     <input type="text" id="agama" name="agama" onkeypress="return inputAngka(event)" value="{{ $guru->agama }}" class="form-control @error('agama') is-invalid @enderror">
@@ -74,7 +84,7 @@
                     <input type="text" id="nama_dusun" name="nama_dusun" onkeypress="return inputAngka(event)" value="{{ $guru->nama_dusun }}" class="form-control @error('nama_dusun') is-invalid @enderror">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <h4 style="color: white">.</h4>
                 <div class="form-group">
                     <label for="hp">Nomor HP</label>
@@ -82,7 +92,11 @@
                 </div>
                 <div class="form-group">
                     <label for="nip">NIP</label>
-                    <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" value="{{ $guru->nip }}" class="form-control @error('nip') is-invalid @enderror" disabled>
+                    <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" value="{{ $guru->nip }}" class="form-control @error('nip') is-invalid @enderror" >
+                </div>
+                <div class="form-group">
+                    <label for="nuptk">NUPTK</label>
+                    <input type="textnuptk" id="nuptk" name="nuptk" onkeypress="return inputAngka(event)" value="{{ $guru->nuptk }}" class="form-control @error('nip') is-invalid @enderror" >
                 </div>
                 <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
@@ -105,8 +119,8 @@
                     <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ $guru->tgl_lahir }}" class="form-control @error('tgl_lahir') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="kode">Kode Jadwal</label>
-                    <input type="text" id="kode" name="kode" class="form-control" value="{{ $guru->kode }}" disabled>
+                    <label for="kode_guru">Kode Jadwal</label>
+                    <input type="text" id="kode" name="kode" class="form-control" value="{{ $guru->kode_guru }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="desa_kelurahan">Desa/Kelurahan</label>
@@ -133,6 +147,11 @@
                     <input type="text" id="no_kk" name="no_kk" value="{{ $guru->no_kk }}" class="form-control @error('no_kk') is-invalid @enderror">
                 </div>
             </div>
+          </div>
+          <div class="col-md-3">
+
+            
+
           </div>
           {{-- <div class="row">
             <div class="col-md-6">
