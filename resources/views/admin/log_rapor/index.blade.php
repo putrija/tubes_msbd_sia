@@ -23,22 +23,22 @@
             <thead style="background-color: rgb(200, 219, 190)">
               <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nama Siswa Old</th>
-                <th scope="col">Nama Siswa New</th>
-                <th scope="col">Jenis Kelamin Old</th>
-                <th scope="col">Jenis Kelamin New</th>
-                <th scope="col">Tempat Lahir Old</th>
-                <th scope="col">Tempat Lahir New</th>
-                <th scope="col">Tanggal Lahir Old</th>
-                <th scope="col">Tanggal Lahir New</th>
-                <th scope="col">Alamat Old</th>
-                <th scope="col">Alamat New</th>
-                <th scope="col">NISN Old</th>
-                <th scope="col">NISN New</th>
-                <th scope="col">Kelas Id Old</th>
-                <th scope="col">Kelas Id New</th>
-                <th scope="col">Nomor Telepon Old</th>
-                <th scope="col">Nomor Telepon New</th>
+                <th scope="col">Kelas Siswa Id Old</th>
+                <th scope="col">Kelas Siswa Id New</th>
+                <th scope="col">Mapel Id Old</th>
+                <th scope="col">Mapel Id New</th>
+                <th scope="col">Wali Kelas Old</th>
+                <th scope="col">Wali Kelas New</th>
+                <th scope="col">Semester Id Old</th>
+                <th scope="col">Semester Id New</th>
+                <th scope="col">Nilai Pengetahuan Id Old</th>
+                <th scope="col">Nilai Pengetahuan Id New</th>
+                <th scope="col">Predikat Pengetahuan Old</th>
+                <th scope="col">Predikat Pengetahuan New</th>
+                <th scope="col">Nilai Keterampilam Old</th>
+                <th scope="col">Nilai Keterampilam New</th>
+                <th scope="col">Predikat Keterampilan Old</th>
+                <th scope="col">Predikat Keterampilan New</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -71,40 +71,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-{{-- <div class="col-md-12">
-    <div class="card">
-        {{-- <div class="card-header">
-            <a href="{{ route("siswa.mapel", Crypt::encrypt($siswa->mapel_id)) }}" class="btn btn-default btn-sm"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
-        </div> --}}
-        {{-- <div class="text-center">
-            <img src="{{ asset($siswa->foto) }}" class="card-img img-details" alt="..." width="200px">
-          </div>
-        <div class="card-body">
-            <div class="row no-gutters ml-2 mb-2 mr-2">
-                <div class="col-md-1 mb-4"></div>
-                <div class="col-md-7">
-                    <h5 class="card-title card-text mb-2">Nama : {{ $siswa->nama_siswa }}</h5>
-                    <h5 class="card-title card-text mb-2">NIP : {{ $siswa->nip }}</h5>
-                    <h5 class="card-title card-text mb-2">No Id Card : {{ $siswa->id_card }}</h5>
-                    <h5 class="card-title card-text mb-2">Kode Jadwal : {{ $siswa->kode }}</h5>
-                    @if ($siswa->jk == 'L')
-                        <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
-                    @else
-                        <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
-                    @endif
-                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $siswa->tmp_lahir }}</h5>
-                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</h5>
-                    <h5 class="card-title card-text mb-2">No. Telepon : {{ $siswa->telp }}</h5>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-{{-- </div> --}}
 @endsection
 @section('script')
     <script>
         $("#ViewLog").addClass("active");
         $("#liViewLog").addClass("menu-open");
-        $("#LogSiswa").addClass("active");
+        $("#LogRapor").addClass("active");
     </script>
 @endsection

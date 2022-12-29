@@ -32,6 +32,7 @@ return new class extends Migration
             $table->unsignedInteger('nilai_keterampilan_new')->nullable();
             $table->char('predikat_keterampilan_old', 2)->nullable();
             $table->char('predikat_keterampilan_new', 2)->nullable();
+            $table->string('status', 50)->nullable();
             $table->timestamps();
         });
     }

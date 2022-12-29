@@ -1,7 +1,7 @@
 @extends('template_backend.home')
 @section('heading', 'Log Siswa')
 @section('page')
-<li class="breadcrumb-item active"><a href="{{ route('siswa.index') }}">Siswa</a></li>
+<li class="breadcrumb-item active"><a href="{{ route('log_siswa.index') }}">Siswa</a></li>
   <li class="breadcrumb-item active">Log Siswa</li>
 @endsection
 @section('content')

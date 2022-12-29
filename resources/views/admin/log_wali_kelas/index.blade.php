@@ -1,7 +1,7 @@
 @extends('template_backend.home')
 @section('heading', 'Log Wali Kelas')
 @section('page')
-<li class="breadcrumb-item active"><a href="{{ route('wali_kelas.index') }}">Wali Kelas</a></li>
+<li class="breadcrumb-item active"><a href="{{ route('log_wali_kelas.index') }}">Wali Kelas</a></li>
   <li class="breadcrumb-item active">Log Wali Kelas</li>
 @endsection
 @section('content')

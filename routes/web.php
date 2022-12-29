@@ -130,6 +130,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/log_guru', 'LogGuruController');
     Route::resource('/log_siswa', 'LogSiswaController');
+    Route::resource('/log_rapor', 'LogRaporController');
     Route::resource('/log_wali_kelas', 'LogWaliKelasController');
 
     // ################### ROUTE PELANGGARAN #######################
