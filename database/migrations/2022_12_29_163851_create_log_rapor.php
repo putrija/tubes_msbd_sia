@@ -16,17 +16,23 @@ return new class extends Migration
         Schema::create('log_rapor', function (Blueprint $table) {
             $table->comment('');
             $table->increments('id');
-            $table->unsignedInteger('kelas_siswa_id')->index('kelas_siswa');
-            $table->unsignedInteger('mapel_id')->index('mapel_id');
-            $table->unsignedInteger('wali_kelas_id')->index('wali_kelas_id');
-            $table->unsignedInteger('semester_id')->index('semester_id');
-            $table->unsignedInteger('nilai_pengetahuan');
-            $table->char('predikat_pengetahuan', 2);
-            $table->unsignedInteger('nilai_keterampilan');
-            $table->char('predikat_keterampilan', 2);
+            $table->unsignedInteger('kelas_siswa_id_old')->nullable();
+            $table->unsignedInteger('kelas_siswa_id_new')->nullable();
+            $table->unsignedInteger('mapel_id_old')->nullable();
+            $table->unsignedInteger('mapel_id_new')->nullable();
+            $table->unsignedInteger('wali_kelas_id_old')->nullable();
+            $table->unsignedInteger('wali_kelas_id_new')->nullable();
+            $table->unsignedInteger('semester_id_old')->nullable();
+            $table->unsignedInteger('semester_id_new')->nullable();
+            $table->unsignedInteger('nilai_pengetahuan_old')->nullable();
+            $table->unsignedInteger('nilai_pengetahuan_new')->nullable();
+            $table->char('predikat_pengetahuan_old', 2)->nullable();
+            $table->char('predikat_pengetahuan_new', 2)->nullable();
+            $table->unsignedInteger('nilai_keterampilan_old')->nullable();
+            $table->unsignedInteger('nilai_keterampilan_new')->nullable();
+            $table->char('predikat_keterampilan_old', 2)->nullable();
+            $table->char('predikat_keterampilan_new', 2)->nullable();
             $table->timestamps();
-
-            $table->index(['kelas_siswa_id'], 'kelas_siswa_id');
         });
     }
 
