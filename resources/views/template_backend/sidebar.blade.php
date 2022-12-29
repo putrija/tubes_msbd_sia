@@ -272,6 +272,12 @@
                                     <p>Log Siswa</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('log_wali_kelas.index') }}" class="nav-link" id="LogWaliKelas">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Wali Kelas</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>    
                     {{-- <li class="nav-item">
