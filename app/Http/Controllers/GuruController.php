@@ -120,8 +120,11 @@ class GuruController extends Controller
     {
         $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
-        $detail_guru = DetailGuru::all();
-        return view('admin.guru.details', compact('guru'));
+        $detail_guru = DetailGuru::orderBy('guru_id')->first();
+        $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
+        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
+        $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
+        return view('admin.guru.details', compact('guru','status_kepegawaian','tugas_tambahan','jenis_ptk','detail_guru'));
     }
 
     /**
@@ -132,10 +135,17 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
+        $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
+        $status_kepegawaian_get = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
+        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
+        $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
+        $tugas_tambahan_get = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
+        $jenis_ptk_get = JenisPtk::orderBy('ket_jenis_ptk')->get();
+        $detail_guru = DetailGuru::orderBy('guru_id')->first();
+        $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
-        $mapel = Mapel::all();
-        return view('admin.guru.edit', compact('guru', 'mapel'));
+        return view('admin.guru.edit', compact('guru','status_kepegawaian','status_kepegawaian_get','tugas_tambahan_get','jenis_ptk_get','tugas_tambahan','jenis_ptk'));
     }
 
     /**
@@ -149,7 +159,6 @@ class GuruController extends Controller
     {
         $this->validate($request, [
             'nama_guru' => 'required',
-            'mapel_id' => 'required',
             'jk' => 'required',
         ]);
 
@@ -164,7 +173,6 @@ class GuruController extends Controller
         }
         $guru_data = [
             'nama_guru' => $request->nama_guru,
-            'mapel_id' => $request->mapel_id,
             'jk' => $request->jk,
             'telp' => $request->telp,
             'hp' => $request->hp,
