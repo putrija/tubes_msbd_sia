@@ -273,6 +273,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('log_wali_kelas.index') }}" class="nav-link" id="LogRapor">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Rapor</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('log_wali_kelas.index') }}" class="nav-link" id="LogWaliKelas">
                                     <i class="fas fa-calendar-alt nav-icon"></i>
                                     <p>Log Wali Kelas</p>

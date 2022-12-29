@@ -65,8 +65,8 @@
 @endsection
 @section('script')
     <script>
-        $("#MasterData").addClass("active");
-        $("#liMasterData").addClass("menu-open");
-        $("#DataWaliKelas").addClass("active");
+        $("#ViewLog").addClass("active");
+        $("#liViewLog").addClass("menu-open");
+        $("#LogWaliKelas").addClass("active");
     </script>
 @endsection

@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'Log Siswa')
+@section('heading', 'Log Rapor')
 @section('page')
-<li class="breadcrumb-item active"><a href="{{ route('siswa.index') }}">Siswa</a></li>
+<li class="breadcrumb-item active"><a href="{{ route('log_rapor.index') }}">Siswa</a></li>
   <li class="breadcrumb-item active">Log Siswa</li>
 @endsection
 @section('content')
@@ -43,28 +43,18 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($data as $item)
               <tr>
-                <th scope="row">{{ $item['id'] }}</th>
-                <td>{{ $item['nama_siswa_old'] }}</td>
-                <td>{{ $item['nama_siswa_new'] }}</td>
-                <td>{{ $item['jk_old'] }}</td>
-                <td>{{ $item['jk_new'] }}</td>
-                <td>{{ $item['tmp_lahir_old'] }}</td>
-                <td>{{ $item['tmp_lahir_new'] }}</td>
-                <td>{{ $item['tgl_lahir_old'] }}</td>
-                <td>{{ $item['tgl_lahir_new'] }}</td>
-                <td>{{ $item['alamat_old'] }}</td>
-                <td>{{ $item['alamat_new'] }}</td>
-                <td>{{ $item['nisn_old'] }}</td>
-                <td>{{ $item['nisn_new'] }}</td>
-                <td>{{ $item['kelas_id_old'] }}</td>
-                <td>{{ $item['kelas_id_new'] }}</td>
-                <td>{{ $item['telp_old'] }}</td>
-                <td>{{ $item['telp_new'] }}</td>
-                <td>{{ $item['status'] }}</td>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
-              @endforeach
             </tbody>
           </table>
             </div>
