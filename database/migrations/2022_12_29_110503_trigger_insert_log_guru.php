@@ -21,7 +21,7 @@ return new class extends Migration
             INSERT INTO `log_guru` (`nama_guru_new`,  `tmp_lahir_new`, `hp_new`,  
         `telp_new`, `jk_new`,`tgl_lahir_new`, `status`)
 	        VALUES ( NEW.nama_guru, NEW.tmp_lahir,
-        NEW.hp, NEW.telp, NEW.jk, NEW.tgl_lahir, "Insert");
+        NEW.hp, NEW.telp, NEW.jk, NEW.tgl_lahir, "INSERT");
             END');
     }
 
