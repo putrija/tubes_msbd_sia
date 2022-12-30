@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('kelas_id_new', 10)->nullable();
             $table->string('tahun_ajaran_id_old', 10)->nullable();
             $table->string('tahun_ajaran_id_new', 10)->nullable();
+            $table->string('status', 50)->nullable();
             $table->timestamps();
         });
     }
