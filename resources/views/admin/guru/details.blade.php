@@ -152,19 +152,19 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Status Kepegawaian</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $status_kepegawaian->ket_status_kepeg}}" disabled>
+          <input class="form-control" placeholder="{{ $guru->status_kepegawaian->ket_status_kepeg}}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Jenis PTK</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $jenis_ptk->ket_jenis_ptk }}" disabled>
+          <input class="form-control" placeholder="{{ $guru->jenis_ptk->ket_jenis_ptk }}" disabled>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Tugas Tambahan</label>
         <div class="col-sm-10">
-          <input class="form-control" placeholder="{{ $tugas_tambahan->ket_tugas_tambahan }}" disabled>
+          <input class="form-control" placeholder="{{ $guru->tugas_tambahan_guru->ket_tugas_tambahan }}" disabled>
         </div>
       </div>
       <div class="form-group row">
