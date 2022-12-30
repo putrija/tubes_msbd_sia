@@ -132,6 +132,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/log_siswa', 'LogSiswaController');
     Route::resource('/log_rapor', 'LogRaporController');
     Route::resource('/log_wali_kelas', 'LogWaliKelasController');
+    Route::resource('/log_kelas_siswa', 'LogKelasSiswaController');
 
     // ################### ROUTE PELANGGARAN #######################
     // Route::resource('/pelanggaran', 'ViolationController');

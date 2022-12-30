@@ -1,8 +1,8 @@
 @extends('template_backend.home')
-@section('heading', 'Log Wali Kelas')
+@section('heading', 'Log Kelas Siswa')
 @section('page')
-<li class="breadcrumb-item active"><a href="{{ route('log_wali_kelas.index') }}">Wali Kelas</a></li>
-  <li class="breadcrumb-item active">Log Wali Kelas</li>
+<li class="breadcrumb-item active"><a href="{{ route('log_kelas_siswa.index') }}">Pembagian Kelas Siswa</a></li>
+  <li class="breadcrumb-item active">Log Kelas Siswa</li>
 @endsection
 @section('content')
 <!doctype html>
@@ -22,10 +22,8 @@
         <table style="min-width: 1500px;" class="table table-bordered">
             <thead style="background-color: rgb(200, 219, 190)">
               <tr>
-                <th scope="col">Id Wali Kelas Old</th>
-                <th scope="col">Id Wali Kelas New</th>
-                <th scope="col">Guru Id Old</th>
-                <th scope="col">Guru Id New</th>
+                <th scope="col">Siswa Id Old</th>
+                <th scope="col">Siswa Id New</th>
                 <th scope="col">Kelas Id Old</th>
                 <th scope="col">Kelas Id New</th>
                 <th scope="col">Tahun Ajaran Old</th>
@@ -34,20 +32,18 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($data as $item)
-              <tr>
-                <th scope="row">{{ $item['id'] }}</th>
-                <td>{{ $item['id_wali_kelas_old'] }}</td>
-                <td>{{ $item['id_wali_kelas_new'] }}</td>
-                <td>{{ $item['guru_id_old'] }}</td>
-                <td>{{ $item['guru_id_new'] }}</td>
-                <td>{{ $item['kelas_id_old'] }}</td>
-                <td>{{ $item['kelas_id_new'] }}</td>
-                <td>{{ $item['tahun_ajaran_id_old'] }}</td>
-                <td>{{ $item['tahun_ajaran_id_new'] }}</td>
-                <td>{{ $item['status'] }}</td>
-              </tr>
-              @endforeach
+                @foreach ($data as $item)
+                <tr>
+                  <th scope="row">{{ $item['id'] }}</th>
+                  <td>{{ $item['siswa_id_old'] }}</td>
+                  <td>{{ $item['siswa_id_new'] }}</td>
+                  <td>{{ $item['kelas_id_old'] }}</td>
+                  <td>{{ $item['kelas_id_new'] }}</td>
+                  <td>{{ $item['tahun_ajaran_old'] }}</td>
+                  <td>{{ $item['tahun_ajaran_new'] }}</td>
+                  <td>{{ $item['status'] }}</td>
+                </tr>
+                @endforeach
             </tbody>
           </table>
             </div>
@@ -69,6 +65,6 @@
     <script>
         $("#ViewLog").addClass("active");
         $("#liViewLog").addClass("menu-open");
-        $("#LogWaliKelas").addClass("active");
+        $("#LogKelasSiswa").addClass("active");
     </script>
 @endsection
