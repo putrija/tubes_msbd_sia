@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('mapel', function (Blueprint $table) {
-            $table->foreign(['kurikulum_id'], 'mapel_ibfk_1')->references(['id'])->on('kurikulum');
+            $table->foreign(['kurikulum_id'], 'mapel_ibfk_1')->references(['id'])->on('kurikulum')->onDelete('cascade');
         });
     }
 

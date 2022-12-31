@@ -81,9 +81,9 @@
                     <label for="kurikulum_id">Kurikulum</label>
                     <br>
                     <select id="kurikulum_id" name="kurikulum_id" class="select2bs4 form-control @error('kurikulum_id') is-invalid @enderror">
-                      <option value="">-- Pilih Kurikulum --</option>
-                      <option value="1">Kurikulum K-13</option>
-                      <option value="2">Kurikulum Merdeka</option>
+                      @foreach ($kurikulum as $data)
+                          <option value="{{ $data->id }}">{{ $data->nama_kurikulum }}</option>
+                      @endforeach
                     </select>
                 </div>
               </div>

@@ -169,5 +169,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users/{id}', 'UserController@edit_guru')->name('edit_guru');
     Route::get('pembagiankelas', [PembagianKelasController::class, 'index']);
     Route::resource('/user', 'UserController');
+
+    Route::resource('/kurikulum', 'KurikulumController');
   });
 });
