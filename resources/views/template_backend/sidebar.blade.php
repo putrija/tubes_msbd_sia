@@ -111,7 +111,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('jurusan.index') }}" class="nav-link" id="DataJurusan">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Jurusan</p>
                                 </a>

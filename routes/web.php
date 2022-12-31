@@ -173,5 +173,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/user', 'UserController');
 
     Route::resource('/kurikulum', 'KurikulumController');
+    Route::resource('/jurusan', 'JurusanController');
   });
 });
