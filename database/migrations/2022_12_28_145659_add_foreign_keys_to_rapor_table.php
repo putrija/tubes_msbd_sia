@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('rapor', function (Blueprint $table) {
             $table->foreign(['semester_id'], 'rapor_ibfk_1')->references(['id'])->on('semester');
             $table->foreign(['mapel_id'], 'rapor_ibfk_3')->references(['id'])->on('mapel');
-            $table->foreign(['wali_kelas_id'], 'rapor_ibfk_2')->references(['id_wali_kelas'])->on('wali_kelas');
+            $table->foreign(['wali_kelas_id'], 'rapor_ibfk_2')->references(['id'])->on('wali_kelas');
             $table->foreign(['kelas_siswa_id'], 'rapor_ibfk_4')->references(['id'])->on('kelas_siswa');
         });
     }

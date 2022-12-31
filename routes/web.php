@@ -145,7 +145,7 @@ Route::middleware(['auth'])->group(function () {
     //################## ROUTE GURU MENGAJAR MAPEL#######################
     Route::resource('/guru_mapel', 'GuruMengajarController');
     Route::post('/guru_mapel/store', 'GuruMengajarController@store');
-    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit');//->name('edit-guru-mapel');
+    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit'); //->name('edit-guru-mapel');
     Route::get('/delete-guru-mapel/{id}', 'GuruMengajarController@destroy');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
 
@@ -174,5 +174,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/kurikulum', 'KurikulumController');
     Route::resource('/jurusan', 'JurusanController');
+    Route::resource('/wali_kelas', 'WaliKelasController');
   });
 });

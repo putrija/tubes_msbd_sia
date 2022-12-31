@@ -19,7 +19,7 @@ return new class extends Migration
         FOR EACH ROW BEGIN
        
         INSERT INTO `log_wali_kelas` (`id_wali_kelas_old`, `id_wali_kelas_new`, `guru_id_old`, `guru_id_new`, `kelas_id_old`, `kelas_id_new`, `tahun_ajaran_id_old`, `tahun_ajaran_id_new`, `status`)
-        VALUES ( OLD.id_wali_kelas, NEW.id_wali_kelas, OLD.guru_id, NEW.guru_id, OLD.kelas_id, NEW.kelas_id, OLD.tahun_ajaran_id, NEW.tahun_ajaran_id, "UPDATE");
+        VALUES ( OLD.id, NEW.id, OLD.guru_id, NEW.guru_id, OLD.kelas_id, NEW.kelas_id, OLD.tahun_ajaran_id, NEW.tahun_ajaran_id, "UPDATE");
              END');
     }
 
