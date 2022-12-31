@@ -52,7 +52,7 @@ class GuruMengajarController extends Controller
             ]);
             // dd($request->all());
 
-        return redirect()->back()->with('success', 'Data pelanggaran berhasil disimpan!');
+        return redirect()->back()->with('success', 'Data guru mapel berhasil disimpan!');
     }
 
     /**
@@ -74,7 +74,11 @@ class GuruMengajarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $guru_mapel = GuruMengajar::findorfail($id);
+        $guru = Guru::all()->first();
+        $mapel = Mapel::all()->first();
+        $tahun_ajaran = Tahun_ajaran::all()->first();
+        return view('admin.guru_mapel.edit-guru-mapel',compact('guru_mapel','guru','mapel','tahun_ajaran'));
     }
 
     /**
@@ -97,6 +101,9 @@ class GuruMengajarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $guru_mapel = GuruMengajar::findorfail($id);
+        $guru_mapel->delete();
+        return redirect()->back()->with('warning', 'Data guru mapel berhasil dihapus!');
+        //info itu adalah style dari boostrapnya untuk warna dari apa ya lupa aku namanya yg jendela melayan gitu lah
     }
 }

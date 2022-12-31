@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'GuruMengajar')
+@section('heading', 'Guru Mapel')
 @section('page')
-  <li class="breadcrumb-item active">Data Mapel</li>
+  <li class="breadcrumb-item active">Data Guru Mapel</li>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -34,12 +34,15 @@
                     <td>{{$data->mapel->nama_mapel}}</td>
                     <td>{{$data->tahun_ajaran->tahun_ajaran}}</td>
                     <td>
-                        <form action="{{ route('mapel.destroy', $data->id) }}" method="post">
+                        {{-- <form action="{{ route('guru_mapel.destroy', $data->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <a href="{{ route('mapel.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
-                        </form>
+                        </form> --}}
+                        <a href="{{url('edit-guru-mapel',$data->id)}}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
+                        <a href="{{url('delete-guru-mapel',$data->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Delete</a>
+                        {{-- <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button> --}}
                     </td>
                 </tr>
                 @endforeach
