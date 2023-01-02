@@ -13,33 +13,64 @@
       <!-- /.card-header -->
       <br>
      <!-- Drop Down Siswa -->
+     <form action="{{ route('rapot.store') }}" method="post" enctype="multipart/form-data">
+      @csrf
      <div class="container ml-2 mb-5">
         <div class="row justify-content-around">
-            <label> Nama Siswa : </label>
+            <label for="nama_siswa"> Nama Siswa / NISN : </label>
           <div class="col-4">
-             <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Nama Siswa">
+            <select id="nama_siswa" name="nama_siswa" class="select2bs4 form-control @error('nama_siswa') is-invalid @enderror">
+              <option value="">-- Pilih NISN Siswa --</option>
+              @foreach ($data_siswa as $data)
+                    {{-- <option value="{{ $data->id }}">{{ $data->ket_jenis_ptk }}</option> --}}
+                    <option value="{{ $data->nisn }}">{{ $data->nama_siswa }} / {{ $data->nisn }}</option>
+                @endforeach
+          </select>
           </div>
-             <label> Tahun Ajaran : </label>
+             <label for="tahun_ajaran"> Tahun Ajaran : </label>
           <div class="col-4">
-              <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran">
+              {{-- <input type="text" id="tahun_ajaran" name="tahun_ajaran" class="form-control" placeholder="Tahun Ajaran" aria-label="Tahun Ajaran" onkeypress="return inputAngka(event)"class="form-control @error('nama_siswa') is-invalid @enderror"> --}}
+              <select id="tahun_ajaran" name="tahun_ajaran" class="select2bs4 form-control @error('tahun_ajaran') is-invalid @enderror">
+                <option value="">-- Pilih Tahun Ajaran --</option>
+                @foreach ($tahun_ajaran as $data)
+                      {{-- <option value="{{ $data->id }}">{{ $data->ket_jenis_ptk }}</option> --}}
+                      <option value="{{ $data->id }}">{{ $data->tahun_ajaran }}</option>
+                  @endforeach
+              </select>
           </div>
         </div>
         <br>
     <div>
         <div class="row justify-content-around">
-          <label> Kelas : </label>
+          <label for="kelas"> Kelas : </label>
           <div class="col-4">
-             <input type="text" class="form-control" placeholder="Nama Siswa" aria-label="Kelas">
+             {{-- <input type="text" id="kelas" name="kelas" class="form-control" aria-label="Kelas" onkeypress="return inputAngka(event)"class="form-control @error('nama_siswa') is-invalid @enderror"> --}}
+              <select id="kelas" name="kelas" class="select2bs4 form-control @error('kelas') is-invalid @enderror">
+                <option value="">-- Pilih Kelas --</option>
+                @foreach ($kelas as $data)
+                      {{-- <option value="{{ $data->id }}">{{ $data->ket_jenis_ptk }}</option> --}}
+                      <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
+                  @endforeach
+              </select>
           </div>
-          <label> Semester : </label>
+          <label for="semester"> Semester : </label>
           <div class="col-4">
-              <input type="text" class="form-control" placeholder="Tahun Ajaran" aria-label="Semester">
+              {{-- <input type="text" id="semester" name="semester" class="form-control" placeholder="Tahun Ajaran" aria-label="Semester" onkeypress="return inputAngka(event)"class="form-control @error('nama_siswa') is-invalid @enderror"> --}}
+              <select id="semester" name="semester" class="select2bs4 form-control @error('semester') is-invalid @enderror">
+                <option value="">-- Pilih Semester --</option>
+                @foreach ($semester as $data)
+                      {{-- <option value="{{ $data->id }}">{{ $data->ket_jenis_ptk }}</option> --}}
+                      <option value="{{ $data->id }}">{{ $data->semester }}</option>
+                  @endforeach
+              </select>
           </div>
         </div>
      </div>
      <br>
     <!-- /.card -->
     <!-- Tabel Rapor -->
+    <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambahkan</button>
+    </form>
 
     <div class="container">
   <div class="row">
@@ -157,6 +188,7 @@
 </div>
 @endsection
 @section('script')
+
     <script>
       $("#Nilai").addClass("active");
       $("#liNilai").addClass("menu-open");

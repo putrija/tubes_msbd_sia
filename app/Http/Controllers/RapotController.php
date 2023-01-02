@@ -10,6 +10,8 @@ use App\Rapot;
 use App\Sikap;
 use App\Siswa;
 use App\Jadwal;
+use App\Models\Tahun_ajaran;
+use App\Models\Semester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -38,7 +40,10 @@ class RapotController extends Controller
     public function create()
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
-        return view('admin.rapot.home', compact('kelas'));
+        $data_siswa = Siswa::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+        $semester = Semester::all();
+        return view('admin.rapot.home', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester'));
     }
 
     /**
@@ -49,27 +54,68 @@ class RapotController extends Controller
      */
     public function store(Request $request)
     {
-        $guru = Guru::findorfail($request->guru_id);
-        $cekJadwal = Jadwal::where('guru_id', $guru->id)->where('kelas_id', $request->kelas_id)->count();
-        if ($cekJadwal >= 1) {
+        // $guru = Guru::findorfail($request->guru_id);
+        // $cekJadwal = Jadwal::where('guru_id', $guru->id)->where('kelas_id', $request->kelas_id)->count();
+        // if ($cekJadwal >= 1) {
+        //     Rapot::updateOrCreate(
+        //         [
+        //             'id' => $request->id
+        //         ],
+        //         [
+        //             'kelas_siswa_id' => $request->siswa_id,
+        //             'mapel_id' => $request->kelas_id,
+        //             'wali_kelas_id' => $request->guru_id,
+        //             'semester_id' => $guru->mapel_id,
+        //             'nilai_pengetahuan' => $request->nilai,
+        //             'predikat_pengetahuan' => $request->nilai,
+        //             'nilai_keterampilan' => $request->nilai,
+        //             'predikat_keterampilan' => $request->nilai,
+        //         ]
+        //     );
+        //     return response()->json(['success' => 'Nilai rapot siswa berhasil ditambahkan!']);
+        // } else {
+        //     return response()->json(['error' => 'Maaf guru ini tidak mengajar kelas ini!']);
+        // }
+        // https://youtu.be/Sx1RgCjmvfg
+        // for($o = 0; $o <= 10; $o++) {
             Rapot::updateOrCreate(
                 [
                     'id' => $request->id
                 ],
                 [
-                    'siswa_id' => $request->siswa_id,
-                    'kelas_id' => $request->kelas_id,
-                    'guru_id' => $request->guru_id,
-                    'mapel_id' => $guru->mapel_id,
-                    'k_nilai' => $request->nilai,
-                    'k_predikat' => $request->predikat,
-                    'k_deskripsi' => $request->deskripsi,
+                    'kelas_siswa_id' => $request->kelas,
+                    'nisn_siswa' => $request->nama_siswa,
+                    'tahun_ajaran_id' => $request->tahun_ajaran,
+                    'mapel_id' => '3',
+                    'wali_kelas_id' => '2',
+                    'semester_id' => $request->semester,
+                    'nilai_pengetahuan' => '90',
+                    'predikat_pengetahuan' => 'A',
+                    'nilai_keterampilan' => '90',
+                    'predikat_keterampilan' => 'A',
                 ]
             );
-            return response()->json(['success' => 'Nilai rapot siswa berhasil ditambahkan!']);
-        } else {
-            return response()->json(['error' => 'Maaf guru ini tidak mengajar kelas ini!']);
-        }
+        // }
+        // $o = 0;
+
+            // Rapot::updateOrCreate(
+            //     [
+            //         'id' => $request->id
+            //     ],
+            //     [
+            //         'kelas_siswa_id' => $request->kelas,
+            //         'nisn_siswa' => $request->nama_siswa,
+            //         'mapel_id' => '3',
+            //         'wali_kelas_id' => '2',
+            //         'semester_id' => '1',
+            //         'nilai_pengetahuan' => '90',
+            //         'predikat_pengetahuan' => 'A',
+            //         'nilai_keterampilan' => '90',
+            //         'predikat_keterampilan' => 'A',
+            //     ]
+            // );
+
+        return redirect()->back()->with('success', 'Nilai berhasil ditambahkan');
     }
 
     /**
