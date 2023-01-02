@@ -135,7 +135,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('status_kepeg.index') }}" class="nav-link" id="DataKepegGuru">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Status Kepeg Guru</p>
                                 </a>
