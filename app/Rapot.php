@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rapot extends Model
 {
-    protected $fillable = ['siswa_id', 'kelas_id', 'guru_id', 'mapel_id', 'p_nilai', 'p_predikat', 'p_deskripsi', 'k_nilai', 'k_predikat', 'k_deskripsi'];
+    protected $fillable = ['nisn_siswa', 'kelas_siswa_id', 'mapel_id', 'wali_kelas_id', 'semester_id', 'nilai_pengetahuan', 'predikat_pengetahuan', 'nilai_keterampilan', 'predikat_keterampilan', 'tahun_ajaran_id'];
 
-    protected $table = 'rapot';
+    protected $table = 'rapor';
 }

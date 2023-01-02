@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('wali_kelas', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id_wali_kelas');
+            $table->increments('id');
             $table->unsignedInteger('guru_id')->index('guru_id');
             $table->unsignedInteger('kelas_id')->index('kelas_id');
             $table->unsignedInteger('tahun_ajaran_id')->index('tahun_ajaran_id');

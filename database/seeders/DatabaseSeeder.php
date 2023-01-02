@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RuangSeeder::class);
         $this->call(JadwalSeeder::class);
         $this->call(KelasSiswaSeeder::class);
+        $this->call(WaliKelasSeeder::class);
         $this->call(UsersSeeder::class);
+        $this->call(SemesterSeeder::class);
     }
 }

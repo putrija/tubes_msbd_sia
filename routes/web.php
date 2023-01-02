@@ -127,6 +127,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/siswa', 'SiswaController');
     Route::get('/mapel/getMapelJson', 'MapelController@getMapelJson');
     Route::resource('/mapel', 'MapelController');
+    Route::resource('/rapot', 'RapotController');
 
     Route::resource('/log_guru', 'LogGuruController');
     Route::resource('/log_siswa', 'LogSiswaController');
@@ -145,6 +146,8 @@ Route::middleware(['auth'])->group(function () {
     //################## ROUTE GURU MENGAJAR MAPEL#######################
     Route::resource('/guru_mapel', 'GuruMengajarController');
     Route::post('/guru_mapel/store', 'GuruMengajarController@store');
+    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit'); //->name('edit-guru-mapel');
+    Route::get('/delete-guru-mapel/{id}', 'GuruMengajarController@destroy');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
 
     // ################### ROUTE STATUS #######################
@@ -169,10 +172,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
     Route::get('/predikat', 'NilaiController@create')->name('predikat');
+    Route::get('/simpan_nilai', 'NilaiController@create')->name('simpan.nilai');
     Route::get('/tambahkankepsek', 'UserController@editkepsek')->name('editkepsek');
     Route::post('/tambahkankepsek', 'UserController@editkepsek2')->name('editkepsek2');
     Route::post('/users/{id}', 'UserController@edit_guru')->name('edit_guru');
     Route::get('pembagiankelas', [PembagianKelasController::class, 'index']);
     Route::resource('/user', 'UserController');
+
+    Route::resource('/kurikulum', 'KurikulumController');
+    Route::resource('/jurusan', 'JurusanController');
+    Route::resource('/wali_kelas', 'WaliKelasController');
   });
 });

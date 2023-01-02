@@ -23,62 +23,22 @@
                   <label for="nama_mapel">Nama Mapel</label>
                   <input type="text" id="nama_mapel" name="nama_mapel" value="{{ $mapel->nama_mapel }}" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>
-                
+
                 <div class="form-group">
-                  <label for="kurikulum_id">Kurikulum</label>
-                  <select id="kurikulum_id" name="kurikulum_id" class="select2bs4 form-control @error('kurikulum_id') is-invalid @enderror">
-                    <option value="">-- Pilih Kurikulum --</option>
-                    <option value="1"
-                        @if ($mapel->kurikulum_id == '1')
-                            selected
-                        @endif
-                    >Kurikulum K-13</option>
-                    <option value="2"
-                        @if ($mapel->kurikulum_id == '2')
-                            selected
-                        @endif
-                    >Kurikulum Merdeka</option>
-                </select>
-                </div>
-                {{-- <div class="form-group">
-                  <label for="paket_id">Jurusan</label>
-                  <select id="paket_id" name="paket_id" class="form-control @error('paket_id') is-invalid @enderror select2bs4">
-                    <option value="">-- Pilih Paket Mapel --</option>
-                    <option value="3"
-                        @if ($mapel->paket_id == '3')
-                            selected
-                        @endif
-                    ></option>
-                    @foreach ($paket as $data)
+                  <label for="kurikulum_id">Kode Kurikulum</label>
+                  <select id="kurikulum_id" name="kurikulum_id" class="form-control @error('kurikulum_id') is-invalid @enderror select2bs4">
+                    <option value="" @if ($mapel->kurikulum_id)
+                      selected
+                    @endif>-- Pilih Kurikulum --</option>
+                    @foreach ($kurikulum as $data)
                       <option value="{{ $data->id }}"
-                        @if ($mapel->paket_id == $data->id)
-                            selected
+                        @if ($mapel->kurikulum_id == $data->id)
+                          selected
                         @endif
-                      >{{ $data->ket }}</option>
+                      >{{ $data->nama_kurikulum }}</option>
                     @endforeach
-                  </select> --}}
-                {{-- </div>
-                <div class="form-group">
-                    <label for="kelompok">Kelompok</label>
-                    <select id="kelompok" name="kelompok" class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
-                        <option value="">-- Pilih Kelompok Mapel --</option>
-                        <option value="A"
-                            @if ($mapel->kelompok == 'A')
-                                selected
-                            @endif
-                        >Pelajaran Umum</option>
-                        <option value="B"
-                            @if ($mapel->kelompok == 'B')
-                                selected
-                            @endif
-                        >Ekstrakulikuler</option> --}}
-                        {{-- <option value="C"
-                            @if ($mapel->kelompok == 'C')
-                                selected --}}
-                            {{-- @endif --}}
-                        {{-- >Pelajaran Keahlian</option> --}}
-                    {{-- </select>
-                </div> --}}
+                  </select>
+                </div>
             </div>
           </div>
         </div>

@@ -28,8 +28,9 @@ class MapelController extends Controller
             ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
             ->join('kurikulum', 'mapel.kurikulum_id', '=', 'kurikulum.id')
             ->get();
+        $kurikulum = Kurikulum::all();
         // $paket = Paket::all();
-        return view('admin.mapel.index', compact('mapel'));
+        return view('admin.mapel.index', compact('mapel', 'kurikulum'));
     }
 
     /**
@@ -53,8 +54,6 @@ class MapelController extends Controller
         $this->validate($request, [
             'nama_mapel' => 'required',
             'kurikulum_id' => 'required',
-            // 'paket_id' => 'required',
-            // 'kelompok' => 'required'
         ]);
 
         Mapel::updateOrCreate(
@@ -64,9 +63,6 @@ class MapelController extends Controller
             [
                 'nama_mapel' => $request->nama_mapel,
                 'kurikulum_id' => $request->kurikulum_id,
-
-                // 'paket_id' => $request->paket_id,
-                // 'kelompok' => $request->kelompok,
             ]
         );
 
@@ -98,8 +94,8 @@ class MapelController extends Controller
             ->join('kurikulum', 'mapel.kurikulum_id', '=', 'kurikulum.id')
             ->where('mapel.id', $id)->first();
         // $mapel = Mapel::findorfail($id);
-        // $kurikulum = Kurikulum::all();
-        return view('admin.mapel.edit', compact('mapel'));
+        $kurikulum = Kurikulum::all();
+        return view('admin.mapel.edit', compact('mapel', 'kurikulum'));
     }
 
     /**

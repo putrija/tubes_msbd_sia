@@ -1,15 +1,15 @@
 @extends('template_backend.home')
-@section('heading', 'Data Mapel')
+@section('heading', 'Data Kurikulum')
 @section('page')
-  <li class="breadcrumb-item active">Data Mapel</li>
+  <li class="breadcrumb-item active">Data Kurikulum</li>
 @endsection
 @section('content')
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-mapel">
-                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Mapel
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-kurikulum">
+                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kurikulum
                 </button>
             </h3>
         </div>
@@ -19,22 +19,20 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Mapel</th>
-                    <th>Kurikulum</th>
+                    <th>Nama Kurikulum</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mapel as $result => $data)
+                @foreach ($kurikulum as $result => $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->nama_mapel }}</td>
                     <td>{{ $data->nama_kurikulum }}</td>
                     <td>
-                        <form action="{{ route('mapel.destroy', $data->id) }}" method="post">
+                        <form action="{{ route('kurikulum.destroy', $data->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('mapel.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
+                            <a href="{{ route('kurikulum.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
@@ -50,32 +48,23 @@
 <!-- /.col -->
 
 <!-- Extra large modal -->
-<div class="modal fade bd-example-modal-md tambah-mapel" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-md tambah-kurikulum" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Tambah Data Mapel</h4>
+        <h4 class="modal-title">Tambah Data Kurikulum</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('mapel.store') }}" method="post">
+        <form action="{{ route('kurikulum.store') }}" method="post">
           @csrf
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nama_mapel">Nama Mapel</label>
-                  <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
-                </div>
-                <div class="form-group">
-                    <label for="kurikulum_id">Kurikulum</label>
-                    <br>
-                    <select id="kurikulum_id" name="kurikulum_id" class="select2bs4 form-control @error('kurikulum_id') is-invalid @enderror">
-                      @foreach ($kurikulum as $data)
-                          <option value="{{ $data->id }}">{{ $data->nama_kurikulum }}</option>
-                      @endforeach
-                    </select>
+                  <label for="nama_kurikulum">Nama Kurikulum</label>
+                  <input type="text" id="nama_kurikulum" name="nama_kurikulum" class="form-control @error('nama_kurikulum') is-invalid @enderror" placeholder="{{ __('Nama Kurikulum') }}">
                 </div>
               </div>
             </div>
@@ -93,6 +82,6 @@
   <script>
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
-    $("#DataMapel").addClass("active");
+    $("#DataKurikulum").addClass("active");
   </script>
 @endsection

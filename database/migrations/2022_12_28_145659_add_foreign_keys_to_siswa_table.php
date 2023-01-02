@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('siswa', function (Blueprint $table) {
             $table->foreign(['status_id'], 'siswa_ibfk_2')->references(['id'])->on('status_siswa');
-            $table->foreign(['kelas_id'], 'siswa_ibfk_3')->references(['id'])->on('kelas');
+            $table->foreign(['kelas_id'], 'siswa_ibfk_3')->references(['id'])->on('kelas')->onDelete('cascade');
         });
     }
 
