@@ -7,6 +7,7 @@ use App\Models\Guru;
 use App\Mapel;
 use App\Models\Tahun_ajaran;
 use Illuminate\Http\Request;
+use SteamCondenser\Exceptions\SocketException;
 
 use function GuzzleHttp\Promise\all;
 
@@ -44,15 +45,24 @@ class GuruMengajarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
         GuruMengajar::create([//panggil model pelanggaran dan panggil fungsi create
             'guru_id' => $request->guru_id,
             'mapel_id'=>$request->mapel_id,
             'tahun_ajaran_id'=>$request->tahun_ajaran_id
-            ]);
+        ]);
             // dd($request->all());
-
+         
         return redirect()->back()->with('success', 'Data guru mapel berhasil disimpan!');
+        }
+        // } catch (){
+        //     return redirect()->back()->with('danger', 'data tidak dapat ditambah karena sudah tersedia');
+        // }
+        catch (\Exception $e) {
+
+            return redirect()->back()->with('warning', 'data tidak dapat ditambah karena sudah tersedia');
+            
+        }
     }
 
     /**
@@ -74,10 +84,16 @@ class GuruMengajarController extends Controller
      */
     public function edit($id)
     {
+        //buat variabel baru guru terpilih lalu buat isi variabelnya itu dari tabel guru dimana idnya = id yg didapat (id request)
+        //demikian untuk mapel dan guru
+        //itu diletak dicontroller lalu compact dan variabel baru tadi yg dipanggil.
+        //untuk value pake, select search pake selsct mapel. tapi untuk nampilin namanya pake table yang ada
         $guru_mapel = GuruMengajar::findorfail($id);
-        $guru = Guru::all()->first();
-        $mapel = Mapel::all()->first();
-        $tahun_ajaran = Tahun_ajaran::all()->first();
+        $guru = Guru::all();
+        $mapel = Mapel::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+
+        // dd($guru);
         return view('admin.guru_mapel.edit-guru-mapel',compact('guru_mapel','guru','mapel','tahun_ajaran'));
     }
 

@@ -1,5 +1,5 @@
 @extends('template_backend.home')
-@section('heading', 'EditGuruMengajar')
+@section('heading', 'Edit Guru Mengajar')
 @section('page')
   <li class="breadcrumb-item active"><a href="{{ route('guru_mapel.index') }}"> Guru Mapel</a></li>
   <li class="breadcrumb-item active">Edit Guru Mapel</li>
@@ -22,24 +22,24 @@
                   @csrf
                   <div class="form-group">
                     <label for="nama_guru">Nama Guru</label><br>
-                    <input type="text"  id="id" name="id" value="{{$guru->nama_guru}}">
+                    <input type="text"  id="id" name="id" value="{{$guru->first()->nama_guru}}">
                   </div>
                   <div class="form-group">
                     <label for="nama_mapel">Mata Pelajaran</label><br>
-                    <input type="text"  id="id" name="id" value="{{$mapel->nama_mapel}}">
+                    <input type="text"  id="id" name="id" value="{{$mapel->first()->nama_mapel}}">
                   </div>
                   <div class="form-group">
                     <label for="tahun_ajaran">Tahun ajaran</label><br>
-                    <input type="text"  id="id" name="id" value="{{$tahun_ajaran->tahun_ajaran}}">
+                    <input type="text"  id="id" name="id" value="{{$tahun_ajaran->first()->tahun_ajaran}}">
                   </div>
 
-                    {{-- <label for="nama_guru">Nama Guru</label><br>
+                    <label for="nama_guru">Nama Guru</label><br>
                     <select   class="js-example-basic-single" id="guru_id" name="guru_id" data-width="100%">
                       <option value="">--- Pilih Nama Guru ---</option>
                       @foreach ($guru as $data)
-                        <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
+                        <option value="{{ $data->id }}">{{ $data->id }}</option>
                       @endforeach
-                    </select> --}}
+                    </select>
 
                 </form>
 
