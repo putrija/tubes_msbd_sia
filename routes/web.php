@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\PembagianKelasExport;
 use App\Http\Controllers\LogGuruController;
 use App\Http\Controllers\PembagianKelasController;
 use Illuminate\Support\Facades\Auth;
@@ -176,8 +177,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambahkankepsek', 'UserController@editkepsek')->name('editkepsek');
     Route::post('/tambahkankepsek', 'UserController@editkepsek2')->name('editkepsek2');
     Route::post('/users/{id}', 'UserController@edit_guru')->name('edit_guru');
-    Route::get('pembagiankelas', [PembagianKelasController::class, 'index']);
     Route::resource('/user', 'UserController');
+
+    //Route Pembagian Kelas
+    Route::resource('/pembagiankelas', 'PembagianKelasController');
+    Route::post('/pembagiankelas/store', 'PembagianKelasController@store');
+    Route::get('/pembagiankelas/export_excel', 'PembagianKelasController@export_excel')->name('pembagiankelas.export_excel');
 
     Route::resource('/kurikulum', 'KurikulumController');
     Route::resource('/jurusan', 'JurusanController');

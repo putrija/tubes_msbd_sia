@@ -99,9 +99,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('pembagiankelas.index') }}" class="nav-link" id="DataPembagianKelas">
                                     <i class="fas fa-home nav-icon"></i>
-                                    <p>Kelas Siswa</p>
+                                    <p>Pembagian Kelas</p>
                                 </a>
                             </li>
                             <li class="nav-item">

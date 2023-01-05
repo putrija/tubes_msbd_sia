@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PembagianKelasExport;
+use App\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Siswa;
+use App\Models\PembagianKelas;
+use App\Models\Tahun_ajaran;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PembagianKelasController extends Controller
 {
@@ -13,6 +20,30 @@ class PembagianKelasController extends Controller
      //$siswa = Siswa::leftjoin('siswa', 'kelas_siswa.siswa_id', '=', 'siswa.id')->get(['siswa.nama_siswa']);
      //$PembagianKelas = DB::table('kelas_siswa')->join('siswa','siswa.id','=','kelas_siswa.id')->join('kelas','kelas.id','=','kelas_siswa.id')->join('tahun_ajaran','tahun_ajaran.id','=','kelas_siswa.id')->get() ;
      $viewPembagianKelas = DB::table('view_pembagian_kelas')->get(); 
-     return view('admin.pembagiankelas.index',compact('viewPembagianKelas'));
+     $PembagianKelas = DB::table('kelas_siswa')->get();
+     $siswa = Siswa::all();
+     $kelas = Kelas::all();
+     $tahun_ajaran = Tahun_ajaran::all();
+     return view('admin.pembagiankelas.index',compact('viewPembagianKelas','PembagianKelas','siswa','kelas','tahun_ajaran'));
     }
-}
+
+    public function store(Request $request)
+    {
+
+            PembagianKelas::create([//panggil model pelanggaran dan panggil fungsi create
+                'siswa_id' => $request->siswa_id,
+                'kelas_id' => $request->kelas_id,
+                'tahun_ajaran_id' => $request->tahun_ajaran_id,
+                 ]);
+     return redirect()->back()->with('success', 'Data pembagian kelas berhasil disimpan!');
+    }
+    // public function showPembagianKelas(){
+    //     $pembagiankelas = PembagianKelas::all();
+    //     return view('admin.pembagiankelas.index', compact('pembagian_kelas'));
+    //   }
+    public function export_excel()
+    {
+        return Excel::download(new PembagianKelasExport, 'pembagiankelas.xlsx');
+    }
+  
+    }

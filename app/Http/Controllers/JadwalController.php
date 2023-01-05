@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\PDF;
 use Illuminate\Support\Facades\DB;
-
 use PDF;
 use App\Exports\JadwalExport;
 use App\Imports\JadwalImport;
@@ -327,7 +326,7 @@ class JadwalController extends Controller
     {
         $jadwal = Jadwal::OrderBy('hari', 'asc')->OrderBy('jam_mulai', 'asc')->where('kelas_id', $request->id)->get();
         $kelas = Kelas::findorfail($request->id);
-        $pdf = PDF::loadView('jadwal-pdf', ['jadwal' => $jadwal, 'kelas' => $kelas]);
+        $pdf = PDF::loadView('jadwal-pdf', ['jadwal' => $jadwal]);
         return $pdf->stream();
         // return $pdf->stream('jadwal-pdf.pdf');
     }

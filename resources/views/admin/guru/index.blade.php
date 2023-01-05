@@ -213,7 +213,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-                <label for="telp">Nomor Telpon</label>
+                <label for="telp">No</label>
                 <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
             </div>
             <div class="form-group">

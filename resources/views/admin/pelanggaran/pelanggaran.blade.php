@@ -9,7 +9,7 @@
         <div class="card-header">
             <h3 class="card-title">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-pelanggaran">
-                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Pelanggaran
+                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp Data Pelanggaran
                 </button>
             </h3>
         </div>
