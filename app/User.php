@@ -33,6 +33,13 @@ class User extends Authenticatable
         return $siswa;
     }
 
+    // public function createData($data)
+    // {
+    //     $data['password'] = '12345678';
+    //     dd($data)
+    //     return $this->create($data);
+    // }
+
     /**
      * The attributes that should be hidden for arrays.
      *

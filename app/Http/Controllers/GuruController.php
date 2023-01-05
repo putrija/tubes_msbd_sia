@@ -32,6 +32,12 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $guru,$detail_guru;
+    public function __construct()
+    {
+        $this->guru = new Guru();
+        $this->detail_guru = new DetailGuru();
+    }
     public function index()
     {
         // $detail_guru = DetailGuru::orderBy('guru_id')->get();
@@ -108,6 +114,41 @@ class GuruController extends Controller
             'nuptk' => $request->nuptk,
             'foto' => $nameFoto,
         ]);
+        $data = $request->all();
+        $detail_guru = new DetailGuru;
+        $detail_guru->guru_id = $guru->id;
+        $detail_guru->sk_cpns = $data['sk_cpns'];
+        $detail_guru->tanggal_cpns = $data['tanggal_cpns'];
+        $detail_guru->sk_pengangkatan = $data['sk_pengangkatan'];
+        $detail_guru->tmt_pengangkatan = $data['tmt_pengangkatan'];
+        $detail_guru->lembaga_pengangkatan = $data['lembaga_pengangkatan'];
+        $detail_guru->pangkat_golongan = $data['pangkat_golongan'];
+        $detail_guru->nama_ibu_kandung = $data['nama_ibu_kandung'];
+        $detail_guru->status_perkawinan = $data['status_perkawinan'];
+        $detail_guru->nama_suami_istri = $data['nama_suami_istri'];
+        $detail_guru->nip_suami_istri = $data['nip_suami_istri'];
+        $detail_guru->pekerjaan_suami_istri = $data['pekerjaan_suami_istri'];
+        $detail_guru->tmt_pns = $data['tmt_pns'];
+        $detail_guru->sudah_lisensi_kepsek = $data['sudah_lisensi_kepsek'];
+        $detail_guru->pernah_diklat_kepengawasan = $data['pernah_diklat_kepengawasan'];
+        $detail_guru->keahlian_braille = $data['keahlian_braille'];
+        $detail_guru->keahlian_bahasa_isyarat = $data['keahlian_bahasa_isyarat'];
+        $detail_guru->npwp = $data['npwp'];
+        $detail_guru->nama_wajib_pajak = $data['nama_wajib_pajak'];
+        $detail_guru->kewarganegaraan = $data['kewarganegaraan'];
+        $detail_guru->bank = $data['bank'];
+        $detail_guru->nomor_rekening_bank = $data['nomor_rekening_bank'];
+        $detail_guru->rekening_atas_nama = $data['rekening_atas_nama'];
+        $detail_guru->karpeg = $data['karpeg'];
+        $detail_guru->karis_karsu = $data['karis_karsu'];
+        $detail_guru->lintang = $data['lintang'];
+        $detail_guru->bujur = $data['bujur'];
+
+        $detail_guru->save();
+        
+        // $guru_id = $request->id;
+        // $detail_guru['guru_id'] = $guru_id;
+        // $this->detail_guru->sk_cpns = Input::get('sk_cpns');
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }
 
@@ -241,6 +282,7 @@ class GuruController extends Controller
     {
         $id = Crypt::decrypt($id);
         $guru = Guru::withTrashed()->findorfail($id);
+        $detail_guru = DetailGuru::all();
         $countJadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->count();
         if ($countJadwal >= 1) {
             $jadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->restore();
@@ -251,6 +293,7 @@ class GuruController extends Controller
             $user = User::withTrashed()->where('id_card_guru', $guru->id_card_guru)->restore();
         } else {
         }
+       
         $guru->restore();
         return redirect()->back()->with('info', 'Data guru berhasil direstore! (Silahkan cek data guru)');
     }

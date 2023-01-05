@@ -116,7 +116,7 @@
 
 <!-- Extra large modal -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
       <div class="modal-header">
           <h4 class="modal-title">Tambah Data Guru</h4>
@@ -128,7 +128,7 @@
     <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <div class="form-group">
                 <label for="id_card_guru">Nomor ID Card</label>
                 <input type="text" id="id_card_guru" name="id_card_guru" maxlength="5" minlength="5" onkeypress="return inputAngka(event)"class="form-control @error('id_card_guru') is-invalid @enderror">
@@ -184,8 +184,8 @@
                   </select>
               </div>
                   <div class="form-group">
-                    <label for="tugas_tambahan_guru_id">Tugas Tambahan Guru</label>
-                    <select id="tugas_tambahan_guru_id" name="tugas_tambahan_guru_id" class="select2bs4 form-control @error('tugas_tambahan_guru_id') is-invalid @enderror">
+                    <label for="tugas_tambahan_guru">Tugas Tambahan Guru</label>
+                    <select id="tugas_tambahan_guru" name="tugas_tambahan_id" class="select2bs4 form-control @error('tugas_tambahan_id') is-invalid @enderror">
                         <option value="">-- Pilih Tugas Tambahan --</option>
                         @foreach ($tugas_tambahan as $data)
                         <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
@@ -209,15 +209,14 @@
                       <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
                   </select>
               </div>
-        
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <div class="form-group">
-                <label for="telp">No</label>
+                <label for="telp">Nomor Telepon</label>
                 <input type="number" id="telp" name="telp" onkeypress="return inputAngka(event)" class="form-control @error('telp') is-invalid @enderror">
             </div>
             <div class="form-group">
-                <label for="hp">Nomor hp</label>
+                <label for="hp">Nomor Handphone</label>
                 <input type="number" id="hp" name="hp" onkeypress="return inputAngka(event)" class="form-control @error('hp') is-invalid @enderror">
             </div>
             <div class="form-group">
@@ -266,6 +265,142 @@
                   </div>
               </div>
           </div>
+          <div class="col-md-3">
+            <div class="form-group">
+                <label for="sk_cpns">SK CPNS</label>
+                <input type="text" id="sk_cpns" name="sk_cpns" class="form-control @error('sk_cpns') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="tanggal_cpns">Tanggal CPNS</label>
+                <input type="date" id="tanggal_cpns" name="tanggal_cpns" class="form-control @error('tanggal_cpns') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="sk_pengangkatan">SK Pengangkatan</label>
+                <input type="text" id="sk_pengangkatan" name="sk_pengangkatan" class="form-control @error('sk_pengangkatan') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="tmt_pengangkatan">TMT Pengangkatan</label>
+                <input type="date" id="tmt_pengangkatan" name="tmt_pengangkatan"  class="form-control @error('tmt_pengangkatanpengangkatan') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="lembaga_pendidikan">Lembaga Pengangkatan</label>
+                <select id="lembaga_pengangkatan" name="lembaga_pengangkatan" class="select2bs4 form-control @error('lembaga_pengangkatan') is-invalid @enderror">
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Pemerintah Pusat">Pemerintah Pusat</option>
+                    <option value="Pemerintah Kab/Kota">Pemerintah Kab/Kota</option>
+                    <option value="Pemerintah Provinsi">Pemerintah Provinsi</option>
+                    <option value="Ketua Yayasan">Ketua Yayasan</option>
+                    <option value="Pemerintah Kab/Kota">Komite Sekolah</option>
+                    <option value="Kepala Sekolah">Kepala Sekolah</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pangkat_golongan">Pangkat Golongan</label>
+                <input type="text" id="pangkat_golongan" name="pangkat_golongan"  class="form-control @error('pangkat_golongan') is-invalid @enderror">
+            </div>
+                <div class="form-group">
+                    <label for="nama_ibu_kandung">Nama Ibu Kandung</label>
+                    <input type="text" id="nama_ibu_kandung" name="nama_ibu_kandung"  class="form-control @error('nama_ibu_kandung') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="sumber_gaji">Sumber Gaji</label>
+                    <input type="text" id="sumber_gaji" name="sumber_gaji"  class="form-control @error('sumber_gaji') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="status_perkawinan">Status Perkawinan</label>
+                    <input type="text" id="status_perkawinan" name="status_perkawinan"  class="form-control @error('status_perkawinan') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="nama_suami_istri">Nama Suami/Istri</label>
+                    <input type="text" id="nama_suami_istri" name="nama_suami_istri"  class="form-control @error('nama_suami_istri') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="nip_suami_istri">NIP Suami/Istri</label>
+                    <input type="number" id="nip_suami_istri" name="nip_suami_istri"  class="form-control @error('nip_suami_istri') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="karis_karsu">Karis/Karsu</label>
+                    <input type="text" id="karis_karsu" name="karis_karsu" class="form-control @error('karis_karsu') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="karpeg">Karpeg</label>
+                    <input type="text" id="karpeg" name="karpeg" class="form-control @error('karpeg') is-invalid @enderror">
+                </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+                <label for="pekerjaan_suami_istri">Pekerjaan Suami/Istri</label>
+                <input type="text" id="pekerjaan_suami_istri" name="pekerjaan_suami_istri" class="form-control @error('pekerjaan_suami_istri') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="tmt_pns">TMT PNS</label>
+                <input type="date" id="tmt_pns" name="tmt_pns"  class="form-control @error('tmt_pns') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="sudah_lisensi_kepsek">Lisensi Kepala Sekolah</label>
+                <select id="sudah_lisensi_kepsek" name="sudah_lisensi_kepsek" class="select2bs4 form-control @error('sudah_lisensi_kepsek') is-invalid @enderror">
+                    <option value="">-- Pilih Jawaban --</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pernah_diklat_kepengawasan">Diklat Kepengawasan</label>
+                <select id="pernah_diklat_kepengawasan" name="pernah_diklat_kepengawasan" class="select2bs4 form-control @error('pernah_diklat_kepengawasan') is-invalid @enderror">
+                    <option value="">-- Pilih Jawaban --</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keahlian_braille">Keahlian Braille</label>
+                <select id="keahlian_braille" name="keahlian_braille" class="select2bs4 form-control @error('keahlian_braille') is-invalid @enderror">
+                    <option value="">--Pilih Jawaban --</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keahlian_bahasa_isyarat">Keahlian Bahasa Isyarat</label>
+                <select id="keahlian_bahasa_isyarat" name="keahlian_bahasa_isyarat" class="select2bs4 form-control @error('keahlian_bahasa_isyarat') is-invalid @enderror">
+                    <option value="">--Pilih Jawaban --</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="npwp">NPWP</label>
+                <input type="text" id="npwp" name="npwp" class="form-control @error('npwp') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="nama_wajib_pajak">Nama Wajib Pajak</label>
+                <input type="text" id="nama_wajib_pajak" name="nama_wajib_pajak"  class="form-control @error('nama_wajib_pajak') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="kewarganegaraan">Kewarganegaraan</label>
+                <input type="text" id="kewarganegaraan" name="kewarganegaraan"  class="form-control @error('kewarganegaraan') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="bank">Bank</label>
+                <input type="text" id="bank" name="bank"  class="form-control @error('bank') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="nomor_rekening_bank">Nomor Rekening Bank</label>
+                <input type="text" id="nomor_rekening_bank" name="nomor_rekening_bank"  class="form-control @error('nomor_rekening_bank') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="rekening_atas_nama">Rekening Atas Nama</label>
+                <input type="text" id="rekening_atas_nama" name="rekening_atas_nama"  class="form-control @error('rekening_atas_nama') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="lintang">Lintang</label>
+                <input type="text" id="lintang" name="lintang"  class="form-control @error('lintang') is-invalid @enderror">
+            </div>
+            <div class="form-group">
+                <label for="bujur">Bujur</label>
+                <input type="text" id="bujur" name="bujur"  class="form-control @error('bujur') is-invalid @enderror">
+            </div>
+
       </div>
     </div>
     <div class="modal-footer justify-content-between">

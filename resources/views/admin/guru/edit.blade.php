@@ -223,7 +223,7 @@
                 <input type="text" id="diklat_kepegawaian" name="diklat_kepegawaian" value="{{ $guru->detail_guru->diklat_kepegawaian }}" class="form-control @error('diklat_kepegawaian') is-invalid @enderror">
             </div>
             <div class="form-group">
-                <label for="keahlian_braille">Keahlian Braille</label>keahlian_braille
+                <label for="keahlian_braille">Keahlian Braille</label>
                 <input type="text" id="keahlian_braille" name="keahlian_braille" value="{{ $guru->detail_guru->keahlian_braille }}" class="form-control @error('keahlian_braille') is-invalid @enderror">
             </div>
             <div class="form-group">
@@ -264,11 +264,11 @@
             </div>
             <div class="form-group">
                 <label for="lintang">Lintang</label>
-                <input type="text" id="hp" name="hp" value="{{ $guru->detail_guru->hp }}" class="form-control @error('hp') is-invalid @enderror">
+                <input type="text" id="lintang" name="lintang" value="{{ $guru->detail_guru->lintang }}" class="form-control @error('lintang') is-invalid @enderror">
             </div>
             <div class="form-group">
-                <label for="hp">Bujur</label>
-                <input type="text" id="hp" name="hp" value="{{ $guru->detail_guru->hp }}" class="form-control @error('hp') is-invalid @enderror">
+                <label for="bujur">Bujur</label>
+                <input type="text" id="bujur" name="bujur" value="{{ $guru->detail_guru->bujur }}" class="form-control @error('bujur') is-invalid @enderror">
             </div>
 
 

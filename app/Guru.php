@@ -26,6 +26,12 @@ class Guru extends Model
     {
         return $this->hasOne('App\Models\DetailGuru')->withDefault();
     }
+    public function guru_detail()
+    {
+        return $this->hasOne('Guru','id_guru');
+    }
+
 
     protected $table = 'guru';
 }
+
