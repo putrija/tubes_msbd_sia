@@ -21,9 +21,18 @@
                 <form action="" method="post">
                   @csrf
                   <div class="form-group">
-                    <label for="nama_guru">Nama Guru</label><br>
-                    <input type="text"  id="id" name="id" value="{{$guru->first()->nama_guru}}">
-                  </div>
+                    <label for="guru_id">Nama Guru</label>
+                    <select id="guru_id" name="guru_id" class="select2bs4 form-control @error('guru_id') is-invalid @enderror">
+                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                        @foreach ($guru as $data)
+                        <option value="{{ $data->id }}" 
+                        @if ($guru_mapel->guru_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->nama_guru }}</option>
+                    @endforeach
+                    </select>
+                </div>
                   <div class="form-group">
                     <label for="nama_mapel">Mata Pelajaran</label><br>
                     <input type="text"  id="id" name="id" value="{{$mapel->first()->nama_mapel}}">

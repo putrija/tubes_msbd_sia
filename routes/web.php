@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\PembagianKelasExport;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LogGuruController;
 use App\Http\Controllers\PembagianKelasController;
 use Illuminate\Support\Facades\Auth;
@@ -187,5 +188,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/kurikulum', 'KurikulumController');
     Route::resource('/jurusan', 'JurusanController');
     Route::resource('/wali_kelas', 'WaliKelasController');
+
+    //Change Password
+    Route::get('password/edit',[ChangePasswordController::class, 'edit'])->name('password.edit');
+    Route::put('password/update',[ChangePasswordController::class, 'update'])->name('password.update');
   });
 });

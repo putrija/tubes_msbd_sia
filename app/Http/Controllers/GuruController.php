@@ -23,6 +23,7 @@ use App\Models\TugasTambahanGuru;
 use App\Nilai;
 use Egulias\EmailValidator\Result\Reason\DetailedReason;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class GuruController extends Controller
@@ -86,72 +87,82 @@ class GuruController extends Controller
                 $nameFoto = 'uploads/guru/23171022042020_female.jpg';
             }
         }
+        DB::transaction(function () use($request,$nameFoto) {
+            $guru = Guru::create([
+                'id_card_guru' => $request->id_card_guru,
+                'nip' => $request->nip,
+                'status_kepegawaian_id' => $request->status_kepegawaian_id,
+                'jenis_ptk_id' => $request->jenis_ptk_id,
+                'tugas_tambahan_id' => $request->tugas_tambahan_id,
+                'nama_guru' => $request->nama_guru,
+                'kode_guru' => $request->kode_guru,
+                'jk' => $request->jk,
+                'telp' => $request->telp,
+                'tmp_lahir' => $request->tmp_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'hp' => $request->hp,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat,
+                'rt' => $request->rt,
+                'rw' => $request->rw,
+                'nama_dusun' => $request->nama_dusun,
+                'desa_kelurahan' => $request->desa_kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kode_pos' => $request->kode_pos,
+                'email' => $request->email,
+                'nik' => $request->nik,
+                'no_kk' => $request->no_kk,
+                'nuptk' => $request->nuptk,
+                'foto' => $nameFoto,
+            ]);
+            $data = $request->all();
+            $detail_guru = new DetailGuru;
+            $detail_guru->guru_id = $guru->id;
+            $detail_guru->sk_cpns = $data['sk_cpns'];
+            $detail_guru->tanggal_cpns = $data['tanggal_cpns'];
+            $detail_guru->sk_pengangkatan = $data['sk_pengangkatan'];
+            $detail_guru->tmt_pengangkatan = $data['tmt_pengangkatan'];
+            $detail_guru->lembaga_pengangkatan = $data['lembaga_pengangkatan'];
+            $detail_guru->pangkat_golongan = $data['pangkat_golongan'];
+            $detail_guru->sumber_gaji = $data['sumber_gaji'];
+            $detail_guru->nama_ibu_kandung = $data['nama_ibu_kandung'];
+            $detail_guru->status_perkawinan = $data['status_perkawinan'];
+            $detail_guru->nama_suami_istri = $data['nama_suami_istri'];
+            $detail_guru->nip_suami_istri = $data['nip_suami_istri'];
+            $detail_guru->pekerjaan_suami_istri = $data['pekerjaan_suami_istri'];
+            $detail_guru->tmt_pns = $data['tmt_pns'];
+            $detail_guru->sudah_lisensi_kepsek = $data['sudah_lisensi_kepsek'];
+            $detail_guru->pernah_diklat_kepengawasan = $data['pernah_diklat_kepengawasan'];
+            $detail_guru->keahlian_braille = $data['keahlian_braille'];
+            $detail_guru->keahlian_bahasa_isyarat = $data['keahlian_bahasa_isyarat'];
+            $detail_guru->npwp = $data['npwp'];
+            $detail_guru->nama_wajib_pajak = $data['nama_wajib_pajak'];
+            $detail_guru->kewarganegaraan = $data['kewarganegaraan'];
+            $detail_guru->bank = $data['bank'];
+            $detail_guru->nomor_rekening_bank = $data['nomor_rekening_bank'];
+            $detail_guru->rekening_atas_nama = $data['rekening_atas_nama'];
+            $detail_guru->karpeg = $data['karpeg'];
+            $detail_guru->karis_karsu = $data['karis_karsu'];
+            $detail_guru->lintang = $data['lintang'];
+            $detail_guru->bujur = $data['bujur'];
+    
+            $detail_guru->save();
 
-        $guru = Guru::create([
-            'id_card_guru' => $request->id_card_guru,
-            'nip' => $request->nip,
-            'status_kepegawaian_id' => $request->status_kepegawaian_id,
-            'jenis_ptk_id' => $request->jenis_ptk_id,
-            'tugas_tambahan_id' => $request->tugas_tambahan_id,
-            'nama_guru' => $request->nama_guru,
-            'kode_guru' => $request->kode_guru,
-            'jk' => $request->jk,
-            'telp' => $request->telp,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'hp' => $request->hp,
-            'agama' => $request->agama,
-            'alamat' => $request->alamat,
-            'rt' => $request->rt,
-            'rw' => $request->rw,
-            'nama_dusun' => $request->nama_dusun,
-            'desa_kelurahan' => $request->desa_kelurahan,
-            'kecamatan' => $request->kecamatan,
-            'kode_pos' => $request->kode_pos,
-            'email' => $request->email,
-            'nik' => $request->nik,
-            'no_kk' => $request->no_kk,
-            'nuptk' => $request->nuptk,
-            'foto' => $nameFoto,
-        ]);
-        $data = $request->all();
-        $detail_guru = new DetailGuru;
-        $detail_guru->guru_id = $guru->id;
-        $detail_guru->sk_cpns = $data['sk_cpns'];
-        $detail_guru->tanggal_cpns = $data['tanggal_cpns'];
-        $detail_guru->sk_pengangkatan = $data['sk_pengangkatan'];
-        $detail_guru->tmt_pengangkatan = $data['tmt_pengangkatan'];
-        $detail_guru->lembaga_pengangkatan = $data['lembaga_pengangkatan'];
-        $detail_guru->pangkat_golongan = $data['pangkat_golongan'];
-        $detail_guru->nama_ibu_kandung = $data['nama_ibu_kandung'];
-        $detail_guru->status_perkawinan = $data['status_perkawinan'];
-        $detail_guru->nama_suami_istri = $data['nama_suami_istri'];
-        $detail_guru->nip_suami_istri = $data['nip_suami_istri'];
-        $detail_guru->pekerjaan_suami_istri = $data['pekerjaan_suami_istri'];
-        $detail_guru->tmt_pns = $data['tmt_pns'];
-        $detail_guru->sudah_lisensi_kepsek = $data['sudah_lisensi_kepsek'];
-        $detail_guru->pernah_diklat_kepengawasan = $data['pernah_diklat_kepengawasan'];
-        $detail_guru->keahlian_braille = $data['keahlian_braille'];
-        $detail_guru->keahlian_bahasa_isyarat = $data['keahlian_bahasa_isyarat'];
-        $detail_guru->npwp = $data['npwp'];
-        $detail_guru->nama_wajib_pajak = $data['nama_wajib_pajak'];
-        $detail_guru->kewarganegaraan = $data['kewarganegaraan'];
-        $detail_guru->bank = $data['bank'];
-        $detail_guru->nomor_rekening_bank = $data['nomor_rekening_bank'];
-        $detail_guru->rekening_atas_nama = $data['rekening_atas_nama'];
-        $detail_guru->karpeg = $data['karpeg'];
-        $detail_guru->karis_karsu = $data['karis_karsu'];
-        $detail_guru->lintang = $data['lintang'];
-        $detail_guru->bujur = $data['bujur'];
+            $user = new User;
+            $user->name = $guru->nama_guru;
+            $user->email = $guru->email;
+            $user->id_card_guru = $guru->id_card_guru;
+            $user->password = Hash::make($guru->id_card_guru);
+            $user->role = 'Guru';
+            $user->save();
 
-        $detail_guru->save();
-        
-        // $guru_id = $request->id;
-        // $detail_guru['guru_id'] = $guru_id;
-        // $this->detail_guru->sk_cpns = Input::get('sk_cpns');
+            DB::rollBack();
+            DB::commit();
+
+        });
+         
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }
-
     /**
      * Display the specified resource.
      *
