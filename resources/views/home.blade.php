@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div class="col-md-12">
+    {{-- <div class="col-md-12">
       <div class="card card-warning" style="min-height: 385px;">
         <div class="card-header">
           <h3 class="card-title" style="color: white;">
@@ -100,12 +100,12 @@
           </h3>
         </div>
         <div class="card-body">
-          <div class="tab-content p-0">
+          <div class="tab-content p-0"> --}}
             {{-- {!! $pengumuman->isi !!} --}}
-          </div>
+          {{-- </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 @endsection
 @section('script')
     <script>

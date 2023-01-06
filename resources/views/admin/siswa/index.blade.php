@@ -7,6 +7,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
+            @if (Auth::user()->role != 'BK')
             <h3 class="card-title">
                 <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Siswa
@@ -19,6 +20,7 @@
                     <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Drop
                 </button>
             </h3>
+            @endif
         </div>
         <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -79,7 +81,9 @@
                       <th>No Induk</th>
                       <th>angkatan</th>
                       <th>Foto</th>
+                      @if (Auth::user()->role != 'BK')
                       <th>Aksi</th>
+                      @endif
                   </tr>
               </thead>
               <tbody>
@@ -95,6 +99,7 @@
                               </a>
                               {{-- https://siakad.didev.id/siswa/ubah-foto/{{$data->id}} --}}
                           </td>
+                          @if (Auth::user()->role != 'BK')
                           <td>
                               <form action="{{ route('siswa.destroy', $data->id) }}" method="post">
                                   @csrf
@@ -105,6 +110,7 @@
                                   <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                               </form>
                           </td>
+                          @endif
                       </tr>
                   @endforeach
               </tbody>

@@ -375,7 +375,7 @@
                     </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
@@ -404,9 +404,34 @@
                             <p>Rapor</p>
                         </a>
                     </li>
+                @elseif (Auth::user()->role == 'BK')
+                    <li class="nav-item has-treeview">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('siswa.index') }}" class="nav-link" id="DataSiswa">
+                            <i class="fas fa-users nav-icon"></i>
+                            <p>Data Siswa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                            <p>Nilai Rapor Siswa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
+                            <i class="fas fa-exclamation-triangle nav-icon"></i>
+                            <p>Pelanggaran</p>
+                        </a>
+                    </li>
                 @else
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>

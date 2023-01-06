@@ -80,6 +80,26 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/rapot', 'RapotController');
   });
 
+  // Route::middleware(['bk'])->group(function () {
+  //   Route::get('/datasiswa', 'SiswaController@index')->name('data-siswa');
+  //   Route::get('/pelanggaransiswa', 'PelanggaranController@index')->name('pelanggaran-siswa');
+  //   Route::resource('/pelanggaran', 'PelanggaranController');
+  //   Route::post('/pelanggaran/store', 'PelanggaranController@store');
+  //   // Route::resource('/siswa', 'SiswaController');
+  //   // Route::get('/siswa/kelas/{id}', 'SiswaController@kelas')->name('siswa.kelas');
+  //   // Route::get('/siswa/view/json', 'SiswaController@view');
+
+  //   Route::get('/siswa/kelas/{id}', 'SiswaController@kelas')->name('siswa.kelas');
+  //   Route::get('/siswa/view/json', 'SiswaController@view');
+  //   Route::get('/listsiswapdf/{id}', 'SiswaController@cetak_pdf');
+  //   Route::get('/siswa/ubah-foto/{id}', 'SiswaController@ubah_foto')->name('siswa.ubah-foto');
+  //   Route::post('/siswa/update-foto/{id}', 'SiswaController@update_foto')->name('siswa.update-foto');
+  //   Route::get('/siswa/export_excel', 'SiswaController@export_excel')->name('siswa.export_excel');
+  //   Route::post('/siswa/import_excel', 'SiswaController@import_excel')->name('siswa.import_excel');
+  //   Route::delete('/siswa/deleteAll', 'SiswaController@deleteAll')->name('siswa.deleteAll');
+  //   Route::resource('/siswa', 'SiswaController');
+  // });
+
   Route::middleware(['admin'])->group(function () {
     Route::middleware(['trash'])->group(function () {
       Route::get('/jadwal/trash', 'JadwalController@trash')->name('jadwal.trash');
@@ -190,7 +210,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/wali_kelas', 'WaliKelasController');
 
     //Change Password
-    Route::get('password/edit',[ChangePasswordController::class, 'edit'])->name('password.edit');
-    Route::put('password/update',[ChangePasswordController::class, 'update'])->name('password.update');
+    Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
+    Route::put('password/update', [ChangePasswordController::class, 'update'])->name('password.update');
   });
 });
