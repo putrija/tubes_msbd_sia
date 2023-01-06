@@ -12,6 +12,7 @@ use App\Siswa;
 use App\Jadwal;
 use App\Models\Tahun_ajaran;
 use App\Models\Semester;
+use App\Models\WaliKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -77,26 +78,74 @@ class RapotController extends Controller
         //     return response()->json(['error' => 'Maaf guru ini tidak mengajar kelas ini!']);
         // }
         // https://youtu.be/Sx1RgCjmvfg
-        // for($o = 0; $o <= 10; $o++) {
+
+
+            $kelas_id = Siswa::where('nisn', $request->nama_siswa)->value('kelas_id');
+            $jurusan = Kelas::where('id', $kelas_id)->value('jurusan_id');
+            $wali_kelas_id = WaliKelas::where('kelas_id', $kelas_id)->value('id');
+
+            if($jurusan == 1) {
+                $k = 13;
+                $row_mapel = [1,2,3,4,5,7,8,9,10,12,13,14,15];
+                $row_pengetahuan = [$request->pengetahuan_fisika, $request->pengetahuan_kimia, $request->pengetahuan_biologi, $request->pengetahuan_matematika_wajib, $request->pengetahuan_matematika_peminatan, $request->pengetahuan_kewarganegaraan, $request->pengetahuan_agama, $request->pengetahuan_pendidikan_jasmani, $request->pengetahuan_prakarya, $request->pengetahuan_ekonomi, $request->pengetahuan_bahasa_indonesia, $request->pengetahuan_bahasa_inggris, $request->pengetahuan_sejarah_indonesia];
+                $row_keterampilan = [$request->keterampilan_fisika, $request->keterampilan_kimia, $request->keterampilan_biologi, $request->keterampilan_matematika_wajib, $request->keterampilan_matematika_peminatan, $request->keterampilan_kewarganegaraan, $request->keterampilan_agama, $request->keterampilan_pendidikan_jasmani, $request->keterampilan_prakarya, $request->keterampilan_ekonomi, $request->keterampilan_bahasa_indonesia, $request->keterampilan_bahasa_inggris, $request->keterampilan_sejarah_indonesia];
+            } else {
+                $k = 12;
+                $row_pengetahuan = [$request->pengetahuan_agama,$request->pengetahuan_kewarganegaraan,$request->pengetahuan_bahasa_indonesia,$request->pengetahuan_sejarah_indonesia,$request->pengetahuan_prakarya,$request->pengetahuan_pendidikan_jasmani,$request->pengetahuan_matematika_wajib,$request->pengetahuan_geografi,$request->pengetahuan_sosiologi,$request->pengetahuan_sejarah_peminatan,$request->pengetahuan_ekonomi,$request->pengetahuan_bahasa_inggris];
+                $row_keterampilan = [$request->keterampilan_agama,$request->keterampilan_kewarganegaraan,$request->keterampilan_bahasa_indonesia,$request->keterampilan_sejarah_indonesia,$request->keterampilan_prakarya,$request->keterampilan_pendidikan_jasmani,$request->keterampilan_matematika_wajib,$request->keterampilan_geografi,$request->keterampilan_sosiologi,$request->keterampilan_sejarah_peminatan,$request->keterampilan_ekonomi,$request->keterampilan_bahasa_inggris];
+                $row_mapel = [8,7,13,15,10,9,4,11,6,16,12,14];
+            }
+
+
+
+            $p = 0;
+            // dd($row_pengetahuan);
+            // dd($row_pengetahuan[0], $request->pengetahuan_fisika);
+            for($o = 0; $o < $k; $o++) {
+                if($row_pengetahuan[$o] >= 89) {
+                    $predikat_pengetahuan = "A";
+                } else if($row_pengetahuan[$o] < 89 && $row_pengetahuan[$o] >= 75) {
+                    $predikat_pengetahuan = "B";
+                } else if($row_pengetahuan[$o] < 75 && $row_pengetahuan[$o] >= 65){
+                    $predikat_pengetahuan = "C";
+                } else if($row_pengetahuan[$o] < 65 && $row_pengetahuan[$o] >= 0){
+                    $predikat_pengetahuan = "D";
+                } else {
+                    $predikat_pengetahuan = "K";
+                }
+
+                if($row_keterampilan[$o] >= 89) {
+                    $predikat_keterampilan = "A";
+                } else if($row_keterampilan[$o] < 89 && $row_keterampilan[$o] >= 75) {
+                    $predikat_keterampilan = "B";
+                } else if($row_keterampilan[$o] < 75 && $row_keterampilan[$o] >= 65){
+                    $predikat_keterampilan = "C";
+                } else if($row_keterampilan[$o] < 65 && $row_keterampilan[$o] >= 0){
+                    $predikat_keterampilan = "D";
+                } else {
+                    $predikat_keterampilan = "K";
+                }
             Rapot::updateOrCreate(
                 [
                     'id' => $request->id
                 ],
                 [
-                    'kelas_siswa_id' => $request->kelas,
+                    'kelas_siswa_id' => $kelas_id,
                     'nisn_siswa' => $request->nama_siswa,
                     'tahun_ajaran_id' => $request->tahun_ajaran,
-                    'mapel_id' => '3',
-                    'wali_kelas_id' => '2',
+                    'mapel_id' => $row_mapel[$o],
+                    'wali_kelas_id' => $wali_kelas_id,
                     'semester_id' => $request->semester,
-                    'nilai_pengetahuan' => '90',
-                    'predikat_pengetahuan' => 'A',
-                    'nilai_keterampilan' => '90',
-                    'predikat_keterampilan' => 'A',
+                    'nilai_pengetahuan' => $row_pengetahuan[$o],
+                    'predikat_pengetahuan' => $predikat_pengetahuan,
+                    'nilai_keterampilan' => $row_keterampilan[$p],
+                    'predikat_keterampilan' => $predikat_keterampilan,
                 ]
             );
-        // }
-        // $o = 0;
+            $p++;
+        }
+        $o = 0;
+        $p = 0;
 
             // Rapot::updateOrCreate(
             //     [
