@@ -10,6 +10,6 @@ class LogJadwalBelajarMengajarController extends Controller
     public function index(){
 
         $data = log_jadwal_belajar_mengajar::all();
-        return view ('log_jadwal_belajar_mengajar.index', ['data'=>$data]);
+        return view ('admin.log_jadwal_belajar_mengajar.index', ['data'=>$data]);
     }
 }
