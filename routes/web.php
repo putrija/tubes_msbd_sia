@@ -175,6 +175,8 @@ Route::middleware(['auth'])->group(function () {
     // ################### ROUTE STATUS #######################
     Route::resource('/status_kepeg', StatusKepegawaianController::class);
     Route::resource('/status_siswa', StatusSiswaController::class);
+    Route::resource('/jenisptk', JenisPtkController::class);
+    Route::resource('/tugastambahanguru', TugasTambahanGuruController::class);
 
 
     Route::get('/jadwal/view/json', 'JadwalController@view');
