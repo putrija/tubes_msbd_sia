@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('pembagian_kelas', function (Blueprint $table) {
             $table->id();
+            $table->string('siswa_id', 10)->nullable();
+            $table->string('kelas_id', 10)->nullable();
+            $table->string('tahun_ajaran_id', 10)->nullable();
+            $table->string('status', 50)->nullable();
             $table->timestamps();
         });
     }
