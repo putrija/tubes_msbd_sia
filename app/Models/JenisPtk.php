@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisPtk extends Model
 {
-    protected $fillable = ['id','ket_jenis_ptk'];
+    protected $fillable = ['ket_jenis_ptk'];
     use HasFactory;
 
     protected $table = 'jenis_ptk';
+    public $timestamps = false;
 }

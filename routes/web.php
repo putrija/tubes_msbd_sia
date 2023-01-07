@@ -174,6 +174,8 @@ Route::middleware(['auth'])->group(function () {
 
     // ################### ROUTE STATUS #######################
     Route::resource('/status_kepeg', StatusKepegawaianController::class);
+    Route::resource('/tugastambahanguru', TugasTambahanGuruController::class);
+    Route::resource('/jenisptk', JenisPtkController::class);
 
 
 
