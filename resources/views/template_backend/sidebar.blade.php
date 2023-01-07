@@ -290,6 +290,12 @@
                                     <p>Log Pembagian Kelas</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('log_jadwal_belajar_mengajar.index') }}" class="nav-link" id="LogJadwalBelajarMengajar">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Jadwal</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>    
                     <li class="nav-item has-treeview" id="liViewPassword">
