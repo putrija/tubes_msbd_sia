@@ -217,11 +217,19 @@
                       <label for="tmp_lahir">Tempat Lahir</label>
                       <input type="text" id="tmp_lahir" name="tmp_lahir" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->tmp_lahir }}" class="form-control @error('tmp_lahir') is-invalid @enderror">
                   </div>
+                  <div class="form-group">
+                    <label for="agama">Agama</label>
+                    <input type="text" id="agama" name="agama" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->agama }}" class="form-control @error('agama') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="angkatan">Angkatan</label>
+                    <input type="text" id="angkatan" name="angkatan" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->angkatan }}" class="form-control @error('angkatan') is-invalid @enderror">
+                </div>
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      <label for="nis">NIS</label>
-                      <input type="text" id="nis" name="nis" onkeypress="return inputAngka(event)" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->nis }}" class="form-control @error('nis') is-invalid @enderror">
+                      <label for="nisn">NIS</label>
+                      <input type="text" id="nisn" name="nisn" onkeypress="return inputAngka(event)" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->nisn }}" class="form-control @error('nisn') is-invalid @enderror">
                   </div>
                   <div class="form-group">
                       <label for="kelas_id">Kelas</label>
@@ -244,6 +252,10 @@
                       <label for="tgl_lahir">Tanggal Lahir</label>
                       <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->tgl_lahir }}" class="form-control @error('tgl_lahir') is-invalid @enderror">
                   </div>
+                  <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="date" id="alamat" name="alamat" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->alamat }}" class="form-control @error('alamat') is-invalid @enderror">
+                </div>
               </div>
             </div>
           @else

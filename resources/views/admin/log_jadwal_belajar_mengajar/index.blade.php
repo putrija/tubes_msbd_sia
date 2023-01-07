@@ -1,8 +1,8 @@
 @extends('template_backend.home')
-@section('heading', 'Log Pembagian Kelas')
+@section('heading', 'Log Jadwal Belajar Mengajar')
 @section('page')
-<li class="breadcrumb-item active"><a href="{{ route('log_kelas_siswa.index') }}">Pembagian Kelas Siswa</a></li>
-  <li class="breadcrumb-item active">Log Pembagian Kelas</li>
+<li class="breadcrumb-item active"><a href="{{ route('log_jadwal_belajar_mengajar.index') }}">Jadwal Belajar Mengajar</a></li>
+  <li class="breadcrumb-item active">Log Jadwal Belajar Mengajar</li>
 @endsection
 @section('content')
 <!doctype html>
@@ -22,12 +22,18 @@
         <table style="min-width: 1500px;" class="table table-bordered">
             <thead style="background-color: rgb(200, 219, 190)">
               <tr>
-                <th scope="col">Siswa Id Old</th>
-                <th scope="col">Siswa Id New</th>
+                <th scope="col">Guru Mengajar Id Old</th>
+                <th scope="col">Guru Mengajar Id New</th>
+                <th scope="col">Ruang Id Old</th>
+                <th scope="col">Ruang Id New</th>
                 <th scope="col">Kelas Id Old</th>
                 <th scope="col">Kelas Id New</th>
-                <th scope="col">Tahun Ajaran Old</th>
-                <th scope="col">Tahun Ajaran New</th>
+                <th scope="col">Hari Old</th>
+                <th scope="col">Hari New</th>
+                <th scope="col">Jam Mulai Old</th>
+                <th scope="col">Jam Mulai New</th>
+                <th scope="col">Jam Selesai Old</th>
+                <th scope="col">Jam Selesai New</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -35,12 +41,18 @@
                 @foreach ($data as $item)
                 <tr>
                   <th scope="row">{{ $item['id'] }}</th>
-                  <td>{{ $item['siswa_id_old'] }}</td>
-                  <td>{{ $item['siswa_id_new'] }}</td>
+                  <td>{{ $item['guru_mengajar_id_old'] }}</td>
+                  <td>{{ $item['guru_mengajar_id_new'] }}</td>
+                  <td>{{ $item['ruang_id_old'] }}</td>
+                  <td>{{ $item['ruang_id_new'] }}</td>
                   <td>{{ $item['kelas_id_old'] }}</td>
                   <td>{{ $item['kelas_id_new'] }}</td>
-                  <td>{{ $item['tahun_ajaran_old'] }}</td>
-                  <td>{{ $item['tahun_ajaran_new'] }}</td>
+                  <td>{{ $item['hari_old'] }}</td>
+                  <td>{{ $item['hari_new'] }}</td>
+                  <td>{{ $item['jam_mulai_old'] }}</td>
+                  <td>{{ $item['jam_mulai_new'] }}</td>
+                  <td>{{ $item['jam_selesai_old'] }}</td>
+                  <td>{{ $item['jam_selesai_new'] }}</td>
                   <td>{{ $item['status'] }}</td>
                 </tr>
                 @endforeach
@@ -65,6 +77,6 @@
     <script>
         $("#ViewLog").addClass("active");
         $("#liViewLog").addClass("menu-open");
-        $("#LogKelasSiswa").addClass("active");
+        $("#LogJadwalBelajarMengajar").addClass("active");
     </script>
 @endsection

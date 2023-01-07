@@ -57,6 +57,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('wali_kelas.index') }}" class="nav-link" id="DataWaliKelas">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Data Wali Kelas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('kelas.index') }}" class="nav-link" id="DataKelas">
                                     <i class="fas fa-home nav-icon"></i>
                                     <p>Data Kelas</p>
@@ -81,12 +87,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
-                                    <i class="fas fa-exclamation-triangle nav-icon"></i>
-                                    <p>Pelanggaran</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('user.index') }}" class="nav-link" id="DataUser">
                                     <i class="fas fa-user-plus nav-icon"></i>
                                     <p>Data User</p>
@@ -99,13 +99,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('pembagiankelas.index') }}" class="nav-link" id="DataPembagianKelas">
-                                    <i class="fas fa-home nav-icon"></i>
-                                    <p>Pembagian Kelas</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('jenisptk.index') }}" class="nav-link" id="DataJenisPtk">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Jenis PTK</p>
                                 </a>
@@ -123,7 +117,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('tahun_ajaran.index') }}" class="nav-link" id="DataTahunAjaran">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Data Tahun Ajaran</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('ruangan.index') }}" class="nav-link" id="DataMapel">
                                     <i class="fas fa-home nav-icon"></i>
                                     <p>Data Ruangan</p>
                                 </a>
@@ -135,33 +135,33 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('pembagiankelas.index') }}" class="nav-link" id="DataPembagianKelas">
+                                    <i class="fas fa-home nav-icon"></i>
+                                    <p>Pembagian Kelas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('pelanggaran.index') }}" class="nav-link" id="DataPelanggaran">
+                                    <i class="fas fa-exclamation-triangle nav-icon"></i>
+                                    <p>Pelanggaran</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('status_kepeg.index') }}" class="nav-link" id="DataKepegGuru">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Status Kepeg Guru</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('status_siswa.index') }}" class="nav-link" id="DataStatusSiswa">
                                     <i class="fas fa-book nav-icon"></i>
-                                    <p>Data Status Siswa</p>
+                                    <p>Status Siswa</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
-                                    <i class="fas fa-book nav-icon"></i>
-                                    <p>Data Tahun Ajaran</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('tugastambahanguru.index') }}" class="nav-link" id="DataTugasTambahanGuru">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Tugas Tambahan Guru</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('wali_kelas.index') }}" class="nav-link" id="DataWaliKelas">
-                                    <i class="fas fa-users nav-icon"></i>
-                                    <p>Data Wali Kelas</p>
                                 </a>
                             </li>
                         </ul>
@@ -288,6 +288,12 @@
                                 <a href="{{ route('log_kelas_siswa.index') }}" class="nav-link" id="LogKelasSiswa">
                                     <i class="fas fa-calendar-alt nav-icon"></i>
                                     <p>Log Pembagian Kelas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('log_jadwal_belajar_mengajar.index') }}" class="nav-link" id="LogJadwalBelajarMengajar">
+                                    <i class="fas fa-calendar-alt nav-icon"></i>
+                                    <p>Log Jadwal</p>
                                 </a>
                             </li>
                         </ul>

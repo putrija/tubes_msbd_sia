@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'Status Kepegawaian')
+@section('heading', 'Status Siswa')
 @section('page')
-  <li class="breadcrumb-item active">Status Kepegawaian</li>
+  <li class="breadcrumb-item active">Status Siswa</li>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -19,7 +19,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Status Kepegawaian</th>
+                    <th>Status Siswa</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -27,9 +27,9 @@
               @foreach ($data as $no => $item)
                 <tr>
                     <td>{{ $no+1 }}</td>
-                    <td>{{ $item->ket_status_kepeg }}</td>
+                    <td>{{ $item->ket_status }}</td>
                     <td>
-                        <form action="{{ route('status_kepeg.destroy', $item->id)}}" method="POST">
+                        <form action="{{ route('status_siswa.destroy', $item->id)}}" method="POST">
                           @csrf
                           @method('delete')
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
@@ -57,13 +57,13 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('status_kepeg.store') }}" method="POST">
+        <form action="{{ route('status_siswa.store') }}" method="POST">
           @csrf
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ket_status_kepeg"> Status Kepegawaian: </label>
-                  <input type="text" id="ket_status_kepeg" name="ket_status_kepeg" class="form-control @error('ket_status_kepeg') is-invalid @enderror" placeholder="{{ __('Status Kepegawaian') }}">
+                  <label for="ket_status"> Status Siswa: </label>
+                  <input type="text" id="ket_status" name="ket_status" class="form-control @error('ket_status') is-invalid @enderror" placeholder="{{ __('Status Siswa') }}">
                 </div>
               </div>
             </div>
@@ -81,6 +81,6 @@
   <script>
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
-    $("#DataKepegGuru").addClass("active");
+    $("#DataStatusSiswa").addClass("active");
   </script>
 @endsection
