@@ -366,7 +366,7 @@
                     </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home-siswa') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
