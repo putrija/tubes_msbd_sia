@@ -10,6 +10,8 @@ use App\Models\Pelanggaran;
 //use App\Models\Tahun_ajaran;
 use Database\Seeders\TahunAjaranSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 use function GuzzleHttp\Promise\all;
 
@@ -37,6 +39,15 @@ class PelanggaranController extends Controller
         //$kelas = siswa::all();
         return view('admin.pelanggaran.pelanggaran', compact('pelanggaran','siswa'));
         //return view('admin.pelanggaran.pelanggaran', compact('pelanggaran','siswa'));
+    }
+
+    public function siswa()
+    {
+        $pengguna = User::where('id', Auth::id())->value('no_induk');
+        $siswa = Siswa::where('no_induk', $pengguna)->value('id');
+        $siswanya =  Siswa::where('no_induk', $pengguna)->get();
+        $pelanggaran = Pelanggaran::where('siswa_id', $siswa)->get();
+        return view('siswa.pelanggaran', compact('siswanya','pelanggaran','siswa'));
     }
 
     /**

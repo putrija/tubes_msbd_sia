@@ -238,7 +238,7 @@
                                 </a>
                             </li> --}}
                             <li class="nav-item">
-                                <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
+                                <a href="{{ route('rapor') }}" class="nav-link" id="DataRapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Rapor</p>
                                 </a>
@@ -408,6 +408,12 @@
                         <a href="{{ route('rapot.siswa') }}" class="nav-link" id="RapotSiswa">
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Rapor</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pelanggaran.siswa') }}" class="nav-link" id="PelanggaranSiswa">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                            <p>Data Pelanggaran</p>
                         </a>
                     </li>
                 @elseif (Auth::user()->role == 'BK')

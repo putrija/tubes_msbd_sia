@@ -81,6 +81,6 @@
   <script>
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
-    $("#DataStatusSiswa").addClass("active");
+    $("#DataRapot").addClass("active");
   </script>
 @endsection

@@ -102,7 +102,7 @@ class RapotController extends Controller
             // dd($row_pengetahuan);
             // dd($row_pengetahuan[0], $request->pengetahuan_fisika);
             for($o = 0; $o < $k; $o++) {
-                if($row_pengetahuan[$o] >= 89) {
+                if($row_pengetahuan[$o] >= 89 && $row_pengetahuan[$o] <=100 ) {
                     $predikat_pengetahuan = "A";
                 } else if($row_pengetahuan[$o] < 89 && $row_pengetahuan[$o] >= 75) {
                     $predikat_pengetahuan = "B";
@@ -111,10 +111,10 @@ class RapotController extends Controller
                 } else if($row_pengetahuan[$o] < 65 && $row_pengetahuan[$o] >= 0){
                     $predikat_pengetahuan = "D";
                 } else {
-                    $predikat_pengetahuan = "K";
+                    return back()->withInput()->with('warning', 'data nilai tidak valid');
                 }
 
-                if($row_keterampilan[$o] >= 89) {
+                if($row_keterampilan[$o] >= 89 && $row_keterampilan[$o] <=100 ) {
                     $predikat_keterampilan = "A";
                 } else if($row_keterampilan[$o] < 89 && $row_keterampilan[$o] >= 75) {
                     $predikat_keterampilan = "B";
@@ -123,7 +123,7 @@ class RapotController extends Controller
                 } else if($row_keterampilan[$o] < 65 && $row_keterampilan[$o] >= 0){
                     $predikat_keterampilan = "D";
                 } else {
-                    $predikat_keterampilan = "K";
+                    return back()->withInput()->with('warning', 'data nilai tidak valid');
                 }
             Rapot::updateOrCreate(
                 [

@@ -19,7 +19,7 @@
         <div class="row justify-content-around">
             <label for="nama_siswa"> Nama Siswa / NISN : </label>
           <div class="col-4">
-            <select id="nama_siswa" name="nama_siswa" onchange="showUser(this.value)" class="select2bs4 form-control @error('nama_siswa') is-invalid @enderror">
+            <select required id="nama_siswa" name="nama_siswa" onchange="showUser(this.value)" class="select2bs4 form-control @error('nama_siswa') is-invalid @enderror">
               <option value="">-- Pilih NISN Siswa --</option>
               @foreach ($data_siswa as $data)
                     {{-- <option value="{{ $data->id }}">{{ $data->ket_jenis_ptk }}</option> --}}
