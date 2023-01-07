@@ -63,7 +63,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="ket_status_kepeg"> Status Kepegawaian: </label>
-                  <input type="text" id="ket_status_kepeg" name="ket_status_kepeg">
+                  <input type="text" id="ket_status_kepeg" name="ket_status_kepeg" class="form-control @error('ket_status_kepeg') is-invalid @enderror" placeholder="{{ __('Status Kepegawaian') }}">
                 </div>
               </div>
             </div>

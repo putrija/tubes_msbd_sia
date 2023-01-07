@@ -63,7 +63,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="ket_status"> Status Siswa: </label>
-                  <input type="text" id="ket_status" name="ket_status">
+                  <input type="text" id="ket_status" name="ket_status" class="form-control @error('ket_status') is-invalid @enderror" placeholder="{{ __('Status Siswa') }}">
                 </div>
               </div>
             </div>
