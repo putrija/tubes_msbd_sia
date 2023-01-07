@@ -37,7 +37,7 @@
                     @elseif (Auth::user()->role == 'Siswa')
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>No INduk</b> <a class="float-right">{{ Auth::user()->no_induk }}</a>
+                                <b>No Induk</b> <a class="float-right">{{ Auth::user()->no_induk }}</a>
                             </li>
                             <li class="list-group-item">
                                 <b>NIS</b> <a class="float-right">{{ Auth::user()->siswa(Auth::user()->no_induk)->nis }}</a>
@@ -93,7 +93,7 @@
                         <p class="text-muted">{{ Auth::user()->guru(Auth::user()->id_card)->kode }}</p>
                         <hr>
                     @elseif (Auth::user()->role == 'Siswa')
-                        <strong><i class="fas fa-home mr-1"></i> Tempat Lahir</strong>
+                        <strong><i class="fas fa-home mr-1"></i> Kelas</strong>
                         <p class="text-muted">{{ Auth::user()->siswa(Auth::user()->no_induk)->kelas->nama_kelas }}</p>
                         <hr>
                     @else
