@@ -40,7 +40,7 @@
                                 <b>No Induk</b> <a class="float-right">{{ Auth::user()->no_induk }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>NIS</b> <a class="float-right">{{ Auth::user()->siswa(Auth::user()->no_induk)->nis }}</a>
+                                <b>NIS</b> <a class="float-right">{{ Auth::user()->siswa(Auth::user()->no_induk)->nisn }}</a>
                             </li>
                         </ul>
                     @else
