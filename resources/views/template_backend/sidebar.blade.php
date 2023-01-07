@@ -99,7 +99,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('jenisptk.index') }}" class="nav-link" id="DataJenisPtk">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Jenis PTK</p>
                                 </a>
@@ -159,7 +159,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('tugastambahanguru.index') }}" class="nav-link" id="DataTugasTambahanGuru">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Tugas Tambahan Guru</p>
                                 </a>
