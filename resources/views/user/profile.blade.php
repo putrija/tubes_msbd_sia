@@ -18,68 +18,172 @@
         <div class="card-body">
           @if (Auth::user()->role == "Guru")
             <div class="row">
-              <input type="hidden" name="role" value="{{ Auth::user()->guru(Auth::user()->id_card)->role }}">
+              <input type="hidden" name="role" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->role }}">
               <div class="col-md-6">
                   <div class="form-group">
                       <label for="name">Nama Guru</label>
                       <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" class="form-control @error('name') is-invalid @enderror">
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                       <label for="mapel_id">Mapel</label>
                       <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
                           <option value="">-- Pilih Mapel --</option>
                           @foreach ($mapel as $data)
                               <option value="{{ $data->id }}"
-                                  @if (Auth::user()->guru(Auth::user()->id_card)->mapel_id == $data->id)
+                                  @if (Auth::user()->guru(Auth::user()->id_card_guru)->
+                                  _id == $data->id)
                                       selected
                                   @endif
                               >{{ $data->nama_mapel }}</option>
                           @endforeach
                       </select>
-                  </div>
+                  </div> --}}
                   <div class="form-group">
                       <label for="tmp_lahir">Tempat Lahir</label>
-                      <input type="text" id="tmp_lahir" name="tmp_lahir" value="{{ Auth::user()->guru(Auth::user()->id_card)->tmp_lahir }}" class="form-control @error('tmp_lahir') is-invalid @enderror">
+                      <input type="text" id="tmp_lahir" name="tmp_lahir" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->tmp_lahir }}" class="form-control @error('tmp_lahir') is-invalid @enderror">
                   </div>
                   <div class="form-group">
-                      <label for="id_card">Nomor ID Card</label>
-                      <input type="text" id="id_card" name="id_card" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card)->id_card }}" disabled>
+                      <label for="id_card_guru">Nomor ID Card</label>
+                      <input type="text" id="id_card_guru" name="id_card_guru" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->id_card_guru }}" disabled>
                   </div>
                   <div class="form-group">
-                      <label for="telp">Nomor Telpon/HP</label>
-                      <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" value="{{ Auth::user()->guru(Auth::user()->id_card)->telp }}" class="form-control @error('telp') is-invalid @enderror">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->email }}" disabled>
+                </div>
+                  <div class="form-group">
+                      <label for="telp">Nomor Telpon</label>
+                      <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->telp }}" class="form-control @error('telp') is-invalid @enderror">
                   </div>
+                  <div class="form-group">
+                    <label for="telp">Nomor Hp</label>
+                    <input type="text" id="telp" name="telp" onkeypress="return inputAngka(event)" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->hp }}" class="form-control @error('telp') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="nip">NIP</label>
+                    <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->nip }}" class="form-control @error('nip') is-invalid @enderror" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="jk">Jenis Kelamin</label>
+                    <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
+                        <option value="">-- Pilih Jenis Kelamin --</option>
+                        <option value="L"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->jk == 'L')
+                                selected
+                            @endif
+                        >Laki-Laki</option>
+                        <option value="P"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->jk == 'P')
+                                selected
+                            @endif
+                        >Perempuan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tgl_lahir">Tanggal Lahir</label>
+                    <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->tgl_lahir }}" class="form-control @error('tgl_lahir') is-invalid @enderror">
+                </div>
+                <div class="form-group">
+                    <label for="kode">Kode Jadwal</label>
+                    <input type="text" id="kode" name="kode" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->kode_guru }}" disabled>
+                </div>
               </div>
               <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="nip">NIP</label>
-                      <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" value="{{ Auth::user()->guru(Auth::user()->id_card)->nip }}" class="form-control @error('nip') is-invalid @enderror" disabled>
-                  </div>
-                  <div class="form-group">
-                      <label for="jk">Jenis Kelamin</label>
-                      <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
-                          <option value="">-- Pilih Jenis Kelamin --</option>
-                          <option value="L"
-                              @if (Auth::user()->guru(Auth::user()->id_card)->jk == 'L')
-                                  selected
-                              @endif
-                          >Laki-Laki</option>
-                          <option value="P"
-                              @if (Auth::user()->guru(Auth::user()->id_card)->jk == 'P')
-                                  selected
-                              @endif
-                          >Perempuan</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="tgl_lahir">Tanggal Lahir</label>
-                      <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ Auth::user()->guru(Auth::user()->id_card)->tgl_lahir }}" class="form-control @error('tgl_lahir') is-invalid @enderror">
-                  </div>
-                  <div class="form-group">
-                      <label for="kode">Kode Jadwal</label>
-                      <input type="text" id="kode" name="kode" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card)->kode }}" disabled>
-                  </div>
+                <div class="form-group">
+                    <label for="status_kepegawaian_id">Status Kepegawaian</label>
+                    <select id="status_kepegawaian_id" name="status_kepegawaian_id" class="select2bs4 form-control @error('status_kepegawaian_id') is-invalid @enderror">
+                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                        @foreach ($status_kepegawaian as $data)
+                        <option value="{{ $data->id }}" 
+                        @if (Auth::user()->guru(Auth::user()->id_card_guru)->status_kepegawaian_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->ket_status_kepeg }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tugas_tambahan_id">Tugas Tambahan Guru</label>
+                    <select id="tugas_tambahan_id" name="tugas_tambahan_id" class="select2bs4 form-control @error('tugas_tambahan_id') is-invalid @enderror">
+                        <option value=""> -- Pilih Tugas Tambahan -- </option>
+                        @foreach ($tugas_tambahan_guru as $data)
+                        <option value="{{ $data->id }}" 
+                        @if (Auth::user()->guru(Auth::user()->id_card_guru)->tugas_tambahan_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->ket_tugas_tambahan }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jenis_ptk_id">Jenis PTK</label>
+                    <select id="jenis_ptk_id" name="jenis_ptk_id" class="select2bs4 form-control @error('jenis_ptk_id') is-invalid @enderror">
+                        <option value=""> -- Pilih Jenis PTK -- </option>
+                        @foreach ($jenis_ptk as $data)
+                        <option value="{{ $data->id }}" 
+                        @if (Auth::user()->guru(Auth::user()->id_card_guru)->jenis_ptk_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->ket_jenis_ptk }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="agama">Agama</label>
+                    <select id="agama" name="agama" class="select2bs4 form-control @error('agama') is-invalid @enderror">
+                        <option value="">-- Pilih Agama--</option>
+                        <option value="Islam"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Islam')
+                                selected
+                            @endif
+                        >Islam</option>
+                        <option value="Katolik"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Katolik')
+                                selected
+                            @endif
+                        >Katolik</option>
+                        <option value="Kristen"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Kristen')
+                                selected
+                            @endif
+                        >Kristen</option>
+                        <option value="Buddha"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Buddha')
+                                selected
+                            @endif
+                        >Buddha</option>
+                        <option value="Konghucu"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Konghucu')
+                                selected
+                            @endif
+                        >Konghucu</option>
+                        <option value="Hindu"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Hindu')
+                                selected
+                            @endif
+                        >Hindu</option>
+                        <option value="Aliran Kepercayaan"
+                            @if (Auth::user()->guru(Auth::user()->id_card_guru)->agama == 'Aliran Kepercayaan')
+                                selected
+                            @endif
+                        >Aliran Kepercayaan</option>
+                    </select>
               </div>
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input type="text" id="alamat" name="alamat" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->alamat }}">
+            </div>
+            <div class="form-group">
+                <label for="nik">NIK</label>
+                <input type="number" id="nik" name="nik" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->nik }}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="no_kk">No KK</label>
+                <input type="number" id="no_kk" name="no_kk" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->no_kk }}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="nuptk">NUPTK</label>
+                <input type="number" id="nuptk" name="nuptk" class="form-control" value="{{ Auth::user()->guru(Auth::user()->id_card_guru)->nuptk }}" disabled>
+            </div>
             </div>
           @elseif (Auth::user()->role == "Siswa")
             <div class="row" name="role" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->role }}">

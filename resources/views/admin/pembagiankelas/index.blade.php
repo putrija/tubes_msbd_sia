@@ -11,7 +11,7 @@
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">
               <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Pembagian Kelas
           </button>
-              <a href="{{ route('pembagiankelasExport') }}" class="btn btn-success btn-sm my-3" target="_blank"><i class="nav-icon fas fa-file-export"></i> &nbsp; EXPORT PDFL</a>
+              <a href="" class="btn btn-success btn-sm my-3" target="_blank"><i class="nav-icon fas fa-file-export"></i> &nbsp; EXPORT PDFL</a>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#importExcel">
                     <i class="nav-icon fas fa-file-import"></i> &nbsp; IMPORT EXCEL
                 </button>

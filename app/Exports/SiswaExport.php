@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Siswa;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -13,6 +14,12 @@ class SiswaExport implements FromCollection, WithHeadings, WithStyles
     /**
      * @return \Illuminate\Support\Collection
      */
+   use Exportable;
+//    public function __construct(int $angkatan)
+//    {
+//     $siswa = DB::('siswa')
+//     $this->angkatan = $angkatan;
+//    }
     public function styles(Worksheet $sheet)
 {
     return [

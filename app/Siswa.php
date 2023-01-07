@@ -38,6 +38,10 @@ class Siswa extends Model
         $nilai = Rapot::where('siswa_id', $id)->where('guru_id', $guru->id)->first();
         return $nilai;
     }
+    public function detail_siswa()
+    {
+        return $this->hasOne('App\Models\DetailSiswa')->withDefault();
+    }
 
     protected $table = 'siswa';
 }

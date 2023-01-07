@@ -13,8 +13,11 @@ use App\Http\Controllers\Controller;
 use App\Models\StatusSiswa;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Crypt;
-
+use App\Models\DetailSiswa;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 class SiswaController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -50,7 +53,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'no_induk' => 'required|string|unique:siswa',
+            'no_induk' => 'required|string|unique:siswa|min:5|max:5',
             'nisn' => 'required|max:10|min:10',
             'nama_siswa' => 'required',
             'jk' => 'required',
@@ -69,8 +72,8 @@ class SiswaController extends Controller
                 $nameFoto = 'uploads/siswa/23171022042020_female.jpg';
             }
         }
-
-        Siswa::create([
+        DB::transaction(function () use($request,$nameFoto) {
+        $siswa = Siswa::create([
             'no_induk' => $request->no_induk,
             'nisn' => $request->nisn,
             'nama_siswa' => $request->nama_siswa,
@@ -84,8 +87,48 @@ class SiswaController extends Controller
             'angkatan' => $request->angkatan,
             'kelas_id' => $request->kelas_id,
             'foto' => $nameFoto,
+            'status_id' => 1,
+            
         ]);
+        $data = $request->all();
+        $detail_siswa = new DetailSiswa;
+        $detail_siswa->siswa_id = $siswa->id;
+            $detail_siswa->anak_ke = $data['anak_ke'];
+            $detail_siswa->dari_berapa_bersaudara = $data['dari_berapa_bersaudara'];
+            $detail_siswa->diterima_di_kelas = $data['diterima_di_kelas'];
+            $detail_siswa->diterima_pada_tanggal = $data['diterima_pada_tanggal'];
+            $detail_siswa->diterima_semester = $data['diterima_semester'];
+            $detail_siswa->sekolah_asal = $data['sekolah_asal'];
+            $detail_siswa->alamat_sekolah_asal = $data['alamat_sekolah_asal'];
+            $detail_siswa->tahun_ijazah_smp = $data['tahun_ijazah_smp'];
+            $detail_siswa->nomor_ijazah_smp = $data['nomor_ijazah_smp'];
+            $detail_siswa->tahun_skhun_smp = $data['tahun_skhun_smp'];
+            $detail_siswa->nomor_skhun_smp = $data['nomor_skhun_smp'];
+            $detail_siswa->nama_ayah = $data['nama_ayah'];
+            $detail_siswa->nama_ibu = $data['nama_ibu'];
+            $detail_siswa->alamat_ayah = $data['alamat_ayah'];
+            $detail_siswa->alamat_ibu = $data['alamat_ibu'];
+            $detail_siswa->tlp_ayah = $data['tlp_ayah'];
+            $detail_siswa->tlp_ibu = $data['tlp_ibu'];
+            $detail_siswa->pekerjaan_ayah = $data['pekerjaan_ayah'];
+            $detail_siswa->pekerjaan_ibu = $data['pekerjaan_ibu'];
+            $detail_siswa->nama_wali = $data['nama_wali'];
+            $detail_siswa->pekerjaan_wali = $data['pekerjaan_wali'];
+            $detail_siswa->alamat_wali = $data['alamat_wali'];
+            $detail_siswa->tlp_wali = $data['tlp_wali'];
+            $detail_siswa->save();
 
+            $user = User::create([
+                'name' => $siswa    -> nama_siswa,
+                'email' => $siswa   ->email,
+                'password' => Hash::make($siswa->no_induk),
+                'role' => 'Siswa',
+                'no_induk' => $siswa->no_induk,
+            
+            ]);
+            $user->save();
+        });
+        DB::rollBack();
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
     }
 
@@ -275,6 +318,8 @@ class SiswaController extends Controller
 
     public function export_excel()
     {
+        $siswa = Siswa::all();
+        DB::table('siswa')->where('angkatan', 'like', $siswa . '%')->get();
         return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
 

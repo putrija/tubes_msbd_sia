@@ -3,12 +3,16 @@
 namespace App\Models;
 
 use App\Kelas;
+use App\Siswa as AppSiswa;
 use Auth;
+use FontLib\TrueType\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Siswa extends Model
 {
+    public Collection $siswa;
+    //public Collection $selectedSiswa;
     use SoftDeletes;
 
     // protected $fillable = ['no_induk', 'nis', 'nama_siswa', 'alamat', 'kelas_id', 'jk', 'telp', 'tmp_lahir', 'tgl_lahir', 'foto'];
@@ -18,6 +22,20 @@ class Siswa extends Model
     // {
     //     return $this->belongsTo('App\Kelas')->withDefault();
     // }
+    
+    public $selecAll = false;
+    public $bulkDisabled = true;
+    public $selectSiswa = false;
+    public $Siswa = [];
+    public $designTemplate = 'tailwind';
+
+    public function mount()
+    {
+      $this->siswa = Siswa::orderBy('id')->get();
+      $this->selectedSiswa = collect();
+
+    }
+
     public function kelas(){
         return $this->belongsTo(Kelas::class);
     }
@@ -58,6 +76,8 @@ class Siswa extends Model
     // public function pelanggaran(){
     //     return $this->hasMany('app\Models\Pelanggaran');
     // }
+
+    
 
     protected $table = 'siswa';
 }
