@@ -174,7 +174,7 @@ Route::middleware(['auth'])->group(function () {
 
     // ################### ROUTE STATUS #######################
     Route::resource('/status_kepeg', StatusKepegawaianController::class);
-
+    Route::resource('/status_siswa', StatusSiswaController::class);
 
 
     Route::get('/jadwal/view/json', 'JadwalController@view');

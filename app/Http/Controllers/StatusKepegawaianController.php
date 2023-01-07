@@ -48,7 +48,7 @@ class StatusKepegawaianController extends Controller
             ]
         );
 
-        return to_route('status_kepeg.index')->with('success', 'Status berhasil diperbarui!');
+        return to_route('status_kepeg.index')->with('success', 'Status berhasil ditambahkan!');
     }
 
     /**
@@ -98,6 +98,6 @@ class StatusKepegawaianController extends Controller
         ->where('id', $id);
         $status->delete();
 
-        return redirect()->back()->with('warning', 'status berhasil dihapus!');
+        return redirect()->back()->with('warning', 'Status berhasil dihapus!');
     }
 }

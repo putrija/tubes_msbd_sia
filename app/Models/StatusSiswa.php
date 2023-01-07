@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatusSiswa extends Model
 {
-    protected $fillable = ['id','ket_status'];
+    protected $fillable = ['ket_status'];
     use HasFactory;
     protected $table = 'status_siswa';
 }

@@ -53,7 +53,7 @@ class HomeController extends Controller
         $siswapr = Siswa::where('jk', 'P')->count();
         $mapel = Mapel::count();
         $user = User::count();
-        return view('admin.index', compact(
+        return view('home', compact(
             'jadwal',
             'guru',
             'gurulk',
