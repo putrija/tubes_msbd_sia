@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tahun_ajaran;
+use App\Ruang;
 use Illuminate\Http\Request;
 
-class TahunAjaranController extends Controller
+class RuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TahunAjaranController extends Controller
      */
     public function index()
     {
-        $data = Tahun_ajaran::all();
-        return view ('admin.tahun_ajaran.index', ['data'=>$data]);
+        $data = Ruang::all();
+        return view ('admin.ruangan.index', ['data'=>$data]);
     }
 
     /**
@@ -36,15 +36,14 @@ class TahunAjaranController extends Controller
      */
     public function store(Request $request)
     {
-        Tahun_ajaran::Create(
+        Ruang::Create(
             [
-               'tahun_ajaran' => $request->tahun_ajaran,
-               'tanggal_mulai' => $request->tanggal_mulai,
-               'tanggal_berakhir' => $request->tanggal_berakhir,
+               'nama_ruang' => $request->nama_ruang,
+               'jenis_ruang' => $request->jenis_ruang,
             ]
         );
 
-        return to_route('tahun_ajaran.index')->with('success', 'Tahun Ajaran berhasil ditambahkan!');
+        return to_route('ruangan.index')->with('success', 'Ruangan berhasil ditambahkan!');
     }
 
     /**

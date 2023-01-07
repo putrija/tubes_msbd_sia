@@ -172,11 +172,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/delete-guru-mapel/{id}', 'GuruMengajarController@destroy');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
 
-    // ################### ROUTE STATUS #######################
+    // ################### ROUTE TERBARU #######################
     Route::resource('/status_kepeg', StatusKepegawaianController::class);
     Route::resource('/status_siswa', StatusSiswaController::class);
     Route::resource('/jenisptk', JenisPtkController::class);
     Route::resource('/tugastambahanguru', TugasTambahanGuruController::class);
+    Route::resource('/ruangan', RuanganController::class);
+    Route::resource('/tahun_ajaran', TahunAjaranController::class);
 
 
     Route::get('/jadwal/view/json', 'JadwalController@view');

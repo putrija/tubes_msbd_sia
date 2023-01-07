@@ -117,13 +117,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataTahunAjaran">
+                                <a href="{{ route('tahun_ajaran.index') }}" class="nav-link" id="DataTahunAjaran">
                                     <i class="fas fa-calendar-alt nav-icon"></i>
                                     <p>Data Tahun Ajaran</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('ruangan.index') }}" class="nav-link" id="DataMapel">
                                     <i class="fas fa-home nav-icon"></i>
                                     <p>Data Ruangan</p>
                                 </a>
