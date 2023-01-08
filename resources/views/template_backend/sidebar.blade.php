@@ -345,9 +345,9 @@
                             @else
                             @endif
                             <li class="nav-item">
-                                <a href="{{ route('rapot.index') }}" class="nav-link" id="RapotGuru">
+                                <a href="{{ route('rapor') }}" class="nav-link" id="DataRapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Entry Nilai Rapot</p>
+                                    <p>Nilai Rapor</p>
                                 </a>
                             </li>
                             {{-- <li class="nav-item">
@@ -366,7 +366,7 @@
                     </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/home-siswa') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
@@ -427,12 +427,12 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item has-treeview">
+                    {{-- <li class="nav-item has-treeview">
                         <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
             </ul>
         </nav>

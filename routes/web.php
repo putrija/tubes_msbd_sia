@@ -75,11 +75,11 @@ Route::middleware(['auth'])->group(function () {
 
   Route::middleware(['guru' || 'kepsek'])->group(function () {
     Route::get('/jadwal/guru', 'JadwalController@guru')->name('jadwal.guru');
-    Route::resource('/nilai', 'NilaiController');
-    Route::resource('/ulangan', 'UlanganController');
-    Route::resource('/sikap', 'SikapController');
     Route::get('/rapot/predikat', 'RapotController@predikat');
     Route::resource('/rapot', 'RapotController');
+    Route::get('/rapor', 'RapotController@create')->name('rapor');
+    Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
+    Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
   });
 
   // Route::middleware(['bk'])->group(function () {

@@ -4,6 +4,34 @@
   <li class="breadcrumb-item active">Dashboard</li>
 @endsection
 @section('content')
+@if (Auth::user()->role == 'Siswa')
+<div class="col-md-12" id="load_content">
+  <div class="card card-primary">
+    <div class="card-body">
+      <div class="row">
+        <div class="column" >
+          <img src="{{ asset('img/sman14Medan.png') }}" alt="Logo SMAN 14 Medan" class="brand-image" style="width: 1cm">
+    <span class="brand-text font-weight-bold">SMAN 14 Medan</span>
+    <br> <br> <br>
+      <h5 style="color:green">Selamat Datang <b>{{Auth::user()->name}}</b> di Sistem Informasi Akademik SMAN 14 Medan   
+        <br>
+      </h5>
+      <h5>Selamat Datang di Sistem Informasi Akademik SMAN 14 Medan <br>
+        Sistem Informasi Akademik ini diharapkan: <br>
+        - Memudahkan siswa dalam melihat Nilai Rapor secara Online <br>
+        - Memudahkan siswa dalam melihat Pelanggaran secara Online <br>
+      </h5>
+        </div>
+        <div class="column">
+          <img src="{{ asset('img/landingimg/foto3.png') }}" alt="Logo SMAN 14 Medan" class="brand-image" style="width: 18cm">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@else
+
     <div class="col-md-12" id="load_content">
       <div class="card card-primary">
         <div class="card-body">
@@ -14,7 +42,7 @@
                     <th>Mata Pelajaran</th>
                     <th>Kelas</th>
                     <th>Ruang Kelas</th>
-                    <th>Ket.</th>
+                    {{-- <th>Ket.</th> --}}
                   </tr>
                 </thead>
                 <tbody id="data-jadwal">
@@ -43,12 +71,19 @@
                         <tr>
                           <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
                           <td>
+                              <h5 class="card-title">{{ $data->nama_mapel }}</h5>
+                              <p class="card-text"><small class="text-muted">{{ $data->nama_guru }}</small></p>
+                          </td>
+                          <td>{{ $data->nama_kelas }}</td>
+                          <td>{{ $data->nama_ruang }}</td>
+                          <td>
+                          {{-- <td> --}}
                               {{-- <h5 class="card-title">{{ $data->mapel->nama_mapel }}</h5> --}}
                               {{-- <p class="card-text"><small class="text-muted">{{ $data->guru->nama_guru }}</small></p> --}}
-                          </td>
+                          {{-- </td> --}}
                           {{-- <td>{{ $data->kelas->nama_kelas }}</td>
                           <td>{{ $data->ruang->nama_ruang }}</td> --}}
-                          <td>
+                          {{-- <td> --}}
                             {{-- @if ($data->absen($data->guru_id))
                               <div style="margin-left:20px;width:30px;height:30px;background:#{{ $data->absen($data->guru_id) }}"></div>
                             @elseif (date('H:i:s') >= '09:00:00')
@@ -91,7 +126,7 @@
         </div>
       </div>
     </div>
-
+@endif
     {{-- <div class="col-md-12">
       <div class="card card-warning" style="min-height: 385px;">
         <div class="card-header">
