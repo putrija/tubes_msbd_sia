@@ -1,27 +1,27 @@
 @extends('template_backend.home')
-@section('heading', 'Edit Tugas Tambahan Guru')
+@section('heading', 'Edit Jenis PTK')
 @section('page')
-  <li class="breadcrumb-item active"><a href="{{ route('tugastambahanguru.index') }}">Tugas Tambahan Guru</a></li>
-  <li class="breadcrumb-item active">Edit Tugas Tambahan Guru</li>
+  <li class="breadcrumb-item active"><a href="{{ route('jenisptk.index') }}">Jenis PTK</a></li>
+  <li class="breadcrumb-item active">Edit Jenis PTK</li>
 @endsection
 @section('content')
 <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Tugas Tambahan Guru</h3>
+        <h3 class="card-title">Edit Jenis PTK</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ route('TugasTambahanGuru.store',$tugas_tambahan_guru->id) }}" method="GET">
+      <form action="{{ route('JenisPtk.store',$jenis_ptk->id) }}" method="POST">
         @csrf
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <input type="hidden" name="tugas_tambahan_guru_id" value="{{ $tugas_tambahan_guru->id }}">
+              <input type="hidden" name="jenis_ptk_id" value="{{ $jenis_ptk->id }}">
               <div class="form-group">
-                <label for="ket_tugas_tambahan">Tugas Tambahan</label>
-                <input type="text" id="ket_tugas_tambahan" name="ket_tugas_tambahan" value="{{ $tugas_tambahan_guru->ket_tugas_tambahan }}" class="form-control @error('ket_tugas_tambahan') is-invalid @enderror" placeholder="{{ __('Tugas Tambahan') }}">
+                <label for="ket_jenis_ptk">Jenis PTk </label>
+                <input type="text" id="ket_jenis_ptk" name="ket_jenis_ptk" value="{{ $jenis_ptk->ket_jenis_ptk }}" class="form-control @error('ket_jenis_ptk') is-invalid @enderror" placeholder="{{ __('Jenis PTK') }}">
               </div>
             </div>
           </div>
@@ -40,11 +40,11 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#back').click(function() {
-        window.location="{{ route('tugastambahanguru.index') }}";
+        window.location="{{ route('jenisptk.index') }}";
         });
     });
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
-    $("#DataTugasTambahanGuru").addClass("active");
+    $("#DataJenisPtk").addClass("active");
 </script>
 @endsection

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\JenisPtk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
 
 class JenisPtkController extends Controller
 {
@@ -67,7 +69,11 @@ class JenisPtkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = Crypt::decrypt($id);
+        $jenis_ptk = DB::table('jenis_ptk')
+            ->select('jenis_ptk.id', 'jenis_ptk.ket_jenis_ptk')
+            ->where('jenis_ptk.id', $id)->first();
+        return view('admin.jenisptk.edit', compact('jenis_ptk'));
     }
 
     /**
@@ -79,9 +85,16 @@ class JenisPtkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+    //     $this->validate($request, [
+    //         'ket_jenis_ptk' => 'required',
+    //     ]);
+    //     $jenis_ptk = JenisPtk::findorfail($id);
 
+    
+    // $jenis_ptk = [
+    //     'ket_jenis_ptk' => $request -> ket_jenis_ptk,
+    // ];
+    }
     /**
      * Remove the specified resource from storage.
      *

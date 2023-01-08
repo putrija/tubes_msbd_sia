@@ -29,9 +29,11 @@
                     <td>{{ $no+1 }}</td>
                     <td>{{ $item->ket_jenis_ptk }}</td>
                     <td>
-                        <form action="{{ route('jenisptk.destroy', $item->id)}}" method="POST">
-                          @csrf
-                          @method('delete')
+                      <form action="{{ route('tugastambahanguru.destroy', $item->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <a href="{{ route('jenisptk.edit', Crypt::encrypt($item->id
+                          )) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
