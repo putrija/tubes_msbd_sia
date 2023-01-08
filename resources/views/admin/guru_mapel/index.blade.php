@@ -40,7 +40,9 @@
                             <a href="{{ route('mapel.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form> --}}
-                        <a href="{{url('edit-guru-mapel',$data->id)}}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
+                        {{-- <a href="{{url('edit-guru-mapel',$data->id)}}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a> --}}
+                       
+                        <a href="{{ route('edit-guru-mapel', ['id' => $data->id]) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                         <a href="{{url('delete-guru-mapel',$data->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Delete</a>
                         {{-- <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button> --}}
                     </td>

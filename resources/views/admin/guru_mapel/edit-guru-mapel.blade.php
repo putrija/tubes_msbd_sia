@@ -13,7 +13,10 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ route('guru_mapel.store',$guru_mapel->id) }}" method="post">
+      {{-- <form action="{{ route('guru_mapel.store',$guru_mapel->id) }}" method="post"> --}}
+        <form action="{{ route('guru_mapel.store') }}" method="post">
+        
+        {{-- <form action="{{ route('update-guru-mapel/'.$guru_mapel->id.'/update') }}" method="post"> --}}
         @csrf
         <div class="card-body">
           <div class="row">
@@ -23,33 +26,44 @@
                   <div class="form-group">
                     <label for="guru_id">Nama Guru</label>
                     <select id="guru_id" name="guru_id" class="select2bs4 form-control @error('guru_id') is-invalid @enderror">
-                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                       {{-- guru_id ditarik dari tabel guru_mengajar --}}
+                        <option value=""> -- nama guru --</option>
                         @foreach ($guru as $data)
                         <option value="{{ $data->id }}" 
                         @if ($guru_mapel->guru_id == $data->id)
                             selected
                             @endif 
                         >{{ $data->nama_guru }}</option>
+
                     @endforeach
                     </select>
                 </div>
-                  <div class="form-group">
-                    <label for="nama_mapel">Mata Pelajaran</label><br>
-                    <input type="text"  id="id" name="id" value="{{$mapel->first()->nama_mapel}}">
-                  </div>
-                  <div class="form-group">
-                    <label for="tahun_ajaran">Tahun ajaran</label><br>
-                    <input type="text"  id="id" name="id" value="{{$tahun_ajaran->first()->tahun_ajaran}}">
-                  </div>
-
-                    <label for="nama_guru">Nama Guru</label><br>
-                    <select   class="js-example-basic-single" id="guru_id" name="guru_id" data-width="100%">
-                      <option value="">--- Pilih Nama Guru ---</option>
-                      @foreach ($guru as $data)
-                        <option value="{{ $data->id }}">{{ $data->id }}</option>
-                      @endforeach
-                    </select>
-
+                <div class="form-group">
+                  <label for="mapel_id">Nama Mata Pelajaran</label>
+                  <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
+                      <option value=""> -- Pilih nama mata pelajaran -- </option>
+                      @foreach ($mapel as $data)
+                      <option value="{{ $data->id }}" 
+                      @if ($guru_mapel->mapel_id == $data->id)
+                          selected
+                          @endif 
+                      >{{ $data->nama_mapel }}</option>
+                  @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="tahun_ajaran_id">Tahun ajaran</label><br>
+                  <select name="tahun_ajaran_id" id="tahun_ajaran_id" class="select2bs4 form-control @error('tahun_ajaran_id') is-invalid @enderror">
+                  <option value="">--pilih tahun ajaran--</option>
+                  @foreach($tahun_ajaran as $data)     
+                  <option value="{{$data->id}}"
+                  @if ($guru_mapel->tahun_ajaran_id == $data->id)
+                    selected
+                    @endif
+                  >{{$data->tahun_ajaran}}</option>
+                  @endforeach
+                </select>
+                </div>
                 </form>
 
 
@@ -101,7 +115,10 @@
 
         <div class="card-footer">
           <a href="#" name="kembali" class="btn btn-default" id="back"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a> &nbsp;
-          <button name="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Update</button>
+          {{-- <a href="{{ route('guru_mapel.store')}}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a> --}}
+          {{-- <a href="{{url('update-guru-mapel',$data->id)}}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a> --}}
+          <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Update</button>
+          {{-- <button name="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Update</button> --}}
         </div>
       </form>
     </div>
