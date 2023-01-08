@@ -1,15 +1,15 @@
 @extends('template_backend.home')
-@section('heading', 'Tugas Tambahan Guru')
+@section('heading', 'Data Semester')
 @section('page')
-  <li class="breadcrumb-item active">Tugas Tambahan Guru </li>
+  <li class="breadcrumb-item active">Data Semester</li>
 @endsection
 @section('content')
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-mapel">
-                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambahkan Tugas
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-semester">
+                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambahkan Semester
                 </button>
             </h3>
         </div>
@@ -19,17 +19,17 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Tugas Tambahan</th>
+                    <th>Semester</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-              @foreach ($data as $no => $item)
+                @foreach ($data as $no => $item)
                 <tr>
                     <td>{{ $no+1 }}</td>
-                    <td>{{ $item->ket_tugas_tambahan }}</td>
+                    <td>{{ $item->semester }}</td>
                     <td>
-                        <form action="{{ route('tugastambahanguru.destroy', $item->id)}}" method="POST">
+                        <form action="{{ route('semester.destroy', $item->id)}}" method="POST">
                           @csrf
                           @method('delete')
                           {{-- <a href="{{ route('tugastambahanguru.edit', Crypt::encrypt($data->id
@@ -49,23 +49,23 @@
 <!-- /.col -->
 
 <!-- Extra large modal -->
-<div class="modal fade bd-example-modal-md tambah-mapel" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-md tambah-semester" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Tambahkan Tugas Guru</h4>
+        <h4 class="modal-title">Tambah Semester</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('tugastambahanguru.store') }}" method="POST">
+        <form action="{{ route('semester.store') }}" method="post">
           @csrf
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ket_tugas_tambahan"> Tugas Tambahan: </label>
-                  <input type="text" id="ket_tugas_tambahan" name="ket_tugas_tambahan">
+                  <label for="semester">Semester</label>
+                  <input type="text" id="semester" name="semester" class="form-control @error('semester') is-invalid @enderror" placeholder="{{ __('Semester') }}">
                 </div>
               </div>
             </div>
@@ -83,6 +83,6 @@
   <script>
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
-    $("#DataTugasTambahanGuru").addClass("active");
+    $("#DataSemester").addClass("active");
   </script>
 @endsection

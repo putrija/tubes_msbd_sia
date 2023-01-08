@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TugasTambahanGuru;
+use App\Models\Semester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
 
-class TugasTambahanGuruController extends Controller
+class SemesterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class TugasTambahanGuruController extends Controller
      */
     public function index()
     {       
-            $data = TugasTambahanGuru::all();
-            return view ('admin.tugastambahanguru.index', ['data'=>$data]);
+            $data = Semester::all();
+            return view ('admin.semester.index', ['data'=>$data]);
 
     }
 
@@ -41,13 +39,13 @@ class TugasTambahanGuruController extends Controller
     public function store(Request $request)
     {
 
-        TugasTambahanGuru::Create(
+        Semester::Create(
             [
-               'ket_tugas_tambahan' => $request->ket_tugas_tambahan
+               'semester' => $request->semester
             ]
         );
 
-        return to_route('tugastambahanguru.index')->with('success', 'Status berhasil diperbarui!');
+        return to_route('semester.index')->with('success', 'Semester berhasil diperbarui!');
     }
 
     /**
@@ -69,11 +67,7 @@ class TugasTambahanGuruController extends Controller
      */
     public function edit($id)
     {
-        $id = Crypt::decrypt($id);
-        $tugas_tambahan_guru = DB::table('tugas_tambahan_guru')
-            ->select('tugas_tambahan_guru.id', 'tugas_tambahan_guru.ket_tugas_tambahan')
-            ->where('tugas_tambahan_guru.id', $id)->first();
-        return view('admin.tugastambahanguru.edit', compact('tugas_tambahan_guru'));
+        //
     }
 
     /**
@@ -97,10 +91,10 @@ class TugasTambahanGuruController extends Controller
     public function destroy($id)
     {
 
-        $status = DB::table('tugas_tambahan_guru')
+        $status = DB::table('semester')
         ->where('id', $id);
         $status->delete();
 
-        return redirect()->back()->with('warning', 'status berhasil dihapus!');
+        return redirect()->back()->with('warning', 'Semester berhasil dihapus!');
     }
 }

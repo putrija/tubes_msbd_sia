@@ -153,6 +153,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mapel/getMapelJson', 'MapelController@getMapelJson');
     Route::resource('/mapel', 'MapelController');
     Route::resource('/rapot', 'RapotController');
+    Route::resource('/semester', 'SemesterController');
 
     Route::resource('/log_guru', 'LogGuruController');
     Route::resource('/log_siswa', 'LogSiswaController');
