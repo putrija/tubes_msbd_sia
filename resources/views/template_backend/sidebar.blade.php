@@ -243,6 +243,12 @@
                                     <p>Nilai Rapor</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('rapor-read') }}" class="nav-link" id="Rapor">
+                                    <i class="fas fa-file-alt nav-icon"></i>
+                                    <p>Lihat Nilai Rapor Siswa</p>
+                                </a>
+                            </li>
                             {{-- <li class="nav-item">
                                 <a href="{{ route('predikat') }}" class="nav-link" id="Deskripsi">
                                     <i class="fas fa-file-alt nav-icon"></i>

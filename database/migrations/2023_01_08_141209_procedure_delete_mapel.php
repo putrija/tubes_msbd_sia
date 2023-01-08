@@ -28,19 +28,6 @@ return new class extends Migration
         END;";
 
         DB::unprepared($store_procedure);
-
-
-        //         DB::unprepared('
-        //             CREATE PROCEDURE delete_mapel(
-        //                 IN param INT,
-        //             )
-        //             BEGIN
-        //             DELETE mapel, guru_mengajar, jadwal_belajar_mengajar FROM mapel
-        //             JOIN guru_mengajar ON mapel.id = guru_mengajar.mapel_id
-        //             JOIN jadwal_belajar_mengajar ON guru_mengajar.id = jadwal_belajar_mengajar.guru_mengajar_id
-        //             WHERE mapel.id = $id
-        //             END
-        //         ');
     }
 
     /**
