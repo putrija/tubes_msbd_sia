@@ -69,11 +69,11 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_card_guru' => 'required|unique:guru|min:10|max:10',
+            'id_card_guru' => 'required|min:10|max:10',
             'nama_guru' => 'required',
-            'kode_guru' => 'required|string|unique:guru|min:3|max:5',
+            'kode_guru' => 'required|string|min:3|max:5',
             'jk' => 'required',
-            'email' => 'required|unique|'
+            'email' => 'required|unique:guru|'
         ]);
 
         if ($request->foto) {
@@ -149,11 +149,11 @@ class GuruController extends Controller
     
            $detail_guru->save();
            $user = User::create([
+                'id_card_guru' => $guru->id_card_guru,
                 'name' => $guru->nama_guru,
                 'email' => $guru->email,
                 'password' => Hash::make($guru->id_card_guru),
-                'role' => 'Guru',
-                'id_card_guru' => $guru->id_card_guru,
+                'role' => 'Guru'
             
             ]);
             $user->save();
@@ -208,6 +208,7 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         // $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
         // $status_kepegawaian_get = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
         // $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
@@ -220,7 +221,6 @@ class GuruController extends Controller
             'nama_guru' => 'required',
             'jk' => 'required',
         ]);
-
         $guru = Guru::findorfail($id);
         $user = User::where('id_card_guru', $guru->id_card_guru)->first();
         if ($user) {
@@ -259,6 +259,7 @@ class GuruController extends Controller
 
         return redirect()->route('guru.index')->with('success', 'Data guru berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -167,7 +167,6 @@
           <input class="form-control" placeholder="{{ $guru->tugas_tambahan_guru->ket_tugas_tambahan }}" disabled>
         </div>
       </div>
-      {{dd($guru->jenis_ptk->ket_jenis_ptk)}}
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Tanggal CPNS</label>
         <div class="col-sm-10">
