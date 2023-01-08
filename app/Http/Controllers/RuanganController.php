@@ -36,14 +36,19 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        Ruang::Create(
-            [
-               'nama_ruang' => $request->nama_ruang,
-               'jenis_ruang' => $request->jenis_ruang,
-            ]
-        );
-
-        return to_route('ruangan.index')->with('success', 'Ruangan berhasil ditambahkan!');
+        try{
+            Ruang::create([
+                'nama_ruang' => $request->nama_ruang,
+                'jenis_ruang'=>$request->jenis_ruang
+            ]);
+             
+            return redirect()->back()->with('success', 'Ruangan Berhasil Ditambah!');
+            }
+            catch (\Exception $e) {
+    
+                return redirect()->back()->with('warning', 'Ruangan sudah tersedia');
+                
+            }
     }
 
     /**
