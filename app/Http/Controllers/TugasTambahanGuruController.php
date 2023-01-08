@@ -40,13 +40,12 @@ class TugasTambahanGuruController extends Controller
      */
     public function store(Request $request)
     {
-
+        dd($request->all());
         TugasTambahanGuru::Create(
             [
                'ket_tugas_tambahan' => $request->ket_tugas_tambahan
             ]
         );
-        // dd($request->all());
         return to_route('tugastambahanguru.index')->with('success', 'Status berhasil diperbarui!');
     }
 
@@ -85,7 +84,11 @@ class TugasTambahanGuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $tugas_tambahan = TugasTambahanGuru::find($id);
+        $tugas_tambahan->ket_tugas_tambahan = $request->ket_tugas_tambahan;
+        $tugas_tambahan->save();
+        return to_route('tugastambahanguru.index')->with('success', 'Status berhasil diperbarui!');
     }
 
     /**

@@ -35,7 +35,7 @@
                     <tr>
                         <td>Wali Kelas</td>
                         <td>:</td>
-                        <td>{{ $kelas->guru->nama_guru }}</td>
+                        <td>{{ $wali_kelas }}</td>
                     </tr>
                     @php
                         $bulan = date('m');
@@ -69,80 +69,51 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <h4 class="mb-3">A. Sikap</h4>
-                        @if ($Spai && $Sppkn)
-                            @php
-                                $sikap = ((($Spai->sikap_1 + $Spai->sikap_2 + $Spai->sikap_3) / 3) + (($Sppkn->sikap_1 + $Sppkn->sikap_2 + $Sppkn->sikap_3) / 3)) / 2;
-                                $sikap = (int) $sikap;
-                            @endphp
-                            @if ($sikap == 4)
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h5><i class="icon fas fa-check"></i> Sangat Baik!</h5>
-                                    Students show very good attitude.
-                                </div>
-                            @elseif ($sikap == 3)
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h5><i class="icon fas fa-check"></i> Baik!</h5>
-                                    Students show good manners.
-                                </div>
-                            @elseif ($sikap == 2)
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h5><i class="icon fas fa-check"></i> Cukup!</h5>
-                                    Students show sufficient attitude.
-                                </div>
-                            @else
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h5><i class="icon fas fa-check"></i> Kurang!</h5>
-                                    Students show lack of attitude.
-                                </div>
-                            @endif
-                        @else
-                            <div class="alert alert-warning alert-dismissible">
-                                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-                                Warning. Your Attitude Value does not exist yet
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-12 mb-3">
-                        <h4 class="mb-3">B. Pengetahuan dan Keterampilan</h4>
+                        <br>
+                        <h4 class="mb-3">Pengetahuan dan Keterampilan</h4>
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th rowspan="2">No.</th>
                                     <th rowspan="2">Mata Pelajaran</th>
                                     <th rowspan="2">KKM</th>
-                                    <th class="ctr" colspan="3">Pengetahuan</th>
-                                    <th class="ctr" colspan="3">Keterampilan</th>
+                                    <th class="ctr" colspan="2">Pengetahuan</th>
+                                    <th class="ctr" colspan="2">Keterampilan</th>
                                 </tr>
                                 <tr>
                                     <th class="ctr">Nilai</th>
                                     <th class="ctr">Predikat</th>
-                                    <th class="ctr">Deskripsi</th>
                                     <th class="ctr">Nilai</th>
                                     <th class="ctr">Predikat</th>
-                                    <th class="ctr">Deskripsi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($mapel as $val => $data)
+                                @foreach ($nilai as $data)
                                     <tr>
-                                        <?php $data = $data[0]; ?>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->mapel->nama_mapel }}</td>
-                                        {{-- <td class="ctr">{{ $data->kkm($data->nilai($val)['guru_id']) }}</td> --}}
-                                        <td class="ctr">{{ $data->kkm($data->guru_id) }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['p_predikat'] }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['p_deskripsi'] }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['k_nilai'] }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['k_predikat'] }}</td>
-                                        <td class="ctr">{{ $data->nilai($val)['k_deskripsi'] }}</td>
+                                        <td>{{ $mapel->where('id', $data->mapel_id)->value('nama_mapel') }}</td>
+                                        <td class="ctr">75</td>
+                                        <td class="ctr">{{ $data->nilai_pengetahuan }}</td>
+                                        <td class="ctr">{{ $data->predikat_pengetahuan }}</td>
+                                        <td class="ctr">{{ $data->nilai_keterampilan }}</td>
+                                        <td class="ctr">{{ $data->predikat_keterampilan }}</td>
                                     </tr>
                                 @endforeach
+                                @php
+                                    if($rata_rata_pengetahuan < 75) {
+                                        $warna_pengetahuan = 'red';
+                                    } else {
+                                        $warna_pengetahuan = 'rgb(131, 211, 11)';
+                                    }
+                                    if($rata_rata_keterampilan < 75) {
+                                        $warna_keterampilan = 'red';
+                                    } else {
+                                        $warna_keterampilan = 'rgb(131, 211, 11)';
+                                    }
+                                @endphp
+                                <td style="background-color:rgb(131, 211, 11);color:aliceblue;font-weight:bold;" colspan="3" class="ctr"> Rata-Rata</td>
+                                <td style="background-color:<?= $warna_pengetahuan; ?>;color:aliceblue;font-weight:bold;" colspan="2" class="ctr"> {{ $rata_rata_pengetahuan }}</td>
+                                <td style="background-color:<?= $warna_keterampilan; ?>;color:aliceblue;font-weight:bold;" colspan="2" class="ctr"> {{ $rata_rata_keterampilan }}</td>
                             </tbody>
                         </table>
                     </div>

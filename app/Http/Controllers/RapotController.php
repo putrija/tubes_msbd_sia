@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
+
 class RapotController extends Controller
 {
     /**
@@ -321,6 +322,8 @@ class RapotController extends Controller
     {
         $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
         $kelas = Kelas::findorfail($siswa->kelas_id);
+        $wali_kelas = $kelas->wali_kelas->where('kelas_id', $kelas->value('id'))->first();
+        $wali_kelas = $kelas->guru->where('id', $wali_kelas->value('guru_id'))->value('nama_guru');
         $pai = Mapel::where('nama_mapel', 'Pendidikan Agama dan Budi Pekerti')->first();
         $ppkn = Mapel::where('nama_mapel', 'Pendidikan Pancasila dan Kewarganegaraan')->first();
         if ($pai != null && $ppkn != null) {
@@ -330,8 +333,51 @@ class RapotController extends Controller
             $Spai = "";
             $Sppkn = "";
         }
-        $jadwal = Jadwal::where('kelas_id', $kelas->id)->orderBy('mapel_id')->get();
-        $mapel = $jadwal->groupBy('mapel_id');
-        return view('siswa.rapot', compact('siswa', 'kelas', 'mapel', 'Spai', 'Sppkn'));
+        $semester = '';
+        $tahun = date('Y');
+        $bulan = date('m');
+        if ($bulan > 6) { 
+            $tahun = $tahun . '/' . $tahun+1;
+            $semester = '1';
+        }
+        else { 
+            $tahun = $tahun-1 .'/'. $tahun;
+            $semester = '2';
+        }
+        $tahun_ajaran = Tahun_ajaran::where('tahun_ajaran', $tahun)->value('id');
+        $semesternya = Semester::where('semester', $semester)->value('id');
+        $nilai = Rapot::where('nisn_siswa', $siswa->value('nisn'))->where('tahun_ajaran_id', $tahun_ajaran)->where('semester_id', $semesternya)->get();
+        $jadwal = Jadwal::where('kelas_id', $kelas->id)->orderBy('kelas_id')->get();
+        $mapel = Mapel::all();
+        // dd($nilai);
+        $tampung_nilai_pengetahuan = [];
+        $k = 0;
+        foreach($nilai as $data) {
+            $tampung_nilai_pengetahuan[$k] = $data->nilai_pengetahuan;
+            $k++;
+        }
+
+        $tampung_nilai_keterampilan = [];
+        $k = 0;
+        foreach($nilai as $data) {
+            $tampung_nilai_keterampilan[$k] = $data->nilai_keterampilan;
+            $k++;
+        }
+
+        if($kelas->jurusan_id == 1) {
+            $rata_rata_pengetahuan = DB::select("SELECT nilai_ipa($tampung_nilai_pengetahuan[0], $tampung_nilai_pengetahuan[1], $tampung_nilai_pengetahuan[2], $tampung_nilai_pengetahuan[3], $tampung_nilai_pengetahuan[4], $tampung_nilai_pengetahuan[5], $tampung_nilai_pengetahuan[6], $tampung_nilai_pengetahuan[7], $tampung_nilai_pengetahuan[8], $tampung_nilai_pengetahuan[9], $tampung_nilai_pengetahuan[10], $tampung_nilai_pengetahuan[11], $tampung_nilai_pengetahuan[12] ) as halo");
+            $rata_rata_pengetahuan = $rata_rata_pengetahuan[0]->halo;
+
+            $rata_rata_keterampilan = DB::select("SELECT nilai_ipa($tampung_nilai_keterampilan[0], $tampung_nilai_keterampilan[1], $tampung_nilai_keterampilan[2], $tampung_nilai_keterampilan[3], $tampung_nilai_keterampilan[4], $tampung_nilai_keterampilan[5], $tampung_nilai_keterampilan[6], $tampung_nilai_keterampilan[7], $tampung_nilai_keterampilan[8], $tampung_nilai_keterampilan[9], $tampung_nilai_keterampilan[10], $tampung_nilai_keterampilan[11], $tampung_nilai_keterampilan[12] ) as halo");
+            $rata_rata_keterampilan = $rata_rata_keterampilan[0]->halo;
+        } else {
+            $rata_rata_pengetahuan = DB::select("SELECT nilai_ips($tampung_nilai_pengetahuan[0], $tampung_nilai_pengetahuan[1], $tampung_nilai_pengetahuan[2], $tampung_nilai_pengetahuan[3], $tampung_nilai_pengetahuan[4], $tampung_nilai_pengetahuan[5], $tampung_nilai_pengetahuan[6], $tampung_nilai_pengetahuan[7], $tampung_nilai_pengetahuan[8], $tampung_nilai_pengetahuan[9], $tampung_nilai_pengetahuan[10], $tampung_nilai_pengetahuan[11]) as halo");
+            $rata_rata_pengetahuan = $rata_rata_pengetahuan[0]->halo;
+
+            $rata_rata_keterampilan = DB::select("SELECT nilai_ips($tampung_nilai_keterampilan[0], $tampung_nilai_keterampilan[1], $tampung_nilai_keterampilan[2], $tampung_nilai_keterampilan[3], $tampung_nilai_keterampilan[4], $tampung_nilai_keterampilan[5], $tampung_nilai_keterampilan[6], $tampung_nilai_keterampilan[7], $tampung_nilai_keterampilan[8], $tampung_nilai_keterampilan[9], $tampung_nilai_keterampilan[10], $tampung_nilai_keterampilan[11]) as halo");
+            $rata_rata_keterampilan = $rata_rata_keterampilan[0]->halo;
+        }
+
+        return view('siswa.rapot', compact('siswa', 'kelas', 'mapel', 'Spai', 'Sppkn', 'wali_kelas', 'nilai', 'rata_rata_pengetahuan', 'rata_rata_keterampilan'));
     }
 }

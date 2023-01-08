@@ -186,6 +186,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/ruangan', RuanganController::class);
     Route::resource('/tahun_ajaran', TahunAjaranController::class);
     Route::get('/edit-tugastambahanguru/{id}', 'TugasTambahanGuruController@edit')->name('TugasTambahanGuru.store');
+    Route::get('/update-tugastambahanguru/{id}', 'TugasTambahanGuruController@update')->name('TugasTambahanGuru.update');
     Route::post('/edit-jenisptk/{id}', 'JenisPtkController@edit')->name('JenisPtk.store');
 
     Route::get('/jadwal/view/json', 'JadwalController@view');

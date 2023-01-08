@@ -63,11 +63,11 @@ class Jadwal extends Model
     return $nilai;
   }
 
-  public function kkm($id)
-  {
-    $kkm = Nilai::where('guru_id', $id)->first();
-    return $kkm['kkm'];
-  }
+  // public function kkm($id)
+  // {
+  //   $kkm = Nilai::where('guru_id', $id)->first();
+  //   return $kkm['kkm'];
+  // }
 
   // public function absen($id)
   // {
