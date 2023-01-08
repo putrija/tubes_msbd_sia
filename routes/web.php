@@ -199,8 +199,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sikap-siswa/{id}', 'SikapController@edit')->name('sikap-siswa');
     Route::get('/sikap-show/{id}', 'SikapController@sikap')->name('sikap-show');
     Route::get('/rapor', 'RapotController@create')->name('rapor');
+    Route::get('/rapor-siswa-sman14', 'RapotController@index')->name('rapor-read');
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');
+    Route::post('/rapot-cari-siswa', 'RapotController@cari_siswa')->name('rapor.cari_siswa');
     Route::get('/predikat', 'NilaiController@create')->name('predikat');
     Route::get('/simpan_nilai', 'NilaiController@create')->name('simpan.nilai');
     Route::get('/tambahkankepsek', 'UserController@editkepsek')->name('editkepsek');

@@ -415,7 +415,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
+                        <a href="{{ route('rapor-read') }}" class="nav-link" id="Rapor">
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Nilai Rapor Siswa</p>
                         </a>
