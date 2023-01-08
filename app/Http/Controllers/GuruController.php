@@ -33,7 +33,7 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $guru,$detail_guru;
+    public $guru, $detail_guru;
     public function __construct()
     {
         $this->guru = new Guru();
@@ -47,7 +47,7 @@ class GuruController extends Controller
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
         $guru = Guru::all();
         $detail_guru = DetailGuru::all();
-        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan_guru','detail_guru'));
+        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan_guru', 'detail_guru'));
     }
 
     /**
@@ -88,7 +88,7 @@ class GuruController extends Controller
                 $nameFoto = 'uploads/guru/23171022042020_female.jpg';
             }
         }
-        DB::transaction(function () use($request,$nameFoto) {
+        DB::transaction(function () use ($request, $nameFoto) {
             $guru = Guru::create([
                 'id_card_guru' => $request->id_card_guru,
                 'nip' => $request->nip,
@@ -146,19 +146,19 @@ class GuruController extends Controller
             $detail_guru->karis_karsu = $data['karis_karsu'];
             $detail_guru->lintang = $data['lintang'];
             $detail_guru->bujur = $data['bujur'];
-    
-           $detail_guru->save();
-           $user = User::create([
+
+            $detail_guru->save();
+            $user = User::create([
                 'id_card_guru' => $guru->id_card_guru,
                 'name' => $guru->nama_guru,
                 'email' => $guru->email,
                 'password' => Hash::make($guru->id_card_guru),
                 'role' => 'Guru'
-            
+
             ]);
             $user->save();
         });
-         
+
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }
     /**
@@ -175,7 +175,7 @@ class GuruController extends Controller
         $status_kepegawaian = StatusKepegawaian::all();
         $tugas_tambahan_guru = TugasTambahanGuru::all();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
-        return view('admin.guru.details', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru'));
+        return view('admin.guru.details', compact('guru', 'status_kepegawaian', 'tugas_tambahan_guru', 'jenis_ptk', 'detail_guru'));
     }
 
     /**
@@ -196,7 +196,7 @@ class GuruController extends Controller
         // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
-        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru','user'));
+        return view('admin.guru.edit', compact('guru', 'status_kepegawaian', 'tugas_tambahan_guru', 'jenis_ptk', 'detail_guru', 'user'));
     }
 
     /**
@@ -208,7 +208,7 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         // $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
         // $status_kepegawaian_get = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
         // $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
@@ -270,9 +270,9 @@ class GuruController extends Controller
     public function destroy($id)
     {
         $guru = Guru::findorfail($id);
-        $countJadwal = Jadwal::where('guru_id', $guru->id)->count();
+        $countJadwal = Jadwal::where('guru_mengajar_id', $guru->id)->count();
         if ($countJadwal >= 1) {
-            $jadwal = Jadwal::where('guru_id', $guru->id)->delete();
+            $jadwal = Jadwal::where('guru_mengajar_id', $guru->id)->delete();
         } else {
         }
         $countUser = User::where('id_card_guru', $guru->id_card_guru)->count();
@@ -295,9 +295,9 @@ class GuruController extends Controller
         $id = Crypt::decrypt($id);
         $guru = Guru::withTrashed()->findorfail($id);
         $detail_guru = DetailGuru::all();
-        $countJadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->count();
+        $countJadwal = Jadwal::withTrashed()->where('guru_mengajar_id', $guru->id)->count();
         if ($countJadwal >= 1) {
-            $jadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->restore();
+            $jadwal = Jadwal::withTrashed()->where('guru_mengajar_id', $guru->id)->restore();
         } else {
         }
         $countUser = User::withTrashed()->where('id_card_guru', $guru->id_card_guru)->count();
@@ -305,7 +305,7 @@ class GuruController extends Controller
             $user = User::withTrashed()->where('id_card_guru', $guru->id_card_guru)->restore();
         } else {
         }
-       
+
         $guru->restore();
         return redirect()->back()->with('info', 'Data guru berhasil direstore! (Silahkan cek data guru)');
     }

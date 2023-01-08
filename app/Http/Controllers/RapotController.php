@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Guru;
+use App\User;
 use App\Kelas;
 use App\Mapel;
 use App\Nilai;
@@ -85,6 +86,23 @@ class RapotController extends Controller
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         $data_siswa = Siswa::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+        $semester = Semester::all();
+        return view('admin.rapot.home', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester'));
+    }
+
+    public function create2()
+    {
+        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $user = User::where('id', Auth::id())->get();
+        $id_card_guru = $user[0]->id_card_guru;
+        $id_guru = Guru::where('id_card_guru', $id_card_guru)->value('id');
+        $data_siswa = DB::table('siswa')
+            ->select('siswa.nisn', 'siswa.nama_siswa')
+            ->join('kelas_siswa', 'siswa.id', '=', 'kelas_siswa.siswa_id')
+            ->join('wali_kelas', 'wali_kelas.kelas_id', '=', 'kelas_siswa.kelas_id')
+            ->where('wali_kelas.guru_id', $id_guru)
+            ->get();
         $tahun_ajaran = Tahun_ajaran::all();
         $semester = Semester::all();
         return view('admin.rapot.home', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester'));

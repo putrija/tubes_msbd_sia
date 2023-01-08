@@ -311,12 +311,12 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('jadwal.guru') }}" class="nav-link" id="JadwalGuru">
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>Jadwal</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item has-treeview" id="liNilaiGuru">
                         <a href="#" class="nav-link" id="NilaiGuru">
                             <i class="nav-icon fas fa-file-signature"></i>
@@ -345,7 +345,7 @@
                             @else
                             @endif
                             <li class="nav-item">
-                                <a href="{{ route('rapor') }}" class="nav-link" id="DataRapor">
+                                <a href="{{ route('rapor-guru') }}" class="nav-link" id="DataRapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
                                     <p>Nilai Rapor</p>
                                 </a>

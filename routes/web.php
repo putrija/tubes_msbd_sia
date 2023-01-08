@@ -173,7 +173,7 @@ Route::middleware(['auth'])->group(function () {
     //################## ROUTE GURU MENGAJAR MAPEL#######################
     Route::resource('/guru_mapel', 'GuruMengajarController');
     Route::post('/guru_mapel/store', 'GuruMengajarController@store')->name('guru_mapel.store');
-    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit')->name('edit-guru-mapel');//name adalah isi dari route, yg dipanggil
+    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit')->name('edit-guru-mapel'); //name adalah isi dari route, yg dipanggil
     Route::get('/update-guru-mapel/{id}', 'GuruMengajarController@update');
     Route::get('/delete-guru-mapel/{id}', 'GuruMengajarController@destroy');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
@@ -201,6 +201,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sikap-siswa/{id}', 'SikapController@edit')->name('sikap-siswa');
     Route::get('/sikap-show/{id}', 'SikapController@sikap')->name('sikap-show');
     Route::get('/rapor', 'RapotController@create')->name('rapor');
+    Route::get('/rapor-siswa-siswa', 'RapotController@create2')->name('rapor-guru');
     Route::get('/rapor-siswa-sman14', 'RapotController@index')->name('rapor-read');
     Route::get('/rapot-siswa/{id}', 'RapotController@edit')->name('rapot-siswa');
     Route::get('/rapot-show/{id}', 'RapotController@rapot')->name('rapot-show');

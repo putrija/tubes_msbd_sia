@@ -10,7 +10,7 @@ class Jadwal extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['hari', 'kelas_id', 'mapel_id', 'guru_id', 'jam_mulai', 'jam_selesai', 'ruang_id'];
+  protected $fillable = ['hari', 'kelas_id', 'mapel_id', 'guru_mengajar_id', 'jam_mulai', 'jam_selesai', 'ruang_id'];
 
   // public function hari()
   // {
