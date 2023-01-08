@@ -24,5 +24,14 @@ class SemesterSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ]
         );
+
+        DB::table('semester')->insert(
+            [
+                'id' => 2,
+                'semester' => '2',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]
+        );
     }
 }

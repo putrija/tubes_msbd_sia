@@ -36,12 +36,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Agama</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_agama" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_agama" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_agama" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_agama" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -50,12 +50,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Kewarganegaraan</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_kewarganegaraan" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_kewarganegaraan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_kewarganegaraan" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_kewarganegaraan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -64,12 +64,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Bahasa Indonesia</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_bahasa_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_bahasa_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_bahasa_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_bahasa_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -78,12 +78,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Fisika</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_fisika" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_fisika" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_fisika" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_fisika" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -92,12 +92,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Kimia</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_kimia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_kimia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_kimia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_kimia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -106,12 +106,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Biologi</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_biologi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_biologi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_biologi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_biologi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -120,12 +120,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Matematika Peminatan</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_matematika_peminatan" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_matematika_peminatan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_matematika_peminatan" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_matematika_peminatan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -134,12 +134,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Matematika Wajib</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_matematika_wajib" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_matematika_wajib" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_matematika_wajib" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_matematika_wajib" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -148,12 +148,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Bahasa Inggris</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_bahasa_inggris" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_bahasa_inggris" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_bahasa_inggris" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_bahasa_inggris" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -162,12 +162,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Sejarah Indonesia</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_sejarah_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_sejarah_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_sejarah_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_sejarah_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -176,12 +176,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Prakarya</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_prakarya" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_prakarya" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_prakarya" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_prakarya" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -190,12 +190,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Jasmani</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_pendidikan_jasmani" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_pendidikan_jasmani" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_pendidikan_jasmani" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_pendidikan_jasmani" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -204,12 +204,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Ekonomi</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_ekonomi" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_ekonomi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_ekonomi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_ekonomi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -232,12 +232,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Agama</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_agama" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_agama" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_agama" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_agama" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -246,12 +246,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Kewarganegaraan</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_kewarganegaraan" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_kewarganegaraan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_kewarganegaraan" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_kewarganegaraan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -260,12 +260,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Bahasa Indonesia</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_bahasa_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_bahasa_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_bahasa_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_bahasa_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -274,12 +274,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Sejarah Indonesia</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_sejarah_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_sejarah_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_sejarah_indonesia" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_sejarah_indonesia" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -288,12 +288,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Prakarya</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_prakarya" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_prakarya" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_prakarya" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_prakarya" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -302,12 +302,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Pendidikan Jasmani</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_pendidikan_jasmani" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_pendidikan_jasmani" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_pendidikan_jasmani" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_pendidikan_jasmani" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -316,12 +316,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Matematika Wajib</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_matematika_wajib" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_matematika_wajib" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_matematika_wajib" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_matematika_wajib" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -330,12 +330,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Geografi</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_geografi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_geografi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_geografi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_geografi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -344,12 +344,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Sosiologi</td>
               <td>
                 <div class="col-auto">
-                  <input name="pengetahuan_sosiologi" name="testing" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="pengetahuan_sosiologi" name="testing" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_sosiologi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_sosiologi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -358,12 +358,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Sejarah Peminatan</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_sejarah_peminatan" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_sejarah_peminatan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_sejarah_peminatan" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_sejarah_peminatan" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -372,12 +372,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Ekonomi</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_ekonomi" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_ekonomi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_ekonomi" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_ekonomi" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>
@@ -386,12 +386,12 @@ $kelas_siswa = $row['jurusan_id'];
               <td>Bahasa Inggris</td>
               <td>  
                 <div class="col-auto">
-                <input name="pengetahuan_bahasa_inggris" type="text" class="form-control" placeholder="Input Nilai">
+                <input name="pengetahuan_bahasa_inggris" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
               </div>
             </td>
               <td>
                 <div class="col-auto">
-                  <input name="keterampilan_bahasa_inggris" type="text" class="form-control" placeholder="Input Nilai">
+                  <input name="keterampilan_bahasa_inggris" type="number" required max="100" min="0" class="form-control" placeholder="Input Nilai">
                 </div>
               </td>
             </tr>

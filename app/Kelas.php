@@ -16,6 +16,10 @@ class Kelas extends Model
     {
         return $this->belongsTo('App\Guru')->withDefault();
     }
+    public function wali_kelas()
+    {
+        return $this->belongsTo('App\Models\WaliKelas')->withDefault();
+    }
 
     public function paket()
     {

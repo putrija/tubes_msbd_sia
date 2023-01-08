@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
+
 return new class extends Migration
 {
     /**
@@ -14,16 +15,16 @@ return new class extends Migration
      */
     public function up()
     {
-        $store_procedure = "DROP PROCEDURE IF EXISTS `delete_mapel`;
+        $store_procedure = "DROP PROCEDURE IF EXISTS `delete_kurikulum`;
 
-        CREATE PROCEDURE `delete_mapel` (IN idx int)
+        CREATE PROCEDURE `delete_kurikulum` (IN idx int)
 
         BEGIN
 
-        DELETE mapel, guru_mengajar, jadwal_belajar_mengajar FROM mapel
-        JOIN guru_mengajar ON mapel.id = guru_mengajar.mapel_id
-        JOIN jadwal_belajar_mengajar ON guru_mengajar.id = jadwal_belajar_mengajar.guru_mengajar_id
-        WHERE mapel.id = idx;
+        DELETE kurikulum, jurusan, mapel FROM kurikulum
+        JOIN jurusan ON kurikulum.id = jurusan.kurikulum_id
+        JOIN mapel ON kurikulum.id = mapel.kurikulum_id
+        WHERE kurikulum.id = idx;
 
         END;";
 
