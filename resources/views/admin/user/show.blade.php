@@ -61,6 +61,11 @@
                     @method('delete')
                     <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                   </form>
+                  <br>
+                  <form action="{{ route('user.changeStatus', $data->id) }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Nonaktifkan Akun</button>
+                  </form>
                   @if ($data->role == 'Kepala Sekolah')
                   <br>
                   <form action="{{ route('edit_guru', $data->id) }}" method="post">

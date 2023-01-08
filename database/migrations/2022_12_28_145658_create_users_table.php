@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('role', ['Admin', 'Guru', 'Siswa', 'Kepala Sekolah', 'BK']);
             $table->string('no_induk')->nullable();
             $table->string('id_card_guru')->nullable();
+            $table->enum('status',['Aktif','Non Aktif'])->default('Aktif');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

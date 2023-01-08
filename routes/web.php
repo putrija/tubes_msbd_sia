@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/user/trash', 'UserController@trash')->name('user.trash');
       Route::get('/user/restore/{id}', 'UserController@restore')->name('user.restore');
       Route::delete('/user/kill/{id}', 'UserController@kill')->name('user.kill');
+      Route::post('/user/changeStatus/{id}', 'UserController@changeStatus')->name('user.changeStatus');
     });
     Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
     Route::get('/admin/pengumuman', 'PengumumanController@index')->name('admin.pengumuman');

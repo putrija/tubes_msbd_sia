@@ -4,6 +4,7 @@
 <div class="card-body login-card-body">
   <p class="login-box-msg">Sign in to start your session</p>
 
+
   <form action="{{ route('login') }}" method="post">
     @csrf
     <div class="input-group mb-3">
@@ -32,6 +33,8 @@
         </span>
       @enderror
     </div>
+    
+
     {{-- <div class="row mb-1">
       <div class="col-7">
         <div class="icheck-primary">
@@ -42,6 +45,9 @@
         </div>
       </div> --}}
       <!-- /.col -->
+    
+      
+
       <div class="col-5">
         <button type="submit" id="btn-login"class="btn btn-primary btn-block" disabled>{{ __('Login') }} &nbsp; <i class="nav-icon fas fa-sign-in-alt"></i></button>
       </div>
