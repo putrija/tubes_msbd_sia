@@ -98,12 +98,15 @@ class KurikulumController extends Controller
      */
     public function destroy($id)
     {
-        $kurikulum = DB::table('kurikulum')
-            ->join('jurusan', 'kurikulum.id', '=', 'jurusan.kurikulum_id')
-            ->join('mapel', 'kurikulum.id', '=', 'mapel.kurikulum_id')
-            ->where('kurikulum.id', $id);
+        // $kurikulum = DB::table('kurikulum')
+        //     ->join('jurusan', 'kurikulum.id', '=', 'jurusan.kurikulum_id')
+        //     ->join('mapel', 'kurikulum.id', '=', 'mapel.kurikulum_id')
+        //     ->where('kurikulum.id', $id);
 
-        $kurikulum->delete();
+        // $kurikulum->delete();
+
+        $kurikulum = DB::select("CALL delete_kurikulum(" . $id . ")");
+
 
         $kurikulum2 = DB::table('kurikulum')
             ->where('kurikulum.id', $id);
