@@ -32,6 +32,12 @@ class User extends Authenticatable
         $siswa = Siswa::where('no_induk', $id)->first();
         return $siswa;
     }
+    // public function role()
+    // {      
+    //     $user = User::where('role'.'=','Admin');
+    //     return $user;
+
+    // }
 
     /**
      * The attributes that should be hidden for arrays.

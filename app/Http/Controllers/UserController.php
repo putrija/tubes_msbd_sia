@@ -191,11 +191,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        $cek = $request->role;
         $user = User::findorfail($id);
         if ($user->role == 'Admin') {
             if ($user->id == Auth::user()->id) {
+                if ($user->role == 'Admin') {
+                    return redirect()->back()->with('error', 'Tidak Dapat Menghapus Admin!');
+                }
                 $user->delete();
                 return redirect()->back()->with('warning', 'Data user berhasil dihapus! (Silahkan cek trash data user)');
             } else {
@@ -203,6 +207,9 @@ class UserController extends Controller
             }
         } elseif ($user->role == 'Kepala Sekolah') {
             if ($user->id == Auth::user()->id || Auth::user()->role == 'Admin') {
+                if ($user->role == 'Kepala Sekolah') {
+                    return redirect()->back()->with('error', 'Tidak Dapat Menghapus Kepala Sekolah!');
+                }
                 $user->delete();
                 return redirect()->back()->with('warning', 'Data user berhasil dihapus! (Silahkan cek trash data user)');
             } else {

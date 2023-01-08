@@ -73,25 +73,49 @@
 			</div>
 		</div>
         <!-- Filter Data -->
-        <h6 class="modal-title">Filter Data</h6>
-        <div class="card-body">
+        <div class="container mt-5">
             <div class="row">
-                <div class="col-md-4">
-                    <label>Angkatan</label>
-                    <select id="filter-angkatan" class="form-control">
-                        <option value="">--Pilih Angkatan</option>
-                        @foreach($siswa as $data)
-                        <option value="{{$data->id}}">{{$data->angkatan}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class=col-md-12>
+                            <h4>Filter Siswa</h4>
+                            </div>
+                            <form action="{{url('siswa')}}" method="GET">
+                                @csrf
+                                @method('GET')
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <label for="keyword" class="form-label">Filter Angkatan</label>
+                                        <input name="keyword" type="text" class="form-control" placeholder="Filter" value="{{$keyword}}">  
+                                    </div>
+                                    {{-- <div class="col-sm-3">
+                                        <label for="kelas_id" class="form-label">Kelas</label>
+                                        <select id="kelas_id" name="keyword" class="select2bs4 form-control @error('kelas_id') is-invalid @enderror">
+                                            <option value="" placeholder="Kelas" >-- Pilih Kelas --</option>
+                                            @foreach ($kelas as $data)
+                                                <option value="{{ $data->id }}" selected="{{isset($_GET['kelas_id'])}}">{{ $data->nama_kelas }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                --}}
+                                    {{-- <div class="col-sm-3">
+                                        <label for="kelas_id" class="form-label">Status</label>
+                                        <select id="kelas_id" name="keyword" class="select2bs4 form-control  @error('kelas_id') is-invalid @enderror" placeholder="Status">
+                                            <option value="">-- Pilih Kelas --</option>
+                                            @foreach ($kelas as $data)
+                                                <option value="{{ $data->id }}" selected="{{isset($_GET['kelas'])}}">{{ $data->nama_kelas }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div> --}}
+                                    <div class="col-sm-3">
+                                        <button type="submit" class="btn btn-primary mt-4">Search</button>
+                                        <a href="{{ route('siswa.export_excel_filter') }}" class="btn btn-success btn-sm my-3" target="_blank"><i class="nav-icon fas fa-file-export"></i> &nbsp; EXPORT EXCEL FILTERED</a>
+                                    </div>
+                                </div>
+                            </form>
 
 
         <!-- End Filter Data -->
-
-
 
         <!-- /.card-header -->
         <div class="card-body">
@@ -104,6 +128,7 @@
                       <th>No Induk</th>
                       <th>Kelas</th>
                       <th>angkatan</th>
+                      <th>Status</th>
                       <th>Foto</th>
                       @if (Auth::user()->role != 'BK')
                       <th>Aksi</th>
@@ -118,6 +143,7 @@
                           <td>{{ $data->no_induk }}</td>
                           <td>{{ $data->kelas->nama_kelas }}</td>
                           <td>{{ $data->angkatan }}</td>
+                          <td>{{ $data->status->ket_status ?? 'None' }}</td>
                           <td>
                               <a href="{{ asset($data->foto) }}" data-toggle="lightbox" data-title="Foto {{ $data->nama_siswa }}" data-gallery="gallery" data-footer='<a href="{{ route('siswa.ubah-foto', Crypt::encrypt($data->id)) }}" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
                                   <img src="{{ asset($data->foto) }}" width="130px" class="img-fluid mb-2">
@@ -352,6 +378,7 @@
   </div>
 
 @endsection
+
 @section('script')
     <script>
         $("#MasterData").addClass("active");

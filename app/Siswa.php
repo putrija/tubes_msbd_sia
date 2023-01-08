@@ -17,6 +17,10 @@ class Siswa extends Model
     {
         return $this->belongsTo('App\Kelas')->withDefault();
     }
+    public function status()
+    {
+        return $this->belongsTo('App\Models\StatusSiswa')->withDefault();
+    }
 
     public function ulangan($id)
     {

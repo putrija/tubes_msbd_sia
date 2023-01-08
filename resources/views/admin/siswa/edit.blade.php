@@ -28,6 +28,10 @@
                     <input type="text" id="nama_siswa" name="nama_siswa" value="{{ $siswa->nama_siswa }}" class="form-control @error('nama_siswa') is-invalid @enderror">
                 </div>
                 <div class="form-group">
+                    <label for="kelas_id">Kelas</label>
+                    <input type="text" id="kelas_id" name="kelas_id" value="{{ $siswa->kelas->nama_kelas }}" class="form-control" readonly>
+                </div>
+                <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
                     <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
                         <option value="">-- Pilih Jenis Kelamin --</option>
@@ -84,9 +88,21 @@
                 </div>
                 <div class="form-group">
                     <label for="agama">Agama</label>
-                    <input type="text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control" readonly>
+                    <input type="text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control">
                 </div>
-                
+                <div class="form-group">
+                    <label for="status_id">Status Kepegawaian</label>
+                    <select id="status_id" name="status_id" class="select2bs4 form-control @error('status_id') is-invalid @enderror">
+                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                        @foreach ($status as $data)
+                        <option value="{{ $data->id }}" 
+                        @if ($siswa->status_id == $data->id)
+                            selected
+                            @endif 
+                        >{{ $data->ket_status }}</option>
+                    @endforeach
+                    </select>
+                </div>
             </div>
           </div>
         </div>

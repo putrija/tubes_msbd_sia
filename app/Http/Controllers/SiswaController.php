@@ -14,6 +14,7 @@ use App\Models\StatusSiswa;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\DetailSiswa;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 class SiswaController extends Controller
@@ -24,14 +25,18 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        // return view('admin.siswa.index', compact('kelas'));                                                                   
-        $siswa = Siswa::all();
-        $status = StatusSiswa::OrderBy('ket_status')->get();
+        // return view('admin.siswa.index', compact('kelas'));  
+        $keyword = $request->keyword;
+        $status = $request->ket_status;
+        $kelas = $request->nama_kelas;                                                            
+        $siswa = Siswa::where('angkatan','LIKE','%'.$keyword.'%')->get();
+        $status = StatusSiswa::OrderBy('ket_status','asc')->get();
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
-        return view('admin.siswa.index', compact('siswa', 'kelas', 'status'));
+
+        return view('admin.siswa.index', compact('siswa', 'kelas', 'status','keyword'));
     }
 
     /**
@@ -128,9 +133,9 @@ class SiswaController extends Controller
             ]);
             $user->save();
         });
-        DB::rollBack();
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
-    }
+        }
+
 
     /**
      * Display the specified resource.
@@ -157,7 +162,8 @@ class SiswaController extends Controller
         $id = Crypt::decrypt($id);
         $siswa = Siswa::findorfail($id);
         $kelas = Kelas::all();
-        return view('admin.siswa.edit', compact('siswa', 'kelas'));
+        $status = StatusSiswa::all();
+        return view('admin.siswa.edit', compact('siswa', 'kelas','status'));
     }
 
     /**
@@ -192,6 +198,7 @@ class SiswaController extends Controller
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'status_id' => $request->status_id
         ];
         $siswa->update($siswa_data);
 
@@ -315,12 +322,31 @@ class SiswaController extends Controller
         $kelas = Kelas::findorfail($id);
         return view('admin.siswa.show', compact('siswa', 'kelas'));
     }
+    public function status($id)
+    {
+        $id = Crypt::decrypt($id);
+        $siswa = Siswa::where('status_id', $id)->OrderBy('nama_siswa', 'asc')->get();
+        $status = StatusSiswa::findorfail($id);
+        return view('admin.siswa.show', compact('siswa', 'status'));
+    }
 
     public function export_excel()
     {
         $siswa = Siswa::all();
-        DB::table('siswa')->where('angkatan', 'like', $siswa . '%')->get();
+        // DB::table('siswa')->where('angkatan', 'like', $siswa . '%')->get();
         return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
+    public function export_excel_filter()
+    {
+        $siswa = app(Siswa::class)->newQuery();
+
+        if ( request()->has('keyword') && !empty(request()->get('keyword')) ) {
+            $keyword = request()->query('keyword');
+            $siswa->where(function ($query) use($keyword) {
+                $query->where('angktan', 'LIKE', "%{$keyword}%");
+            });
+        }
+        return Excel::download(new SiswaExport($siswa), 'siswa.xlsx');
     }
 
     public function import_excel(Request $request)

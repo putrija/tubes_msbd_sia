@@ -24,7 +24,7 @@ use App\Nilai;
 use Egulias\EmailValidator\Result\Reason\DetailedReason;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Validation\Rules\Unique;
 
 class GuruController extends Controller
 {
@@ -72,7 +72,8 @@ class GuruController extends Controller
             'id_card_guru' => 'required|unique:guru|min:10|max:10',
             'nama_guru' => 'required',
             'kode_guru' => 'required|string|unique:guru|min:3|max:5',
-            'jk' => 'required'
+            'jk' => 'required',
+            'email' => 'required|unique|'
         ]);
 
         if ($request->foto) {
@@ -190,11 +191,12 @@ class GuruController extends Controller
         $tugas_tambahan_guru = TugasTambahanGuru::all();
         $jenis_ptk = JenisPtk::all();
         $detail_guru = DetailGuru::all();
+        $user = User::all();
         // $detail_guru = DetailGuru::orderBy('guru_id')->first();
         // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
-        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru'));
+        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru','user'));
     }
 
     /**
@@ -223,7 +225,8 @@ class GuruController extends Controller
         $user = User::where('id_card_guru', $guru->id_card_guru)->first();
         if ($user) {
             $user_data = [
-                'name' => $request->nama_guru
+                'name' => $request->nama_guru,
+                'email' => $request->email
             ];
             $user->update($user_data);
         } else {

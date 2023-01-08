@@ -13,10 +13,12 @@
   <div class="card">
     <div class="card-header">
         <h3 class="card-title">
+          @foreach ($role as $d => $data)
             <a href="{{ route('user.index') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-arrow-left"></i> &nbsp; Kembali</a>
             @if ($d == 'Kepala Sekolah')
             <a href="{{ route('editkepsek') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kepala Sekolah</a>
             @endif
+            @endforeach
         </h3>
     </div>
     <div class="card-body">

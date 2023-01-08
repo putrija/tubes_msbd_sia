@@ -146,6 +146,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/ubah-foto/{id}', 'SiswaController@ubah_foto')->name('siswa.ubah-foto');
     Route::post('/siswa/update-foto/{id}', 'SiswaController@update_foto')->name('siswa.update-foto');
     Route::get('/siswa/export_excel', 'SiswaController@export_excel')->name('siswa.export_excel');
+    Route::get('/siswa/export_excel_filter', 'SiswaController@export_excel_filter')->name('siswa.export_excel_filter');
     Route::post('/siswa/import_excel', 'SiswaController@import_excel')->name('siswa.import_excel');
     Route::delete('/siswa/deleteAll', 'SiswaController@deleteAll')->name('siswa.deleteAll');
     Route::resource('/siswa', 'SiswaController');
