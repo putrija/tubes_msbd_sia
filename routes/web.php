@@ -173,8 +173,8 @@ Route::middleware(['auth'])->group(function () {
     //################## ROUTE GURU MENGAJAR MAPEL#######################
     Route::resource('/guru_mapel', 'GuruMengajarController');
     Route::post('/guru_mapel/store', 'GuruMengajarController@store')->name('guru_mapel.store');
-    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit')->name('edit-guru-mapel'); //name adalah isi dari route, yg dipanggil
-    Route::get('/update-guru-mapel/{id}', 'GuruMengajarController@update');
+    Route::get('/edit-guru-mapel/{id}', 'GuruMengajarController@edit')->name('edit-guru-mapel');//name adalah isi dari route, yg dipanggil
+    Route::post('/update-guru-mapel/{id}', 'GuruMengajarController@update')->name('guru_mapel.update');
     Route::get('/delete-guru-mapel/{id}', 'GuruMengajarController@destroy');
     //################## END ROUTE GURU MENGAJAR MAPEL#######################
 

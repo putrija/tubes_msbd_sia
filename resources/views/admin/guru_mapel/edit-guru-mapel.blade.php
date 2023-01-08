@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
       {{-- <form action="{{ route('guru_mapel.store',$guru_mapel->id) }}" method="post"> --}}
-        <form action="{{ route('guru_mapel.store') }}" method="post">
+        <form action="{{ route('guru_mapel.update',$guru_mapel->id) }}" method="post">
         
         {{-- <form action="{{ route('update-guru-mapel/'.$guru_mapel->id.'/update') }}" method="post"> --}}
         @csrf
@@ -64,7 +64,7 @@
                   @endforeach
                 </select>
                 </div>
-                </form>
+               
 
 
 

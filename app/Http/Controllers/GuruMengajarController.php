@@ -46,7 +46,8 @@ class GuruMengajarController extends Controller
     public function store(Request $request)
     {
         try{
-        GuruMengajar::Create([
+        GuruMengajar::Create(
+            [
             'guru_id' => $request->guru_id,
             'mapel_id'=>$request->mapel_id,
             'tahun_ajaran_id'=>$request->tahun_ajaran_id
@@ -165,9 +166,9 @@ class GuruMengajarController extends Controller
             // return redirect()->back();
         
 
-            dd($request->all());
+            // dd($request->all());
          
-        // return redirect('index')->with('success', 'Data guru mapel berhasil diubah!');
+        return redirect('guru_mapel')->with('success', 'Data guru mapel berhasil diubah!');
     }
 
     /**
