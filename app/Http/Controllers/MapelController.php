@@ -131,17 +131,21 @@ class MapelController extends Controller
         // }
         // $mapel->delete();
 
-        $mapel = DB::table('mapel')
-            // ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
-            ->join('guru_mengajar', 'mapel.id', '=', 'guru_mengajar.mapel_id')
-            ->join('jadwal_belajar_mengajar', 'guru_mengajar.id', '=', 'jadwal_belajar_mengajar.guru_mengajar_id')
-            ->where('mapel.id', $id);
+        // $mapel = DB::table('mapel')
+        //     // ->select('mapel.id', 'mapel.nama_mapel', 'mapel.kurikulum_id', 'kurikulum.nama_kurikulum')
+        //     ->join('guru_mengajar', 'mapel.id', '=', 'guru_mengajar.mapel_id')
+        //     ->join('jadwal_belajar_mengajar', 'guru_mengajar.id', '=', 'jadwal_belajar_mengajar.guru_mengajar_id')
+        //     ->where('mapel.id', $id);
 
-        $mapel->delete();
+        // $mapel->delete();
 
-        $mapel2 = DB::table('mapel')
-            ->where('mapel.id', $id);
-        $mapel2->delete();
+        $mapel = DB::select("CALL delete_mapel(" . $id . ")");
+        // dd($mapel);
+
+
+        // $mapel2 = DB::table('mapel')
+        //     ->where('mapel.id', $id);
+        // $mapel2->delete();
 
         return redirect()->back()->with('warning', 'Data mapel berhasil dihapus! (Silahkan cek trash data mapel)');
     }

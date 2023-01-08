@@ -313,9 +313,9 @@ class GuruController extends Controller
     public function kill($id)
     {
         $guru = Guru::withTrashed()->findorfail($id);
-        $countJadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->count();
+        $countJadwal = Jadwal::withTrashed()->where('guru_mengajar_id', $guru->id)->count();
         if ($countJadwal >= 1) {
-            $jadwal = Jadwal::withTrashed()->where('guru_id', $guru->id)->forceDelete();
+            $jadwal = Jadwal::withTrashed()->where('guru_mengajar_id', $guru->id)->forceDelete();
         } else {
         }
         $countUser = User::withTrashed()->where('id_card_guru', $guru->id_card_guru)->count();

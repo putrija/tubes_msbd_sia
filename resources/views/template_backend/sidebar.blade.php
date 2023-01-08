@@ -371,7 +371,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('jadwal.siswa') }}" class="nav-link" id="JadwalSiswa">
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>Jadwal</p>
@@ -388,7 +388,7 @@
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Sikap</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route('rapot.siswa') }}" class="nav-link" id="RapotSiswa">
                             <i class="fas fa-file-alt nav-icon"></i>
