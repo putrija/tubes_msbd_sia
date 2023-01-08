@@ -48,17 +48,17 @@
       <!-- /.col -->
     </div>
   </form>
-{{-- 
-  <p class="mb-1">
+
+  {{-- <p class="mb-1">
     @if (Route::has('password.request'))
       <a class="text-center" href="{{ route('password.request') }}">
         {{ __('Lupa Password?') }}
       </a>
     @endif
-  </p>
-  <p class="mb-0">
-    <a class="text-center" href="{{ route('register') }}">Buat Akun Baru</a>
   </p> --}}
+  {{-- <p class="mb-0">
+    <a class="text-center" href="{{ route('register') }}">Buat Akun Baru</a>
+  </p> --}} 
 </div>
 @endsection
 @section('script')
@@ -106,7 +106,7 @@
         var email = $("#email").val();
         var password = $("#password").val();
 
-        if (password.length >= 8){
+        if (password.length >= 5){
           $.ajax({
               type:"GET",
               data: {

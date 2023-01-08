@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\DetailGuru;
+use App\Models\JenisPtk;
+use App\Models\StatusKepegawaian;
+use App\Models\TugasTambahanGuru;
 
 class UserController extends Controller
 {
@@ -33,7 +37,7 @@ class UserController extends Controller
         $user = User::all();
         // $user = $user->groupBy('role');
         // $users = DB::table('users')
-        //     ->leftJoin('guru', 'users.id_card', '=', 'guru.id_card_guru')f
+        //     ->leftJoin('guru', 'users.id_card_guru', '=', 'guru.id_card_guru_guru')f
         //     ->get();
         return view('admin.user.editkepsek', compact('user', 'guru'));
     }
@@ -42,10 +46,10 @@ class UserController extends Controller
     {
 
         // $this->validate($request, [
-        //     'id_card_guru' => 'required|string|max:5|unique:users'
+        //     'id_card_guru_guru' => 'required|string|max:5|unique:users'
         // ]);
 
-        $user = User::where('id_card', $request->id_card_guru)->first();
+        $user = User::where('id_card_guru', $request->id_card_guru_guru)->first();
         $user->role = "Kepala Sekolah";
         $user->save();
         return redirect()->route('user.index');
@@ -71,13 +75,13 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:5|confirmed',
             'role' => 'required',
         ]);
 
         if ($request->role == 'Guru') {
-            $countGuru = Guru::where('id_card', $request->nomer)->count();
-            $guruId = Guru::where('id_card', $request->nomer)->get();
+            $countGuru = Guru::where('id_card_guru', $request->nomer)->count();
+            $guruId = Guru::where('id_card_guru', $request->nomer)->get();
             foreach ($guruId as $val) {
                 $guru = Guru::findorfail($val->id);
             }
@@ -87,7 +91,7 @@ class UserController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'role' => $request->role,
-                    'id_card' => $request->nomer,
+                    'id_card_guru' => $request->nomer,
                 ]);
                 return redirect()->back()->with('success', 'Berhasil menambahkan user Guru baru!');
             } else {
@@ -269,9 +273,13 @@ class UserController extends Controller
 
     public function edit_profile()
     {
-        $mapel = Mapel::all();
+        // $mapel = Mapel::all();
+        $status_kepegawaian = StatusKepegawaian::all();
+        $tugas_tambahan_guru = TugasTambahanGuru::all();
+        $jenis_ptk = JenisPtk::all();
+        $detail_guru = DetailGuru::all();
         $kelas = Kelas::all();
-        return view('user.profile', compact('mapel', 'kelas'));
+        return view('user.profile', compact('kelas','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru'));
     }
 
     public function ubah_profile(Request $request)
@@ -279,14 +287,13 @@ class UserController extends Controller
         if (Auth::user()->role == 'Guru') {
             $this->validate($request, [
                 'name'      => 'required',
-                'mapel_id'  => 'required',
                 'jk'        => 'required',
                 'telp'      => 'required',
                 'tmp_lahir' => 'required',
-                'tgl_lahir' => 'required',
+                'tgl_lahir' => 'required'
             ]);
-            $guru = Guru::where('id_card', Auth::user()->id_card)->first();
-            $user = User::where('id_card', Auth::user()->id_card)->first();
+            $guru = Guru::where('id_card_guru', Auth::user()->id_card_guru)->first();
+            $user = User::where('id_card_guru', Auth::user()->id_card_guru)->first();
             if ($user) {
                 $user_data = [
                     'name' => $request->name
@@ -294,12 +301,27 @@ class UserController extends Controller
                 $user->update($user_data);
             }
             $guru_data = [
-                'nama_guru' => $request->name,
-                'mapel_id'  => $request->mapel_id,
-                'jk'        => $request->jk,
-                'telp'      => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir
+                'nama_guru'             => $request->name,
+                'jk'                    => $request->jk,
+                'telp'                  => $request->telp,
+                'tmp_lahir'             => $request->tmp_lahir,
+                'tgl_lahir'             => $request->tgl_lahir,
+                'status_kepegawaian_id' => $request->status_kepegawaian_id,
+                'jenis_ptk_id'          => $request->jenis_ptk_id,
+                'tugas_tambahan_id'     => $request->tugas_tambahan_id,
+                'hp'                    => $request->hp,
+                'agama'                 => $request->agama,
+                'alamat'                => $request->alamat,
+                'rt'                    => $request->rt,
+                'rw'                    => $request->rw,
+                'nama_dusun'            => $request->nama_dusun,
+                'desa_kelurahan'        => $request->desa_kelurahan,
+                'kecamatan'             => $request->kecamatan,
+                'kode_pos'              => $request->kode_pos,
+                'email'                 => $request->email,
+                'nik'                   => $request->nik,
+                'no_kk'                 => $request->no_kk,
+                'nuptk'                 => $request->nuptk
             ];
             $guru->update($guru_data);
             return redirect()->route('profile')->with('success', 'Profile anda berhasil diperbarui!');
@@ -357,7 +379,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'foto' => 'required'
             ]);
-            $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+            $guru = Guru::where('id_card_guru', Auth::user()->id_card_guru)->first();
             $foto = $request->foto;
             $new_foto = date('s' . 'i' . 'H' . 'd' . 'm' . 'Y') . "_" . $foto->getClientOriginalName();
             $guru_data = [

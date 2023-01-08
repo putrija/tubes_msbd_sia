@@ -43,11 +43,11 @@ class GuruController extends Controller
     {
         // $detail_guru = DetailGuru::orderBy('guru_id')->get();
         $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->get();
-        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
+        $tugas_tambahan_guru = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->get();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->get();
         $guru = Guru::all();
         $detail_guru = DetailGuru::all();
-        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan','detail_guru'));
+        return view('admin.guru.index', compact('guru', 'jenis_ptk', 'status_kepegawaian', 'tugas_tambahan_guru','detail_guru'));
     }
 
     /**
@@ -69,7 +69,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_card_guru' => 'required|unique:guru|min:5|max:5',
+            'id_card_guru' => 'required|unique:guru|min:10|max:10',
             'nama_guru' => 'required',
             'kode_guru' => 'required|string|unique:guru|min:3|max:5',
             'jk' => 'required'
@@ -146,19 +146,16 @@ class GuruController extends Controller
             $detail_guru->lintang = $data['lintang'];
             $detail_guru->bujur = $data['bujur'];
     
-            $detail_guru->save();
-
-            $user = new User;
-            $user->name = $guru->nama_guru;
-            $user->email = $guru->email;
-            $user->id_card_guru = $guru->id_card_guru;
-            $user->password = Hash::make($guru->id_card_guru);
-            $user->role = 'Guru';
+           $detail_guru->save();
+           $user = User::create([
+                'name' => $guru->nama_guru,
+                'email' => $guru->email,
+                'password' => Hash::make($guru->id_card_guru),
+                'role' => 'Guru',
+                'id_card_guru' => $guru->id_card_guru,
+            
+            ]);
             $user->save();
-
-            DB::rollBack();
-            DB::commit();
-
         });
          
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
@@ -174,10 +171,10 @@ class GuruController extends Controller
         $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
         $detail_guru = DetailGuru::orderBy('guru_id')->first();
-        $status_kepegawaian = StatusKepegawaian::orderBy('ket_status_kepeg')->first();
-        $tugas_tambahan = TugasTambahanGuru::orderBy('ket_tugas_tambahan')->first();
+        $status_kepegawaian = StatusKepegawaian::all();
+        $tugas_tambahan_guru = TugasTambahanGuru::all();
         $jenis_ptk = JenisPtk::orderBy('ket_jenis_ptk')->first();
-        return view('admin.guru.details', compact('guru','status_kepegawaian','tugas_tambahan','jenis_ptk','detail_guru'));
+        return view('admin.guru.details', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru'));
     }
 
     /**
@@ -190,14 +187,14 @@ class GuruController extends Controller
     {
 
         $status_kepegawaian = StatusKepegawaian::all();
-        $tugas_tambahan = TugasTambahanGuru::all();
+        $tugas_tambahan_guru = TugasTambahanGuru::all();
         $jenis_ptk = JenisPtk::all();
-        $detail_guru = DetailGuru::orderBy('guru_id')->get();
+        $detail_guru = DetailGuru::all();
         // $detail_guru = DetailGuru::orderBy('guru_id')->first();
         // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
-        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan','jenis_ptk','detail_guru'));
+        return view('admin.guru.edit', compact('guru','status_kepegawaian','tugas_tambahan_guru','jenis_ptk','detail_guru'));
     }
 
     /**
@@ -253,7 +250,7 @@ class GuruController extends Controller
             'email' => $request->email,
             'nik' => $request->nik,
             'no_kk' => $request->no_kk,
-            'nuptk' => $request->nuptk,
+            'nuptk' => $request->nuptk
         ];
         $guru->update($guru_data);
 

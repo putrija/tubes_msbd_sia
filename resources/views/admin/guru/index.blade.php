@@ -131,7 +131,7 @@
           <div class="col-md-3">
             <div class="form-group">
                 <label for="id_card_guru">Nomor ID Card</label>
-                <input type="text" id="id_card_guru" name="id_card_guru" maxlength="5" minlength="5" onkeypress="return inputAngka(event)"class="form-control @error('id_card_guru') is-invalid @enderror">
+                <input type="text" id="id_card_guru" name="id_card_guru" maxlength="10" minlength="10" onkeypress="return inputAngka(event)"class="form-control @error('id_card_guru') is-invalid @enderror">
             </div>
             <div class="form-group">
                 <label for="kode_guru">Kode Guru</label>
@@ -187,10 +187,11 @@
                     <label for="tugas_tambahan_guru">Tugas Tambahan Guru</label>
                     <select id="tugas_tambahan_guru" name="tugas_tambahan_id" class="select2bs4 form-control @error('tugas_tambahan_id') is-invalid @enderror">
                         <option value="">-- Pilih Tugas Tambahan --</option>
-                        @foreach ($tugas_tambahan as $data)
+                        @foreach ($tugas_tambahan_guru as $data)
                         <option value="{{ $data->id }}">{{ $data->ket_tugas_tambahan }}</option>
                     @endforeach
                     </select>
+                  
               </div>
               <div class="form-group">
                 <label for="email">Email</label>

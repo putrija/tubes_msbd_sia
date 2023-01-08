@@ -1,3 +1,4 @@
+@livewireStyles
 @extends('template_backend.home')
 @section('heading', 'Data Siswa')
 @section('page')
@@ -71,14 +72,37 @@
 				</form>
 			</div>
 		</div>
+        <!-- Filter Data -->
+        <h6 class="modal-title">Filter Data</h6>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Angkatan</label>
+                    <select id="filter-angkatan" class="form-control">
+                        <option value="">--Pilih Angkatan</option>
+                        @foreach($siswa as $data)
+                        <option value="{{$data->id}}">{{$data->angkatan}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- End Filter Data -->
+
+
+
         <!-- /.card-header -->
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped table-hover">
               <thead>
+                
                   <tr>
                       <th>No.</th>
                       <th>Nama Siswa</th>
                       <th>No Induk</th>
+                      <th>Kelas</th>
                       <th>angkatan</th>
                       <th>Foto</th>
                       @if (Auth::user()->role != 'BK')
@@ -92,6 +116,7 @@
                           <td>{{ $loop->iteration }}</td>
                           <td>{{ $data->nama_siswa }}</td>
                           <td>{{ $data->no_induk }}</td>
+                          <td>{{ $data->kelas->nama_kelas }}</td>
                           <td>{{ $data->angkatan }}</td>
                           <td>
                               <a href="{{ asset($data->foto) }}" data-toggle="lightbox" data-title="Foto {{ $data->nama_siswa }}" data-gallery="gallery" data-footer='<a href="{{ route('siswa.ubah-foto', Crypt::encrypt($data->id)) }}" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
@@ -124,7 +149,7 @@
 
 <!-- Extra large modal -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
       <div class="modal-header">
           <h4 class="modal-title">Tambah Data Siswa</h4>
@@ -136,10 +161,10 @@
           <form action="{{ route('siswa.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="no_induk">Nomor Induk</label>
-                        <input type="number" id="no_induk" name="no_induk" onkeypress="return inputAngka(event)" class="form-control @error('no_induk') is-invalid @enderror">
+                        <input type="number" id="no_induk" name="no_induk" minlength="5" maxlength="5" onkeypress="return inputAngka(event)" class="form-control @error('no_induk') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="nama_siswa">Nama Siswa</label>
@@ -147,7 +172,7 @@
                     </div>
                     <div class="form-group">
                         <label for="angkatan">Angkatan</label>
-                        <input type="year" id="angkatan" name="angkatan" class="form-control @error('angkatan') is-invalid @enderror">
+                        <input type="number" id="angkatan" name="angkatan" minlength="4" maxlength="4" class="form-control @error('angkatan') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
@@ -166,23 +191,12 @@
                         <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror">
                     </div>
                     <div class="form-group">
-                        <label for="tgl_lahir">Alamat</label>
+                        <label for="alamat">Alamat</label>
                         <input type="text" id="alamat" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
                     </div>
                     <div class="form-group">
-                        <label for="foto">File input</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" name="foto" class="custom-file-input @error('foto') is-invalid @enderror" id="foto">
-                                <label class="custom-file-label" for="foto">Choose file</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label for="nisn">NISN</label>
-                        <input type="number" id="nisn" name="nisn" onkeypress="return inputAngka(event)" class="form-control @error('nisn') is-invalid @enderror">
+                        <input type="number" id="nisn" name="nisn" minlength="10" onkeypress="return inputAngka(event)" class="form-control @error('nisn') is-invalid @enderror">
                     </div>
                     <div class="form-group">
                         <label for="kelas_id">Kelas</label>
@@ -215,10 +229,117 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="status_id">Status</label>
-                        <input type="text" id="status_id" name="status_id" onkeypress="return inputAngka(event)" class="form-control @error('status_id') is-invalid @enderror">
+                        <label for="foto">File input</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="foto" class="custom-file-input @error('foto') is-invalid @enderror" id="foto">
+                                <label class="custom-file-label" for="foto">Choose file</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    {{-- <div class="form-group">
+                        <label for="status_id">Status</label>
+                        <input type="text" id="status_id" name="status_id" onkeypress="return inputAngka(event)" class="form-control @error('status_id') is-invalid @enderror">
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="anak_ke">Anak Ke</label>
+                        <input type="number" id="anak_ke" name="anak_ke" onkeypress="return inputAngka(event)" class="form-control @error('anak_ke') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="dari_berapa_bersaudara">Dari Berapa Bersaudara</label>
+                        <input type="number" id="dari_berapa_bersaudara" name="dari_berapa_bersaudara" onkeypress="return inputAngka(event)" class="form-control @error('dari_berapa_bersaudara') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="diterima_di_kelas">Diterima di Kelas</label>
+                        <input type="number" id="diterima_di_kelas" minlength="2" maxlength="2" name="diterima_di_kelas" class="form-control @error('diterima_di_kelas') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="diterima_pada_tanggal">Diterima Pada Tanggal</label>
+                        <input type="date" id="diterima_pada_tanggal" name="diterima_pada_tanggal" class="form-control @error('diterima_pada_tanggal') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="diterima_semester">Diterima Semester</label>
+                        <input type="number" id="diterima_semester" maxlength="1" name="diterima_semester" class="form-control @error('diterima_semester') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="sekolah_asal">Sekolah Asal</label>
+                        <input type="text" id="sekolah_asal" name="sekolah_asal" class="form-control @error('sekolah_asal') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_sekolah_asal">Alamat Asal</label>
+                        <input type="text" id="alamat_sekolah_asal" name="alamat_sekolah_asal" class="form-control @error('alamat_sekolah_asal') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="tahun_ijazah_smp">Tahun Ijazah SMP</label>
+                        <input type="number" id="tahun_ijazah_smp" minlength="4" maxlength="4" name="tahun_ijazah_smp" class="form-control @error('tahun_ijazah_smp') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="tahun_skhun_smp">Tahun SKHUN SMP</label>
+                        <input type="number" id="tahun_skhun_smp" minlength="4" maxlength="4" name="tahun_skhun_smp" class="form-control @error('tahun_skhun_smp') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomor_ijazah_smp">Nomor Ijazah SMP</label>
+                        <input type="text" id="nomor_ijazah_smp" name="nomor_ijazah_smp" class="form-control @error('nomor_ijazah_smp') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomor_skhun_smp">Nomor SKHUN SMP</label>
+                        <input type="text" id="nomor_skhun_smp" name="nomor_skhun_smp" class="form-control @error('nomor_skhun_smp') is-invalid @enderror">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    
+                    <div class="form-group">
+                        <label for="nama_ayah">Nama Ayah</label>
+                        <input type="text" id="nama_ayah" name="nama_ayah" class="form-control @error('nama_ayah') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_ibu">Nama Ibu</label>
+                        <input type="text" id="nama_ibu" name="nama_ibu" class="form-control @error('nama_ibu') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_ayah">Alamat Ayah</label>
+                        <input type="text" id="alamat_ayah" name="alamat_ayah" class="form-control @error('alamat_ayah') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_ibu">Alamat Ibu</label>
+                        <input type="text" id="alamat_ibu" name="alamat_ibu" class="form-control @error('alamat_ibu') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="tlp_ayah">Tlp Ayah</label>
+                        <input type="text" id="tlp_ayah" name="tlp_ayah" class="form-control @error('tlp_ayah') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="tlp_ibu">Tlp Ibu</label>
+                        <input type="text" id="tlp_ibu" name="tlp_ibu" class="form-control @error('tlp_ibu') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="pekerjaan_ayah">Pekerjaan Ayah</label>
+                        <input type="text" id="pekerjaan_ayah" name="pekerjaan_ayah" class="form-control @error('pekerjaan_ayah') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="pekerjaan_ibu">Pekerjaan Ibu</label>
+                        <input type="text" id="pekerjaan_ibu" name="pekerjaan_ibu" class="form-control @error('pekerjaan_ibu') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_wali">Nama Wali</label>
+                        <input type="text" id="nama_wali" name="nama_wali" class="form-control @error('nama_wali') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="pekerjaan_wali">Pekerjaan Wali</label>
+                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" class="form-control @error('pekerjaan_wali') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_wali">Alamat Wali</label>
+                        <input type="text" id="alamat_wali" name="alamat_wali" class="form-control @error('alamat_wali') is-invalid @enderror">
+                    </div>
+                    <div class="form-group">
+                        <label for="tlp_wali">Tlp Wali</label>
+                        <input type="text" id="tlp_wali" name="tlp_wali" class="form-control @error('pekerjaan_ibu') is-invalid @enderror">
+                    </div>
+                    
+
             </div>
           </div>
           <div class="modal-footer justify-content-between">
@@ -229,6 +350,7 @@
       </div>
     </div>
   </div>
+
 @endsection
 @section('script')
     <script>
@@ -237,3 +359,4 @@
         $("#DataSiswa").addClass("active");
     </script>
 @endsection
+@livewireScripts

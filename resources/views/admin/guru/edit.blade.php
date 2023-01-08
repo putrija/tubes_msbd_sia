@@ -53,7 +53,7 @@
                     <label for="tugas_tambahan_id">Tugas Tambahan Guru</label>
                     <select id="tugas_tambahan_id" name="tugas_tambahan_id" class="select2bs4 form-control @error('tugas_tambahan_id') is-invalid @enderror">
                         <option value="">-- Pilih Tugas Tambahan --</option>
-                        @foreach ($tugas_tambahan as $data)
+                        @foreach ($tugas_tambahan_guru as $data)
                         <option value="{{ $data->id }}"
                             @if ($guru->tugas_tambahan_id == $data->id)
                                 selected 
