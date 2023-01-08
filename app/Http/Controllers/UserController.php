@@ -480,7 +480,6 @@ class UserController extends Controller
     {
         $countUser = User::where('email', $request->email)->count();
         // $status_cek = User::where('email',$request->email)->get();
-        dd($status_cek);
         if ($countUser >= 1) {
             // if($countUser->status='Non Aktif'){
             //     return response()->json(['error' => 'Maaf Akun Anda tekah dinonaktifkan']);
@@ -505,17 +504,6 @@ class UserController extends Controller
             return response()->json(['warning' => 'Maaf user not found!']);
         }
     }
-    
-    // public function cek_status(Request $request)
-    // {
-        
-    //     $status_cek = User::where('email',$request->email)->get();
-    //     dd($status_cek);
-    //     if ($status_cek->gc_status='Non Akfit') {
-    //         return response()->json(['success' => 'Email Anda Benar']);
-    //     } else {
-    //         return response()->json(['error' => 'Maaf user not found!']);
-    //     }
-    // }
+
    
 }
