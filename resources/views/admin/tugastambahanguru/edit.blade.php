@@ -13,7 +13,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ route('tugastambahanguru.store',$tugas_tambahan_guru->id) }}" method="post">
+      <form action="{{ route('TugasTambahanGuru.store',$tugas_tambahan_guru->id) }}" method="GET">
         @csrf
         <div class="card-body">
           <div class="row">

@@ -185,6 +185,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/tugastambahanguru', TugasTambahanGuruController::class);
     Route::resource('/ruangan', RuanganController::class);
     Route::resource('/tahun_ajaran', TahunAjaranController::class);
+    Route::get('/edit-tugastambahanguru/{id}', 'TugasTambahanGuruController@edit')->name('TugasTambahanGuru.store');
 
 
     Route::get('/jadwal/view/json', 'JadwalController@view');

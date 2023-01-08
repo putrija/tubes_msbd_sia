@@ -32,8 +32,8 @@
                         <form action="{{ route('tugastambahanguru.destroy', $item->id)}}" method="POST">
                           @csrf
                           @method('delete')
-                          {{-- <a href="{{ route('tugastambahanguru.edit', Crypt::encrypt($data->id
-                            )) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a> --}}
+                          <a href="{{ route('tugastambahanguru.edit', Crypt::encrypt($item->id
+                            )) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
@@ -59,7 +59,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('tugastambahanguru.store') }}" method="POST">
+        <form action="{{ route('tugastambahanguru.store') }}" method="GET">
           @csrf
             <div class="row">
               <div class="col-md-12">
