@@ -188,6 +188,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-tugastambahanguru/{id}', 'TugasTambahanGuruController@edit')->name('TugasTambahanGuru.store');
     Route::get('/update-tugastambahanguru/{id}', 'TugasTambahanGuruController@update')->name('TugasTambahanGuru.update');
     Route::post('/edit-jenisptk/{id}', 'JenisPtkController@edit')->name('JenisPtk.store');
+    Route::get('/update-jenis_ptk/{id}', 'JenisPtkController@update')->name('JenisPtk.update');
 
     Route::get('/jadwal/view/json', 'JadwalController@view');
     Route::get('/jadwalkelaspdf/{id}', 'JadwalController@cetak_pdf');

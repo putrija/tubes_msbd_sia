@@ -13,7 +13,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ route('JenisPtk.store',$jenis_ptk->id) }}" method="POST">
+      <form action="{{ route('JenisPtk.update',$jenis_ptk->id) }}" method="GET">
         @csrf
         <div class="card-body">
           <div class="row">

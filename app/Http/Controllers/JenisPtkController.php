@@ -40,7 +40,7 @@ class JenisPtkController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         JenisPtk::Create(
             [
                'ket_jenis_ptk' => $request->ket_jenis_ptk
@@ -85,15 +85,10 @@ class JenisPtkController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //     $this->validate($request, [
-    //         'ket_jenis_ptk' => 'required',
-    //     ]);
-    //     $jenis_ptk = JenisPtk::findorfail($id);
-
-    
-    // $jenis_ptk = [
-    //     'ket_jenis_ptk' => $request -> ket_jenis_ptk,
-    // ];
+        $jenis_ptk = JenisPtk::find($id);
+        $jenis_ptk->ket_jenis_ptk = $request->ket_jenis_ptk;
+        $jenis_ptk->save();
+        return to_route('jenisptk.index')->with('success', 'Status berhasil diperbarui!');
     }
     /**
      * Remove the specified resource from storage.
