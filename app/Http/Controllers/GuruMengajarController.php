@@ -46,7 +46,8 @@ class GuruMengajarController extends Controller
     public function store(Request $request)
     {
         try{
-        GuruMengajar::create([//panggil model pelanggaran dan panggil fungsi create
+        GuruMengajar::Create(
+            [
             'guru_id' => $request->guru_id,
             'mapel_id'=>$request->mapel_id,
             'tahun_ajaran_id'=>$request->tahun_ajaran_id
@@ -55,14 +56,45 @@ class GuruMengajarController extends Controller
          
         return redirect()->back()->with('success', 'Data guru mapel berhasil disimpan!');
         }
-        // } catch (){
-        //     return redirect()->back()->with('danger', 'data tidak dapat ditambah karena sudah tersedia');
-        // }
+
         catch (\Exception $e) {
 
             return redirect()->back()->with('warning', 'data tidak dapat ditambah karena sudah tersedia');
             
         }
+
+        //percobaan
+       // try{
+            // $this->validate($request, [
+            //     'guru_id' => 'required',
+            //     'mapel_id' => 'required',
+            //     'tahun_ajaran_id' => 'required',
+            // ]);
+    
+            // GuruMengajar::updateOrCreate(
+            //     [
+            //         'id' => $request->id
+            //     ],
+            //     [
+            //         'guru_id' => $request->guru_id,
+            //     ],
+            //     [
+            //         'mapel_id' => $request->mapel_id,
+            //     ],
+            //     [
+            //         'tahun_ajaran_id' => $request->tahun_ajaran_id,
+            //     ]
+            // );
+            
+            // return dd($request->all());
+            //return redirect()->back()->with('success', 'Data guru mapel berhasil diperbarui!');
+            //}
+    
+            // catch (\Exception $e) {
+    
+            //     return redirect()->back()->with('warning', 'data tidak dapat ditambah karena sudah tersedia');
+                
+            // }
     }
 
     /**
@@ -83,7 +115,7 @@ class GuruMengajarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   //fungsi edit itu untuk menampilkan form dann meletakkan data yang lama didalam formnya
         //buat variabel baru guru terpilih lalu buat isi variabelnya itu dari tabel guru dimana idnya = id yg didapat (id request)
         //demikian untuk mapel dan guru
         //itu diletak dicontroller lalu compact dan variabel baru tadi yg dipanggil.
@@ -106,7 +138,37 @@ class GuruMengajarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $guru_mapel = GuruMengajar::all();
+
+        //     'guru_id' => $request->guru_id;
+        //     'mapel_id'=> $request->mapel_id;
+        //     'tahun_ajaran_id'=> $request->tahun_ajaran_id;
+        //     save();
+
+        // GuruMengajar::create([//panggil model pelanggaran dan panggil fungsi create
+        //     'guru_id' => $request->guru_id,
+        //     'mapel_id'=>$request->mapel_id,
+        //     'tahun_ajaran_id'=>$request->tahun_ajaran_id
+        // ]);
+
+            $guru_mapel = GuruMengajar::find($id);
+            $guru_mapel->guru_id = $request->guru_id;
+            $guru_mapel->mapel_id = $request->mapel_id;
+            $guru_mapel->tahun_ajaran_id = $request->tahun_ajaran_id;
+            $guru_mapel->save();
+            
+
+            // if($simpan){
+            //     Alert::success(' Berhasil Tambah data ', ' Silahkan dicek kembali');
+            // }else{
+            //     Alert::error('data gagal disimpan ', ' Silahkan coba lagi');
+            // }
+            // return redirect()->back();
+        
+
+            // dd($request->all());
+         
+        return redirect('guru_mapel')->with('success', 'Data guru mapel berhasil diubah!');
     }
 
     /**

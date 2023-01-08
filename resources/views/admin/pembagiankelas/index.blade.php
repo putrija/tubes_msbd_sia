@@ -44,12 +44,12 @@
                     <td>{{ $data->angkatan }}</td>
                     <td>{{ $data->tahun_ajaran }}</td>
                     <td>
-                        <form action="{{ route('kelas.destroy', $data->nama_siswa) }}" method="post">
+                        <form action="{{ route('pembagiankelas.destroy', $data->nama_siswa) }}" method="post">
                             @csrf
-                            <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->nama_siswa}})" data-toggle="modal" data-target="#form-kelas">
+                            {{-- <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->nama_siswa}})" data-toggle="modal" data-target="#form-kelas">
                               <i class="nav-icon fas fa-edit"></i> &nbsp; Edit
-                            </button>
-                            <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                            </button> --}}
+                            {{-- <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button> --}}
                         </form>
                     </td>
                 </tr>

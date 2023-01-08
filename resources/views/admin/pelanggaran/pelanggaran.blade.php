@@ -6,6 +6,7 @@
 @section('content')
 <div class="col-md-12">
     <div class="card">
+      @if (Auth::user()->role != "Guru")
         <div class="card-header">
             <h3 class="card-title">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-pelanggaran">
@@ -13,6 +14,7 @@
                 </button>
             </h3>
         </div>
+        @endif
         <!-- /.card-header -->
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped table-hover">

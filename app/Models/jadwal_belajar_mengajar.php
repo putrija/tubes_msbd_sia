@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class jadwal_belajar_mengajar extends Model
 {
-    use SoftDeletes;
-    protected $fillable = ['guru_mengajar_id', 'ruang_id', 'hari', 'jam_mulai', 'jam_selesai'];
+  use SoftDeletes;
+  protected $fillable = ['id', 'guru_mengajar_id', 'ruang_id', 'kelas_id', 'hari', 'jam_mulai', 'jam_selesai'];
 
-    use HasFactory;
+  use HasFactory;
 
 
-    public function kelas()
+  public function kelas()
   {
     return $this->belongsTo('App\Kelas')->withDefault();
   }
@@ -89,5 +89,4 @@ class jadwal_belajar_mengajar extends Model
   }
 
   protected $table = 'jadwal_belajar_mengajar';
-
 }

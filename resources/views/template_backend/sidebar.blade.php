@@ -129,7 +129,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('mapel.index') }}" class="nav-link" id="DataMapel">
+                                <a href="{{ route('semester.index') }}" class="nav-link" id="DataSemester">
                                     <i class="fas fa-book nav-icon"></i>
                                     <p>Data Semester</p>
                                 </a>
@@ -311,12 +311,12 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('jadwal.guru') }}" class="nav-link" id="JadwalGuru">
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>Jadwal</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item has-treeview" id="liNilaiGuru">
                         <a href="#" class="nav-link" id="NilaiGuru">
                             <i class="nav-icon fas fa-file-signature"></i>
@@ -345,9 +345,9 @@
                             @else
                             @endif
                             <li class="nav-item">
-                                <a href="{{ route('rapot.index') }}" class="nav-link" id="RapotGuru">
+                                <a href="{{ route('rapor-guru') }}" class="nav-link" id="DataRapor">
                                     <i class="fas fa-file-alt nav-icon"></i>
-                                    <p>Entry Nilai Rapot</p>
+                                    <p>Nilai Rapor</p>
                                 </a>
                             </li>
                             {{-- <li class="nav-item">
@@ -366,12 +366,12 @@
                     </li>
                 @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/home-siswa') }}" class="nav-link" id="Home">
+                        <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('jadwal.siswa') }}" class="nav-link" id="JadwalSiswa">
                             <i class="fas fa-calendar-alt nav-icon"></i>
                             <p>Jadwal</p>
@@ -388,7 +388,7 @@
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Sikap</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route('rapot.siswa') }}" class="nav-link" id="RapotSiswa">
                             <i class="fas fa-file-alt nav-icon"></i>
@@ -415,7 +415,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('rapor') }}" class="nav-link" id="Rapor">
+                        <a href="{{ route('rapor-read') }}" class="nav-link" id="Rapor">
                             <i class="fas fa-file-alt nav-icon"></i>
                             <p>Nilai Rapor Siswa</p>
                         </a>
@@ -427,12 +427,12 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item has-treeview">
+                    {{-- <li class="nav-item has-treeview">
                         <a href="{{ url('/home') }}" class="nav-link" id="Home">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
             </ul>
         </nav>

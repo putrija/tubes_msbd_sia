@@ -14,6 +14,8 @@ use App\Paket;
 use App\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -36,7 +38,14 @@ class HomeController extends Controller
     {
         //$hari = date('w');
         $jam = date('H:i');
-        $jadwal = jadwal_belajar_mengajar::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
+        $jadwal = DB::table('jadwal_belajar_mengajar')
+            ->select('jadwal_belajar_mengajar.id', 'jadwal_belajar_mengajar.jam_mulai', 'jadwal_belajar_mengajar.jam_selesai', 'jadwal_belajar_mengajar.hari', 'mapel.nama_mapel', 'kelas.nama_kelas', 'ruang.nama_ruang', 'guru.nama_guru')
+            ->join('guru_mengajar', 'jadwal_belajar_mengajar.guru_mengajar_id', '=', 'guru_mengajar.id')
+            ->join('guru', 'guru_mengajar.guru_id', '=', 'guru.id')
+            ->join('mapel', 'guru_mengajar.mapel_id', '=', 'mapel.id')
+            ->join('kelas', 'jadwal_belajar_mengajar.kelas_id', '=', 'kelas.id')
+            ->join('ruang', 'jadwal_belajar_mengajar.ruang_id', '=', 'ruang.id')
+            ->OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('hari')->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
         // $pengumuman = Pengumuman::first();
         // $kehadiran = Kehadiran::all();
         return view('home', compact('jadwal'));
@@ -64,7 +73,8 @@ class HomeController extends Controller
         $siswapr = Siswa::where('jk', 'P')->count();
         $mapel = Mapel::count();
         $user = User::count();
-        return view('home', compact(
+        $kelas = Kelas::count();
+        return view('admin.index', compact(
             'jadwal',
             'guru',
             'gurulk',
@@ -74,6 +84,7 @@ class HomeController extends Controller
             'siswa',
             'mapel',
             'user',
+            'kelas'
         ));
     }
 }

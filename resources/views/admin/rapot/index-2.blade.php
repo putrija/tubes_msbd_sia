@@ -15,6 +15,10 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+          <h4>Nama Siswa = {{ $nama_siswa->nama_siswa }}</h4>
+          <h4>NISN Siswa = {{ $nama_siswa->nisn }}</h4>
+          <h4>Semester = {{ $semester_siswa->semester }}</h4>
+          <h4>Tahun Ajaran = {{ $tahun_ajaran_siswa->tahun_ajaran }}</h4>
           <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -25,14 +29,14 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($rapor as $result => $data)
+                @foreach ($rapor as $result => $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mapel }}</td>
                     <td>{{ $data->nilai_pengetahuan }}</td>
                     <td>{{ $data->nilai_keterampilan }}</td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
           </table>
         </div>

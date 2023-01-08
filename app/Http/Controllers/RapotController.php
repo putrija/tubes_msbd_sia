@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Guru;
+use App\User;
 use App\Kelas;
 use App\Mapel;
 use App\Nilai;
@@ -16,6 +17,7 @@ use App\Models\WaliKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class RapotController extends Controller
 {
@@ -26,12 +28,54 @@ class RapotController extends Controller
      */
     public function index()
     {
-        $guru = Guru::where('id_card', Auth::user()->id_card)->first();
-        $jadwal = Jadwal::where('guru_id', $guru->id)->orderBy('kelas_id')->get();
-        $kelas = $jadwal->groupBy('kelas_id');
+        // $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        // $jadwal = Jadwal::where('guru_id', $guru->id)->orderBy('kelas_id')->get();
+        // $kelas = $jadwal->groupBy('kelas_id');
 
-        return view('guru.rapot.kelas', compact('kelas', 'guru'));
+        // return view('guru.rapot.kelas', compact('kelas', 'guru'));
+
+        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $data_siswa = Siswa::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+        $semester = Semester::all();
+        // $rapor = Rapot::all();
+        $rapor = DB::table('rapor')
+            ->select('rapor.id', 'mapel.nama_mapel', 'rapor.nilai_pengetahuan', 'rapor.nilai_keterampilan', 'siswa.nama_siswa', 'siswa.nisn')
+            ->join('mapel', 'rapor.mapel_id', '=', 'mapel.id')
+            ->join('siswa', 'rapor.nisn_siswa', '=', 'siswa.nisn')
+            ->get();
+        return view('admin.rapot.index', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester', 'rapor'));
     }
+
+    public function cari_siswa(Request $request)
+    {
+        $this->validate($request, [
+            'siswa_id' => 'required',
+            'semester_id' => 'required',
+            'tahun_ajaran_id' => 'required'
+        ]);
+
+        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $data_siswa = Siswa::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+        $semester = Semester::all();
+        $nama_siswa = Siswa::where('id', $request->siswa_id)->first();
+        $semester_siswa = Semester::where('id', $request->semester_id)->first();
+        $tahun_ajaran_siswa = Tahun_ajaran::where('id', $request->tahun_ajaran_id)->first();
+        // $rapor = Rapot::all();
+        $rapor = DB::table('rapor')
+            ->select('rapor.id', 'mapel.nama_mapel', 'rapor.nilai_pengetahuan', 'rapor.nilai_keterampilan', 'siswa.nama_siswa', 'siswa.nisn', 'rapor.kelas_siswa_id', 'rapor.semester_id', 'rapor.tahun_ajaran_id')
+            ->join('mapel', 'rapor.mapel_id', '=', 'mapel.id')
+            ->join('siswa', 'rapor.nisn_siswa', '=', 'siswa.nisn')
+
+            ->where('rapor.kelas_siswa_id', $request->siswa_id)
+            ->where('rapor.semester_id', $request->semester_id)
+            ->where('rapor.tahun_ajaran_id', $request->tahun_ajaran_id)
+            ->get();
+        return view('admin.rapot.index-2', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester', 'rapor', 'nama_siswa', 'semester_siswa', 'tahun_ajaran_siswa'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +86,23 @@ class RapotController extends Controller
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         $data_siswa = Siswa::all();
+        $tahun_ajaran = Tahun_ajaran::all();
+        $semester = Semester::all();
+        return view('admin.rapot.home', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester'));
+    }
+
+    public function create2()
+    {
+        $kelas = Kelas::orderBy('nama_kelas')->get();
+        $user = User::where('id', Auth::id())->get();
+        $id_card_guru = $user[0]->id_card_guru;
+        $id_guru = Guru::where('id_card_guru', $id_card_guru)->value('id');
+        $data_siswa = DB::table('siswa')
+            ->select('siswa.nisn', 'siswa.nama_siswa')
+            ->join('kelas_siswa', 'siswa.id', '=', 'kelas_siswa.siswa_id')
+            ->join('wali_kelas', 'wali_kelas.kelas_id', '=', 'kelas_siswa.kelas_id')
+            ->where('wali_kelas.guru_id', $id_guru)
+            ->get();
         $tahun_ajaran = Tahun_ajaran::all();
         $semester = Semester::all();
         return view('admin.rapot.home', compact('kelas', 'data_siswa', 'tahun_ajaran', 'semester'));
@@ -80,51 +141,51 @@ class RapotController extends Controller
         // https://youtu.be/Sx1RgCjmvfg
 
 
-            $kelas_id = Siswa::where('nisn', $request->nama_siswa)->value('kelas_id');
-            $jurusan = Kelas::where('id', $kelas_id)->value('jurusan_id');
-            $wali_kelas_id = WaliKelas::where('kelas_id', $kelas_id)->value('id');
+        $kelas_id = Siswa::where('nisn', $request->nama_siswa)->value('kelas_id');
+        $jurusan = Kelas::where('id', $kelas_id)->value('jurusan_id');
+        $wali_kelas_id = WaliKelas::where('kelas_id', $kelas_id)->value('id');
 
-            if($jurusan == 1) {
-                $k = 13;
-                $row_mapel = [1,2,3,4,5,7,8,9,10,12,13,14,15];
-                $row_pengetahuan = [$request->pengetahuan_fisika, $request->pengetahuan_kimia, $request->pengetahuan_biologi, $request->pengetahuan_matematika_wajib, $request->pengetahuan_matematika_peminatan, $request->pengetahuan_kewarganegaraan, $request->pengetahuan_agama, $request->pengetahuan_pendidikan_jasmani, $request->pengetahuan_prakarya, $request->pengetahuan_ekonomi, $request->pengetahuan_bahasa_indonesia, $request->pengetahuan_bahasa_inggris, $request->pengetahuan_sejarah_indonesia];
-                $row_keterampilan = [$request->keterampilan_fisika, $request->keterampilan_kimia, $request->keterampilan_biologi, $request->keterampilan_matematika_wajib, $request->keterampilan_matematika_peminatan, $request->keterampilan_kewarganegaraan, $request->keterampilan_agama, $request->keterampilan_pendidikan_jasmani, $request->keterampilan_prakarya, $request->keterampilan_ekonomi, $request->keterampilan_bahasa_indonesia, $request->keterampilan_bahasa_inggris, $request->keterampilan_sejarah_indonesia];
+        if ($jurusan == 1) {
+            $k = 13;
+            $row_mapel = [1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15];
+            $row_pengetahuan = [$request->pengetahuan_fisika, $request->pengetahuan_kimia, $request->pengetahuan_biologi, $request->pengetahuan_matematika_wajib, $request->pengetahuan_matematika_peminatan, $request->pengetahuan_kewarganegaraan, $request->pengetahuan_agama, $request->pengetahuan_pendidikan_jasmani, $request->pengetahuan_prakarya, $request->pengetahuan_ekonomi, $request->pengetahuan_bahasa_indonesia, $request->pengetahuan_bahasa_inggris, $request->pengetahuan_sejarah_indonesia];
+            $row_keterampilan = [$request->keterampilan_fisika, $request->keterampilan_kimia, $request->keterampilan_biologi, $request->keterampilan_matematika_wajib, $request->keterampilan_matematika_peminatan, $request->keterampilan_kewarganegaraan, $request->keterampilan_agama, $request->keterampilan_pendidikan_jasmani, $request->keterampilan_prakarya, $request->keterampilan_ekonomi, $request->keterampilan_bahasa_indonesia, $request->keterampilan_bahasa_inggris, $request->keterampilan_sejarah_indonesia];
+        } else {
+            $k = 12;
+            $row_pengetahuan = [$request->pengetahuan_agama, $request->pengetahuan_kewarganegaraan, $request->pengetahuan_bahasa_indonesia, $request->pengetahuan_sejarah_indonesia, $request->pengetahuan_prakarya, $request->pengetahuan_pendidikan_jasmani, $request->pengetahuan_matematika_wajib, $request->pengetahuan_geografi, $request->pengetahuan_sosiologi, $request->pengetahuan_sejarah_peminatan, $request->pengetahuan_ekonomi, $request->pengetahuan_bahasa_inggris];
+            $row_keterampilan = [$request->keterampilan_agama, $request->keterampilan_kewarganegaraan, $request->keterampilan_bahasa_indonesia, $request->keterampilan_sejarah_indonesia, $request->keterampilan_prakarya, $request->keterampilan_pendidikan_jasmani, $request->keterampilan_matematika_wajib, $request->keterampilan_geografi, $request->keterampilan_sosiologi, $request->keterampilan_sejarah_peminatan, $request->keterampilan_ekonomi, $request->keterampilan_bahasa_inggris];
+            $row_mapel = [8, 7, 13, 15, 10, 9, 4, 11, 6, 16, 12, 14];
+        }
+
+
+
+        $p = 0;
+        // dd($row_pengetahuan);
+        // dd($row_pengetahuan[0], $request->pengetahuan_fisika);
+        for ($o = 0; $o < $k; $o++) {
+            if ($row_pengetahuan[$o] >= 89 && $row_pengetahuan[$o] <= 100) {
+                $predikat_pengetahuan = "A";
+            } else if ($row_pengetahuan[$o] < 89 && $row_pengetahuan[$o] >= 75) {
+                $predikat_pengetahuan = "B";
+            } else if ($row_pengetahuan[$o] < 75 && $row_pengetahuan[$o] >= 65) {
+                $predikat_pengetahuan = "C";
+            } else if ($row_pengetahuan[$o] < 65 && $row_pengetahuan[$o] >= 0) {
+                $predikat_pengetahuan = "D";
             } else {
-                $k = 12;
-                $row_pengetahuan = [$request->pengetahuan_agama,$request->pengetahuan_kewarganegaraan,$request->pengetahuan_bahasa_indonesia,$request->pengetahuan_sejarah_indonesia,$request->pengetahuan_prakarya,$request->pengetahuan_pendidikan_jasmani,$request->pengetahuan_matematika_wajib,$request->pengetahuan_geografi,$request->pengetahuan_sosiologi,$request->pengetahuan_sejarah_peminatan,$request->pengetahuan_ekonomi,$request->pengetahuan_bahasa_inggris];
-                $row_keterampilan = [$request->keterampilan_agama,$request->keterampilan_kewarganegaraan,$request->keterampilan_bahasa_indonesia,$request->keterampilan_sejarah_indonesia,$request->keterampilan_prakarya,$request->keterampilan_pendidikan_jasmani,$request->keterampilan_matematika_wajib,$request->keterampilan_geografi,$request->keterampilan_sosiologi,$request->keterampilan_sejarah_peminatan,$request->keterampilan_ekonomi,$request->keterampilan_bahasa_inggris];
-                $row_mapel = [8,7,13,15,10,9,4,11,6,16,12,14];
+                return back()->withInput()->with('warning', 'data nilai tidak valid');
             }
 
-
-
-            $p = 0;
-            // dd($row_pengetahuan);
-            // dd($row_pengetahuan[0], $request->pengetahuan_fisika);
-            for($o = 0; $o < $k; $o++) {
-                if($row_pengetahuan[$o] >= 89 && $row_pengetahuan[$o] <=100 ) {
-                    $predikat_pengetahuan = "A";
-                } else if($row_pengetahuan[$o] < 89 && $row_pengetahuan[$o] >= 75) {
-                    $predikat_pengetahuan = "B";
-                } else if($row_pengetahuan[$o] < 75 && $row_pengetahuan[$o] >= 65){
-                    $predikat_pengetahuan = "C";
-                } else if($row_pengetahuan[$o] < 65 && $row_pengetahuan[$o] >= 0){
-                    $predikat_pengetahuan = "D";
-                } else {
-                    return back()->withInput()->with('warning', 'data nilai tidak valid');
-                }
-
-                if($row_keterampilan[$o] >= 89 && $row_keterampilan[$o] <=100 ) {
-                    $predikat_keterampilan = "A";
-                } else if($row_keterampilan[$o] < 89 && $row_keterampilan[$o] >= 75) {
-                    $predikat_keterampilan = "B";
-                } else if($row_keterampilan[$o] < 75 && $row_keterampilan[$o] >= 65){
-                    $predikat_keterampilan = "C";
-                } else if($row_keterampilan[$o] < 65 && $row_keterampilan[$o] >= 0){
-                    $predikat_keterampilan = "D";
-                } else {
-                    return back()->withInput()->with('warning', 'data nilai tidak valid');
-                }
+            if ($row_keterampilan[$o] >= 89 && $row_keterampilan[$o] <= 100) {
+                $predikat_keterampilan = "A";
+            } else if ($row_keterampilan[$o] < 89 && $row_keterampilan[$o] >= 75) {
+                $predikat_keterampilan = "B";
+            } else if ($row_keterampilan[$o] < 75 && $row_keterampilan[$o] >= 65) {
+                $predikat_keterampilan = "C";
+            } else if ($row_keterampilan[$o] < 65 && $row_keterampilan[$o] >= 0) {
+                $predikat_keterampilan = "D";
+            } else {
+                return back()->withInput()->with('warning', 'data nilai tidak valid');
+            }
             Rapot::updateOrCreate(
                 [
                     'id' => $request->id
@@ -147,22 +208,22 @@ class RapotController extends Controller
         $o = 0;
         $p = 0;
 
-            // Rapot::updateOrCreate(
-            //     [
-            //         'id' => $request->id
-            //     ],
-            //     [
-            //         'kelas_siswa_id' => $request->kelas,
-            //         'nisn_siswa' => $request->nama_siswa,
-            //         'mapel_id' => '3',
-            //         'wali_kelas_id' => '2',
-            //         'semester_id' => '1',
-            //         'nilai_pengetahuan' => '90',
-            //         'predikat_pengetahuan' => 'A',
-            //         'nilai_keterampilan' => '90',
-            //         'predikat_keterampilan' => 'A',
-            //     ]
-            // );
+        // Rapot::updateOrCreate(
+        //     [
+        //         'id' => $request->id
+        //     ],
+        //     [
+        //         'kelas_siswa_id' => $request->kelas,
+        //         'nisn_siswa' => $request->nama_siswa,
+        //         'mapel_id' => '3',
+        //         'wali_kelas_id' => '2',
+        //         'semester_id' => '1',
+        //         'nilai_pengetahuan' => '90',
+        //         'predikat_pengetahuan' => 'A',
+        //         'nilai_keterampilan' => '90',
+        //         'predikat_keterampilan' => 'A',
+        //     ]
+        // );
 
         return redirect()->back()->with('success', 'Nilai berhasil ditambahkan');
     }
