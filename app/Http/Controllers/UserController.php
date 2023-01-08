@@ -336,8 +336,6 @@ class UserController extends Controller
             $this->validate($request, [
                 'name'      => 'required',
                 'jk'        => 'required',
-                'kelas_id'  => 'required',
-                'nis'       => 'required',
                 'telp'      => 'required',
                 'tmp_lahir' => 'required',
                 'tgl_lahir' => 'required',
@@ -351,10 +349,8 @@ class UserController extends Controller
                 $user->update($user_data);
             }
             $siswa_data = [
-                'nis'        => $request->nis,
                 'nama_siswa' => $request->name,
                 'jk'         => $request->jk,
-                'kelas_id'   => $request->kelas_id,
                 'telp'       => $request->telp,
                 'tmp_lahir'  => $request->tmp_lahir,
                 'tgl_lahir'  => $request->tgl_lahir,

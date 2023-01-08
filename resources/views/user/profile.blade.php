@@ -223,17 +223,17 @@
                 </div>
                 <div class="form-group">
                     <label for="angkatan">Angkatan</label>
-                    <input type="text" id="angkatan" name="angkatan" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->angkatan }}" class="form-control @error('angkatan') is-invalid @enderror">
+                    <input type="text" id="angkatan" name="angkatan" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->angkatan }}" class="form-control @error('angkatan') is-invalid @enderror" disabled>
                 </div>
               </div>
               <div class="col-md-6">
                   <div class="form-group">
                       <label for="nisn">NIS</label>
-                      <input type="text" id="nisn" name="nisn" onkeypress="return inputAngka(event)" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->nisn }}" class="form-control @error('nisn') is-invalid @enderror">
+                      <input type="text" id="nisn" name="nisn" onkeypress="return inputAngka(event)" value="{{ Auth::user()->siswa(Auth::user()->no_induk)->nisn }}" class="form-control @error('nisn') is-invalid @enderror" disabled>
                   </div>
                   <div class="form-group">
                       <label for="kelas_id">Kelas</label>
-                      <select id="kelas_id" name="kelas_id" class="select2bs4 form-control @error('kelas_id') is-invalid @enderror">
+                      <select id="kelas_id" name="kelas_id" class="select2bs4 form-control @error('kelas_id') is-invalid @enderror" disabled>
                           <option value="">-- Pilih Kelas --</option>
                           @foreach ($kelas as $data)
                               <option value="{{ $data->id }}"
