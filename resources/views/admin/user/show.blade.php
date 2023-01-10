@@ -51,7 +51,7 @@
                 @if ($data->role == 'Siswa')
                   <td>{{ $data->no_induk }}</td>
                 @elseif ($data->role == 'Guru')
-                  <td>{{ $data->id_card }}</td>
+                  <td>{{ $data->id_card_guru }}</td>
                 @else
                 @endif
                 {{-- <td>{{ $data->created_at->format('l, d F Y') }}</td> --}}

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->increments('id');
             $table->string('nama_kurikulum');
+            $table->enum('status',['Aktif','Non Aktif']);
             $table->timestamps();
         });
     }

@@ -41,10 +41,29 @@ class TahunAjaranController extends Controller
                'tahun_ajaran' => $request->tahun_ajaran,
                'tanggal_mulai' => $request->tanggal_mulai,
                'tanggal_berakhir' => $request->tanggal_berakhir,
+               'status' => $request->status,
             ]
         );
 
         return to_route('tahun_ajaran.index')->with('success', 'Tahun Ajaran berhasil ditambahkan!');
+    }
+   
+    public function changeStatus(Request $request, $id)
+    {
+            $tahun_ajaran = Tahun_ajaran::findorfail($id);
+            $tahun_ajaran->status = $request->status;
+            $tahun_ajaran->status = 'Non Aktif';
+            $tahun_ajaran->save();
+            return redirect()->back()->with('success', 'Status berhasil dinonaktifkan');
+    }
+
+    public function changeStatus2(Request $request, $id)
+    {
+            $tahun_ajaran = Tahun_ajaran::findorfail($id);
+            $tahun_ajaran->status = $request->status;
+            $tahun_ajaran->status = 'Aktif';
+            $tahun_ajaran->save();
+            return redirect()->back()->with('success', 'Status berhasil diaktifkan');
     }
 
     /**

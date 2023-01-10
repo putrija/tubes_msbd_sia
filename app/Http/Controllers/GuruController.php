@@ -153,13 +153,8 @@ class GuruController extends Controller
                 'name' => $guru->nama_guru,
                 'email' => $guru->email,
                 'password' => Hash::make($guru->id_card_guru),
-<<<<<<< Updated upstream
                 'role' => 'Guru'
 
-=======
-                'role' => 'Guru',
-            
->>>>>>> Stashed changes
             ]);
             $user->save();
         });

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('tahun_ajaran', 9);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
+            $table->enum('status',['Aktif','Non Aktif']);
             $table->timestamps();
         });
     }

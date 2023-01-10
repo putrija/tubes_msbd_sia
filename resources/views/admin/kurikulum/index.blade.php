@@ -20,6 +20,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama Kurikulum</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -28,12 +29,19 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_kurikulum }}</td>
+                    <td>{{ $data->status }} </td>
                     <td>
                         <form action="{{ route('kurikulum.destroy', $data->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <a href="{{ route('kurikulum.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
+
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                        </form>
+                        <br>
+                        <form action="{{ route('Kurikulum.changeStatus',$data->id) }}" method="post">
+                          @csrf
+                          <button type="submit" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Nonaktifkan Status</button>
                         </form>
                     </td>
                 </tr>
@@ -66,6 +74,14 @@
                   <label for="nama_kurikulum">Nama Kurikulum</label>
                   <input type="text" id="nama_kurikulum" name="nama_kurikulum" class="form-control @error('nama_kurikulum') is-invalid @enderror" placeholder="{{ __('Nama Kurikulum') }}">
                 </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select id="status" name="status" class="select2bs4 form-control @error('status') is-invalid @enderror">
+                      <option value="">-- Status --</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Non Akitf">Non Aktif</option>
+                  </select>
+              </div>
               </div>
             </div>
         </div>

@@ -55,13 +55,13 @@
     </div>
   </form>
 
-  {{-- <p class="mb-1">
+  <p class="mb-1">
     @if (Route::has('password.request'))
       <a class="text-center" href="{{ route('password.request') }}">
         {{ __('Lupa Password?') }}
       </a>
     @endif
-  </p> --}}
+  </p>
   {{-- <p class="mb-0">
     <a class="text-center" href="{{ route('register') }}">Buat Akun Baru</a>
   </p> --}} 
@@ -143,6 +143,41 @@
           $("#remember").attr("disabled", "disabled");
           $("#btn-login").attr("disabled", "disabled");
         }
+
+        // $("#status").keyup(function(){
+        // var email = $("#email").val();
+        // var password = $("#password").val();
+        // var status = $("#status").val();
+
+        // if (status == "Aktif"){
+        //   $.ajax({
+        //       type:"GET",
+        //       data: {
+        //           email : email,
+        //           password : password,
+        //           status :status
+        //       },
+        //       dataType:"JSON",
+        //       url:"{{ url('/login/cek_password/json') }}",
+        //       success:function(data){
+        //         if (data.success) {
+        //           $("#btn-login").removeAttr("disabled", "disabled");
+        //         } else {
+        //           $("#password").removeClass("is-valid");
+        //           $("#password").addClass("is-invalid");
+        //           $("#remember").attr("disabled", "disabled");
+        //           $("#btn-login").attr("disabled", "disabled");
+        //         }
+        //       },
+        //       error:function(){
+        //       }
+        //   });
+        // } else {
+        //   $("#password").removeClass("is-valid");
+        //   $("#password").removeClass("is-invalid");
+        //   $("#remember").attr("disabled", "disabled");
+        //   $("#btn-login").attr("disabled", "disabled");
+        // }
     });
   </script>
 @endsection

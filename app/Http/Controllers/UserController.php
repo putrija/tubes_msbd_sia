@@ -505,5 +505,15 @@ class UserController extends Controller
         }
     }
 
+    // public function cek_status(Request $request)
+    // {
+    //     $user = User::where('email', $request->email)->first();
+    //     $countUser = User::where('status', $request->status)->count();
+    //     if ($countUser >= 'Non Akttif') {
+    //         if (User::check($request->status, $user->status)) {
+    //             return response()->json(['error' => 'Akun Anda dinonaktifkan']);
+    //         } 
+    //     } 
+    // }
    
 }

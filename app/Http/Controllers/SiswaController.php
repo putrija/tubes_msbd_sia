@@ -198,6 +198,10 @@ class SiswaController extends Controller
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'status_id' => $request->status_id,
+            'alamat' => $request->alamat,
+            'agama' => $request->agama,
+            'email' => $request->email,
             'status_id' => $request->status_id
         ];
         $siswa->update($siswa_data);
@@ -311,8 +315,9 @@ class SiswaController extends Controller
         $kelas = Kelas::findorfail($request->id);
 
         $pdf = PDF::loadView('siswa-pdf', ['siswa' => $siswa, 'kelas' => $kelas]);
-        return $pdf->stream();
-        // return $pdf->stream('jadwal-pdf.pdf');
+        return $pdf->stream('siswa.pdf');
+        return $pdf->stream('jadwal-pdf.pdf');
+    
     }
 
     public function kelas($id)
@@ -330,10 +335,12 @@ class SiswaController extends Controller
         return view('admin.siswa.show', compact('siswa', 'status'));
     }
 
-    public function export_excel()
+    public function export_excel($angkatan)
     {
+        dd($angkatan);
         $siswa = Siswa::all();
         // DB::table('siswa')->where('angkatan', 'like', $siswa . '%')->get();
+
         return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
     public function export_excel_filter()

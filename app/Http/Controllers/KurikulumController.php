@@ -44,10 +44,10 @@ class KurikulumController extends Controller
 
         Kurikulum::updateOrCreate(
             [
-                'id' => $request->kurikulum_id
+                'nama_kurikulum' => $request->nama_kurikulum,
             ],
             [
-                'nama_kurikulum' => $request->nama_kurikulum,
+                'status' => $request->status
             ]
         );
 
@@ -76,6 +76,7 @@ class KurikulumController extends Controller
         $id = Crypt::decrypt($id);
         $kurikulum = Kurikulum::findorfail($id);
         return view('admin.kurikulum.edit', compact('kurikulum'));
+        return redirect()->back()->with('success', 'Data Kurikulum berhasil diperbarui!');
     }
 
     /**
@@ -113,5 +114,13 @@ class KurikulumController extends Controller
         $kurikulum2->delete();
 
         return redirect()->back()->with('warning', 'Data kurikulum berhasil dihapus! (Silahkan cek trash data kurikulum)');
+    }
+    public function changeStatus(Request $request, $id)
+    {
+            $kurikulum = Kurikulum::findorfail($id);
+            $kurikulum->status = $request->status;
+            $kurikulum->status = 'Non Aktif';
+            $kurikulum->save();
+            return redirect()->back()->with('success', 'Status berhasil dinonaktifkan');
     }
 }
