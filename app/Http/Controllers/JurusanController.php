@@ -21,6 +21,9 @@ class JurusanController extends Controller
             ->select('jurusan.id', 'jurusan.ket_jurusan', 'jurusan.kurikulum_id', 'kurikulum.nama_kurikulum')
             ->join('kurikulum', 'jurusan.kurikulum_id', '=', 'kurikulum.id')
             ->get();
+        // $jurusan = DB::select("CALL read_jurusan_kurikulum(1)");
+
+        // dd('$jurusan');
         $kurikulum = Kurikulum::all();
         return view('admin.jurusan.index', compact('jurusan', 'kurikulum'));
     }
