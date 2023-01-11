@@ -68,98 +68,106 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'id_card_guru' => 'required|min:10|max:10',
-            'nama_guru' => 'required',
-            'kode_guru' => 'required|string|min:3|max:5',
-            'jk' => 'required',
-            'email' => 'required|unique:guru|'
-        ]);
+        try{
+                $this->validate($request, [
+                    'id_card_guru' => 'required|min:10|max:10',
+                    'nama_guru' => 'required',
+                    'kode_guru' => 'required|string|min:3|max:5',
+                    'jk' => 'required',
+                    'email' => 'required|unique:guru|'
+                ]);
 
-        if ($request->foto) {
-            $foto = $request->foto;
-            $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
-            $foto->move('uploads/guru/', $new_foto);
-            $nameFoto = 'uploads/guru/' . $new_foto;
-        } else {
-            if ($request->jk == 'L') {
-                $nameFoto = 'uploads/guru/35251431012020_male.jpg';
-            } else {
-                $nameFoto = 'uploads/guru/23171022042020_female.jpg';
-            }
-        }
-        DB::transaction(function () use ($request, $nameFoto) {
-            $guru = Guru::create([
-                'id_card_guru' => $request->id_card_guru,
-                'nip' => $request->nip,
-                'status_kepegawaian_id' => $request->status_kepegawaian_id,
-                'jenis_ptk_id' => $request->jenis_ptk_id,
-                'tugas_tambahan_id' => $request->tugas_tambahan_id,
-                'nama_guru' => $request->nama_guru,
-                'kode_guru' => $request->kode_guru,
-                'jk' => $request->jk,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'hp' => $request->hp,
-                'agama' => $request->agama,
-                'alamat' => $request->alamat,
-                'rt' => $request->rt,
-                'rw' => $request->rw,
-                'nama_dusun' => $request->nama_dusun,
-                'desa_kelurahan' => $request->desa_kelurahan,
-                'kecamatan' => $request->kecamatan,
-                'kode_pos' => $request->kode_pos,
-                'email' => $request->email,
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'nuptk' => $request->nuptk,
-                'foto' => $nameFoto,
-            ]);
-            $data = $request->all();
-            $detail_guru = new DetailGuru;
-            $detail_guru->guru_id = $guru->id;
-            $detail_guru->sk_cpns = $data['sk_cpns'];
-            $detail_guru->tanggal_cpns = $data['tanggal_cpns'];
-            $detail_guru->sk_pengangkatan = $data['sk_pengangkatan'];
-            $detail_guru->tmt_pengangkatan = $data['tmt_pengangkatan'];
-            $detail_guru->lembaga_pengangkatan = $data['lembaga_pengangkatan'];
-            $detail_guru->pangkat_golongan = $data['pangkat_golongan'];
-            $detail_guru->sumber_gaji = $data['sumber_gaji'];
-            $detail_guru->nama_ibu_kandung = $data['nama_ibu_kandung'];
-            $detail_guru->status_perkawinan = $data['status_perkawinan'];
-            $detail_guru->nama_suami_istri = $data['nama_suami_istri'];
-            $detail_guru->nip_suami_istri = $data['nip_suami_istri'];
-            $detail_guru->pekerjaan_suami_istri = $data['pekerjaan_suami_istri'];
-            $detail_guru->tmt_pns = $data['tmt_pns'];
-            $detail_guru->sudah_lisensi_kepsek = $data['sudah_lisensi_kepsek'];
-            $detail_guru->pernah_diklat_kepengawasan = $data['pernah_diklat_kepengawasan'];
-            $detail_guru->keahlian_braille = $data['keahlian_braille'];
-            $detail_guru->keahlian_bahasa_isyarat = $data['keahlian_bahasa_isyarat'];
-            $detail_guru->npwp = $data['npwp'];
-            $detail_guru->nama_wajib_pajak = $data['nama_wajib_pajak'];
-            $detail_guru->kewarganegaraan = $data['kewarganegaraan'];
-            $detail_guru->bank = $data['bank'];
-            $detail_guru->nomor_rekening_bank = $data['nomor_rekening_bank'];
-            $detail_guru->rekening_atas_nama = $data['rekening_atas_nama'];
-            $detail_guru->karpeg = $data['karpeg'];
-            $detail_guru->karis_karsu = $data['karis_karsu'];
-            $detail_guru->lintang = $data['lintang'];
-            $detail_guru->bujur = $data['bujur'];
+                if ($request->foto) {
+                    $foto = $request->foto;
+                    $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
+                    $foto->move('uploads/guru/', $new_foto);
+                    $nameFoto = 'uploads/guru/' . $new_foto;
+                } else {
+                    if ($request->jk == 'L') {
+                        $nameFoto = 'uploads/guru/35251431012020_male.jpg';
+                    } else {
+                        $nameFoto = 'uploads/guru/23171022042020_female.jpg';
+                    }
+                }
+                DB::transaction(function () use ($request, $nameFoto) {
+                    $guru = Guru::create([
+                        'id_card_guru' => $request->id_card_guru,
+                        'nip' => $request->nip,
+                        'status_kepegawaian_id' => $request->status_kepegawaian_id,
+                        'jenis_ptk_id' => $request->jenis_ptk_id,
+                        'tugas_tambahan_id' => $request->tugas_tambahan_id,
+                        'nama_guru' => $request->nama_guru,
+                        'kode_guru' => $request->kode_guru,
+                        'jk' => $request->jk,
+                        'telp' => $request->telp,
+                        'tmp_lahir' => $request->tmp_lahir,
+                        'tgl_lahir' => $request->tgl_lahir,
+                        'hp' => $request->hp,
+                        'agama' => $request->agama,
+                        'alamat' => $request->alamat,
+                        'rt' => $request->rt,
+                        'rw' => $request->rw,
+                        'nama_dusun' => $request->nama_dusun,
+                        'desa_kelurahan' => $request->desa_kelurahan,
+                        'kecamatan' => $request->kecamatan,
+                        'kode_pos' => $request->kode_pos,
+                        'email' => $request->email,
+                        'nik' => $request->nik,
+                        'no_kk' => $request->no_kk,
+                        'nuptk' => $request->nuptk,
+                        'foto' => $nameFoto,
+                    ]);
+                    $data = $request->all();
+                    $detail_guru = new DetailGuru;
+                    $detail_guru->guru_id = $guru->id;
+                    $detail_guru->sk_cpns = $data['sk_cpns'];
+                    $detail_guru->tanggal_cpns = $data['tanggal_cpns'];
+                    $detail_guru->sk_pengangkatan = $data['sk_pengangkatan'];
+                    $detail_guru->tmt_pengangkatan = $data['tmt_pengangkatan'];
+                    $detail_guru->lembaga_pengangkatan = $data['lembaga_pengangkatan'];
+                    $detail_guru->pangkat_golongan = $data['pangkat_golongan'];
+                    $detail_guru->sumber_gaji = $data['sumber_gaji'];
+                    $detail_guru->nama_ibu_kandung = $data['nama_ibu_kandung'];
+                    $detail_guru->status_perkawinan = $data['status_perkawinan'];
+                    $detail_guru->nama_suami_istri = $data['nama_suami_istri'];
+                    $detail_guru->nip_suami_istri = $data['nip_suami_istri'];
+                    $detail_guru->pekerjaan_suami_istri = $data['pekerjaan_suami_istri'];
+                    $detail_guru->tmt_pns = $data['tmt_pns'];
+                    $detail_guru->sudah_lisensi_kepsek = $data['sudah_lisensi_kepsek'];
+                    $detail_guru->pernah_diklat_kepengawasan = $data['pernah_diklat_kepengawasan'];
+                    $detail_guru->keahlian_braille = $data['keahlian_braille'];
+                    $detail_guru->keahlian_bahasa_isyarat = $data['keahlian_bahasa_isyarat'];
+                    $detail_guru->npwp = $data['npwp'];
+                    $detail_guru->nama_wajib_pajak = $data['nama_wajib_pajak'];
+                    $detail_guru->kewarganegaraan = $data['kewarganegaraan'];
+                    $detail_guru->bank = $data['bank'];
+                    $detail_guru->nomor_rekening_bank = $data['nomor_rekening_bank'];
+                    $detail_guru->rekening_atas_nama = $data['rekening_atas_nama'];
+                    $detail_guru->karpeg = $data['karpeg'];
+                    $detail_guru->karis_karsu = $data['karis_karsu'];
+                    $detail_guru->lintang = $data['lintang'];
+                    $detail_guru->bujur = $data['bujur'];
 
-            $detail_guru->save();
-            $user = User::create([
-                'id_card_guru' => $guru->id_card_guru,
-                'name' => $guru->nama_guru,
-                'email' => $guru->email,
-                'password' => Hash::make($guru->id_card_guru),
-                'role' => 'Guru'
+                    $detail_guru->save();
+                    $user = User::create([
+                        'id_card_guru' => $guru->id_card_guru,
+                        'name' => $guru->nama_guru,
+                        'email' => $guru->email,
+                        'password' => Hash::make($guru->id_card_guru),
+                        'role' => 'Guru'
 
-            ]);
-            $user->save();
-        });
+                    ]);
+                    $user->save();
+                });
 
-        return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
+                return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
+    }
+
+    catch (\Exception $e) {
+
+        return redirect()->back()->with('warning', 'silahkan input data kembali, data tidak dapat diinput');
+        
+    }
     }
     /**
      * Display the specified resource.

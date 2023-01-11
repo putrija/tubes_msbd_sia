@@ -91,9 +91,9 @@
                     <input type="text" id="agama" name="agama" value="{{ $siswa->agama }}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="status_id">Status Kepegawaian</label>
+                    <label for="status_id">Status </label>
                     <select id="status_id" name="status_id" class="select2bs4 form-control @error('status_id') is-invalid @enderror">
-                        <option value=""> -- Pilih Status Kepegawaian -- </option>
+                        <option value=""> --Pilih Status -- </option>
                         @foreach ($status as $data)
                         <option value="{{ $data->id }}" 
                         @if ($siswa->status_id == $data->id)
@@ -101,6 +101,36 @@
                             @endif 
                         >{{ $data->ket_status }}</option>
                     @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="anak_ke">Anak ke</label>
+                    <input type="number" id="anak_ke" name="anak_ke" value="{{ $detail_siswa->anak_ke }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dari_berapa_bersaudara">Dari Berapa Bersaudara</label>
+                    <input type="number" id="dari_berapa_bersaudara" name="dari_berapa_bersaudara" value="{{ $detail_siswa->dari_berapa_bersaudara }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="diterima_di_kelas">Diterima di kelas</label>
+                    <select id="diterima_di_kelas" name="diterima_di_kelas" class="select2bs4 form-control @error('diterima_di_kelas') is-invalid @enderror">
+                        <option value="">-- Diterima di kelas --</option>
+                        <option value="10"
+                            @if ($siswa->diterima_di_kelas == '10')
+                                selected
+                            @endif
+                        >10</option>
+                        <option value="11"
+                            @if ($siswa->diterima_di_kelas == '11')
+                                selected
+                            @endif
+                        >11</option>
+                        <option value="12"
+                            @if ($siswa->diterima_di_kelas == '12')
+                                selected
+                            @endif
+                        >12</option>
+                        
                     </select>
                 </div>
             </div>
