@@ -22,6 +22,7 @@ class TahunAjaranSeeder extends Seeder
                 'tahun_ajaran' => '2021/2022',
                 'tanggal_mulai' => '2021-07-01',
                 'tanggal_berakhir' => '2022-06-01',
+                'status' => 'Aktif',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]
@@ -32,6 +33,7 @@ class TahunAjaranSeeder extends Seeder
                 'tahun_ajaran' => '2022/2023',
                 'tanggal_mulai' => '2022-07-01',
                 'tanggal_berakhir' => '2023-06-01',
+                'status' => 'Aktif',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]

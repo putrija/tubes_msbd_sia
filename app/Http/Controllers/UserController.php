@@ -92,6 +92,7 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'role' => $request->role,
                     'id_card_guru' => $request->nomer,
+                    'status' => $request->status,
                 ]);
                 return redirect()->back()->with('success', 'Berhasil menambahkan user Guru baru!');
             } else {
@@ -110,6 +111,8 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'role' => $request->role,
                     'no_induk' => $request->nomer,
+                    'status' => $request->status,
+
                 ]);
                 return redirect()->back()->with('success', 'Berhasil menambahkan user Siswa baru!');
             } else {
@@ -429,6 +432,15 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Email anda berhasil diperbarui!');
         }
     }
+    public function changeStatus(Request $request, $id)
+    {
+        $user = User::findorfail($id);
+        $user->status = $request->status;
+        $user->status = 'Non Aktif';
+        $user->save();
+        return redirect()->back()->with('success', 'Status berhasil dinonaktifkan');
+    }
+    
 
     public function edit_password()
     {
@@ -463,7 +475,11 @@ class UserController extends Controller
     public function cek_email(Request $request)
     {
         $countUser = User::where('email', $request->email)->count();
+        // $status_cek = User::where('email',$request->email)->get();
         if ($countUser >= 1) {
+            // if($countUser->status='Non Aktif'){
+            //     return response()->json(['error' => 'Maaf Akun Anda tekah dinonaktifkan']);
+            // }
             return response()->json(['success' => 'Email Anda Benar']);
         } else {
             return response()->json(['error' => 'Maaf user not found!']);
@@ -484,4 +500,16 @@ class UserController extends Controller
             return response()->json(['warning' => 'Maaf user not found!']);
         }
     }
+
+    // public function cek_status(Request $request)
+    // {
+    //     $user = User::where('email', $request->email)->first();
+    //     $countUser = User::where('status', $request->status)->count();
+    //     if ($countUser >= 'Non Akttif') {
+    //         if (User::check($request->status, $user->status)) {
+    //             return response()->json(['error' => 'Akun Anda dinonaktifkan']);
+    //         } 
+    //     } 
+    // }
+   
 }

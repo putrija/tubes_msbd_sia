@@ -6,6 +6,7 @@ use App\Kelas;
 use App\Guru;
 use App\Paket;
 use App\Jadwal;
+use App\Models\WaliKelas;
 use App\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -21,8 +22,9 @@ class KelasController extends Controller
     {
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
         $guru = Guru::OrderBy('nama_guru', 'asc')->get();
+        $wali_kelas = WaliKelas::all();
         //$paket = Paket::all();
-        return view('admin.kelas.index', compact('kelas', 'guru'));
+        return view('admin.kelas.index', compact('kelas', 'guru','wali_kelas'));
     }
 
     /**

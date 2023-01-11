@@ -35,8 +35,10 @@ class SiswaController extends Controller
         $siswa = Siswa::where('angkatan','LIKE','%'.$keyword.'%')->get();
         $status = StatusSiswa::OrderBy('ket_status','asc')->get();
         $kelas = Kelas::OrderBy('nama_kelas', 'asc')->get();
+        $detail_siswa = DetailSiswa::all();
 
-        return view('admin.siswa.index', compact('siswa', 'kelas', 'status','keyword'));
+
+        return view('admin.siswa.index', compact('siswa', 'kelas', 'status','keyword','detail_siswa'));
     }
 
     /**
@@ -57,83 +59,92 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'no_induk' => 'required|string|unique:siswa|min:5|max:5',
-            'nisn' => 'required|max:10|min:10',
-            'nama_siswa' => 'required',
-            'jk' => 'required',
+        try{
+                $this->validate($request, [
+                    'no_induk' => 'required|string|unique:siswa|min:5|max:5',
+                    'nisn' => 'required|max:10|min:10',
+                    'nama_siswa' => 'required',
+                    'jk' => 'required',
 
-        ]);
+                ]);
 
-        if ($request->foto) {
-            $foto = $request->foto;
-            $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
-            $foto->move('uploads/siswa/', $new_foto);
-            $nameFoto = 'uploads/siswa/' . $new_foto;
-        } else {
-            if ($request->jk == 'L') {
-                $nameFoto = 'uploads/siswa/27231912072020_male.jpg';
-            } else {
-                $nameFoto = 'uploads/siswa/23171022042020_female.jpg';
-            }
-        }
-        DB::transaction(function () use($request,$nameFoto) {
-        $siswa = Siswa::create([
-            'no_induk' => $request->no_induk,
-            'nisn' => $request->nisn,
-            'nama_siswa' => $request->nama_siswa,
-            'jk' => $request->jk,
-            'agama' => $request->agama,
-            'telp' => $request->telp,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'alamat' => $request->alamat,
-            'email' => $request->email,
-            'angkatan' => $request->angkatan,
-            'kelas_id' => $request->kelas_id,
-            'foto' => $nameFoto,
-            'status_id' => 1,
-            
-        ]);
-        $data = $request->all();
-        $detail_siswa = new DetailSiswa;
-        $detail_siswa->siswa_id = $siswa->id;
-            $detail_siswa->anak_ke = $data['anak_ke'];
-            $detail_siswa->dari_berapa_bersaudara = $data['dari_berapa_bersaudara'];
-            $detail_siswa->diterima_di_kelas = $data['diterima_di_kelas'];
-            $detail_siswa->diterima_pada_tanggal = $data['diterima_pada_tanggal'];
-            $detail_siswa->diterima_semester = $data['diterima_semester'];
-            $detail_siswa->sekolah_asal = $data['sekolah_asal'];
-            $detail_siswa->alamat_sekolah_asal = $data['alamat_sekolah_asal'];
-            $detail_siswa->tahun_ijazah_smp = $data['tahun_ijazah_smp'];
-            $detail_siswa->nomor_ijazah_smp = $data['nomor_ijazah_smp'];
-            $detail_siswa->tahun_skhun_smp = $data['tahun_skhun_smp'];
-            $detail_siswa->nomor_skhun_smp = $data['nomor_skhun_smp'];
-            $detail_siswa->nama_ayah = $data['nama_ayah'];
-            $detail_siswa->nama_ibu = $data['nama_ibu'];
-            $detail_siswa->alamat_ayah = $data['alamat_ayah'];
-            $detail_siswa->alamat_ibu = $data['alamat_ibu'];
-            $detail_siswa->tlp_ayah = $data['tlp_ayah'];
-            $detail_siswa->tlp_ibu = $data['tlp_ibu'];
-            $detail_siswa->pekerjaan_ayah = $data['pekerjaan_ayah'];
-            $detail_siswa->pekerjaan_ibu = $data['pekerjaan_ibu'];
-            $detail_siswa->nama_wali = $data['nama_wali'];
-            $detail_siswa->pekerjaan_wali = $data['pekerjaan_wali'];
-            $detail_siswa->alamat_wali = $data['alamat_wali'];
-            $detail_siswa->tlp_wali = $data['tlp_wali'];
-            $detail_siswa->save();
+                if ($request->foto) {
+                    $foto = $request->foto;
+                    $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
+                    $foto->move('uploads/siswa/', $new_foto);
+                    $nameFoto = 'uploads/siswa/' . $new_foto;
+                } else {
+                    if ($request->jk == 'L') {
+                        $nameFoto = 'uploads/siswa/27231912072020_male.jpg';
+                    } else {
+                        $nameFoto = 'uploads/siswa/23171022042020_female.jpg';
+                    }
+                }
+                DB::transaction(function () use($request,$nameFoto) {
+                $siswa = Siswa::create([
+                    'no_induk' => $request->no_induk,
+                    'nisn' => $request->nisn,
+                    'nama_siswa' => $request->nama_siswa,
+                    'jk' => $request->jk,
+                    'agama' => $request->agama,
+                    'telp' => $request->telp,
+                    'tmp_lahir' => $request->tmp_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'alamat' => $request->alamat,
+                    'email' => $request->email,
+                    'angkatan' => $request->angkatan,
+                    'kelas_id' => $request->kelas_id,
+                    'foto' => $nameFoto,
+                    'status_id' => 1,
+                    
+                ]);
+                $data = $request->all();
+                $detail_siswa = new DetailSiswa;
+                $detail_siswa->siswa_id = $siswa->id;
+                    $detail_siswa->anak_ke = $data['anak_ke'];
+                    $detail_siswa->dari_berapa_bersaudara = $data['dari_berapa_bersaudara'];
+                    $detail_siswa->diterima_di_kelas = $data['diterima_di_kelas'];
+                    $detail_siswa->diterima_pada_tanggal = $data['diterima_pada_tanggal'];
+                    $detail_siswa->diterima_semester = $data['diterima_semester'];
+                    $detail_siswa->sekolah_asal = $data['sekolah_asal'];
+                    $detail_siswa->alamat_sekolah_asal = $data['alamat_sekolah_asal'];
+                    $detail_siswa->tahun_ijazah_smp = $data['tahun_ijazah_smp'];
+                    $detail_siswa->nomor_ijazah_smp = $data['nomor_ijazah_smp'];
+                    $detail_siswa->tahun_skhun_smp = $data['tahun_skhun_smp'];
+                    $detail_siswa->nomor_skhun_smp = $data['nomor_skhun_smp'];
+                    $detail_siswa->nama_ayah = $data['nama_ayah'];
+                    $detail_siswa->nama_ibu = $data['nama_ibu'];
+                    $detail_siswa->alamat_ayah = $data['alamat_ayah'];
+                    $detail_siswa->alamat_ibu = $data['alamat_ibu'];
+                    $detail_siswa->tlp_ayah = $data['tlp_ayah'];
+                    $detail_siswa->tlp_ibu = $data['tlp_ibu'];
+                    $detail_siswa->pekerjaan_ayah = $data['pekerjaan_ayah'];
+                    $detail_siswa->pekerjaan_ibu = $data['pekerjaan_ibu'];
+                    $detail_siswa->nama_wali = $data['nama_wali'];
+                    $detail_siswa->pekerjaan_wali = $data['pekerjaan_wali'];
+                    $detail_siswa->alamat_wali = $data['alamat_wali'];
+                    $detail_siswa->tlp_wali = $data['tlp_wali'];
+                    $detail_siswa->save();
 
-            $user = User::create([
-                'name' => $siswa    -> nama_siswa,
-                'email' => $siswa   ->email,
-                'password' => Hash::make($siswa->no_induk),
-                'role' => 'Siswa',
-                'no_induk' => $siswa->no_induk,
-            
-            ]);
-            $user->save();
-        });
-        return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
+                    $user = User::create([
+                        'name' => $siswa    -> nama_siswa,
+                        'email' => $siswa   ->email,
+                        'password' => Hash::make($siswa->no_induk),
+                        'role' => 'Siswa',
+                        'no_induk' => $siswa->no_induk,
+                    
+                    ]);
+                    $user->save();
+                });
+                return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
+    }
+
+    
+    catch (\Exception $e) {
+
+        return redirect()->back()->with('warning', 'data tidak dapat ditambah karena sudah tersedia');
+        
+    }
         }
 
 
@@ -163,7 +174,8 @@ class SiswaController extends Controller
         $siswa = Siswa::findorfail($id);
         $kelas = Kelas::all();
         $status = StatusSiswa::all();
-        return view('admin.siswa.edit', compact('siswa', 'kelas','status'));
+        $detail_siswa = DetailSiswa::where('siswa_id', $id)->first();
+        return view('admin.siswa.edit', compact('siswa', 'kelas','status','detail_siswa'));
     }
 
     /**
@@ -183,6 +195,7 @@ class SiswaController extends Controller
 
         $siswa = Siswa::findorfail($id);
         $user = User::where('no_induk', $siswa->no_induk)->first();
+        $detail = DetailSiswa::where('siswa_id', $id)->first();
         if ($user) {
             $user_data = [
                 'name' => $request->nama_siswa
@@ -198,9 +211,20 @@ class SiswaController extends Controller
             'telp' => $request->telp,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'status_id' => $request->status_id,
+            'alamat' => $request->alamat,
+            'agama' => $request->agama,
+            'email' => $request->email,
             'status_id' => $request->status_id
         ];
         $siswa->update($siswa_data);
+        $detail_siswa = [
+            'siswa_id' => $siswa->id,
+            'anak_ke' => $request->anak_ke,
+            'dari_berapa_bersaudara' => $request->dari_berapa_bersaudara,
+            'diterima_di_kelas' => $request->diterima_di_kelas
+        ];          
+        $detail->update($detail_siswa);
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui!');
     }
@@ -311,8 +335,9 @@ class SiswaController extends Controller
         $kelas = Kelas::findorfail($request->id);
 
         $pdf = PDF::loadView('siswa-pdf', ['siswa' => $siswa, 'kelas' => $kelas]);
-        return $pdf->stream();
-        // return $pdf->stream('jadwal-pdf.pdf');
+        return $pdf->stream('siswa.pdf');
+        return $pdf->stream('jadwal-pdf.pdf');
+    
     }
 
     public function kelas($id)
@@ -330,10 +355,12 @@ class SiswaController extends Controller
         return view('admin.siswa.show', compact('siswa', 'status'));
     }
 
-    public function export_excel()
+    public function export_excel($angkatan)
     {
+        dd($angkatan);
         $siswa = Siswa::all();
         // DB::table('siswa')->where('angkatan', 'like', $siswa . '%')->get();
+
         return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
     public function export_excel_filter()

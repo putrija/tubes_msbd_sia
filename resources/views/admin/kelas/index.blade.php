@@ -20,7 +20,6 @@
                 <tr>
                     <th>No.</th>
                     <th>Kelas</th>
-                    <th>Wali Kelas</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -29,7 +28,6 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_kelas }}</td>
-                    <td>{{ $data->guru->nama_guru }}</td>
                     <td>
                         <form action="{{ route('kelas.destroy', $data->id) }}" method="post">
                             @csrf
@@ -40,9 +38,9 @@
                             <button type="button" class="btn btn-info btn-sm" onclick="getSubsJadwal({{$data->id}})" data-toggle="modal" data-target=".view-jadwal">
                               <i class="nav-icon fas fa-calendar-alt"></i> &nbsp; View Jadwal
                             </button>
-                            <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->id}})" data-toggle="modal" data-target="#form-kelas">
+                            {{-- <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->id}})" data-toggle="modal" data-target="#form-kelas">
                               <i class="nav-icon fas fa-edit"></i> &nbsp; Edit
-                            </button>
+                            </button> --}}
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
@@ -75,7 +73,7 @@
               <input type="hidden" id="id" name="id">
               <div class="form-group" id="form_nama"></div>
               {{-- <div class="form-group" id="form_paket"></div> --}}
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="guru_id">Wali Kelas</label>
                 <select id="guru_id" name="guru_id" class="select2bs4 form-control @error('guru_id') is-invalid @enderror">
                   <option value="">-- Pilih Wali Kelas --</option>
@@ -83,7 +81,7 @@
                     <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
                   @endforeach
                 </select>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -116,6 +114,7 @@
                     <th>No Induk Siswa</th>
                     <th>Nama Siswa</th>
                     <th>L/P</th>
+                    <th>Status</th>
                     <th>Foto Siswa</th>
                   </tr>
                 </thead>
@@ -136,7 +135,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal"><i class="nav-icon fas fa-arrow-left"></i> &nbsp; Kembali</button>
-          <a id="link-siswa" href="#" class="btn btn-primary"><i class="nav-icon fas fa-download"></i> &nbsp; Download PDF</a>
+          {{-- <a id="link-siswa" href="#" class="btn btn-primary"><i class="nav-icon fas fa-download"></i> &nbsp; Download PDF</a> --}}
         </div>
       </div>
     </div>
@@ -209,6 +208,7 @@
                 siswa += "<td>"+val.no_induk+"</td>";
                 siswa += "<td>"+val.nama_siswa+"</td>";
                 siswa += "<td>"+val.jk+"</td>";
+                siswa += "<td>"+val.status_id+"</td>";
                 siswa += "<td><img src='"+val.foto+"' width='100px'></td>";
               siswa+="</tr>";
             });

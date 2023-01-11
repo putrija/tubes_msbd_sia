@@ -29,7 +29,7 @@
                     <td>{{ $no+1 }}</td>
                     <td>{{ $item->ket_jenis_ptk }}</td>
                     <td>
-                      <form action="{{ route('tugastambahanguru.destroy', $item->id)}}" method="POST">
+                      <form action="{{ route('jenisptk.destroy', $item->id)}}" method="POST">
                         @csrf
                         @method('delete')
                         <a href="{{ route('jenisptk.edit', Crypt::encrypt($item->id

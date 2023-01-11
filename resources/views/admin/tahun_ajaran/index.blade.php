@@ -22,6 +22,8 @@
                     <th>Tahun Ajaran</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,13 +33,18 @@
                     <td>{{ $item->tahun_ajaran }}</td>
                     <td>{{ $item->tanggal_mulai }}</td>
                     <td>{{ $item->tanggal_berakhir }}</td>
-                    {{-- <td>
-                        <form action="{{ route('status_siswa.destroy', $item->id)}}" method="POST">
-                          @csrf
-                          @method('delete')
-                            <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
-                        </form>
-                    </td> --}}
+                    <td>{{ $item->status }}</td>
+                    <td>
+                      <form action="{{ route('TahunAjaran.changeStatus2',$item->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-success btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Aktifkan Status</button>
+                      </form>
+                      <br>
+                      <form action="{{ route('TahunAjaran.changeStatus',$item->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Nonaktifkan Status</button>
+                      </form>
+                    </td>
                 </tr>
               @endforeach
             </tbody>
@@ -76,6 +83,14 @@
                   <label for="tanggal_berakhir">Tanggal Berakhir</label>
                   <input type="date" id="tanggal_berakhir" name="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror">
               </div>
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="select2bs4 form-control @error('status') is-invalid @enderror">
+                    <option value="">-- Status --</option>
+                    <option value="Aktif">Aktif</option>
+                    <option value="Non Aktif">Non Aktif</option>
+                </select>
+            </div>
               </div>
             </div>
         </div>

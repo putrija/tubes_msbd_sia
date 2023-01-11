@@ -9,7 +9,7 @@ class WaliKelas extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'guru_id', 'kelas_id', 'tahun_ajaran_id'];
+    protected $fillable = ['guru_id', 'kelas_id', 'tahun_ajaran_id'];
 
     protected $table = 'wali_kelas';
 

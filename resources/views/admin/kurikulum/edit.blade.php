@@ -23,6 +23,14 @@
                   <label for="nama_kurikulum">Nama Kurikulum</label>
                   <input type="text" id="nama_kurikulum" name="nama_kurikulum" value="{{ $kurikulum->nama_kurikulum }}" class="form-control @error('nama_kurikulum') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select id="status" value="{{$kurikulum->id}}" name="status" class="select2bs4 form-control @error('status') is-invalid @enderror">
+                      <option value="">{{$kurikulum->status}}</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Non Aktif">Non Aktif</option>
+                  </select>
+              </div>
             </div>
           </div>
         </div>

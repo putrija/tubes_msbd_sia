@@ -122,6 +122,8 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/user/trash', 'UserController@trash')->name('user.trash');
       Route::get('/user/restore/{id}', 'UserController@restore')->name('user.restore');
       Route::delete('/user/kill/{id}', 'UserController@kill')->name('user.kill');
+      Route::post('/user/changeStatus/{id}', 'UserController@changeStatus')->name('user.changeStatus');
+  
     });
     Route::get('/admin/home', 'HomeController@admin')->name('admin.home');
     Route::get('/admin/pengumuman', 'PengumumanController@index')->name('admin.pengumuman');
@@ -185,9 +187,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/tugastambahanguru', TugasTambahanGuruController::class);
     Route::resource('/ruangan', RuanganController::class);
     Route::resource('/tahun_ajaran', TahunAjaranController::class);
+    // Route::post('/tahun_ajaran/changeStatus/{id}', 'TahunAjaranController@changeStatus')->name('TahunAjaran.changeStatus');
+    Route::post('/tahun_ajaran/changeStatus/{id}', 'TahunAjaranController@changeStatus')->name('TahunAjaran.changeStatus');
+    Route::post('/tahun_ajaran/changeStatus2/{id}', 'TahunAjaranController@changeStatus2')->name('TahunAjaran.changeStatus2');
     Route::get('/edit-tugastambahanguru/{id}', 'TugasTambahanGuruController@edit')->name('TugasTambahanGuru.store');
     Route::get('/update-tugastambahanguru/{id}', 'TugasTambahanGuruController@update')->name('TugasTambahanGuru.update');
     Route::post('/edit-jenisptk/{id}', 'JenisPtkController@edit')->name('JenisPtk.store');
+    Route::get('/update-jenis_ptk/{id}', 'JenisPtkController@update')->name('JenisPtk.update');
 
     Route::get('/jadwal/view/json', 'JadwalController@view');
     Route::get('/jadwalkelaspdf/{id}', 'JadwalController@cetak_pdf');
@@ -221,6 +227,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembagiankelas/export_excel', 'PembagianKelasController@export_excel')->name('pembagiankelas.export_excel');
 
     Route::resource('/kurikulum', 'KurikulumController');
+    Route::post('/kurikulum/changeStatus/{id}', 'KurikulumController@changeStatus')->name('Kurikulum.changeStatus');
     Route::resource('/jurusan', 'JurusanController');
     Route::resource('/wali_kelas', 'WaliKelasController');
 

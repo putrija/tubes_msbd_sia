@@ -51,7 +51,7 @@
                 @if ($data->role == 'Siswa')
                   <td>{{ $data->no_induk }}</td>
                 @elseif ($data->role == 'Guru')
-                  <td>{{ $data->id_card }}</td>
+                  <td>{{ $data->id_card_guru }}</td>
                 @else
                 @endif
                 {{-- <td>{{ $data->created_at->format('l, d F Y') }}</td> --}}
@@ -60,6 +60,11 @@
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                  </form>
+                  <br>
+                  <form action="{{ route('user.changeStatus', $data->id) }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Nonaktifkan Akun</button>
                   </form>
                   @if ($data->role == 'Kepala Sekolah')
                   <br>

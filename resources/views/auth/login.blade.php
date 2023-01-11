@@ -4,6 +4,7 @@
 <div class="card-body login-card-body">
   <p class="login-box-msg">Sign in to start your session</p>
 
+
   <form action="{{ route('login') }}" method="post">
     @csrf
     <div class="input-group mb-3">
@@ -32,6 +33,8 @@
         </span>
       @enderror
     </div>
+    
+
     {{-- <div class="row mb-1">
       <div class="col-7">
         <div class="icheck-primary">
@@ -42,6 +45,9 @@
         </div>
       </div> --}}
       <!-- /.col -->
+    
+      
+
       <div class="col-5">
         <button type="submit" id="btn-login"class="btn btn-primary btn-block" disabled>{{ __('Login') }} &nbsp; <i class="nav-icon fas fa-sign-in-alt"></i></button>
       </div>
@@ -49,13 +55,13 @@
     </div>
   </form>
 
-  {{-- <p class="mb-1">
+  <p class="mb-1">
     @if (Route::has('password.request'))
       <a class="text-center" href="{{ route('password.request') }}">
         {{ __('Lupa Password?') }}
       </a>
     @endif
-  </p> --}}
+  </p>
   {{-- <p class="mb-0">
     <a class="text-center" href="{{ route('register') }}">Buat Akun Baru</a>
   </p> --}} 
@@ -137,6 +143,41 @@
           $("#remember").attr("disabled", "disabled");
           $("#btn-login").attr("disabled", "disabled");
         }
+
+        // $("#status").keyup(function(){
+        // var email = $("#email").val();
+        // var password = $("#password").val();
+        // var status = $("#status").val();
+
+        // if (status == "Aktif"){
+        //   $.ajax({
+        //       type:"GET",
+        //       data: {
+        //           email : email,
+        //           password : password,
+        //           status :status
+        //       },
+        //       dataType:"JSON",
+        //       url:"{{ url('/login/cek_password/json') }}",
+        //       success:function(data){
+        //         if (data.success) {
+        //           $("#btn-login").removeAttr("disabled", "disabled");
+        //         } else {
+        //           $("#password").removeClass("is-valid");
+        //           $("#password").addClass("is-invalid");
+        //           $("#remember").attr("disabled", "disabled");
+        //           $("#btn-login").attr("disabled", "disabled");
+        //         }
+        //       },
+        //       error:function(){
+        //       }
+        //   });
+        // } else {
+        //   $("#password").removeClass("is-valid");
+        //   $("#password").removeClass("is-invalid");
+        //   $("#remember").attr("disabled", "disabled");
+        //   $("#btn-login").attr("disabled", "disabled");
+        // }
     });
   </script>
 @endsection

@@ -103,6 +103,7 @@ class WaliKelasController extends Controller
         $tahun_ajaran = Tahun_ajaran::all();
         return view('admin.WaliKelas.edit', compact('wali_kelas', 'kelas', 'guru', 'tahun_ajaran'));
     }
+    
 
     /**
      * Update the specified resource in storage.
