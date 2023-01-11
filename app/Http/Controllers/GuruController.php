@@ -184,18 +184,19 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
 
         $status_kepegawaian = StatusKepegawaian::all();
         $tugas_tambahan_guru = TugasTambahanGuru::all();
         $jenis_ptk = JenisPtk::all();
-        $detail_guru = DetailGuru::all();
         $user = User::all();
         // $detail_guru = DetailGuru::orderBy('guru_id')->first();
         // $detail_guru_get = DetailGuru::orderBy('guru_id')->get();
         $id = Crypt::decrypt($id);
         $guru = Guru::findorfail($id);
+        // $detail_guru = DetailGuru::findorfail($id);
+        $detail_guru = DetailGuru::where('guru_id', $id)->first();
         return view('admin.guru.edit', compact('guru', 'status_kepegawaian', 'tugas_tambahan_guru', 'jenis_ptk', 'detail_guru', 'user'));
     }
 
@@ -222,6 +223,7 @@ class GuruController extends Controller
             'jk' => 'required',
         ]);
         $guru = Guru::findorfail($id);
+        $detail = DetailGuru::where('guru_id', $guru->id)->first();
         $user = User::where('id_card_guru', $guru->id_card_guru)->first();
         if ($user) {
             $user_data = [
@@ -229,7 +231,7 @@ class GuruController extends Controller
                 'email' => $request->email
             ];
             $user->update($user_data);
-        } else {
+        } else{
         }
         $guru_data = [
             'nip' => $request->nip,
@@ -253,9 +255,22 @@ class GuruController extends Controller
             'email' => $request->email,
             'nik' => $request->nik,
             'no_kk' => $request->no_kk,
-            'nuptk' => $request->nuptk
+            'nuptk' => $request->nuptk,
+
         ];
         $guru->update($guru_data);
+
+        $detail_guru = [
+            'guru_id' => $guru->id,
+            'sk_cpns' => $request->sk_cpns,
+            'tanggal_cpns' => $request->tanggal_cpns,
+            'sk_pengangkatan' =>$request->sk_pengangkatan,
+            'tmt_pengangkatan' => $request->tmt_pengangkatan,
+            'lembaga_pengangkatan' => $request -> lembaga_pengangkatan,
+            'pangkat_golongan' => $request -> pangkatan_golongan
+
+        ];          
+        $detail->update($detail_guru);
 
         return redirect()->route('guru.index')->with('success', 'Data guru berhasil diperbarui!');
     }
